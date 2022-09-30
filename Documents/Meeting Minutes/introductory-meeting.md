@@ -1,4 +1,4 @@
-# Introductory Meeting Notes - Equifood
+# Introductory Meeting Notes 
 
 - Client would prefer if we email him via his student email: avaneendra.sathivada@ubc.ca 
 - By Oct 7th - forward client an invoice with exact prices of the paid services we decide to implement in order for him to apply for funding 
