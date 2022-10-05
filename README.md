@@ -10,6 +10,6 @@ The app will also streamline EquiFood's current donations tracking process, as i
 
 The system will involve three types of users:
 
-- **Individuals**: anyone who signs up on the app to be connected to restaurants and obtain food donations.
+- **Individuals**: anyone who signs up on the app to be connected to restaurants or food chains and obtain food donations.
 - **Restaurant representatives**: restaurant managers or their delegate who are able to post donations onto the system and manage their restaurant’s information in the EquiFood app. These users must be vetted by the administrators.
 - **Administrators**: members of the EquiFood team who can approve restaurant managers and view the donation amounts.
