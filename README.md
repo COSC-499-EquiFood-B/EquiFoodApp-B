@@ -1,6 +1,6 @@
 # EquiFood App 
 
-## Contextttttttttttttttttttttttttt
+## Context
 Project Equifood tries to reduce food wastage and promotes sustainable food systems in Kelowna. The designed app will help to reduce food wastage by donating leftovers from restaurants.
 
 ## Description 
