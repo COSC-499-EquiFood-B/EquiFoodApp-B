@@ -1,9 +1,10 @@
 # Feature Testing
 
-resource: 
+Resource: 
 - Flutter: https://docs.flutter.dev/testing
 - Github action: https://docs.github.com/en/actions/automating-builds-and-tests/about-continuous-integration
 - Riverpod: https://riverpod.dev/es/docs/cookbooks/testing/
+- Regression test for Flutter: https://medium.flutterdevs.com/regression-testing-in-flutter-8e2b4a63fdec
 
 **Continuous integration testing**
 
