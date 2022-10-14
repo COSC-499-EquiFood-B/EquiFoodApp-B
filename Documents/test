@@ -1,9 +1,9 @@
-# Feature Testing
+#Feature Testing
 
 resource: https://docs.flutter.dev/testing
 
 Continuous integration testing
-* Unit testing - Flutter: Flutter test library & github action workflow
+- **Unit testing**: Flutter: Flutter test library & github action workflow
 
 * widget test - Flutter, Riverpod
 
