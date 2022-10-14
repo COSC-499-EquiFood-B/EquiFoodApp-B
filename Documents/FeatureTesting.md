@@ -2,7 +2,8 @@
 
 resource: 
 - Flutter: https://docs.flutter.dev/testing
-- github action: https://docs.github.com/en/actions/automating-builds-and-tests/about-continuous-integration
+- Github action: https://docs.github.com/en/actions/automating-builds-and-tests/about-continuous-integration
+- Riverpod: https://riverpod.dev/es/docs/cookbooks/testing/
 
 **Continuous integration testing**
 
