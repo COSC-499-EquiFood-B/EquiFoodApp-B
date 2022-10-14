@@ -10,7 +10,7 @@ resource:
 - **Unit testing**: Testing in code phase, make sure there is no error. 
   - Flutter test library & github action workflow
 
-- **widget test** :  testing UI components; 
+- **widget test** :  testing UI components; Testing to see if the widget is working expected.
   - Fluttertest library, Riverpod
   
 - **integration test** : Testing big chuck of app which developed in user’s perspective.
