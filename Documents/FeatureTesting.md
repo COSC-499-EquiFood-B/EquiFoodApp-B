@@ -1,6 +1,8 @@
 # Feature Testing
 
-resource: https://docs.flutter.dev/testing
+resource: 
+- Flutter: https://docs.flutter.dev/testing
+- github action: https://docs.github.com/en/actions/automating-builds-and-tests/about-continuous-integration
 
 **Continuous integration testing**
 
@@ -15,4 +17,5 @@ resource: https://docs.flutter.dev/testing
 
 **Regression testing** : ensure that new coding does not cause any bugs from old code.
   - Flutter
-    - golden_toolkit package,  reset-all
+    - golden_toolkit package
+    - reset-all
