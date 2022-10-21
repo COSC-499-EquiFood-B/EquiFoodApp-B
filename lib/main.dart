@@ -79,7 +79,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPageName = 'HomePage';
+  String _currentPageName = 'PickupMap';
   late Widget? _currentPage;
 
   @override
@@ -92,7 +92,7 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'HomePage': HomePageWidget(),
+      'PickupMap': PickupMapWidget(),
       'Register': RegisterWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);

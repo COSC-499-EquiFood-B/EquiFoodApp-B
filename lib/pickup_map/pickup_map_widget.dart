@@ -4,14 +4,14 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({Key? key}) : super(key: key);
+class PickupMapWidget extends StatefulWidget {
+  const PickupMapWidget({Key? key}) : super(key: key);
 
   @override
-  _HomePageWidgetState createState() => _HomePageWidgetState();
+  _PickupMapWidgetState createState() => _PickupMapWidgetState();
 }
 
-class _HomePageWidgetState extends State<HomePageWidget> {
+class _PickupMapWidgetState extends State<PickupMapWidget> {
   LatLng? googleMapsCenter;
   final googleMapsController = Completer<GoogleMapController>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
