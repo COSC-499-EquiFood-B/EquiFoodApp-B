@@ -37,11 +37,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, _) => NavBarPage(),
           routes: [
             FFRoute(
-              name: 'HomePage',
-              path: 'homePage',
+              name: 'PickupMap',
+              path: 'pickupMap',
               builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'HomePage')
-                  : HomePageWidget(),
+                  ? NavBarPage(initialPage: 'PickupMap')
+                  : PickupMapWidget(),
             ),
             FFRoute(
               name: 'Register',
@@ -54,6 +54,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Login',
               path: 'login',
               builder: (context, params) => LoginWidget(),
+            ),
+            FFRoute(
+              name: 'RestaurantDashboard',
+              path: 'restaurantDashboard',
+              builder: (context, params) => RestaurantDashboardWidget(),
+            ),
+            FFRoute(
+              name: 'IndivDashboard',
+              path: 'indivDashboard',
+              builder: (context, params) => IndivDashboardWidget(),
+            ),
+            FFRoute(
+              name: 'IndivItem',
+              path: 'indivItem',
+              builder: (context, params) => IndivItemWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
