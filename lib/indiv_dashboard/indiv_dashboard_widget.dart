@@ -217,3 +217,312 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             ),
                           ),
                           Align(
+                            alignment: AlignmentDirectional(-0.28, -0.45),
+                            child: FFButtonWidget(
+                              onPressed: () {
+                                print('Button pressed ...');
+                              },
+                              text: 'Favourites',
+                              options: FFButtonOptions(
+                                height: 40,
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(3, 0, 0, 0),
+                                color: Color(0x00FFFFFF),
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .subtitle2
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(-0.84, -0.45),
+                            child: FFButtonWidget(
+                              onPressed: () {
+                                print('Button pressed ...');
+                              },
+                              text: 'Browse',
+                              options: FFButtonOptions(
+                                height: 40,
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(3, 0, 0, 0),
+                                color: Color(0x00FFFFFF),
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .subtitle2
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                                borderSide: BorderSide(
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(-0.06, -0.02),
+                            child: Container(
+                              width: 320,
+                              height: 150,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(0.01, 0.78),
+                            child: Container(
+                              width: 320,
+                              height: 150,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(0, 0.57),
+                            child: Container(
+                              width: 320,
+                              height: 150,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: Image.network(
+                                    'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGZvb2R8ZW58MHwwfDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
+                                  ).image,
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 4,
+                                    color: Color(0x33000000),
+                                    offset: Offset(0, 2),
+                                  )
+                                ],
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(0),
+                                  bottomRight: Radius.circular(0),
+                                  topLeft: Radius.circular(8),
+                                  topRight: Radius.circular(8),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(-0.06, -0.23),
+                            child: Container(
+                              width: 320,
+                              height: 150,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: Image.network(
+                                    'https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9vZHxlbnwwfDB8MHx8&auto=format&fit=crop&w=800&q=60',
+                                  ).image,
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 4,
+                                    color: Color(0x33000000),
+                                    offset: Offset(0, 2),
+                                  )
+                                ],
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(0),
+                                  bottomRight: Radius.circular(0),
+                                  topLeft: Radius.circular(8),
+                                  topRight: Radius.circular(8),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(-0.73, 0.07),
+                            child: Text(
+                              'Restaurant Name',
+                              style: FlutterFlowTheme.of(context).bodyText1,
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(-0.72, 0.73),
+                            child: Text(
+                              'Restaurant Name',
+                              style: FlutterFlowTheme.of(context).bodyText1,
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(-0.73, 0.76),
+                            child: Text(
+                              'restaurant description',
+                              style: FlutterFlowTheme.of(context)
+                                  .subtitle2
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(-0.73, 0.11),
+                            child: Text(
+                              'restaurant description',
+                              style: FlutterFlowTheme.of(context)
+                                  .subtitle2
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(0.72, 0.72),
+                            child: RatingBar.builder(
+                              onRatingUpdate: (newValue) =>
+                                  setState(() => ratingBarValue1 = newValue),
+                              itemBuilder: (context, index) => Icon(
+                                Icons.star_rounded,
+                                color: Color(0xFF36AC64),
+                              ),
+                              direction: Axis.horizontal,
+                              initialRating: ratingBarValue1 ??= 3,
+                              unratedColor: Color(0xFF9E9E9E),
+                              itemCount: 5,
+                              itemSize: 20,
+                              glowColor: Color(0xFF36AC64),
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(0.74, 0.07),
+                            child: RatingBar.builder(
+                              onRatingUpdate: (newValue) =>
+                                  setState(() => ratingBarValue2 = newValue),
+                              itemBuilder: (context, index) => Icon(
+                                Icons.star_rounded,
+                                color: Color(0xFF36AC64),
+                              ),
+                              direction: Axis.horizontal,
+                              initialRating: ratingBarValue2 ??= 3,
+                              unratedColor: Color(0xFF9E9E9E),
+                              itemCount: 5,
+                              itemSize: 20,
+                              glowColor: Color(0xFF36AC64),
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(0.72, 1.07),
+                            child: FlutterFlowIconButton(
+                              borderColor: Colors.transparent,
+                              borderRadius: 30,
+                              borderWidth: 1,
+                              buttonSize: 60,
+                              icon: Icon(
+                                Icons.person,
+                                color: Color(0xFF505153),
+                                size: 30,
+                              ),
+                              onPressed: () {
+                                print('IconButton pressed ...');
+                              },
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(-0.74, 1.07),
+                            child: FlutterFlowIconButton(
+                              borderColor: Colors.transparent,
+                              borderRadius: 30,
+                              borderWidth: 1,
+                              buttonSize: 60,
+                              icon: Icon(
+                                Icons.arrow_back,
+                                color: Color(0xFF505153),
+                                size: 30,
+                              ),
+                              onPressed: () {
+                                print('IconButton pressed ...');
+                              },
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(-0.74, 1.07),
+                            child: FlutterFlowIconButton(
+                              borderColor: Colors.transparent,
+                              borderRadius: 30,
+                              borderWidth: 1,
+                              buttonSize: 60,
+                              icon: Icon(
+                                Icons.arrow_back,
+                                color: Color(0xFF505153),
+                                size: 30,
+                              ),
+                              onPressed: () {
+                                print('IconButton pressed ...');
+                              },
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(-0.04, 1.08),
+                            child: FlutterFlowIconButton(
+                              borderColor: Colors.transparent,
+                              borderRadius: 30,
+                              borderWidth: 1,
+                              buttonSize: 60,
+                              icon: Icon(
+                                Icons.shopping_cart,
+                                color: Color(0xFF505153),
+                                size: 30,
+                              ),
+                              onPressed: () {
+                                print('IconButton pressed ...');
+                              },
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(-0.04, 1.08),
+                            child: FlutterFlowIconButton(
+                              borderColor: Colors.transparent,
+                              borderRadius: 30,
+                              borderWidth: 1,
+                              buttonSize: 60,
+                              icon: Icon(
+                                Icons.shopping_cart,
+                                color: Color(0xFF505153),
+                                size: 30,
+                              ),
+                              onPressed: () {
+                                print('IconButton pressed ...');
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
