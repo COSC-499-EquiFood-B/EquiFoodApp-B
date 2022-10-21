@@ -15,7 +15,7 @@ class HomePageWidget extends StatefulWidget {
   @override
   _HomePageWidgetState createState() => _HomePageWidgetState();
 }
-
+//home page widget state
 class _HomePageWidgetState extends State<HomePageWidget> {
   double? ratingBarValue1;
   var placePickerValue = FFPlace();
