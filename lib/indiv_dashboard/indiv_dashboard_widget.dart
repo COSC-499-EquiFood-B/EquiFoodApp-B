@@ -189,31 +189,4 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               ),
                             ),
                           ),
-                          Align(
-                            alignment: AlignmentDirectional(-0.84, -0.45),
-                            child: FFButtonWidget(
-                              onPressed: () {
-                                print('Button pressed ...');
-                              },
-                              text: 'Browse',
-                              options: FFButtonOptions(
-                                height: 40,
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(3, 0, 0, 0),
-                                color: Color(0x00FFFFFF),
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .subtitle2
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1,
-                                ),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                            ),
-                          ),
-                          Align(
+                         
