@@ -37,36 +37,4 @@ class _PickupMapWidgetState extends State<PickupMapWidget> {
         centerTitle: false,
         elevation: 2,
       ),
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Expanded(
-                child: FlutterFlowGoogleMap(
-                  controller: googleMapsController,
-                  onCameraIdle: (latLng) => googleMapsCenter = latLng,
-                  initialLocation: googleMapsCenter ??=
-                      LatLng(13.106061, -59.613158),
-                  markerColor: GoogleMarkerColor.violet,
-                  mapType: MapType.normal,
-                  style: GoogleMapStyle.standard,
-                  initialZoom: 14,
-                  allowInteraction: true,
-                  allowZoom: true,
-                  showZoomControls: true,
-                  showLocation: true,
-                  showCompass: false,
-                  showMapToolbar: false,
-                  showTraffic: false,
-                  centerMapOnMarkerTap: true,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
+      
