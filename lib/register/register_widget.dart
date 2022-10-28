@@ -312,68 +312,35 @@ class _SignupWidgetState extends State<SignupWidget> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    FFButtonWidget(
-                      onPressed: () async {
-                        GoRouter.of(context).prepareAuthEvent();
-
-                        final user = await createAccountWithEmail(
-                          context,
-                          emailTextController!.text,
-                          passwordTextController!.text,
-                        );
-                        if (user == null) {
-                          return;
-                        }
-
-                        context.goNamedAuth('logedin', mounted);
-                      },
-                      text: 'Sign up',
-                      options: FFButtonOptions(
-                        width: 150,
-                        height: 50,
-                        color: Color(0xFF66BB6A),
-                        textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
-                                  fontFamily: 'Outfit',
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                        elevation: 3,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),
+                    Expanded(
                       child: FFButtonWidget(
                         onPressed: () async {
-                          context.pushNamed('homePage');
+                          GoRouter.of(context).prepareAuthEvent();
+
+                          final user = await createAccountWithEmail(
+                            context,
+                            emailTextController!.text,
+                            passwordTextController!.text,
+                          );
+                          if (user == null) {
+                            return;
+                          }
+
+                          context.goNamedAuth('logedin', mounted);
                         },
-                        text: 'Continue as Guest',
+                        text: 'Sign up',
                         options: FFButtonOptions(
-                          width: 230,
+                          width: 150,
                           height: 50,
-                          color: Colors.white,
+                          color: Color(0xFF66BB6A),
                           textStyle:
                               FlutterFlowTheme.of(context).subtitle2.override(
                                     fontFamily: 'Outfit',
-                                    color: Color(0xFF57636C),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.normal,
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500,
                                   ),
-                          elevation: 0,
+                          elevation: 3,
                           borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1,
