@@ -1,0 +1,165 @@
+import '../flutter_flow/flutter_flow_theme.dart';
+import '../flutter_flow/flutter_flow_timer.dart';
+import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
+import 'package:stop_watch_timer/stop_watch_timer.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
+
+class ConfirmationscreenWidget extends StatefulWidget {
+  const ConfirmationscreenWidget({Key? key}) : super(key: key);
+
+  @override
+  _ConfirmationscreenWidgetState createState() =>
+      _ConfirmationscreenWidgetState();
+}
+
+class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
+  StopWatchTimer? timerController;
+  String? timerValue;
+  int? timerMilliseconds;
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    timerController?.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: Color(0xFFACE4AF),
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Lottie.network(
+                      'https://assets10.lottiefiles.com/packages/lf20_xlkxtmul.json',
+                      width: 200,
+                      height: 200,
+                      fit: BoxFit.cover,
+                      frameRate: FrameRate(60),
+                      repeat: false,
+                      animate: true,
+                    ),
+                  ],
+                ),
+              ),
+              Text(
+                'Congrats!',
+                style: FlutterFlowTheme.of(context).title2.override(
+                      fontFamily: 'Outfit',
+                      color: Colors.white,
+                      fontSize: 32,
+                      fontWeight: FontWeight.w500,
+                    ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(0, 0),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                  child: Text(
+                    'Your Order Is Held For',
+                    style: FlutterFlowTheme.of(context).subtitle2.override(
+                          fontFamily: 'Outfit',
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w300,
+                        ),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(0, 0),
+                child: FlutterFlowTimer(
+                  timerValue: timerValue ??= StopWatchTimer.getDisplayTime(
+                    timerMilliseconds ??= 600000,
+                    hours: true,
+                    minute: true,
+                    second: true,
+                    milliSecond: false,
+                  ),
+                  timer: timerController ??= StopWatchTimer(
+                    mode: StopWatchMode.countDown,
+                    presetMillisecond: timerMilliseconds ??= 600000,
+                    onChange: (value) {
+                      setState(() {
+                        timerMilliseconds = value;
+                        timerValue = StopWatchTimer.getDisplayTime(
+                          value,
+                          hours: true,
+                          minute: true,
+                          second: true,
+                          milliSecond: false,
+                        );
+                      });
+                    },
+                  ),
+                  textAlign: TextAlign.start,
+                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                        fontFamily: 'Poppins',
+                        color: Color(0xFF36AC64),
+                        fontSize: 20,
+                      ),
+                  onEnded: () {},
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),
+                child: FFButtonWidget(
+                  onPressed: () async {
+                    context.pushNamed(
+                      'homepage',
+                      extra: <String, dynamic>{
+                        kTransitionInfoKey: TransitionInfo(
+                          hasTransition: true,
+                          transitionType: PageTransitionType.leftToRight,
+                        ),
+                      },
+                    );
+                  },
+                  text: 'Cancel Order',
+                  options: FFButtonOptions(
+                    width: 130,
+                    height: 50,
+                    color: Colors.white,
+                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                          fontFamily: 'Outfit',
+                          color: Color(0xFF36AC64),
+                          fontSize: 16,
+                          fontWeight: FontWeight.normal,
+                        ),
+                    elevation: 3,
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
