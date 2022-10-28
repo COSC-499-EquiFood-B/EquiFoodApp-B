@@ -85,7 +85,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                       InkWell(
                         onTap: () async {
                           context.pushNamed(
-                            'SignUp',
+                            'signup',
                             extra: <String, dynamic>{
                               kTransitionInfoKey: TransitionInfo(
                                 hasTransition: true,
@@ -278,58 +278,37 @@ class _LoginWidgetState extends State<LoginWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
-                        },
-                        text: 'Forgot Password?',
-                        options: FFButtonOptions(
-                          width: 150,
-                          height: 50,
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                          textStyle: FlutterFlowTheme.of(context)
-                              .subtitle2
-                              .override(
-                                fontFamily: 'Poppins',
-                                color: FlutterFlowTheme.of(context).grayText,
-                                fontSize: 14,
-                              ),
-                          elevation: 0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1,
-                          ),
-                        ),
-                      ),
-                      FFButtonWidget(
-                        onPressed: () async {
-                          GoRouter.of(context).prepareAuthEvent();
+                      Expanded(
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            GoRouter.of(context).prepareAuthEvent();
 
-                          final user = await signInWithEmail(
-                            context,
-                            emailTextController!.text,
-                            passwordTextController!.text,
-                          );
-                          if (user == null) {
-                            return;
-                          }
+                            final user = await signInWithEmail(
+                              context,
+                              emailTextController!.text,
+                              passwordTextController!.text,
+                            );
+                            if (user == null) {
+                              return;
+                            }
 
-                          context.goNamedAuth('logedin', mounted);
-                        },
-                        text: 'Login',
-                        options: FFButtonOptions(
-                          width: 150,
-                          height: 50,
-                          color: FlutterFlowTheme.of(context).primaryColor,
-                          textStyle:
-                              FlutterFlowTheme.of(context).subtitle1.override(
-                                    fontFamily: 'Poppins',
-                                    color: Colors.white,
-                                  ),
-                          elevation: 3,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1,
+                            context.goNamedAuth('logedin', mounted);
+                          },
+                          text: 'Login',
+                          options: FFButtonOptions(
+                            width: 150,
+                            height: 50,
+                            color: Color(0xFF147536),
+                            textStyle:
+                                FlutterFlowTheme.of(context).subtitle1.override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                    ),
+                            elevation: 3,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1,
+                            ),
                           ),
                         ),
                       ),
@@ -342,33 +321,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            GoRouter.of(context).prepareAuthEvent();
-                            final user = await signInAnonymously(context);
-                            if (user == null) {
-                              return;
-                            }
-
-                            context.goNamedAuth('logedin', mounted);
-                          },
-                          text: 'Continue as Guest',
-                          options: FFButtonOptions(
-                            width: 230,
-                            height: 50,
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            textStyle: FlutterFlowTheme.of(context).subtitle2,
-                            elevation: 0,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1,
-                            ),
-                          ),
-                        ),
-                      ),
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
