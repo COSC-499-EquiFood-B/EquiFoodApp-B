@@ -20,6 +20,7 @@ version: 1.0.0+1
 environment:
   sdk: ">=2.12.0 <3.0.0"
 
+## Shared Dependencies
 dependencies:
   flutter:
     sdk: flutter
@@ -43,12 +44,49 @@ dependencies:
   timeago: 3.2.2
   url_launcher: 6.1.5
 
+  ## Ana's Dependencies
+  collection: 1.16.0
+  easy_debounce: 2.0.1
+  flutter_google_places: any
+  flutter_rating_bar: 4.0.1
+  lottie: 1.2.1
+  stop_watch_timer: any
+  ## Minh's Dependencies
+
+  ## Neilansh's Dependencies
+
+  ## Eunsuh's Dependencies
+  built_collection: 5.1.1
+  built_value: 8.4.0
+  cloud_firestore: 3.2.1
+  cloud_firestore_platform_interface: 5.5.10
+  cloud_firestore_web: 2.6.19
+  firebase_auth: 3.4.1
+  firebase_auth_platform_interface: 6.3.1
+  firebase_auth_web: 3.3.19
+  firebase_core: 1.19.1
+  firebase_core_platform_interface: 4.4.3
+  firebase_core_web: 1.6.6
+  google_sign_in: 5.4.0
+  google_sign_in_android: 6.0.1
+  google_sign_in_ios: 5.4.0
+  google_sign_in_platform_interface: 2.2.0
+  google_sign_in_web: 0.10.2
+  json_serializable: 6.3.1
+  plugin_platform_interface: 2.1.2
+  rxdart: any 
+  sign_in_with_apple: 4.1.0
+  sign_in_with_apple_platform_interface: 1.0.0
+  sign_in_with_apple_web: 1.0.1
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
 
 dev_dependencies:
+  build_runner: 2.2.0
+  built_value_generator: 8.4.0
 
   flutter_test:
     sdk: flutter
