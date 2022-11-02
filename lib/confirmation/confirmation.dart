@@ -123,8 +123,46 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
                   onEnded: () {},
                 ),
               ),
+              Align(
+                alignment: AlignmentDirectional(0, 0.05),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      context.pushNamed(
+                        'homepage',
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.leftToRight,
+                          ),
+                        },
+                      );
+                    },
+                    text: 'View Order Details',
+                    options: FFButtonOptions(
+                      width: 180,
+                      height: 50,
+                      color: Color(0xFF36AC64),
+                      textStyle: FlutterFlowTheme.of(context)
+                          .subtitle2
+                          .override(
+                            fontFamily: 'Outfit',
+                            color: FlutterFlowTheme.of(context).primaryBtnText,
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal,
+                          ),
+                      elevation: 3,
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                        width: 1,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(44, 32, 44, 44),
                 child: FFButtonWidget(
                   onPressed: () async {
                     context.pushNamed(
@@ -139,7 +177,7 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
                   },
                   text: 'Cancel Order',
                   options: FFButtonOptions(
-                    width: 130,
+                    width: 180,
                     height: 50,
                     color: Colors.white,
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
