@@ -39,10 +39,6 @@ class _SettingWidgetState extends State<SettingWidget> {
             print('IconButton pressed ...');
           },
         ),
-        title: Text(
-          'Setting',
-          style: FlutterFlowTheme.of(context).subtitle2,
-        ),
         actions: [],
         centerTitle: true,
         elevation: 0,
@@ -147,32 +143,39 @@ class _SettingWidgetState extends State<SettingWidget> {
                   ),
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Icon(
-                          Icons.account_circle_outlined,
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 24,
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
-                          child: Text(
-                            'Edit Profile',
-                            style: FlutterFlowTheme.of(context).bodyText2,
+                    child: InkWell(
+                      onTap: () async {
+                        context.pushNamed('proflie');
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Icon(
+                            Icons.account_circle_outlined,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 24,
                           ),
-                        ),
-                        Expanded(
-                          child: Align(
-                            alignment: AlignmentDirectional(0.9, 0),
-                            child: Icon(
-                              Icons.arrow_forward_ios,
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              size: 18,
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
+                            child: Text(
+                              'Edit Profile',
+                              style: FlutterFlowTheme.of(context).bodyText2,
                             ),
                           ),
-                        ),
-                      ],
+                          Expanded(
+                            child: Align(
+                              alignment: AlignmentDirectional(0.9, 0),
+                              child: Icon(
+                                Icons.arrow_forward_ios,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 18,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -200,14 +203,14 @@ class _SettingWidgetState extends State<SettingWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Icon(
-                          Icons.notifications_none,
+                          Icons.language_outlined,
                           color: FlutterFlowTheme.of(context).secondaryText,
                           size: 24,
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                           child: Text(
-                            'Notification Settings',
+                            'Country',
                             style: FlutterFlowTheme.of(context).bodyText2,
                           ),
                         ),
@@ -250,14 +253,14 @@ class _SettingWidgetState extends State<SettingWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Icon(
-                          Icons.language_outlined,
+                          Icons.notifications_none,
                           color: FlutterFlowTheme.of(context).secondaryText,
                           size: 24,
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                           child: Text(
-                            'Location Servies',
+                            'Notification Settings',
                             style: FlutterFlowTheme.of(context).bodyText2,
                           ),
                         ),
@@ -307,7 +310,7 @@ class _SettingWidgetState extends State<SettingWidget> {
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                           child: Text(
-                            'change to something else later',
+                            'Payment Options',
                             style: FlutterFlowTheme.of(context).bodyText2,
                           ),
                         ),
@@ -461,7 +464,7 @@ class _SettingWidgetState extends State<SettingWidget> {
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                           child: Text(
-                            'change if needfe or delete',
+                            'Invite Friends',
                             style: FlutterFlowTheme.of(context).bodyText2,
                           ),
                         ),
