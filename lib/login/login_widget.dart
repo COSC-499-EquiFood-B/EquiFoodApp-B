@@ -55,11 +55,16 @@ class _LoginWidgetState extends State<LoginWidget> {
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Image.asset(
-                      'assets/images/logoTranslation@3x.png',
-                      width: 40,
-                      height: 40,
-                      fit: BoxFit.cover,
+                    InkWell(
+                      onTap: () async {
+                        context.pop();
+                      },
+                      child: Image.asset(
+                        'assets/images/logoTranslation@3x.png',
+                        width: 40,
+                        height: 40,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ],
                 ),
@@ -292,7 +297,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                               return;
                             }
 
-                            context.goNamedAuth('logedin', mounted);
+                            context.goNamedAuth('setting', mounted);
                           },
                           text: 'Login',
                           options: FFButtonOptions(
@@ -346,7 +351,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   return;
                                 }
 
-                                context.goNamedAuth('logedin', mounted);
+                                context.goNamedAuth('setting', mounted);
                               },
                             ),
                           ),
@@ -371,7 +376,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   return;
                                 }
 
-                                context.goNamedAuth('logedin', mounted);
+                                context.goNamedAuth('setting', mounted);
                               },
                             ),
                           ),
