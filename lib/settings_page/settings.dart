@@ -3,6 +3,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SettingWidget extends StatefulWidget {
@@ -82,7 +83,7 @@ class _SettingWidgetState extends State<SettingWidget> {
                               borderRadius: BorderRadius.circular(40),
                               child: CachedNetworkImage(
                                 imageUrl:
-                                    'https://images.unsplash.com/photo-1531123414780-f74242c2b052?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60',
+                                    'https://images.unsplash.com/photo-1536164261511-3a17e671d380?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=630&q=80',
                                 width: 60,
                                 height: 60,
                                 fit: BoxFit.cover,
@@ -202,15 +203,15 @@ class _SettingWidgetState extends State<SettingWidget> {
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Icon(
-                          Icons.language_outlined,
+                        FaIcon(
+                          FontAwesomeIcons.mapMarkedAlt,
                           color: FlutterFlowTheme.of(context).secondaryText,
                           size: 24,
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                           child: Text(
-                            'Country',
+                            'Location Services',
                             style: FlutterFlowTheme.of(context).bodyText2,
                           ),
                         ),
@@ -302,15 +303,15 @@ class _SettingWidgetState extends State<SettingWidget> {
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Icon(
-                          Icons.attach_money_rounded,
+                        FaIcon(
+                          FontAwesomeIcons.question,
                           color: FlutterFlowTheme.of(context).secondaryText,
                           size: 24,
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                           child: Text(
-                            'Payment Options',
+                            'Something elses',
                             style: FlutterFlowTheme.of(context).bodyText2,
                           ),
                         ),
@@ -464,7 +465,7 @@ class _SettingWidgetState extends State<SettingWidget> {
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                           child: Text(
-                            'Invite Friends',
+                            'something elses',
                             style: FlutterFlowTheme.of(context).bodyText2,
                           ),
                         ),
