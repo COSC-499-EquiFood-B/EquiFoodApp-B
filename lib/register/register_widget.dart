@@ -50,11 +50,16 @@ class _SignupWidgetState extends State<SignupWidget> {
               Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Image.asset(
-                    'assets/images/logoTranslation@3x.png',
-                    width: 40,
-                    height: 40,
-                    fit: BoxFit.cover,
+                  InkWell(
+                    onTap: () async {
+                      context.pop();
+                    },
+                    child: Image.asset(
+                      'assets/images/logoTranslation@3x.png',
+                      width: 40,
+                      height: 40,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ],
               ),
@@ -326,7 +331,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                             return;
                           }
 
-                          context.goNamedAuth('logedin', mounted);
+                          context.goNamedAuth('setting', mounted);
                         },
                         text: 'Sign up',
                         options: FFButtonOptions(
@@ -375,7 +380,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                           return;
                         }
 
-                        context.goNamedAuth('logedin', mounted);
+                        context.goNamedAuth('setting', mounted);
                       },
                     ),
                   ),
@@ -399,7 +404,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                           return;
                         }
 
-                        context.goNamedAuth('logedin', mounted);
+                        context.goNamedAuth('setting', mounted);
                       },
                     ),
                   ),
