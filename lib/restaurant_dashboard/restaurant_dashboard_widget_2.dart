@@ -4,14 +4,14 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({Key? key}) : super(key: key);
+class DonationsWidget extends StatefulWidget {
+  const DonationsWidget({Key? key}) : super(key: key);
 
   @override
-  _HomePageWidgetState createState() => _HomePageWidgetState();
+  _DonationsWidgetState createState() => _DonationsWidgetState();
 }
 
-class _HomePageWidgetState extends State<HomePageWidget> {
+class _DonationsWidgetState extends State<DonationsWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -69,7 +69,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(12, 12, 12, 12),
+                      padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
                       child: Card(
                         clipBehavior: Clip.antiAliasWithSaveLayer,
                         elevation: 10,
@@ -87,7 +87,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             ),
                             Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
+                                  EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
                               child: Container(
                                 width: double.infinity,
                                 height: 65,
@@ -145,8 +145,37 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       .primaryText,
                                               size: 30,
                                             ),
-                                            onPressed: () {
-                                              print('IconButton pressed ...');
+                                            onPressed: () async {
+                                              var confirmDialogResponse =
+                                                  await showDialog<bool>(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            content: Text(
+                                                                'Remove Donation?'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext,
+                                                                        false),
+                                                                child: Text(
+                                                                    'Cancel'),
+                                                              ),
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext,
+                                                                        true),
+                                                                child: Text(
+                                                                    'Confirm'),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      ) ??
+                                                      false;
                                             },
                                           ),
                                         ],
@@ -161,7 +190,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(12, 12, 12, 12),
+                      padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
                       child: Card(
                         clipBehavior: Clip.antiAliasWithSaveLayer,
                         elevation: 10,
@@ -179,7 +208,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             ),
                             Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
+                                  EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
                               child: Container(
                                 width: double.infinity,
                                 height: 65,
@@ -237,8 +266,37 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       .primaryText,
                                               size: 30,
                                             ),
-                                            onPressed: () {
-                                              print('IconButton pressed ...');
+                                            onPressed: () async {
+                                              var confirmDialogResponse =
+                                                  await showDialog<bool>(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            content: Text(
+                                                                'Remove Donation?'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext,
+                                                                        false),
+                                                                child: Text(
+                                                                    'Cancel'),
+                                                              ),
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext,
+                                                                        true),
+                                                                child: Text(
+                                                                    'Confirm'),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      ) ??
+                                                      false;
                                             },
                                           ),
                                         ],
@@ -262,4 +320,3 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     );
   }
 }
-
