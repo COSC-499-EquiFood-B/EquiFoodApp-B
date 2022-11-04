@@ -17,11 +17,8 @@ class ProflieWidget extends StatefulWidget {
 }
 
 class _ProflieWidgetState extends State<ProflieWidget> {
-  bool isMediaUploading = false;
-  String uploadedFileUrl = '';
-
-  TextEditingController? yourNameController;
   TextEditingController? myBioController;
+  TextEditingController? yourNameController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -116,16 +113,18 @@ class _ProflieWidgetState extends State<ProflieWidget> {
                   ),
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
-                    child: Container(
-                      width: 90,
-                      height: 90,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                      ),
-                      child: Image.network(
-                        'https://images.unsplash.com/photo-1536164261511-3a17e671d380?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=630&q=80',
-                        fit: BoxFit.fitWidth,
+                    child: AuthUserStreamWidget(
+                      child: Container(
+                        width: 90,
+                        height: 90,
+                        clipBehavior: Clip.antiAlias,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                        ),
+                        child: Image.network(
+                          currentUserPhoto,
+                          fit: BoxFit.fitWidth,
+                        ),
                       ),
                     ),
                   ),
@@ -139,8 +138,8 @@ class _ProflieWidgetState extends State<ProflieWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   AuthUserStreamWidget(
-                    child: StreamBuilder<List<UserRecord>>(
-                      stream: queryUserRecord(
+                    child: FutureBuilder<List<UserRecord>>(
+                      future: queryUserRecordOnce(
                         queryBuilder: (userRecord) => userRecord
                             .where('photo_url', isEqualTo: currentUserPhoto),
                         singleRecord: true,
@@ -168,47 +167,8 @@ class _ProflieWidgetState extends State<ProflieWidget> {
                             ? buttonUserRecordList.first
                             : null;
                         return FFButtonWidget(
-                          onPressed: () async {
-                            final selectedMedia = await selectMedia(
-                              mediaSource: MediaSource.photoGallery,
-                              multiImage: false,
-                            );
-                            if (selectedMedia != null &&
-                                selectedMedia.every((m) => validateFileFormat(
-                                    m.storagePath, context))) {
-                              setState(() => isMediaUploading = true);
-                              var downloadUrls = <String>[];
-                              try {
-                                showUploadMessage(
-                                  context,
-                                  'Uploading file...',
-                                  showLoading: true,
-                                );
-                                downloadUrls = (await Future.wait(
-                                  selectedMedia.map(
-                                    (m) async => await uploadData(
-                                        m.storagePath, m.bytes),
-                                  ),
-                                ))
-                                    .where((u) => u != null)
-                                    .map((u) => u!)
-                                    .toList();
-                              } finally {
-                                ScaffoldMessenger.of(context)
-                                    .hideCurrentSnackBar();
-                                isMediaUploading = false;
-                              }
-                              if (downloadUrls.length == selectedMedia.length) {
-                                setState(
-                                    () => uploadedFileUrl = downloadUrls.first);
-                                showUploadMessage(context, 'Success!');
-                              } else {
-                                setState(() {});
-                                showUploadMessage(
-                                    context, 'Failed to upload media');
-                                return;
-                              }
-                            }
+                          onPressed: () {
+                            print('Button pressed ...');
                           },
                           text: 'Change Photo',
                           options: FFButtonOptions(
