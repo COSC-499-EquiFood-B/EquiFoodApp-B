@@ -29,46 +29,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, _) => NavBarPage(),
+      errorBuilder: (context, _) => PickupMapWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => NavBarPage(),
+          builder: (context, _) => PickupMapWidget(),
           routes: [
-            FFRoute(
-              name: 'PickupMap',
-              path: 'pickupMap',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'PickupMap')
-                  : PickupMapWidget(),
-            ),
-            FFRoute(
-              name: 'Register',
-              path: 'register',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'Register')
-                  : RegisterWidget(),
-            ),
-            FFRoute(
-              name: 'Login',
-              path: 'login',
-              builder: (context, params) => LoginWidget(),
-            ),
-            FFRoute(
-              name: 'RestaurantDashboard',
-              path: 'restaurantDashboard',
-              builder: (context, params) => RestaurantDashboardWidget(),
-            ),
-            FFRoute(
-              name: 'IndivDashboard',
-              path: 'indivDashboard',
-              builder: (context, params) => IndivDashboardWidget(),
-            ),
             FFRoute(
               name: 'IndivItem',
               path: 'indivItem',
               builder: (context, params) => IndivItemWidget(),
+            ),
+            FFRoute(
+              name: 'PickupMap',
+              path: 'pickupMap',
+              builder: (context, params) => PickupMapWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
