@@ -37,6 +37,7 @@ dependencies:
   json_path: 0.4.1
   page_transition: 2.0.4
   shared_preferences: 2.0.15
+  sqflite: 2.2.0+2
   timeago: 3.2.2
   url_launcher: 6.1.5
 
