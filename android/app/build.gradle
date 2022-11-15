@@ -79,3 +79,11 @@ flutter {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
+
+// Google Auth set up
+plugins {
+  id 'com.android.application'
+
+  // Add the Google services Gradle plugin
+  id 'com.google.gms.google-services'
+}

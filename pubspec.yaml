@@ -54,6 +54,9 @@ dependencies:
   google_maps_flutter_web: 0.4.0+1
   
   ## Neilansh's Dependencies
+  ### State-Management
+  provider: ^5.0.0
+  
 
   ## Eunsuh's Dependencies
   built_collection: 5.1.1
