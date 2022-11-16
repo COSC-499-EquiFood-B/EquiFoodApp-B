@@ -1,4 +1,6 @@
 import 'package:equi_food_app/indiv_dashboard/indiv_dashboard_widget.dart';
+import 'package:equi_food_app/register/register_widget.dart'; // file containing the Sign-up screen
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -70,22 +72,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'EquiFood App',
-      localizationsDelegates: [
-        FFLocalizationsDelegate(),
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      locale: _locale,
-      supportedLocales: const [Locale('en', '')],
-      theme: ThemeData(brightness: Brightness.light),
-      darkTheme: ThemeData(brightness: Brightness.dark),
-      themeMode: _themeMode,
-      routeInformationParser: _router.routeInformationParser,
-      routerDelegate: _router.routerDelegate,
-    );
+    return MaterialApp(debugShowCheckedModeBanner: false, home: SignupWidget());
   }
 }
 
@@ -151,6 +138,67 @@ class _NavBarPageState extends State<NavBarPage> {
           )
         ],
       ),
+    );
+  }
+}
+
+class FirstPage extends StatefulWidget {
+  FirstPage({Key? key}) : super(key: key);
+
+  @override
+  State<FirstPage> createState() => _FirstPageState();
+}
+
+class _FirstPageState extends State<FirstPage> {
+  int currentIdx = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Flutter Demo'),
+      ),
+      body: Center(
+        child: currentIdx == 0
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Body of the App'),
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (BuildContext context) {
+                          return const SecondPage(); // route to SecondPage Widget
+                        }));
+                      },
+                      child: const Text("Click")),
+                ],
+              )
+            : Image.network('https://pbs.twimg.com/media/EwMreidVEAMb_ZC.jpg'),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(label: 'Home', icon: Icon(Icons.home)),
+          BottomNavigationBarItem(label: 'Settings', icon: Icon(Icons.settings))
+        ],
+        currentIndex: currentIdx,
+        onTap: (int index) {
+          setState(() {
+            currentIdx = index;
+          });
+        },
+      ),
+    );
+  }
+}
+
+class SecondPage extends StatelessWidget {
+  const SecondPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
     );
   }
 }
