@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:equi_food_app/indiv_dashboard/indiv_dashboard_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
@@ -68,14 +69,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, _) =>
-          appStateNotifier.loggedIn ? PickupMapWidget() : IndivItemWidget(),
+          appStateNotifier.loggedIn ? NavBarPage() : IndivItemWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? PickupMapWidget() : IndivItemWidget(),
+              appStateNotifier.loggedIn ? NavBarPage() : IndivItemWidget(),
           routes: [
+            FFRoute(
+              name: 'IndivDashboard',
+              path: 'indivDashboard',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'IndivDashboard')
+                  : HomepageWidget(),
+            ),
             FFRoute(
               name: 'IndivItem',
               path: 'indivItem',
@@ -84,7 +92,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'PickupMap',
               path: 'pickupMap',
-              builder: (context, params) => PickupMapWidget(),
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'PickupMap')
+                  : PickupMapWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
