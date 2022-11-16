@@ -1,3 +1,10 @@
+// Google Auth set up
+plugins {
+  id 'com.android.application'
+  // Add the Google services Gradle plugin
+  id 'com.google.gms.google-services'
+}
+
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
@@ -33,6 +40,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
+
     compileSdkVersion 33
 
     sourceSets {
@@ -76,14 +84,11 @@ flutter {
     source '../..'
 }
 
+
+
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
-// Google Auth set up
-plugins {
-  id 'com.android.application'
 
-  // Add the Google services Gradle plugin
-  id 'com.google.gms.google-services'
-}
+
