@@ -1,9 +1,12 @@
 import 'package:equi_food_app/indiv_dashboard/indiv_dashboard_widget.dart';
 import 'package:equi_food_app/register/register_widget.dart'; // file containing the Sign-up screen
+import 'package:equi_food_app/login/login_widget.dart'; // file containing the Login screen
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+
+import 'package:firebase_auth/firebase_auth.dart'; // for auth-related stuff
 import 'package:firebase_core/firebase_core.dart';
 import 'auth/firebase_user_provider.dart';
 import 'auth/auth_util.dart';
@@ -72,7 +75,18 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: SignupWidget());
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: StreamBuilder<User?>(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return HomepageWidget();
+            } else {
+              return LoginWidget();
+            }
+          }),
+    );
   }
 }
 

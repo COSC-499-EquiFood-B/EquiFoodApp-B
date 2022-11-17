@@ -55,7 +55,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                       context.pop();
                     },
                     child: Image.asset(
-                      'assets/images/logoTranslation@3x.png',
+                      'assets/images/logoTranslation3x.png',
                       width: 40,
                       height: 40,
                       fit: BoxFit.cover,
