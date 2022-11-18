@@ -41,3 +41,17 @@ In an ideal scenario, the restaurant manager will be able to open the app, and t
 ## User Group: Administrators
 ### Scenario: 
 In an ideal scenario, the administrator will be able to open the app, and then seamlessly log in through their preferred method (i.e. either through email or a google account). Once logged in, the administrator should be brought to a dashboard page relating to a list of restaurants on the app. The administrator has the all access powers to edit these restaurants information, or remove restaurants from the app if desired. Additionally the administrator should be able to navigate to a page relating to the pending restaurants who have requested to be on the app and either approve or deny them. Moreover the administrator should be able to visit a settings page where they can edit their information. Lastly, the administrator should be able to access a donation summary page where they are able to view statistics relating to the app’s impact on food waste reduction. Contrary to the other user groups, the administrator should be able to edit the information on this page. 
+
+### User Tasks:
+- Can you login to the app through your email or gmail account without any issues?
+- Can you identify what you are looking at once you have logged in?
+- Can you try and edit the restaurant information of one of the restaurants presented.
+- Can you remove one of the restaurants on the app.
+- Can you navigate to the page where you approve or deny restaurants.
+- Can you try to approve or deny the presented restaurants? 
+- Can you navigate to the settings page?
+- Can you change your account’s username?
+- What edits can you make regarding your account?
+- Can you navigate to the donation summary page?
+- Are you able to summarise what the app has done regarding food waste reduction?
+- What is the information on the donation page that you are able to edit?
