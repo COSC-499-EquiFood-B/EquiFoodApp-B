@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:firebase_auth/firebase_auth.dart'; // import Firebase package to sign UP users
+
 class SignupWidget extends StatefulWidget {
   const SignupWidget({Key? key}) : super(key: key);
 
@@ -34,6 +36,14 @@ class _SignupWidgetState extends State<SignupWidget> {
     emailTextController?.dispose();
     passwordTextController?.dispose();
     super.dispose();
+  }
+
+  // method to sign UP user with email and password
+  Future signUpUser() async {
+    // NOTE: the '!' in front of email and password variables is to check if either of these are null
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailTextController!.text.trim(),
+        password: passwordTextController!.text.trim());
   }
 
   @override
@@ -319,20 +329,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                   children: [
                     Expanded(
                       child: FFButtonWidget(
-                        onPressed: () async {
-                          GoRouter.of(context).prepareAuthEvent();
-
-                          final user = await createAccountWithEmail(
-                            context,
-                            emailTextController!.text,
-                            passwordTextController!.text,
-                          );
-                          if (user == null) {
-                            return;
-                          }
-
-                          context.goNamedAuth('setting', mounted);
-                        },
+                        onPressed: signUpUser,
                         text: 'Sign up',
                         options: FFButtonOptions(
                           width: 150,
