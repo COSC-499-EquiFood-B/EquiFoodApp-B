@@ -109,7 +109,9 @@ class _SettingWidgetState extends State<SettingWidget> {
                                   return InkWell(
                                     onTap: () async {
                                       final userUpdateData =
-                                          createUserRecordData();
+                                          createUserRecordData(
+                                        photoUrl: widget.profilePhoto,
+                                      );
                                       await imageUserRecord.reference
                                           .update(userUpdateData);
                                     },
@@ -135,16 +137,78 @@ class _SettingWidgetState extends State<SettingWidget> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                'Joy Augustin',
-                                style: FlutterFlowTheme.of(context).title3,
+                              StreamBuilder<UserRecord>(
+                                stream: UserRecord.getDocument(
+                                    currentUserReference!),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50,
+                                        height: 50,
+                                        child: CircularProgressIndicator(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryColor,
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                  final textUserRecord = snapshot.data!;
+                                  return InkWell(
+                                    onTap: () async {
+                                      final userUpdateData =
+                                          createUserRecordData(
+                                        displayName: textUserRecord.displayName,
+                                      );
+                                      await textUserRecord.reference
+                                          .update(userUpdateData);
+                                    },
+                                    child: Text(
+                                      'Joy Augustin',
+                                      style:
+                                          FlutterFlowTheme.of(context).title3,
+                                    ),
+                                  );
+                                },
                               ),
                               Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
-                                child: Text(
-                                  'joy@augustin.com',
-                                  style: FlutterFlowTheme.of(context).bodyText2,
+                                child: StreamBuilder<UserRecord>(
+                                  stream: UserRecord.getDocument(
+                                      currentUserReference!),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50,
+                                          height: 50,
+                                          child: CircularProgressIndicator(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryColor,
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    final textUserRecord = snapshot.data!;
+                                    return InkWell(
+                                      onTap: () async {
+                                        final userUpdateData =
+                                            createUserRecordData(
+                                          email: textUserRecord.email,
+                                        );
+                                        await textUserRecord.reference
+                                            .update(userUpdateData);
+                                      },
+                                      child: Text(
+                                        'joy@augustin.com',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText2,
+                                      ),
+                                    );
+                                  },
                                 ),
                               ),
                             ],
