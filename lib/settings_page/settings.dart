@@ -1,12 +1,19 @@
+import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SettingWidget extends StatefulWidget {
-  const SettingWidget({Key? key}) : super(key: key);
+  const SettingWidget({
+    Key? key,
+    this.profilePhoto,
+  }) : super(key: key);
+
+  final String? profilePhoto;
 
   @override
   _SettingWidgetState createState() => _SettingWidgetState();
@@ -78,14 +85,15 @@ class _SettingWidgetState extends State<SettingWidget> {
                           ),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(40),
-                              child: CachedNetworkImage(
-                                imageUrl:
-                                    'https://images.unsplash.com/photo-1536164261511-3a17e671d380?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=630&q=80',
-                                width: 60,
-                                height: 60,
-                                fit: BoxFit.cover,
+                            child: AuthUserStreamWidget(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(40),
+                                child: Image.asset(
+                                  'assets/images/photo-1536164261511-3a17e671d380?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=630&q=80',
+                                  width: 60,
+                                  height: 60,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                           ),
