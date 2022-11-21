@@ -4,7 +4,6 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -88,44 +87,14 @@ class _SettingWidgetState extends State<SettingWidget> {
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                             child: AuthUserStreamWidget(
-                              child: StreamBuilder<UserRecord>(
-                                stream: UserRecord.getDocument(
-                                    currentUserReference!),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50,
-                                        height: 50,
-                                        child: CircularProgressIndicator(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryColor,
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                  final imageUserRecord = snapshot.data!;
-                                  return InkWell(
-                                    onTap: () async {
-                                      final userUpdateData =
-                                          createUserRecordData(
-                                        photoUrl: widget.profilePhoto,
-                                      );
-                                      await imageUserRecord.reference
-                                          .update(userUpdateData);
-                                    },
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(40),
-                                      child: Image.asset(
-                                        'assets/images/photo-1536164261511-3a17e671d380?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=630&q=80',
-                                        width: 60,
-                                        height: 60,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  );
-                                },
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(40),
+                                child: Image.asset(
+                                  'assets/images/photo-1536164261511-3a17e671d380?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=630&q=80',
+                                  width: 60,
+                                  height: 60,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                           ),
@@ -137,78 +106,16 @@ class _SettingWidgetState extends State<SettingWidget> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              StreamBuilder<UserRecord>(
-                                stream: UserRecord.getDocument(
-                                    currentUserReference!),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50,
-                                        height: 50,
-                                        child: CircularProgressIndicator(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryColor,
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                  final textUserRecord = snapshot.data!;
-                                  return InkWell(
-                                    onTap: () async {
-                                      final userUpdateData =
-                                          createUserRecordData(
-                                        displayName: textUserRecord.displayName,
-                                      );
-                                      await textUserRecord.reference
-                                          .update(userUpdateData);
-                                    },
-                                    child: Text(
-                                      'Joy Augustin',
-                                      style:
-                                          FlutterFlowTheme.of(context).title3,
-                                    ),
-                                  );
-                                },
+                              Text(
+                                'Joy Augustin',
+                                style: FlutterFlowTheme.of(context).title3,
                               ),
                               Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
-                                child: StreamBuilder<UserRecord>(
-                                  stream: UserRecord.getDocument(
-                                      currentUserReference!),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50,
-                                          height: 50,
-                                          child: CircularProgressIndicator(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryColor,
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                    final textUserRecord = snapshot.data!;
-                                    return InkWell(
-                                      onTap: () async {
-                                        final userUpdateData =
-                                            createUserRecordData(
-                                          email: textUserRecord.email,
-                                        );
-                                        await textUserRecord.reference
-                                            .update(userUpdateData);
-                                      },
-                                      child: Text(
-                                        'joy@augustin.com',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText2,
-                                      ),
-                                    );
-                                  },
+                                child: Text(
+                                  'joy@augustin.com',
+                                  style: FlutterFlowTheme.of(context).bodyText2,
                                 ),
                               ),
                             ],
