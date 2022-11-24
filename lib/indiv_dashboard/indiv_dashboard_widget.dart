@@ -160,7 +160,7 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                   children: [
                     InkWell(
                       onTap: () async {
-                        context.pushNamed('confirmationscreen');
+                        context.pushNamed('IndivItem');
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.45,

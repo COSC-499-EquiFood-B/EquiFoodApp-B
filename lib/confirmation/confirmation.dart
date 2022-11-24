@@ -130,7 +130,7 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
                   child: FFButtonWidget(
                     onPressed: () async {
                       context.pushNamed(
-                        'homepage',
+                        'IndivItem',
                         extra: <String, dynamic>{
                           kTransitionInfoKey: TransitionInfo(
                             hasTransition: true,
@@ -166,7 +166,7 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
                 child: FFButtonWidget(
                   onPressed: () async {
                     context.pushNamed(
-                      'homepage',
+                      'Homepage',
                       extra: <String, dynamic>{
                         kTransitionInfoKey: TransitionInfo(
                           hasTransition: true,
