@@ -303,7 +303,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
             padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
             child: FFButtonWidget(
               onPressed: () async {
-                context.pushNamed('PickupMap');
+                context.pushNamed('Confirmationscreen');
               },
               text: 'Reserve',
               options: FFButtonOptions(
