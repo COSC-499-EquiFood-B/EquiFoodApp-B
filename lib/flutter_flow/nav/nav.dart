@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:equi_food_app/indiv_dashboard/indiv_dashboard_widget.dart';
+import 'package:equi_food_app/confirmation/confirmation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
@@ -87,14 +87,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'IndivItem',
               path: 'indivItem',
-              builder: (context, params) => IndivItemWidget(),
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'IndivItem')
+                  : IndivItemWidget(),
             ),
             FFRoute(
-              name: 'PickupMap',
-              path: 'pickupMap',
+              name: 'ConfirmationScreen',
+              path: 'ConfirmationScreen',
               builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'PickupMap')
-                  : PickupMapWidget(),
+                  ? NavBarPage(initialPage: 'ConfirmationScreen')
+                  : ConfirmationscreenWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
