@@ -4,16 +4,44 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomepageWidget extends StatefulWidget {
-  const HomepageWidget({Key? key}) : super(key: key);
+//firebase imports
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+class HmepageWidget extends StatefulWidget {
+  const HmepageWidget({Key? key}) : super(key: key);
 
   @override
-  _HomepageWidgetState createState() => _HomepageWidgetState();
+  _HmepageWidgetState createState() => _HmepageWidgetState();
 }
 
-class _HomepageWidgetState extends State<HomepageWidget> {
+class _HmepageWidgetState extends State<HmepageWidget> {
   TextEditingController? textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  // List to store restaurant donation IDs
+  List<String> donationIDs = [];
+
+  // creating reference to "donations" Collection in firebase
+  CollectionReference donations =
+      FirebaseFirestore.instance.collection('donations');
+
+  // method to get IDs for restaurant donations,
+  // stored under "donations" Collection in firebase
+  Future getDonationIDs() async {
+    // get donation IDs from the "donations" Collection
+    // and then store them in the "restaurantDonationIDs" List.
+    await FirebaseFirestore.instance
+        .collection('donations')
+        .get()
+        .then((snapshot) => {
+              snapshot.docs.forEach((element) {
+                // add restaurant Donation IDs to the List
+                donationIDs.add(element.reference.id);
+              })
+            });
+  }
+
 
   @override
   void initState() {
@@ -146,7 +174,27 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                   ],
                 ),
               ),
-              Padding(
+               FutureBuilder(
+                      future: getDonationIDs(),
+                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                        //Error Handling conditions
+                        if (snapshot.hasError) {
+                          return Text("Something went wrong");
+                        }
+
+                        if (snapshot.hasData && snapshot.data != null) {
+                          return Text("Document does not exist");
+                        }
+
+                        //Data is output to the user
+                        if (snapshot.connectionState == ConnectionState.done) {
+                          return ListView.builder(
+                             scrollDirection: Axis
+                                .vertical, // required for infinite scrolling
+                            shrinkWrap: true, // required for infinite scrolling
+                            itemCount: donationIDs.length,
+                            itemBuilder: (context, int index){
+return Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 44),
                 child: Wrap(
                   spacing: 8,
@@ -229,8 +277,13 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                     ),
                   ],
                 ),
-              ),
-            ],
+              );
+          
+                            }
+                          );
+                          
+  }
+  return Text("loading");})],
           ),
         ),
       ),
