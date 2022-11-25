@@ -1,3 +1,5 @@
+import 'package:equi_food_app/index.dart';
+
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:easy_debounce/easy_debounce.dart';
@@ -159,8 +161,15 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                   clipBehavior: Clip.none,
                   children: [
                     InkWell(
-                      onTap: () async {
-                        context.pushNamed('IndivItem');
+                      // onTap: () async {
+                      //   context.pushNamed('IndivItem');
+                      // }
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const IndivItemWidget()),
+                        );
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.45,

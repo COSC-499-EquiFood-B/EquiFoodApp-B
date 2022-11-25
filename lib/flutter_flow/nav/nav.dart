@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:equi_food_app/confirmation/confirmation.dart';
+import 'package:equi_food_app/login/login_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
@@ -97,6 +98,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'ConfirmationScreen')
                   : ConfirmationscreenWidget(),
+            ),
+            FFRoute(
+              name: 'Login',
+              path: 'Login',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Login')
+                  : LoginWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
