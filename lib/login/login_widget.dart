@@ -1,3 +1,6 @@
+import 'package:equi_food_app/index.dart';
+import 'package:equi_food_app/restaurant_dashboard/restaurant_dashboard_widget_2.dart';
+
 import '../auth/auth_util.dart';
 import 'package:go_router/go_router.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
@@ -9,6 +12,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:firebase_auth/firebase_auth.dart'; // for user authentication
+import 'package:google_sign_in/google_sign_in.dart';
+
+import 'firebase_services.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({Key? key}) : super(key: key);
@@ -42,9 +48,10 @@ class _LoginWidgetState extends State<LoginWidget> {
     super.dispose();
   }
 
-  // method to sign in user with email and password
+  // method to sign IN user with email and password
   // will only be called if the user chooses to authenticate with email and not other available providers
   Future signInUser() async {
+    // NOTE: the '!' in front of email and password variables is to check if either of these are null
     await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailTextController!.text.trim(),
         password: passwordTextController!.text.trim());
@@ -107,9 +114,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                             'Sign In',
                             style: FlutterFlowTheme.of(context).title1.override(
                                   fontFamily: 'Outfit',
-                                  color: Color(0xFF57636C),
+                                  color: Color(0xFF0F1113),
                                   fontSize: 32,
-                                  fontWeight: FontWeight.normal,
+                                  fontWeight: FontWeight.w500,
                                 ),
                           ),
                         ),
@@ -127,9 +134,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                           'Sign Up',
                           style: FlutterFlowTheme.of(context).title1.override(
                                 fontFamily: 'Outfit',
-                                color: Color(0xFF0F1113),
+                                color: Color(0xFF57636C),
                                 fontSize: 32,
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.normal,
                               ),
                         ),
                       ),
@@ -334,7 +341,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                     Expanded(
                       child: FFButtonWidget(
                         onPressed: signInUser,
-                        text: 'Sign up',
+                        text: 'Login',
                         options: FFButtonOptions(
                           width: 150,
                           height: 50,
@@ -375,13 +382,13 @@ class _LoginWidgetState extends State<LoginWidget> {
                         size: 24,
                       ),
                       onPressed: () async {
-                        GoRouter.of(context).prepareAuthEvent();
-                        final user = await signInWithGoogle(context);
-                        if (user == null) {
-                          return;
-                        }
+                        await FirebaseServices().signInWithGoogle();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => DonationsWidget())));
 
-                        context.goNamedAuth('setting', mounted);
+                        //context.goNamedAuth('setting', mounted);
                       },
                     ),
                   ),
