@@ -21,6 +21,10 @@ class _DonationsWidgetState extends State<DonationsWidget> {
   // List to store restaurant donation IDs
   List<String> restaurantDonationIDs = [];
 
+  // creating reference to "donations" Collection in firebase
+  CollectionReference donations =
+      FirebaseFirestore.instance.collection('donations');
+
   // method to get IDs for restaurant donations,
   // stored under "donations" Collection in firebase
   Future getRestaurantDonationIDs() async {
@@ -92,7 +96,7 @@ class _DonationsWidgetState extends State<DonationsWidget> {
                 children: [
                   FutureBuilder(
                       future: getRestaurantDonationIDs(),
-                      builder: (context, snapshot) {
+                      builder: (BuildContext context, AsyncSnapshot snapshot) {
                         //Error Handling conditions
                         if (snapshot.hasError) {
                           return Text("Something went wrong");
@@ -109,7 +113,7 @@ class _DonationsWidgetState extends State<DonationsWidget> {
                                 .vertical, // required for infinite scrolling
                             shrinkWrap: true, // required for infinite scrolling
                             itemCount: restaurantDonationIDs.length,
-                            itemBuilder: (BuildContext context, int index) {
+                            itemBuilder: (context, int index) {
                               return /*ListTile(
                                 title: Text(restaurantDonationIDs[index]),
                               ); */
