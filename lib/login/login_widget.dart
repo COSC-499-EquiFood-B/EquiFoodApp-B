@@ -1,3 +1,6 @@
+import 'package:equi_food_app/index.dart';
+import 'package:equi_food_app/restaurant_dashboard/restaurant_dashboard_widget_2.dart';
+
 import '../auth/auth_util.dart';
 import 'package:go_router/go_router.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
@@ -377,13 +380,13 @@ class _LoginWidgetState extends State<LoginWidget> {
                         size: 24,
                       ),
                       onPressed: () async {
-                        GoRouter.of(context).prepareAuthEvent();
-                        final user = await signInWithGoogle(context);
-                        if (user == null) {
-                          return;
-                        }
+                        await FirebaseServices().signInWithGoogle();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => DonationsWidget())));
 
-                        context.goNamedAuth('setting', mounted);
+                        //context.goNamedAuth('setting', mounted);
                       },
                     ),
                   ),
