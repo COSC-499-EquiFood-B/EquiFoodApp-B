@@ -4,6 +4,9 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class HomepageWidget extends StatefulWidget {
   const HomepageWidget({Key? key}) : super(key: key);
 
@@ -14,6 +17,11 @@ class HomepageWidget extends StatefulWidget {
 class _HomepageWidgetState extends State<HomepageWidget> {
   TextEditingController? textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+
+  Future getDonationID() async{
+    await FirebaseFirestore.instance.collection('donations'); //get donation 
+  }
 
   @override
   void initState() {
@@ -158,7 +166,10 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                   verticalDirection: VerticalDirection.down,
                   clipBehavior: Clip.none,
                   children: [
-                    InkWell(
+                    Expanded(child: FutureBuilder(
+                      future: getDonationID(),
+                      builder: ((context, snapshot) {
+                        return InkWell(
                       onTap: () async {
                         context.pushNamed('confirmationscreen');
                       },
@@ -226,8 +237,17 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    );
+                      })
+
+
+
+                    ))
+                  ]
+
+                  
+                    
+                  
                 ),
               ),
             ],
