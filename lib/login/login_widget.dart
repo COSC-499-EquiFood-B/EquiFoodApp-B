@@ -14,8 +14,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart'; // for user authentication
 import 'package:google_sign_in/google_sign_in.dart';
 
-import 'firebase_services.dart';
-
 class LoginWidget extends StatefulWidget {
   const LoginWidget({Key? key}) : super(key: key);
 

@@ -1,3 +1,6 @@
+import 'package:equi_food_app/confirmation/confirmation.dart';
+import 'package:equi_food_app/index.dart';
+
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -45,8 +48,12 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                       Align(
                         alignment: AlignmentDirectional(-0.95, -0.55),
                         child: InkWell(
-                          onTap: () async {
-                            context.pop();
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomepageWidget()),
+                            );
                           },
                           child: Card(
                             clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -303,7 +310,11 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
             padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
             child: FFButtonWidget(
               onPressed: () {
-                print('Button pressed ...');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ConfirmationscreenWidget()),
+                );
               },
               text: 'Reserve',
               options: FFButtonOptions(
