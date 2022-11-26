@@ -35,7 +35,7 @@ class GetDonationsData extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Image.network(
-                      'https://hot-thai-kitchen.com/wp-content/uploads/2021/10/Untitled-design-5.jpg',
+                      '${donationsData["item_img"]}',
                       width: double.infinity,
                       height: 100,
                       fit: BoxFit.cover,
@@ -72,7 +72,7 @@ class GetDonationsData extends StatelessWidget {
                                     borderColor: Colors.transparent,
                                     borderRadius: 10,
                                     borderWidth: 1,
-                                    buttonSize: 60,
+                                    buttonSize: 40,
                                     icon: Icon(
                                       Icons.edit_sharp,
                                       color: FlutterFlowTheme.of(context)
@@ -87,7 +87,7 @@ class GetDonationsData extends StatelessWidget {
                                     borderColor: Colors.transparent,
                                     borderRadius: 20,
                                     borderWidth: 1,
-                                    buttonSize: 60,
+                                    buttonSize: 40,
                                     icon: Icon(
                                       Icons.delete,
                                       color: FlutterFlowTheme.of(context)
