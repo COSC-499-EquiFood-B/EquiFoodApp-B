@@ -1,3 +1,5 @@
+import 'package:equi_food_app/index.dart';
+
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_timer.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -128,15 +130,11 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),
                   child: FFButtonWidget(
-                    onPressed: () async {
-                      context.pushNamed(
-                        'indiv_dashboard_widget',
-                        extra: <String, dynamic>{
-                          kTransitionInfoKey: TransitionInfo(
-                            hasTransition: true,
-                            transitionType: PageTransitionType.leftToRight,
-                          ),
-                        },
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const IndivItemWidget()),
                       );
                     },
                     text: 'View Order Details',
@@ -164,15 +162,11 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(44, 32, 44, 44),
                 child: FFButtonWidget(
-                  onPressed: () async {
-                    context.pushNamed(
-                      'indiv_dashboard_widget',
-                      extra: <String, dynamic>{
-                        kTransitionInfoKey: TransitionInfo(
-                          hasTransition: true,
-                          transitionType: PageTransitionType.leftToRight,
-                        ),
-                      },
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomepageWidget()),
                     );
                   },
                   text: 'Cancel Order',

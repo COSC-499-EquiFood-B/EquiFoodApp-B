@@ -1,3 +1,4 @@
+import 'package:equi_food_app/confirmation/confirmation.dart';
 import 'package:equi_food_app/indiv_dashboard/indiv_dashboard_widget.dart';
 import 'package:equi_food_app/register/register_widget.dart'; // file containing the Sign-up screen
 import 'package:equi_food_app/login/login_widget.dart'; // file containing the Login screen
@@ -82,7 +83,7 @@ class _MyAppState extends State<MyApp> {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return DonationsWidget();
+              return IndivItemWidget();
             } else {
               return LoginWidget();
             }
@@ -117,6 +118,7 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'IndivDashboard': HomepageWidget(),
+      'IndivItem': IndivItemWidget(),
       'PickupMap': PickupMapWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
