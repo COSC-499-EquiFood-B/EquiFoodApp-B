@@ -1,3 +1,5 @@
+import 'package:equi_food_app/index.dart';
+
 import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -79,16 +81,11 @@ class _SignupWidgetState extends State<SignupWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     InkWell(
-                      onTap: () async {
-                        context.pushNamed(
-                          'login',
-                          extra: <String, dynamic>{
-                            kTransitionInfoKey: TransitionInfo(
-                              hasTransition: true,
-                              transitionType: PageTransitionType.fade,
-                              duration: Duration(milliseconds: 200),
-                            ),
-                          },
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LoginWidget()),
                         );
                       },
                       child: Container(
