@@ -19,6 +19,7 @@ class SignupWidget extends StatefulWidget {
 }
 
 class _SignupWidgetState extends State<SignupWidget> {
+  TextEditingController? nameTextController;
   TextEditingController? emailTextController;
   TextEditingController? passwordTextController;
 
@@ -28,6 +29,7 @@ class _SignupWidgetState extends State<SignupWidget> {
   @override
   void initState() {
     super.initState();
+    nameTextController = TextEditingController();
     emailTextController = TextEditingController();
     passwordTextController = TextEditingController();
     passwordVisibility = false;
@@ -35,6 +37,7 @@ class _SignupWidgetState extends State<SignupWidget> {
 
   @override
   void dispose() {
+    nameTextController?.dispose();
     emailTextController?.dispose();
     passwordTextController?.dispose();
     super.dispose();
@@ -145,6 +148,85 @@ class _SignupWidgetState extends State<SignupWidget> {
                           ),
                     ),
                   ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 6,
+                        color: Color(0x3416202A),
+                        offset: Offset(0, 2),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
+                    child: TextFormField(
+                      controller: nameTextController,
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        labelText: 'Name',
+                        labelStyle:
+                            FlutterFlowTheme.of(context).bodyText2.override(
+                                  fontFamily: 'Outfit',
+                                  color: Color(0xFF57636C),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                        hintStyle:
+                            FlutterFlowTheme.of(context).bodyText2.override(
+                                  fontFamily: 'Outfit',
+                                  color: Color(0xFF57636C),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        contentPadding:
+                            EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                            fontFamily: 'Outfit',
+                            color: Color(0xFF0F1113),
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                          ),
+                    ),
+                  ),
                 ),
               ),
               Padding(
