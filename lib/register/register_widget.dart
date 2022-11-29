@@ -1,3 +1,4 @@
+import 'package:equi_food_app/backend/backend.dart';
 import 'package:equi_food_app/index.dart';
 
 import '../auth/auth_util.dart';
@@ -22,6 +23,7 @@ class _SignupWidgetState extends State<SignupWidget> {
   TextEditingController? nameTextController;
   TextEditingController? emailTextController;
   TextEditingController? passwordTextController;
+  TextEditingController? passwordConfirmTextController;
 
   late bool passwordVisibility;
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -32,6 +34,7 @@ class _SignupWidgetState extends State<SignupWidget> {
     nameTextController = TextEditingController();
     emailTextController = TextEditingController();
     passwordTextController = TextEditingController();
+    passwordConfirmTextController = TextEditingController();
     passwordVisibility = false;
   }
 
@@ -45,10 +48,32 @@ class _SignupWidgetState extends State<SignupWidget> {
 
   // method to sign UP user with email and password
   Future signUpUser() async {
-    // NOTE: the '!' in front of email and password variables is to check if either of these are null
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: emailTextController!.text.trim(),
-        password: passwordTextController!.text.trim());
+    // Sign-UP user only if the password is confirmed
+    if (confirmPassword()) {
+      // Sign-UP user
+      // NOTE: the '!' in front of email and password variables is to check if either of these are null
+      await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+              email: emailTextController!.text.trim(),
+              password: passwordTextController!.text.trim())
+          .then((value) => {
+                // create user
+                // AKA adding the user details to the "users" Collection in firebase
+                FirebaseFirestore.instance
+                    .collection("users")
+                    .doc(value.user?.uid) // uid = user id
+                    .set({
+                  "name": nameTextController!.text.toString(), // add user name
+                  "email": emailTextController!.text.trim() // add user email
+                })
+              });
+    }
+  }
+
+  // boolean method to check if the "Password" and "Confirm Password" fields match
+  bool confirmPassword() {
+    return passwordTextController!.text.trim() ==
+        passwordConfirmTextController!.text.trim();
   }
 
   @override
@@ -151,6 +176,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                 ),
               ),
               Padding(
+                // Text Field to enter name
                 padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
                 child: Container(
                   width: double.infinity,
@@ -230,6 +256,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                 ),
               ),
               Padding(
+                // Text Field to enter email
                 padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
                 child: Container(
                   width: double.infinity,
@@ -309,6 +336,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                 ),
               ),
               Padding(
+                // Text Field to enter Password
                 padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                 child: Container(
                   width: double.infinity,
@@ -401,6 +429,100 @@ class _SignupWidgetState extends State<SignupWidget> {
                 ),
               ),
               Padding(
+                // Text-Field to Confirm Password
+                padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 6,
+                        color: Color(0x3416202A),
+                        offset: Offset(0, 2),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
+                    child: TextFormField(
+                      controller: passwordConfirmTextController,
+                      obscureText: !passwordVisibility,
+                      decoration: InputDecoration(
+                        labelText: ' Confirm Password',
+                        labelStyle:
+                            FlutterFlowTheme.of(context).bodyText2.override(
+                                  fontFamily: 'Outfit',
+                                  color: Color(0xFF57636C),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                        hintStyle:
+                            FlutterFlowTheme.of(context).bodyText2.override(
+                                  fontFamily: 'Outfit',
+                                  color: Color(0xFF57636C),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        contentPadding:
+                            EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
+                        suffixIcon: InkWell(
+                          onTap: () => setState(
+                            () => passwordVisibility = !passwordVisibility,
+                          ),
+                          focusNode: FocusNode(skipTraversal: true),
+                          child: Icon(
+                            passwordVisibility
+                                ? Icons.visibility_outlined
+                                : Icons.visibility_off_outlined,
+                            color: Color(0xFF57636C),
+                            size: 22,
+                          ),
+                        ),
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                            fontFamily: 'Outfit',
+                            color: Color(0xFF0F1113),
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                          ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                // Sign-up Button
                 padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
