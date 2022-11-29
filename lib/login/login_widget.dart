@@ -1,4 +1,5 @@
 import 'package:equi_food_app/index.dart';
+import 'package:equi_food_app/register/register_widget.dart';
 import 'package:equi_food_app/restaurant_dashboard/restaurant_dashboard_widget_2.dart';
 
 import '../auth/auth_util.dart';
@@ -89,17 +90,31 @@ class _LoginWidgetState extends State<LoginWidget> {
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
+                    Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                        color: Color(0xFFF1F4F8),
+                      ),
+                      alignment: AlignmentDirectional(-1, 0),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
+                        child: Text(
+                          'Sign In',
+                          style: FlutterFlowTheme.of(context).title1.override(
+                                fontFamily: 'Outfit',
+                                color: Color(0xFF0F1113),
+                                fontSize: 32,
+                                fontWeight: FontWeight.w500,
+                              ),
+                        ),
+                      ),
+                    ),
                     InkWell(
-                      onTap: () async {
-                        context.pushNamed(
-                          'login',
-                          extra: <String, dynamic>{
-                            kTransitionInfoKey: TransitionInfo(
-                              hasTransition: true,
-                              transitionType: PageTransitionType.fade,
-                              duration: Duration(milliseconds: 200),
-                            ),
-                          },
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SignupWidget()),
                         );
                       },
                       child: Container(
@@ -109,35 +124,16 @@ class _LoginWidgetState extends State<LoginWidget> {
                         ),
                         alignment: AlignmentDirectional(-1, 0),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
                           child: Text(
-                            'Sign In',
+                            'Sign Up',
                             style: FlutterFlowTheme.of(context).title1.override(
                                   fontFamily: 'Outfit',
-                                  color: Color(0xFF0F1113),
+                                  color: Color(0xFF57636C),
                                   fontSize: 32,
-                                  fontWeight: FontWeight.w500,
+                                  fontWeight: FontWeight.normal,
                                 ),
                           ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: Color(0xFFF1F4F8),
-                      ),
-                      alignment: AlignmentDirectional(-1, 0),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-                        child: Text(
-                          'Sign Up',
-                          style: FlutterFlowTheme.of(context).title1.override(
-                                fontFamily: 'Outfit',
-                                color: Color(0xFF57636C),
-                                fontSize: 32,
-                                fontWeight: FontWeight.normal,
-                              ),
                         ),
                       ),
                     ),
