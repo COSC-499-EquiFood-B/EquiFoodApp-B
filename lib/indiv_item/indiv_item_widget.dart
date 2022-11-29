@@ -1,5 +1,6 @@
 import 'package:equi_food_app/confirmation/confirmation.dart';
 import 'package:equi_food_app/index.dart';
+import 'package:equi_food_app/indiv_dashboard/indivdash1cont.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -52,7 +53,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const HomepageWidget()),
+                                  builder: (context) => const HmepageWidget()),
                             );
                           },
                           child: Card(

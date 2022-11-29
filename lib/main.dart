@@ -6,7 +6,6 @@ import 'package:equi_food_app/login/login_widget.dart'; // file containing the L
 import 'package:equi_food_app/indiv_dashboard/indivdash1cont.dart';
 import 'package:equi_food_app/restaurant_dashboard/restaurant_dashboard_widget_2.dart';
 
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -86,140 +85,11 @@ class _MyAppState extends State<MyApp> {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return HomepageWidget();
+              return HmepageWidget();
             } else {
               return SignupWidget();
             }
           }),
-
-    );
-  }
-}
-
-class NavBarPage extends StatefulWidget {
-  NavBarPage({Key? key, this.initialPage, this.page}) : super(key: key);
-
-  final String? initialPage;
-  final Widget? page;
-
-  @override
-  _NavBarPageState createState() => _NavBarPageState();
-}
-
-/// This is the private State class that goes with NavBarPage.
-class _NavBarPageState extends State<NavBarPage> {
-  String _currentPageName = 'PickupMap';
-  late Widget? _currentPage;
-
-  @override
-  void initState() {
-    super.initState();
-    _currentPageName = widget.initialPage ?? _currentPageName;
-    _currentPage = widget.page;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final tabs = {
-      'IndivDashboard': HomepageWidget(),
-      'IndivItem': IndivItemWidget(),
-      'PickupMap': PickupMapWidget(),
-    };
-    final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
-    return Scaffold(
-      body: _currentPage ?? tabs[_currentPageName],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: (i) => setState(() {
-          _currentPage = null;
-          _currentPageName = tabs.keys.toList()[i];
-        }),
-        backgroundColor: Colors.white,
-        selectedItemColor: FlutterFlowTheme.of(context).primaryColor,
-        unselectedItemColor: Color(0x8A000000),
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home_outlined,
-              size: 24,
-            ),
-            label: 'Home',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.map,
-              size: 24,
-            ),
-            label: 'Home',
-            tooltip: '',
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class FirstPage extends StatefulWidget {
-  FirstPage({Key? key}) : super(key: key);
-
-  @override
-  State<FirstPage> createState() => _FirstPageState();
-}
-
-class _FirstPageState extends State<FirstPage> {
-  int currentIdx = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Flutter Demo'),
-      ),
-      body: Center(
-        child: currentIdx == 0
-            ? Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text('Body of the App'),
-                  ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).push(
-                            MaterialPageRoute(builder: (BuildContext context) {
-                          return const SecondPage(); // route to SecondPage Widget
-                        }));
-                      },
-                      child: const Text("Click")),
-                ],
-              )
-            : Image.network('https://pbs.twimg.com/media/EwMreidVEAMb_ZC.jpg'),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(label: 'Home', icon: Icon(Icons.home)),
-          BottomNavigationBarItem(label: 'Settings', icon: Icon(Icons.settings))
-        ],
-        currentIndex: currentIdx,
-        onTap: (int index) {
-          setState(() {
-            currentIdx = index;
-          });
-        },
-      ),
-    );
-  }
-}
-
-class SecondPage extends StatelessWidget {
-  const SecondPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
     );
   }
 }
