@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import 'package:equi_food_app/confirmation/confirmation.dart';
-import 'package:equi_food_app/login/login_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
@@ -70,41 +68,28 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, _) =>
-          appStateNotifier.loggedIn ? NavBarPage() : IndivItemWidget(),
+          appStateNotifier.loggedIn ? PickupMapWidget() : IndivItemWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : IndivItemWidget(),
+              appStateNotifier.loggedIn ? PickupMapWidget() : IndivItemWidget(),
           routes: [
             FFRoute(
               name: 'IndivDashboard',
               path: 'indivDashboard',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'IndivDashboard')
-                  : HomepageWidget(),
+              builder: (context, params) => HomepageWidget(),
             ),
             FFRoute(
               name: 'IndivItem',
               path: 'indivItem',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'IndivItem')
-                  : IndivItemWidget(),
+              builder: (context, params) => IndivItemWidget(),
             ),
             FFRoute(
-              name: 'ConfirmationScreen',
-              path: 'ConfirmationScreen',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'ConfirmationScreen')
-                  : ConfirmationscreenWidget(),
-            ),
-            FFRoute(
-              name: 'Login',
-              path: 'Login',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'Login')
-                  : LoginWidget(),
+              name: 'PickupMap',
+              path: 'pickupMap',
+              builder: (context, params) => PickupMapWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

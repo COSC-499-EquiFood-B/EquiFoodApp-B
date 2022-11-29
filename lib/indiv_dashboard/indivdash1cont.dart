@@ -45,7 +45,6 @@ class _HmepageWidgetState extends State<HmepageWidget> {
             });
   }
 
-
   @override
   void initState() {
     super.initState();
@@ -177,35 +176,58 @@ class _HmepageWidgetState extends State<HmepageWidget> {
                   ],
                 ),
               ),
-               FutureBuilder(
-                      future: getDonationIDs(),
-                      builder: (BuildContext context, AsyncSnapshot snapshot) {
-                        //Error Handling conditions
-                        if (snapshot.hasError) {
-                          return Text("Something went wrong");
-                        }
+              FutureBuilder(
+                  future: getDonationIDs(),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    //Error Handling conditions
+                    if (snapshot.hasError) {
+                      return Text("Something went wrong");
+                    }
 
-                        if (snapshot.hasData && snapshot.data != null) {
-                          return Text("Document does not exist");
-                        }
+                    if (snapshot.hasData && snapshot.data != null) {
+                      return Text("Document does not exist");
+                    }
 
-                        //Data is output to the user
-                        if (snapshot.connectionState == ConnectionState.done) {
-                          return ListView.builder(
-                             scrollDirection: Axis
-                                .vertical, // required for infinite scrolling
-                            shrinkWrap: true, // required for infinite scrolling
-                            itemCount: donationIDs.length,
-                            itemBuilder: (context, int index){
-return getDonations(donationsID: donationIDs[index]);
-          
-                            }
-                          );
-                          
-  }
-  return Text("loading");})],
+                    //Data is output to the user
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      return ListView.builder(
+                          scrollDirection:
+                              Axis.vertical, // required for infinite scrolling
+                          shrinkWrap: true, // required for infinite scrolling
+                          itemCount: donationIDs.length,
+                          itemBuilder: (context, int index) {
+                            return getDonations(
+                                donationsID: donationIDs[index]);
+                          });
+                    }
+                    return Text("loading");
+                  })
+            ],
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: FlutterFlowTheme.of(context).primaryColor,
+        unselectedItemColor: Color(0x8A000000),
+        type: BottomNavigationBarType.fixed,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.map),
+            label: 'Map',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.eco),
+            label: 'Stats',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+        ],
       ),
     );
   }
