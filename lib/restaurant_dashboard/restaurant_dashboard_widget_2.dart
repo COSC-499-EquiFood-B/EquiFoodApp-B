@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -20,6 +22,9 @@ class DonationsWidget extends StatefulWidget {
 
 class _DonationsWidgetState extends State<DonationsWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  // get reference of the current Restaurant User
+  final currRestaurantUser = FirebaseAuth.instance.currentUser;
 
   // List to store restaurant donation IDs
   List<String> restaurantDonationIDs = [];
@@ -142,6 +147,7 @@ class _DonationsWidgetState extends State<DonationsWidget> {
                             shrinkWrap: true, // required for infinite scrolling
                             itemCount: restaurantDonationIDs.length,
                             itemBuilder: (context, int index) {
+                              // return Widget generating Card for a Donation with a donationID sent to it
                               return GetDonationsData(
                                   donationsID: restaurantDonationIDs[index]);
                             },
