@@ -81,40 +81,42 @@ class _DonationsWidgetState extends State<DonationsWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
         key: scaffoldKey,
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(40),
-          child: AppBar(
-            backgroundColor: Color(0xFFACE4AF),
-            automaticallyImplyLeading: false,
-            title: Text(
-              'Donations',
-              style: FlutterFlowTheme.of(context).title2.override(
-                    fontFamily: 'Poppins',
-                    color: Colors.white,
-                    fontSize: 22,
+        appBar: selectedIndex == 0
+            ? PreferredSize(
+                preferredSize: Size.fromHeight(40),
+                child: AppBar(
+                  backgroundColor: Color(0xFFACE4AF),
+                  automaticallyImplyLeading: false,
+                  title: Text(
+                    'Donations',
+                    style: FlutterFlowTheme.of(context).title2.override(
+                          fontFamily: 'Poppins',
+                          color: Colors.white,
+                          fontSize: 22,
+                        ),
                   ),
-            ),
-            actions: [
-              FlutterFlowIconButton(
-                borderColor: Colors.transparent,
-                borderRadius: 30,
-                borderWidth: 1,
-                buttonSize: 70,
-                icon: Icon(
-                  Icons.add,
-                  color: Color(0xFFFEFEFE),
-                  size: 30,
+                  actions: [
+                    FlutterFlowIconButton(
+                      borderColor: Colors.transparent,
+                      borderRadius: 30,
+                      borderWidth: 1,
+                      buttonSize: 70,
+                      icon: Icon(
+                        Icons.add,
+                        color: Color(0xFFFEFEFE),
+                        size: 30,
+                      ),
+                      onPressed: () {
+                        print('IconButton pressed ...');
+                      },
+                    ),
+                  ],
+                  centerTitle: false,
+                  toolbarHeight: double.infinity,
+                  elevation: 2,
                 ),
-                onPressed: () {
-                  print('IconButton pressed ...');
-                },
-              ),
-            ],
-            centerTitle: false,
-            toolbarHeight: double.infinity,
-            elevation: 2,
-          ),
-        ),
+              )
+            : null, // don't render AppBar for this page if user navigates to different page
         body: selectedIndex == 0
             ? SafeArea(
                 // show Donation Cards if selectedIndex == 0

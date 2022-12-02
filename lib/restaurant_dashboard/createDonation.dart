@@ -4,6 +4,11 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// imports for database-related stuff
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 class CreateDonationWidget extends StatefulWidget {
   const CreateDonationWidget({Key? key}) : super(key: key);
 
@@ -36,6 +41,27 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
     super.dispose();
   }
 
+  // method to write donation details to firebase under the "donations" Collection
+  Future addDonationDetails() async {
+    // get user ID of Restaurant User (uid)
+    final currentRestaurantUser = FirebaseAuth.instance.currentUser;
+
+    // create ref to specific restaurant User ID (uid) in "users" Collection
+    final restaurantRef = FirebaseFirestore.instance
+        .collection("users")
+        .doc(currentRestaurantUser?.uid);
+
+    // add details to the "donations" Collection
+    await FirebaseFirestore.instance.collection("donations").add({
+      "item_name": donationNameController!.text.toString(),
+      "description": donationDescriptionController!.text.toString(),
+      "quantity": int.parse(donationQtyController!.text),
+      "price": double.parse(donationPriceController!.text),
+      "created_at": DateTime.now(),
+      "restaurant_ref": restaurantRef
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +70,7 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(40),
         child: AppBar(
-          backgroundColor: Color(0xFF4BA219),
+          backgroundColor: Color(0xFFACE4AF),
           automaticallyImplyLeading: true,
           title: SelectionArea(
               child: Text(
@@ -251,9 +277,7 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
                 child: FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
-                  },
+                  onPressed: addDonationDetails,
                   text: 'Create',
                   options: FFButtonOptions(
                     width: 340,
