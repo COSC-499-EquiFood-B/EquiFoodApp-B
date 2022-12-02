@@ -58,8 +58,8 @@ class _LoginWidgetState extends State<LoginWidget> {
         email: emailTextController!.text.trim(),
         password: passwordTextController!.text.trim());
 
-    Navigator.of(context).push(
-        MaterialPageRoute(builder: (BuildContext context) => HmepageWidget()));
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (BuildContext context) => DonationsWidget()));
   }
 
   @override
