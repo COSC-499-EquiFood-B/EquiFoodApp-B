@@ -87,7 +87,7 @@ class _MyAppState extends State<MyApp> {
             if (snapshot.hasData) {
               return HmepageWidget();
             } else {
-              return LoginWidget();
+              return SignupWidget();
             }
           }),
     );
