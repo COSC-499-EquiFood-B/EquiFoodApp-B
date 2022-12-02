@@ -85,9 +85,9 @@ class _MyAppState extends State<MyApp> {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return HmepageWidget();
+              return DonationsWidget();
             } else {
-              return SignupWidget();
+              return LoginWidget();
             }
           }),
     );
