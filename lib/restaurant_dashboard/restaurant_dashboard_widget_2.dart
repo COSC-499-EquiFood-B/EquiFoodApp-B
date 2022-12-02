@@ -26,9 +26,6 @@ class DonationsWidget extends StatefulWidget {
 class _DonationsWidgetState extends State<DonationsWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  // get reference of the current Restaurant User
-  final currRestaurantUser = FirebaseAuth.instance.currentUser;
-
   // List to store restaurant donation IDs
   List<String> restaurantDonationIDs = [];
 
@@ -49,10 +46,28 @@ class _DonationsWidgetState extends State<DonationsWidget> {
   // method to get IDs for restaurant donations,
   // stored under "donations" Collection in firebase
   Future getRestaurantDonationIDs() async {
+    // get reference of the current Restaurant User
+    final currRestaurantUser = FirebaseAuth.instance.currentUser;
+
+    // create reference for the current Restaurant User located in the "users" collection on firebase
+    final restaurantUserRef = FirebaseFirestore.instance
+        .collection("users")
+        .doc(currRestaurantUser?.uid);
+
     // get donation IDs from the "donations" Collection
     // and then store them in the "restaurantDonationIDs" List.
+    // await FirebaseFirestore.instance
+    //     .collection('donations')
+    //     .get()
+    //     .then((snapshot) => {
+    //           snapshot.docs.forEach((element) {
+    //             // add restaurant Donation IDs to the List
+    //             restaurantDonationIDs.add(element.reference.id);
+    //           })
+    //         });
     await FirebaseFirestore.instance
         .collection('donations')
+        .where("restaurant_ref", isEqualTo: restaurantUserRef)
         .get()
         .then((snapshot) => {
               snapshot.docs.forEach((element) {
