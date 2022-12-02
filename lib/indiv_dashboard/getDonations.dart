@@ -28,8 +28,7 @@ class getDonations extends StatelessWidget {
             return Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 30),
               child: Wrap(
-                spacing: 
-                8,
+                spacing: 8,
                 runSpacing: 8,
                 alignment: WrapAlignment.start,
                 crossAxisAlignment: WrapCrossAlignment.start,
@@ -80,7 +79,7 @@ class getDonations extends StatelessWidget {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(8, 12, 0, 0),
                               child: Text(
-                                '${donationsData["restaurant_ref"]}',
+                                '${donationsData["restaurant_name"]}',
                                 style: FlutterFlowTheme.of(context)
                                     .subtitle1
                                     .override(

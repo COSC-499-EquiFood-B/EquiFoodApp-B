@@ -1,7 +1,7 @@
 import 'package:equi_food_app/index.dart';
 import 'package:equi_food_app/indiv_dashboard/default-stats.dart';
 import 'package:equi_food_app/indiv_dashboard/getDonations.dart';
-import 'package:equi_food_app/restaurant_dashboard/settings.dart';
+import 'package:equi_food_app/restaurant_dashboard/restaurantSettings.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -41,6 +41,9 @@ class _HmepageWidgetState extends State<HmepageWidget> {
   CollectionReference donations =
       FirebaseFirestore.instance.collection('donations');
 
+  // bug fix for FutureBuilder re-rendering Cards multiple times
+  late Future dataFuture;
+
   // method to get IDs for restaurant donations,
   // stored under "donations" Collection in firebase
   Future getDonationIDs() async {
@@ -61,6 +64,9 @@ class _HmepageWidgetState extends State<HmepageWidget> {
   void initState() {
     super.initState();
     textController = TextEditingController();
+
+    // bug-fix for FutureBuilder
+    dataFuture = getDonationIDs();
   }
 
   @override
@@ -197,7 +203,7 @@ class _HmepageWidgetState extends State<HmepageWidget> {
                       ),
                     ),
                     FutureBuilder(
-                        future: getDonationIDs(),
+                        future: dataFuture, // bug-fix for FutureBuilder
                         builder:
                             (BuildContext context, AsyncSnapshot snapshot) {
                           //Error Handling conditions
