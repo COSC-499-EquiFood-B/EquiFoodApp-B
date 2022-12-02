@@ -43,6 +43,8 @@ class _DonationsWidgetState extends State<DonationsWidget> {
     SettingsWidget(),
   ];
 
+  late Future dataFuture;
+
   // method to get IDs for restaurant donations,
   // stored under "donations" Collection in firebase
   Future getRestaurantDonationIDs() async {
@@ -75,6 +77,13 @@ class _DonationsWidgetState extends State<DonationsWidget> {
                 restaurantDonationIDs.add(element.reference.id);
               })
             });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    dataFuture = getRestaurantDonationIDs();
   }
 
   @override
@@ -135,7 +144,7 @@ class _DonationsWidgetState extends State<DonationsWidget> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           FutureBuilder(
-                              future: getRestaurantDonationIDs(),
+                              future: dataFuture,
                               builder: (BuildContext context,
                                   AsyncSnapshot snapshot) {
                                 //Error Handling conditions
