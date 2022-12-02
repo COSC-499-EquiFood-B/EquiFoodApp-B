@@ -74,22 +74,25 @@ class _HmepageWidgetState extends State<HmepageWidget> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Color(0xFFACE4AF),
-      // appBar: AppBar(
-      //   backgroundColor: Color(0xFFACE4AF),
-      //   automaticallyImplyLeading: false,
-      //   title: Text(
-      //     'Hello, (insert account name)',
-      //     style: FlutterFlowTheme.of(context).title2.override(
-      //           fontFamily: 'Outfit',
-      //           color: Color(0xFF14181B),
-      //           fontSize: 25,
-      //           fontWeight: FontWeight.normal,
-      //         ),
-      //   ),
-      //   actions: [],
-      //   centerTitle: false,
-      //   elevation: 0,
-      // ),
+      // APPBAR
+      appBar: _selectedIndex == 0
+          ? AppBar(
+              backgroundColor: Color(0xFFACE4AF),
+              automaticallyImplyLeading: false,
+              title: Text(
+                'Hello, (insert account name)',
+                style: FlutterFlowTheme.of(context).title2.override(
+                      fontFamily: 'Outfit',
+                      color: Color(0xFF14181B),
+                      fontSize: 25,
+                      fontWeight: FontWeight.normal,
+                    ),
+              ),
+              actions: [],
+              centerTitle: false,
+              elevation: 0,
+            )
+          : null,
       body: _selectedIndex == 0
           ? GestureDetector(
               onTap: () => FocusScope.of(context).unfocus(),
