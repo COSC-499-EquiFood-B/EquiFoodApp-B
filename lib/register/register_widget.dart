@@ -68,6 +68,14 @@ class _SignupWidgetState extends State<SignupWidget> {
                 })
               });
     }
+    _signOut();
+
+    Navigator.of(context).push(
+        MaterialPageRoute(builder: (BuildContext context) => LoginWidget()));
+  }
+
+  Future<void> _signOut() async {
+    await FirebaseAuth.instance.signOut();
   }
 
   // boolean method to check if the "Password" and "Confirm Password" fields match
