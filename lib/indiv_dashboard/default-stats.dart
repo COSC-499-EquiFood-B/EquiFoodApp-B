@@ -1,29 +1,3 @@
-a
-  b
-  c
-  d
-  e
-  f
-  g
-  h
-  i
-  j
-  k
-  l
-  m
-  n
-  o
-  p
-  q
-  r
-  s
-  t
-  u
-  v
-  w
-  x
-  y
-  z
 
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
