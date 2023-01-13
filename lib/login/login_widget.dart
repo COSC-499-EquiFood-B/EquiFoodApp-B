@@ -52,15 +52,7 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   // method to sign IN user with email and password
   // will only be called if the user chooses to authenticate with email and not other available providers
-  Future signInUser() async {
-    // NOTE: the '!' in front of email and password variables is to check if either of these are null
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailTextController!.text.trim(),
-        password: passwordTextController!.text.trim());
 
-    Navigator.of(context).push(
-        MaterialPageRoute(builder: (BuildContext context) => HmepageWidget()));
-  }
 
   @override
   Widget build(BuildContext context) {
