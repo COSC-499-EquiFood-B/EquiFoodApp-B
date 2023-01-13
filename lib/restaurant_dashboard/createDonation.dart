@@ -57,6 +57,7 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
       "item_img":
           "https://cleangreensimple.com/wp-content/uploads/2020/04/7-sweet-peas-and-saffron-air-fryer-cauliflower-chickpea-tacos.jpg", // default img
       "description": donationDescriptionController!.text.toString(),
+      "restaurant_name": currentRestaurantUser?.displayName,
       "quantity": int.parse(donationQtyController!.text),
       "price": double.parse(donationPriceController!.text),
       "created_at": DateTime.now(),
