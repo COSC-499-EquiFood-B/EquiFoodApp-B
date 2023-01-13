@@ -79,7 +79,7 @@ class getDonations extends StatelessWidget {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(8, 12, 0, 0),
                               child: Text(
-                                '${donationsData["restaurant_ref"]}',
+                                '${donationsData["restaurant_name"]}',
                                 style: FlutterFlowTheme.of(context)
                                     .subtitle1
                                     .override(
