@@ -26,7 +26,7 @@ class getDonations extends StatelessWidget {
                 snapshot.data!.data() as Map<String, dynamic>;
 
             return Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 44),
+              padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 30),
               child: Wrap(
                 spacing: 8,
                 runSpacing: 8,
@@ -46,7 +46,7 @@ class getDonations extends StatelessWidget {
                       );
                     },
                     child: Container(
-                      width: MediaQuery.of(context).size.width * 0.45,
+                      width: MediaQuery.of(context).size.width * 0.95,
                       height: 190,
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -60,7 +60,7 @@ class getDonations extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(4, 4, 4, 4),
+                        padding: EdgeInsetsDirectional.fromSTEB(8, 4, 4, 4),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -79,7 +79,7 @@ class getDonations extends StatelessWidget {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(8, 12, 0, 0),
                               child: Text(
-                                '${donationsData["restaurant_ref"]}',
+                                '${donationsData["restaurant_name"]}',
                                 style: FlutterFlowTheme.of(context)
                                     .subtitle1
                                     .override(

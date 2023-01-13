@@ -1,4 +1,5 @@
 import 'package:equi_food_app/index.dart';
+import 'package:equi_food_app/indiv_dashboard/indivdash1cont.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_timer.dart';
@@ -166,7 +167,7 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const HomepageWidget()),
+                          builder: (context) => const HmepageWidget()),
                     );
                   },
                   text: 'Cancel Order',
