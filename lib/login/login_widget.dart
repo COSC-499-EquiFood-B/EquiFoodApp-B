@@ -1,4 +1,5 @@
 import 'package:equi_food_app/index.dart';
+import 'package:equi_food_app/indiv_dashboard/indivdash1cont.dart';
 import 'package:equi_food_app/register/register_widget.dart';
 import 'package:equi_food_app/restaurant_dashboard/restaurant_dashboard_widget_2.dart';
 
@@ -56,6 +57,9 @@ class _LoginWidgetState extends State<LoginWidget> {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailTextController!.text.trim(),
         password: passwordTextController!.text.trim());
+
+    Navigator.of(context).push(
+        MaterialPageRoute(builder: (BuildContext context) => HmepageWidget()));
   }
 
   @override
