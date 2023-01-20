@@ -11,15 +11,3 @@ onPressed: () { print('IconButton pressed ...'); }, ), ), Align( alignment: Alig
 height: 40, color: Color(0xFFACE4AF), textStyle: FlutterFlowTheme.of(context) .subtitle2 .override( fontFamily: 'Poppins', color: Colors.white, fontSize: 18, ), borderSide: BorderSide( width: 1, ), borderRadius: BorderRadius.circular(12), ), ), ), Align( alignment: AlignmentDirectional(0.52, -1.02), child: FlutterFlowIconButton( borderColor: Colors.transparent, borderRadius: 30, borderWidth: 1, buttonSize: 60, icon: Icon( Icons.arrow_
 drop_down_rounded, color: FlutterFlowTheme.of(context).primaryBtnText,
 size: 30, ), onPressed: () { print('IconButton pressed ...'); }, ), ), Align( alignment: AlignmentDirectional(-0.19, -0.85), child: Text( 'Find available food \nnear you', 
-textAlign: TextAlign.justify, style: FlutterFlowTheme.of(context) .bodyText1 .override( fontFamily: 'Poppins', color: Colors.black, fontSize: 30, ), ), ), Align( alignment: AlignmentDirectional(-0.06, -0.58), child: FFButtonWidget( onPressed: () { print('Button pressed ...'); }, text: 'Search Restaurants', icon: Icon( Icons.search, color: Color(0xFFCACACA), size: 10, ), options: FFButtonOptions( width: 320, height: 40, color: Color(0x99FFFFFF), textStyle: FlutterFlowTheme.of(context) .bodyText1 .override( fontFamily: 'Poppins', color: Color(0xFFCACACA), fontWeight:
-
-FontWeight.normal, ), borderSide: BorderSide( color: Colors.transparent, width: 1, ), borderRadius: BorderRadius.circular(8), ), ), ), Align( alignment: AlignmentDirectional(-0.84, -0.45), child: FFButtonWidget( onPressed: () {
-print('Button pressed ...'); }, 
-text: 'Browse', options: FFButtonOptions( height: 40, padding: EdgeInsetsDirectional.fromSTEB(3, 0, 0, 0), color: Color(0x00FFFFFF), textStyle: FlutterFlowTheme.of(context) .subtitle2 .override( fontFamily: 'Poppins', 
-color: Colors.white, fontWeight: 
-FontWeight.normal, ), borderSide: BorderSide( color: Colors.transparent, width: 1, ), borderRadius: BorderRadius.circular(8), ), ), ), Align( alignment: AlignmentDirectional(-0.84, -0.45), child: FFButtonWidget( onPressed: () { print('Button pressed ...'); }, 
-text: 'Browse', options: FFButtonOptions( height: 40, padding: EdgeInsetsDirectional.fromSTEB(3, 0, 0, 0), color: Color(0x00FFFFFF), textStyle: FlutterFlowTheme.of(context) .subtitle2 .override( fontFamily: 'Poppins', color: Colors.white, 
-fontWeight: FontWeight.normal, ), borderSide: BorderSide( color: Colors.transparent, width: 1, ), borderRadius: BorderRadius.circular(8), ), ), ), Align(
-
-
-
