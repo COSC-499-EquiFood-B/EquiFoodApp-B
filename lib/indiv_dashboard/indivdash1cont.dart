@@ -229,7 +229,7 @@ class _HmepageWidgetState extends State<HmepageWidget> {
                                       donationsID: donationIDs[index]);
                                 });
                           }
-                          return Text("loading");
+                          return Center(child: CircularProgressIndicator());
                         })
                   ],
                 ),
