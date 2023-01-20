@@ -226,7 +226,7 @@ class _HomepageWidgetState extends State<HomepageWidget> {
                                       .override(
                                         fontFamily: 'Outfit',
                                         color: Color(0xFF57636C),
-                                        fontSize: 12,
+                                        fontSize: 1,
                                         fontWeight: FontWeight.normal,
                                       ),
                                 ),
