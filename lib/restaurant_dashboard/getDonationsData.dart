@@ -24,7 +24,7 @@ class GetDonationsData extends StatelessWidget {
                 snapshot.data!.data() as Map<String, dynamic>;
 
             return Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 4),
+              padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
               child: Card(
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 elevation: 10,
