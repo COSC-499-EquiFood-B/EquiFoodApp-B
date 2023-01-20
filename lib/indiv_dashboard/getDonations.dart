@@ -100,7 +100,7 @@ class getDonations extends StatelessWidget {
                                     .override(
                                       fontFamily: 'Outfit',
                                       color: Color(0xFF57636C),
-                                      fontSize: 12,
+                                      fontSize: 15,
                                       fontWeight: FontWeight.normal,
                                     ),
                               ),
