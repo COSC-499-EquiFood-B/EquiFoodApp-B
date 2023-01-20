@@ -236,7 +236,15 @@ class _HmepageWidgetState extends State<HmepageWidget> {
                               },
                             );
                           }
-                          return Text("loading");
+                          // Loading Spinner at the centre of the page
+                          return SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              height: MediaQuery.of(context).size.height,
+                              child: Center(
+                                child: CircularProgressIndicator(
+                                  color: Color.fromARGB(255, 52, 185, 59),
+                                ),
+                              ));
                         })
                   ],
                 ),

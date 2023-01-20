@@ -114,7 +114,7 @@ class getDonations extends StatelessWidget {
               ),
             );
           }
-          return Text("loading");
+          return Center();
         });
   }
 }
