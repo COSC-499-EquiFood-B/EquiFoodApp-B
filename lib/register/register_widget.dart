@@ -622,4 +622,18 @@ class _SignupWidgetState extends State<SignupWidget> {
       ),
     );
   }
+  _signup(String _email, String _passward) async {
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailTextController!.text.trim(),
+        password: passwordTextController!.text.trim(),
+        )
+        
+        //signUpUser;
+      //success
+      
+    } on FirebaseAuthException catch (error) {
+      Fluttertoast.showToast(msg: "error", gravity: ToastGravity.TOP);
+    }
+  }
 }
