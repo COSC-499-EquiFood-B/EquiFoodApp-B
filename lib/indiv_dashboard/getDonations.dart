@@ -26,10 +26,8 @@ class getDonations extends StatelessWidget {
                 snapshot.data!.data() as Map<String, dynamic>;
 
             return Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 30),
+              padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
               child: Wrap(
-                spacing: 8,
-                runSpacing: 8,
                 alignment: WrapAlignment.start,
                 crossAxisAlignment: WrapCrossAlignment.start,
                 direction: Axis.horizontal,
