@@ -222,8 +222,8 @@ class _HmepageWidgetState extends State<HmepageWidget> {
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
-                                crossAxisSpacing: 10.0,
-                                mainAxisSpacing: 0.0,
+                                //crossAxisSpacing: 0.0,
+                                //mainAxisSpacing: 10.0,
                               ),
                               scrollDirection: Axis
                                   .vertical, // required for infinite scrolling
