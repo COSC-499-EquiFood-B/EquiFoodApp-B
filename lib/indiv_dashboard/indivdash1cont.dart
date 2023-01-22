@@ -218,18 +218,33 @@ class _HmepageWidgetState extends State<HmepageWidget> {
                           //Data is output to the user
                           if (snapshot.connectionState ==
                               ConnectionState.done) {
-                            return ListView.builder(
-                                scrollDirection: Axis
-                                    .vertical, // required for infinite scrolling
-                                shrinkWrap:
-                                    true, // required for infinite scrolling
-                                itemCount: donationIDs.length,
-                                itemBuilder: (context, int index) {
-                                  return getDonations(
-                                      donationsID: donationIDs[index]);
-                                });
+                            return GridView.builder(
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                //crossAxisSpacing: 0.0,
+                                //mainAxisSpacing: 10.0,
+                              ),
+                              scrollDirection: Axis
+                                  .vertical, // required for infinite scrolling
+                              shrinkWrap:
+                                  true, // required for infinite scrolling
+                              itemCount: donationIDs.length,
+                              itemBuilder: (context, int index) {
+                                return getDonations(
+                                    donationsID: donationIDs[index]);
+                              },
+                            );
                           }
-                          return Text("loading");
+                          // Loading Spinner at the centre of the page
+                          return SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              height: MediaQuery.of(context).size.height,
+                              child: Center(
+                                child: CircularProgressIndicator(
+                                  color: Color.fromARGB(255, 52, 185, 59),
+                                ),
+                              ));
                         })
                   ],
                 ),

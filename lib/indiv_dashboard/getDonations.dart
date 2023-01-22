@@ -26,10 +26,8 @@ class getDonations extends StatelessWidget {
                 snapshot.data!.data() as Map<String, dynamic>;
 
             return Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 30),
+              padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
               child: Wrap(
-                spacing: 8,
-                runSpacing: 8,
                 alignment: WrapAlignment.start,
                 crossAxisAlignment: WrapCrossAlignment.start,
                 direction: Axis.horizontal,
@@ -100,7 +98,7 @@ class getDonations extends StatelessWidget {
                                     .override(
                                       fontFamily: 'Outfit',
                                       color: Color(0xFF57636C),
-                                      fontSize: 12,
+                                      fontSize: 15,
                                       fontWeight: FontWeight.normal,
                                     ),
                               ),
@@ -114,7 +112,7 @@ class getDonations extends StatelessWidget {
               ),
             );
           }
-          return Text("loading");
+          return Center();
         });
   }
 }
