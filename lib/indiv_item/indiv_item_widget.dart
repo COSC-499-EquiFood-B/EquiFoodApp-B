@@ -334,7 +334,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                         Container(
                           height: MediaQuery.of(context).size.height * 0.15,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
+                            borderRadius: BorderRadius.circular(8),
                           ),
                           child: FlutterFlowGoogleMap(
                             controller: googleMapsController,
