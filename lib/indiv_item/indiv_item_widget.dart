@@ -1,7 +1,7 @@
 import 'package:equi_food_app/confirmation/confirmation.dart';
-import 'package:equi_food_app/index.dart';
 import 'package:equi_food_app/indiv_dashboard/indivdash1cont.dart';
 
+import '../flutter_flow/flutter_flow_google_map.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -16,12 +16,15 @@ class IndivItemWidget extends StatefulWidget {
 }
 
 class _IndivItemWidgetState extends State<IndivItemWidget> {
+  LatLng? googleMapsCenter;
+  final googleMapsController = Completer<GoogleMapController>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      resizeToAvoidBottomInset: false,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       body: SingleChildScrollView(
         child: Column(
@@ -317,7 +320,49 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+              padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          height: MediaQuery.of(context).size.height * 0.15,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: FlutterFlowGoogleMap(
+                            controller: googleMapsController,
+                            onCameraIdle: (latLng) => googleMapsCenter = latLng,
+                            initialLocation: googleMapsCenter ??=
+                                LatLng(49.88594330630278, -119.49924657187097),
+                            markerColor: GoogleMarkerColor.violet,
+                            mapType: MapType.normal,
+                            style: GoogleMapStyle.standard,
+                            initialZoom: 17,
+                            allowInteraction: true,
+                            allowZoom: true,
+                            showZoomControls: true,
+                            showLocation: true,
+                            showCompass: false,
+                            showMapToolbar: false,
+                            showTraffic: false,
+                            centerMapOnMarkerTap: true,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 24),
               child: FFButtonWidget(
                 onPressed: () {
                   Navigator.push(
