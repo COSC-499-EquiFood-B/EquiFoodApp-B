@@ -25,6 +25,11 @@ class _SignupWidgetState extends State<SignupWidget> {
   TextEditingController? passwordTextController;
   TextEditingController? passwordConfirmTextController;
 
+  // creating state variable for user_type
+  // so that the user has option to register as an Individual or a Restaurant user
+  // 1: Individual User, 2: Restaurant User
+  bool _registerAsIndividualUser = true; // Individual User by default
+
   late bool passwordVisibility;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -104,8 +109,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                     },
                     child: Image.asset(
                       'assets/images/logoTranslation3x.png',
-                      width: 40,
-                      height: 40,
+                      width: 10,
+                      height: 10,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -560,6 +565,47 @@ class _SignupWidgetState extends State<SignupWidget> {
                       ),
                     ),
                   ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                child: InkWell(
+                  child: Text(
+                      _registerAsIndividualUser
+                          ? "Register as a Restaurant"
+                          : "Register as a user",
+                      style: FlutterFlowTheme.of(context).bodyText2.override(
+                          fontFamily: 'Outfit',
+                          color: Color.fromARGB(255, 26, 26, 27),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500)),
+                  onTap: () => setState(() {
+                    _registerAsIndividualUser = !_registerAsIndividualUser;
+                    print(_registerAsIndividualUser);
+                  }),
+                ),
+              ),
+              // ADD CODE BELOW TO NAVIGATE THE USER TO THE LOGIN PAGE (login_widget)
+              // WHEN THEY CLICK THE TEXT BELOW
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 4),
+                child: InkWell(
+                  child: Text.rich(
+                      TextSpan(
+                        text: "Already a member?",
+                        children: <InlineSpan>[
+                          TextSpan(
+                              text: " Log in",
+                              style: TextStyle(
+                                  color: Color.fromARGB(255, 17, 154, 233)))
+                        ],
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyText2.override(
+                          fontFamily: 'Outfit',
+                          color: Color.fromARGB(255, 19, 19, 19),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w300)),
+                  onTap: () => print('object'),
                 ),
               ),
               Row(
