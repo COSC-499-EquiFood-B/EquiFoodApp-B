@@ -28,7 +28,7 @@ class _SignupWidgetState extends State<SignupWidget> {
   // creating state variable for user_type
   // so that the user has option to register as an Individual or a Restaurant user
   // 1: Individual User, 2: Restaurant User
-  bool _isCurrentUserIndividual = true; // Individual User by default
+  bool _registerAsIndividualUser = true; // Individual User by default
 
   late bool passwordVisibility;
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -571,7 +571,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                 child: InkWell(
                   child: Text(
-                      _isCurrentUserIndividual
+                      _registerAsIndividualUser
                           ? "Register as a Restaurant"
                           : "Register as a user",
                       style: FlutterFlowTheme.of(context).bodyText2.override(
@@ -580,11 +580,13 @@ class _SignupWidgetState extends State<SignupWidget> {
                           fontSize: 16,
                           fontWeight: FontWeight.w500)),
                   onTap: () => setState(() {
-                    _isCurrentUserIndividual = !_isCurrentUserIndividual;
-                    print(_isCurrentUserIndividual);
+                    _registerAsIndividualUser = !_registerAsIndividualUser;
+                    print(_registerAsIndividualUser);
                   }),
                 ),
               ),
+              // ADD CODE BELOW TO NAVIGATE THE USER TO THE LOGIN PAGE (login_widget)
+              // WHEN THEY CLICK THE TEXT BELOW
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 4),
                 child: InkWell(
