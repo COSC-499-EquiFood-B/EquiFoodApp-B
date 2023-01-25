@@ -15,7 +15,7 @@ The system will involve three types of users:
 - **Administrators**: members of the EquiFood team who can approve restaurant managers and view the donation amounts.
 
 ## Gantt Chart
-Click [here](https://github.com/COSC-499-EquiFood-B/EquiFoodApp-B/blob/d826f26935d77273503aef18e6ba02f6b407e75d/Gantt%20Chart%20Oct%2031-Nov%204.png) for this week's Gantt Chart.
+Click [here](https://github.com/COSC-499-EquiFood-B/EquiFoodApp-B/blob/main/GanttChartWeek17.xlsx) for this week's Gantt Chart.
 
 
 ## Getting Started
