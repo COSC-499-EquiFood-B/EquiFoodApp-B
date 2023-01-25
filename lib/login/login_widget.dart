@@ -1,3 +1,4 @@
+import 'package:equi_food_app/backend/backend.dart';
 import 'package:equi_food_app/index.dart';
 import 'package:equi_food_app/indiv_dashboard/indivdash1cont.dart';
 import 'package:equi_food_app/register/register_widget.dart';
@@ -58,10 +59,28 @@ class _LoginWidgetState extends State<LoginWidget> {
         email: emailTextController!.text.trim(),
         password: passwordTextController!.text.trim());
 
-    // THIS IS WHERE THE NAV-BAR ISSUE OCCURS!!
-    // WILL HAVE TO RENDER THE RIGHT PAGE BASED ON USER TYPE
-    Navigator.of(context).push(
-        MaterialPageRoute(builder: (BuildContext context) => HmepageWidget()));
+    // get current user
+    final currentUser = FirebaseAuth.instance.currentUser;
+
+    // get current user snapshot
+    final currentUserSnapshot = await FirebaseFirestore.instance
+        .collection("users")
+        .doc(currentUser?.uid)
+        .get();
+
+    if (currentUserSnapshot.exists) {
+      Map<String, dynamic>? currentUserData = currentUserSnapshot.data();
+
+      // get current user's user_type value to navigate them to the correct screen
+      // 1 = Individual User, 2 = Restaurant User
+      int user_type = currentUserData!['user_type'];
+
+      // THIS IS WHERE THE NAV-BAR ISSUE OCCURS!!
+      // WILL HAVE TO RENDER THE RIGHT PAGE BASED ON USER TYPE
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (BuildContext context) =>
+              user_type == 1 ? HmepageWidget() : DonationsWidget()));
+    }
   }
 
   @override

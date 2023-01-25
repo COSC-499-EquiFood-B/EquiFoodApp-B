@@ -69,12 +69,15 @@ class _SignupWidgetState extends State<SignupWidget> {
                     .doc(value.user?.uid) // uid = user id
                     .set({
                   "name": nameTextController!.text.toString(), // add user name
-                  "email": emailTextController!.text.trim() // add user email
+                  "email": emailTextController!.text.trim(), // add user email
+                  "user_type": _registerAsIndividualUser
+                      ? 1
+                      : 2 // user_type field (1 = Individual User, 2 = Restaurant User)
                 })
               });
     }
-    _signOut();
-
+    _signOut(); // Sign out user
+    // redirect user to Login page
     Navigator.of(context).push(
         MaterialPageRoute(builder: (BuildContext context) => LoginWidget()));
   }
