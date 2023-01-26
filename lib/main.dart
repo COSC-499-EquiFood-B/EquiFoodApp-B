@@ -1,6 +1,6 @@
 import 'package:equi_food_app/confirmation/confirmation.dart';
 // import 'package:equi_food_app/indiv_dashboard/indiv_dashboard_widget.dart';
-import 'package:equi_food_app/register/register_widget.dart'; // file containing the Sign-up screen
+import 'package:equi_food_app/register/createUser.dart'; // file containing the Sign-up screen
 import 'package:equi_food_app/login/login_widget.dart'; // file containing the Login screen
 
 import 'package:equi_food_app/indiv_dashboard/indivdash1cont.dart';

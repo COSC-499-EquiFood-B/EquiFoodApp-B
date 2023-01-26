@@ -12,14 +12,16 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:firebase_auth/firebase_auth.dart'; // import Firebase package to sign UP users
 
-class SignupWidget extends StatefulWidget {
-  const SignupWidget({Key? key}) : super(key: key);
+class CreateRestaurantUserWidget extends StatefulWidget {
+  const CreateRestaurantUserWidget({Key? key}) : super(key: key);
 
   @override
-  _SignupWidgetState createState() => _SignupWidgetState();
+  _CreateRestaurantUserWidgetState createState() =>
+      _CreateRestaurantUserWidgetState();
 }
 
-class _SignupWidgetState extends State<SignupWidget> {
+class _CreateRestaurantUserWidgetState
+    extends State<CreateRestaurantUserWidget> {
   TextEditingController? nameTextController;
   TextEditingController? emailTextController;
   TextEditingController? passwordTextController;
@@ -28,7 +30,8 @@ class _SignupWidgetState extends State<SignupWidget> {
   // creating state variable for user_type
   // so that the user has option to register as an Individual or a Restaurant user
   // 1: Individual User, 2: Restaurant User
-  bool _registerAsIndividualUser = true; // Individual User by default
+  bool _registerAsRestaurantUser =
+      true; // Restaurant User by default on THIS page
 
   late bool passwordVisibility;
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -70,7 +73,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                     .set({
                   "name": nameTextController!.text.toString(), // add user name
                   "email": emailTextController!.text.trim(), // add user email
-                  "user_type": _registerAsIndividualUser
+                  "user_type": _registerAsRestaurantUser
                       ? 1
                       : 2 // user_type field (1 = Individual User, 2 = Restaurant User)
                 })
@@ -574,7 +577,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                 child: InkWell(
                   child: Text(
-                      _registerAsIndividualUser
+                      _registerAsRestaurantUser
                           ? "Register as a Restaurant"
                           : "Register as a user",
                       style: FlutterFlowTheme.of(context).bodyText2.override(
@@ -583,8 +586,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                           fontSize: 16,
                           fontWeight: FontWeight.w500)),
                   onTap: () => setState(() {
-                    _registerAsIndividualUser = !_registerAsIndividualUser;
-                    print(_registerAsIndividualUser);
+                    _registerAsRestaurantUser = !_registerAsRestaurantUser;
+                    print(_registerAsRestaurantUser);
                   }),
                 ),
               ),
