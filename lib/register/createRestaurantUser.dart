@@ -1,5 +1,6 @@
 import 'package:equi_food_app/backend/backend.dart';
 import 'package:equi_food_app/index.dart';
+import 'package:equi_food_app/register/createUser.dart';
 
 import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
@@ -26,12 +27,6 @@ class _CreateRestaurantUserWidgetState
   TextEditingController? emailTextController;
   TextEditingController? passwordTextController;
   TextEditingController? passwordConfirmTextController;
-
-  // creating state variable for user_type
-  // so that the user has option to register as an Individual or a Restaurant user
-  // 1: Individual User, 2: Restaurant User
-  bool _registerAsRestaurantUser =
-      true; // Restaurant User by default on THIS page
 
   late bool passwordVisibility;
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -73,9 +68,8 @@ class _CreateRestaurantUserWidgetState
                     .set({
                   "name": nameTextController!.text.toString(), // add user name
                   "email": emailTextController!.text.trim(), // add user email
-                  "user_type": _registerAsRestaurantUser
-                      ? 1
-                      : 2 // user_type field (1 = Individual User, 2 = Restaurant User)
+                  "user_type":
+                      2 // user_type field (1 = Individual User, 2 = Restaurant User)
                 })
               });
     }
@@ -576,19 +570,14 @@ class _CreateRestaurantUserWidgetState
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                 child: InkWell(
-                  child: Text(
-                      _registerAsRestaurantUser
-                          ? "Register as a Restaurant"
-                          : "Register as a user",
+                  child: Text("Register as a user",
                       style: FlutterFlowTheme.of(context).bodyText2.override(
                           fontFamily: 'Outfit',
                           color: Color.fromARGB(255, 26, 26, 27),
                           fontSize: 16,
                           fontWeight: FontWeight.w500)),
-                  onTap: () => setState(() {
-                    _registerAsRestaurantUser = !_registerAsRestaurantUser;
-                    print(_registerAsRestaurantUser);
-                  }),
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (BuildContext context) => SignupWidget())),
                 ),
               ),
               // ADD CODE BELOW TO NAVIGATE THE USER TO THE LOGIN PAGE (login_widget)
