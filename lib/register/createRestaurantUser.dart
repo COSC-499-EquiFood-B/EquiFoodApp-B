@@ -1,5 +1,6 @@
 import 'package:equi_food_app/backend/backend.dart';
 import 'package:equi_food_app/index.dart';
+import 'package:equi_food_app/register/createUser.dart';
 
 import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
@@ -12,23 +13,20 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:firebase_auth/firebase_auth.dart'; // import Firebase package to sign UP users
 
-class SignupWidget extends StatefulWidget {
-  const SignupWidget({Key? key}) : super(key: key);
+class CreateRestaurantUserWidget extends StatefulWidget {
+  const CreateRestaurantUserWidget({Key? key}) : super(key: key);
 
   @override
-  _SignupWidgetState createState() => _SignupWidgetState();
+  _CreateRestaurantUserWidgetState createState() =>
+      _CreateRestaurantUserWidgetState();
 }
 
-class _SignupWidgetState extends State<SignupWidget> {
+class _CreateRestaurantUserWidgetState
+    extends State<CreateRestaurantUserWidget> {
   TextEditingController? nameTextController;
   TextEditingController? emailTextController;
   TextEditingController? passwordTextController;
   TextEditingController? passwordConfirmTextController;
-
-  // creating state variable for user_type
-  // so that the user has option to register as an Individual or a Restaurant user
-  // 1: Individual User, 2: Restaurant User
-  bool _registerAsIndividualUser = true; // Individual User by default
 
   late bool passwordVisibility;
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -69,12 +67,14 @@ class _SignupWidgetState extends State<SignupWidget> {
                     .doc(value.user?.uid) // uid = user id
                     .set({
                   "name": nameTextController!.text.toString(), // add user name
-                  "email": emailTextController!.text.trim() // add user email
+                  "email": emailTextController!.text.trim(), // add user email
+                  "user_type":
+                      2 // user_type field (1 = Individual User, 2 = Restaurant User)
                 })
               });
     }
-    _signOut();
-
+    _signOut(); // Sign out user
+    // redirect user to Login page
     Navigator.of(context).push(
         MaterialPageRoute(builder: (BuildContext context) => LoginWidget()));
   }
@@ -570,19 +570,14 @@ class _SignupWidgetState extends State<SignupWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                 child: InkWell(
-                  child: Text(
-                      _registerAsIndividualUser
-                          ? "Register as a Restaurant"
-                          : "Register as a user",
+                  child: Text("Register as a user",
                       style: FlutterFlowTheme.of(context).bodyText2.override(
                           fontFamily: 'Outfit',
                           color: Color.fromARGB(255, 26, 26, 27),
                           fontSize: 16,
                           fontWeight: FontWeight.w500)),
-                  onTap: () => setState(() {
-                    _registerAsIndividualUser = !_registerAsIndividualUser;
-                    print(_registerAsIndividualUser);
-                  }),
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (BuildContext context) => SignupWidget())),
                 ),
               ),
               // ADD CODE BELOW TO NAVIGATE THE USER TO THE LOGIN PAGE (login_widget)
