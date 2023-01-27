@@ -585,23 +585,25 @@ class _SignupWidgetState extends State<SignupWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 4),
                 child: InkWell(
-                  child: Text.rich(
-                      TextSpan(
-                        text: "Already a member?",
-                        children: <InlineSpan>[
-                          TextSpan(
-                              text: " Log in",
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 17, 154, 233)))
-                        ],
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyText2.override(
-                          fontFamily: 'Outfit',
-                          color: Color.fromARGB(255, 19, 19, 19),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w300)),
-                  onTap: () => print('object'),
-                ),
+                    child: Text.rich(
+                        TextSpan(
+                          text: "Already a member?",
+                          children: <InlineSpan>[
+                            TextSpan(
+                                text: " Log in",
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 17, 154, 233)))
+                          ],
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyText2.override(
+                            fontFamily: 'Outfit',
+                            color: Color.fromARGB(255, 19, 19, 19),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300)),
+                    onTap: () => {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (BuildContext context) => LoginWidget()))
+                        }),
               ),
               Row(
                 mainAxisSize: MainAxisSize.max,
