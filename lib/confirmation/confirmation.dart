@@ -132,11 +132,7 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),
                   child: FFButtonWidget(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const IndivItemWidget()),
-                      );
+                      Navigator.pop(context);
                     },
                     text: 'View Order Details',
                     options: FFButtonOptions(

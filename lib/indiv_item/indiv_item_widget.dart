@@ -9,7 +9,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class IndivItemWidget extends StatefulWidget {
-  const IndivItemWidget({Key? key}) : super(key: key);
+  final String donationsID;
+
+  const IndivItemWidget({Key? key, required this.donationsID})
+      : super(key: key);
 
   @override
   _IndivItemWidgetState createState() => _IndivItemWidgetState();
