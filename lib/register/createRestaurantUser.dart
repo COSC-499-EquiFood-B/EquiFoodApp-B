@@ -576,8 +576,7 @@ class _CreateRestaurantUserWidgetState
                           color: Color.fromARGB(255, 26, 26, 27),
                           fontSize: 16,
                           fontWeight: FontWeight.w500)),
-                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                      builder: (BuildContext context) => SignupWidget())),
+                  onTap: () => Navigator.of(context).pop(),
                 ),
               ),
               // ADD CODE BELOW TO NAVIGATE THE USER TO THE LOGIN PAGE (login_widget)
