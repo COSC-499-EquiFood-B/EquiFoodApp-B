@@ -58,7 +58,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                                 Align(
                                   alignment: AlignmentDirectional(0, 0),
                                   child: Image.asset(
-                                    'assets/images/lily-banse--YHSwy6uqvk-unsplash.jpg',
+                                    donationsData["item_img"],
                                     width: MediaQuery.of(context).size.width,
                                     height: 240,
                                     fit: BoxFit.cover,
@@ -121,7 +121,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                                 child: Text(
-                                  'Jamie\'s Kitchen',
+                                  donationsData["restaurant_name"],
                                   textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.of(context).title2,
                                 ),
@@ -158,7 +158,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 4, 0, 0),
                                   child: Text(
-                                    '5 meals',
+                                    '${donationsData["quantity"]} meals',
                                     textAlign: TextAlign.start,
                                     style:
                                         FlutterFlowTheme.of(context).subtitle2,
@@ -190,7 +190,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 4, 0, 0),
                                       child: Text(
-                                        '\$9.56',
+                                        '\$${donationsData["price"]}',
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
                                             .subtitle2,
@@ -335,9 +335,9 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 4, 0, 0),
+                                      0, 4, 0, 16),
                                   child: Text(
-                                    'There are 3 Pad Thai and 2 fried rice meal boxes for pickup.\n',
+                                    donationsData["description"],
                                     textAlign: TextAlign.start,
                                     style:
                                         FlutterFlowTheme.of(context).subtitle2,
