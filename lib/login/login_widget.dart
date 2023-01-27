@@ -387,6 +387,26 @@ class _LoginWidgetState extends State<LoginWidget> {
                   ],
                 ),
               ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 4),
+                child: InkWell(
+                    child: Text.rich(
+                        TextSpan(
+                          text: "Don't have account?",
+                          children: <InlineSpan>[
+                            TextSpan(
+                                text: " Sign up",
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 17, 154, 233)))
+                          ],
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyText2.override(
+                            fontFamily: 'Outfit',
+                            color: Color.fromARGB(255, 19, 19, 19),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300)),
+                    onTap: () => {Navigator.of(context).pop()}),
+              ),
               Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
