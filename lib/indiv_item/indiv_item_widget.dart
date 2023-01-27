@@ -57,7 +57,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                               children: [
                                 Align(
                                   alignment: AlignmentDirectional(0, 0),
-                                  child: Image.asset(
+                                  child: Image.network(
                                     donationsData["item_img"],
                                     width: MediaQuery.of(context).size.width,
                                     height: 240,
