@@ -1,4 +1,3 @@
-//code to approve or deny the restaurant 
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -95,7 +94,7 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
                       thickness: 2,
                       indent: 14,
                       endIndent: 20,
-                      color: Color(0xFFACE4AF),
+                      color: Color(0xFF659F36),
                     ),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(13, 0, 0, 0),
@@ -107,7 +106,7 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
                         options: FFButtonOptions(
                           width: 360,
                           height: 40,
-                          color: Color(0xFFACE4AF),
+                          color: Color(0xFF659F36),
                           textStyle:
                               FlutterFlowTheme.of(context).subtitle2.override(
                                     fontFamily: 'Poppins',
