@@ -40,7 +40,8 @@ class getDonations extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const IndivItemWidget()),
+                            builder: (context) =>
+                                IndivItemWidget(donationsID: donationsID)),
                       );
                     },
                     child: Container(
