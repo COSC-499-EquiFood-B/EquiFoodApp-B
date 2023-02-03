@@ -29,7 +29,7 @@ class _CreateRestaurantUserWidgetState
   // address fields
   TextEditingController? addressLine1TextController; // address Line 1
   TextEditingController? addressLine2TextController; // address Line 2
-  TextEditingController? zipCodetextController; // zip code
+  TextEditingController? zipCodeTextController; // zip code
   TextEditingController? cityTextController; // city
   TextEditingController? provinceTextController; // state/province
 
@@ -52,16 +52,23 @@ class _CreateRestaurantUserWidgetState
     // initialize address fields
     addressLine1TextController = TextEditingController();
     addressLine2TextController = TextEditingController();
-    zipCodetextController = TextEditingController();
+    zipCodeTextController = TextEditingController();
     cityTextController = TextEditingController();
     provinceTextController = TextEditingController();
   }
 
+  // method for cleaning-up resources
   @override
   void dispose() {
     nameTextController?.dispose();
     emailTextController?.dispose();
     passwordTextController?.dispose();
+
+    addressLine1TextController?.dispose();
+    addressLine2TextController?.dispose();
+    zipCodeTextController?.dispose();
+    cityTextController?.dispose();
+
     super.dispose();
   }
 
@@ -95,6 +102,8 @@ class _CreateRestaurantUserWidgetState
         MaterialPageRoute(builder: (BuildContext context) => LoginWidget()));
   }
 
+  // sign out user
+  // used after the user creates an account
   Future<void> _signOut() async {
     await FirebaseAuth.instance.signOut();
   }
