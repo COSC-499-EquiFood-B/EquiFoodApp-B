@@ -23,8 +23,16 @@ class CreateRestaurantUserWidget extends StatefulWidget {
 
 class _CreateRestaurantUserWidgetState
     extends State<CreateRestaurantUserWidget> {
-  TextEditingController? nameTextController;
-  TextEditingController? emailTextController;
+  TextEditingController? nameTextController; // restaurant name
+  TextEditingController? emailTextController; // restaurant email
+
+  // address fields
+  TextEditingController? addressLine1TextController; // address Line 1
+  TextEditingController? addressLine2TextController; // address Line 2
+  TextEditingController? zipCodetextController; // zip code
+  TextEditingController? cityTextController; // city
+  TextEditingController? provinceTextController; // state/province
+
   TextEditingController? passwordTextController;
   TextEditingController? passwordConfirmTextController;
 
@@ -38,7 +46,15 @@ class _CreateRestaurantUserWidgetState
     emailTextController = TextEditingController();
     passwordTextController = TextEditingController();
     passwordConfirmTextController = TextEditingController();
+
     passwordVisibility = false;
+
+    // initialize address fields
+    addressLine1TextController = TextEditingController();
+    addressLine2TextController = TextEditingController();
+    zipCodetextController = TextEditingController();
+    cityTextController = TextEditingController();
+    provinceTextController = TextEditingController();
   }
 
   @override
