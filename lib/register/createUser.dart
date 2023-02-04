@@ -47,6 +47,17 @@ class _SignupWidgetState extends State<SignupWidget> {
     super.dispose();
   }
 
+  bool errorcheck() {
+    if (nameTextController!.text.isEmpty ||
+        emailTextController!.text.isEmpty ||
+        passwordTextController!.text.isEmpty) {
+      print("checked");
+
+      return false;
+    }
+    return true;
+  }
+  
   // method to sign UP user with email and password
   Future signUpUser() async {
     // Sign-UP user only if the password is confirmed
