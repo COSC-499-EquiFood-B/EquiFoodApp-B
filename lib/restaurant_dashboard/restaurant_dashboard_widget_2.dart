@@ -159,8 +159,30 @@ class _DonationsWidgetState extends State<DonationsWidget> {
                                 //Data is output to the user
                                 if (snapshot.connectionState ==
                                     ConnectionState.done) {
+                                  // display text if the current
+                                  // restaurant user has no donations posted.
                                   if (restaurantDonationIDs.length == 0) {
-                                    // add code here
+                                    return SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        height:
+                                            MediaQuery.of(context).size.height,
+                                        child: Center(
+                                            child: Text(
+                                                "You have not posted any donations yet.\n" +
+                                                    "Navigate to the '+' page to create one.",
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText2
+                                                    .override(
+                                                        fontFamily: 'Outfit',
+                                                        color: Color.fromARGB(
+                                                            255, 113, 113, 116),
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                        fontStyle: FontStyle
+                                                            .italic))));
                                   }
 
                                   // else return the ListView Builder
