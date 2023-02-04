@@ -159,6 +159,12 @@ class _DonationsWidgetState extends State<DonationsWidget> {
                                 //Data is output to the user
                                 if (snapshot.connectionState ==
                                     ConnectionState.done) {
+                                  if (restaurantDonationIDs.length == 0) {
+                                    // add code here
+                                  }
+
+                                  // else return the ListView Builder
+                                  // to render the donations of the restaurant
                                   return ListView.builder(
                                     scrollDirection: Axis
                                         .vertical, // required for infinite scrolling
