@@ -61,7 +61,7 @@ class _SignupWidgetState extends State<SignupWidget> {
   // method to sign UP user with email and password
   Future signUpUser() async {
     // Sign-UP user only if the password is confirmed
-    if (confirmPassword()) {
+    if (errorcheck() && confirmPassword()) {
       // Sign-UP user
       // NOTE: the '!' in front of email and password variables is to check if either of these are null
       await FirebaseAuth.instance
