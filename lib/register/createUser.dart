@@ -70,8 +70,8 @@ class _SignupWidgetState extends State<SignupWidget> {
 
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
-      title: Text("My title"),
-      content: Text("This is my message."),
+      title: Text("Alert"),
+      content: Text("Please fill up text boxes."),
       actions: [
         okButton,
       ],
@@ -110,13 +110,11 @@ class _SignupWidgetState extends State<SignupWidget> {
                 })
               });
 
-      _signOut();
-
-      Navigator.of(context).push(
-          MaterialPageRoute(builder: (BuildContext context) => LoginWidget()));
+      _signOut(); // Sign out user
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (BuildContext context) =>
+              LoginWidget())); // redirect user to Login page
     }
-    // Sign out user
-    // redirect user to Login page
   }
 
   Future<void> _signOut() async {
