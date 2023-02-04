@@ -47,7 +47,22 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.center,
-            
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 4),
+                      child: Text(
+                        'Pending Approvals',
+                        style: FlutterFlowTheme.of(context).subtitle2.override(
+                              fontFamily: 'Outfit',
+                              color: Color(0xFF57636C),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
                             ),
                       ),
                     ),
