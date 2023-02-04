@@ -51,13 +51,41 @@ class _SignupWidgetState extends State<SignupWidget> {
     if (nameTextController!.text.isEmpty ||
         emailTextController!.text.isEmpty ||
         passwordTextController!.text.isEmpty) {
-      print("checked");
-
+      print("emptry");
+      showAlertDialog(context);
       return false;
     }
     return true;
   }
-  
+
+  showAlertDialog(BuildContext context) {
+    // set up the button
+    Widget okButton = TextButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.pop(context);
+        print("pop");
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("My title"),
+      content: Text("This is my message."),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
   // method to sign UP user with email and password
   Future signUpUser() async {
     // Sign-UP user only if the password is confirmed
@@ -81,11 +109,14 @@ class _SignupWidgetState extends State<SignupWidget> {
                       1 // user_type field (1 = Individual User, 2 = Restaurant User)
                 })
               });
+
+      _signOut();
+
+      Navigator.of(context).push(
+          MaterialPageRoute(builder: (BuildContext context) => LoginWidget()));
     }
-    _signOut(); // Sign out user
+    // Sign out user
     // redirect user to Login page
-    Navigator.of(context).push(
-        MaterialPageRoute(builder: (BuildContext context) => LoginWidget()));
   }
 
   Future<void> _signOut() async {
