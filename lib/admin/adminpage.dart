@@ -3,6 +3,13 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+//Import code to link to database
+import '../indiv_dashboard/getDonations.dart';
+
+//Firebase imports
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class AdminpageWidget extends StatefulWidget {
   const AdminpageWidget({Key? key}) : super(key: key);
 
@@ -13,6 +20,33 @@ class AdminpageWidget extends StatefulWidget {
 class _AdminpageWidgetState extends State<AdminpageWidget> {
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  //TEST FIRESTORE CODE
+  // List to store restaurant donation IDs
+  List<String> donationIDs = [];
+
+  // creating reference to "donations" Collection in firebase
+  CollectionReference donations =
+      FirebaseFirestore.instance.collection('donations');
+
+  // bug fix for FutureBuilder re-rendering Cards multiple times
+  late Future dataFuture;
+
+  // method to get IDs for restaurant donations,
+  // stored under "donations" Collection in firebase
+  Future getDonationIDs() async {
+    // get donation IDs from the "donations" Collection
+    // and then store them in the "restaurantDonationIDs" List.
+    await FirebaseFirestore.instance
+        .collection('donations')
+        .get()
+        .then((snapshot) => {
+              snapshot.docs.forEach((element) {
+                // add restaurant Donation IDs to the List
+                donationIDs.add(element.reference.id);
+              })
+            });
+  }
 
   @override
   void dispose() {
@@ -168,4 +202,3 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
     );
   }
 }
-
