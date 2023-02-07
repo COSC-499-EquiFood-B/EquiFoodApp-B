@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 //Import code to link to database
-import '../indiv_dashboard/getDonations.dart';
+import 'getRestaurants.dart';
 
 //Firebase imports
 import 'package:firebase_core/firebase_core.dart';

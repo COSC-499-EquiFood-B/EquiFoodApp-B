@@ -8,9 +8,9 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 
 class getRestaurants extends StatelessWidget {
-  final String donationsID;
+  final String restaurantsID;
 
-  getRestaurants({required this.donationsID});
+  getRestaurants({required this.restaurantsID});
 
   @override
   //create reference to the "donations" collection in firebase
@@ -19,10 +19,10 @@ class getRestaurants extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return FutureBuilder<DocumentSnapshot>(
-        future: donations.doc(donationsID).get(),
+        future: donations.doc(restaurantsID).get(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            Map<String, dynamic> donationsData =
+            Map<String, dynamic> restaurantsData =
                 snapshot.data!.data() as Map<String, dynamic>;
 
             return Padding(
@@ -71,7 +71,7 @@ class getRestaurants extends StatelessWidget {
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(10),
                                   child: Image.network(
-                                    'https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
+                                    '${restaurantsData["item_img"]}',
                                     width: double.infinity,
                                     height: 115,
                                     fit: BoxFit.cover,
@@ -81,7 +81,7 @@ class getRestaurants extends StatelessWidget {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       8, 12, 0, 0),
                                   child: Text(
-                                    'Restaurant Name',
+                                    '${restaurantsData["restaurant_name"]}',
                                     style: FlutterFlowTheme.of(context)
                                         .subtitle1
                                         .override(
