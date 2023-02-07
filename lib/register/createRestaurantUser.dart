@@ -31,7 +31,7 @@ class _CreateRestaurantUserWidgetState
   TextEditingController? addressLine2TextController; // address Line 2
   TextEditingController? zipCodeTextController; // zip code
   TextEditingController? cityTextController; // city
-  TextEditingController? provinceTextController; // state/province
+  TextEditingController? stateTextController; // state/province
 
   TextEditingController? passwordTextController;
   TextEditingController? passwordConfirmTextController;
@@ -54,7 +54,7 @@ class _CreateRestaurantUserWidgetState
     addressLine2TextController = TextEditingController();
     zipCodeTextController = TextEditingController();
     cityTextController = TextEditingController();
-    provinceTextController = TextEditingController();
+    stateTextController = TextEditingController();
   }
 
   // method for cleaning-up resources
@@ -68,6 +68,7 @@ class _CreateRestaurantUserWidgetState
     addressLine2TextController?.dispose();
     zipCodeTextController?.dispose();
     cityTextController?.dispose();
+    stateTextController?.dispose();
 
     super.dispose();
   }
@@ -120,6 +121,11 @@ class _CreateRestaurantUserWidgetState
       key: scaffoldKey,
       backgroundColor: Color(0xFFF1F4F8),
       body: SafeArea(
+          child: Scrollbar(
+        thumbVisibility: true, // make scrollbar visible throughout
+        scrollbarOrientation:
+            ScrollbarOrientation.right, // show scrollbar on the right
+
         child: SingleChildScrollView(
           padding: EdgeInsetsDirectional.fromSTEB(24, 24, 24, 24),
           child: Column(
@@ -198,6 +204,7 @@ class _CreateRestaurantUserWidgetState
                   ],
                 ),
               ),
+              // name, email and password fields below
               Padding(
                 // Text Field to enter name
                 padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
@@ -280,7 +287,7 @@ class _CreateRestaurantUserWidgetState
               ),
               Padding(
                 // Text Field to enter email
-                padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -544,9 +551,11 @@ class _CreateRestaurantUserWidgetState
                   ),
                 ),
               ),
+
+              // Text Fields for Address below
               Padding(
                 // Text Field for Address Line #1
-                padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -706,11 +715,14 @@ class _CreateRestaurantUserWidgetState
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
-                child: Column(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment
+                      .center, //Center Row contents horizontally,
+
                   children: [
                     Container(
                       // Container for the City Text Field
-                      width: double.infinity,
+                      width: MediaQuery.of(context).size.width * 0.35,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         boxShadow: [
@@ -786,9 +798,95 @@ class _CreateRestaurantUserWidgetState
                         ),
                       ),
                     ),
+                    SizedBox(
+                      // for space between the two Text Fields
+                      width: 10,
+                    ),
+                    Container(
+                      // Container for Province Text Field
+                      width: MediaQuery.of(context).size.width * 0.15,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 6,
+                            color: Color(0x3416202A),
+                            offset: Offset(0, 2),
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
+                        child: TextFormField(
+                          enabled: false,
+                          controller: stateTextController,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelText: 'BC',
+                            labelStyle:
+                                FlutterFlowTheme.of(context).bodyText2.override(
+                                      fontFamily: 'Outfit',
+                                      color: Color(0xFF57636C),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                            hintStyle:
+                                FlutterFlowTheme.of(context).bodyText2.override(
+                                      fontFamily: 'Outfit',
+                                      color: Color(0xFF57636C),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            filled: true,
+                            fillColor: Colors.white,
+                            contentPadding:
+                                EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Outfit',
+                                    color: Color(0xFF0F1113),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ), // For space between the Text Fields
                     Container(
                       // Container for Zip Code Text Field
-                      width: double.infinity,
+                      width: MediaQuery.of(context).size.width * 0.35,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         boxShadow: [
@@ -993,7 +1091,7 @@ class _CreateRestaurantUserWidgetState
             ],
           ),
         ),
-      ),
+      )),
     );
   }
 }
