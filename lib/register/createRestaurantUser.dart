@@ -84,14 +84,25 @@ class _CreateRestaurantUserWidgetState
               email: emailTextController!.text.trim(),
               password: passwordTextController!.text.trim())
           .then((value) => {
-                // create user
+                // create Restaurant User
                 // AKA adding the user details to the "users" Collection in firebase
                 FirebaseFirestore.instance
                     .collection("users")
                     .doc(value.user?.uid) // uid = user id
                     .set({
-                  "name": nameTextController!.text.toString(), // add user name
+                  "restaurant_name":
+                      nameTextController!.text.toString(), // add user name
                   "email": emailTextController!.text.trim(), // add user email
+
+                  "address_line_1": addressLine1TextController!.text.toString(),
+                  "address_line_2": addressLine2TextController!.text.toString(),
+                  "city": cityTextController!.text.toString(),
+                  "province": stateTextController!.text.toString(),
+                  "zip_code": zipCodeTextController!.text.toString(),
+
+                  "created_at": DateTime.now(), // date of creation
+                  "is_approved":
+                      false, // boolean field to signify that account needs approval from admin
                   "user_type":
                       2 // user_type field (1 = Individual User, 2 = Restaurant User)
                 })
