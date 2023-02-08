@@ -31,7 +31,7 @@ class _CreateRestaurantUserWidgetState
   TextEditingController? addressLine2TextController; // address Line 2
   TextEditingController? zipCodeTextController; // zip code
   TextEditingController? cityTextController; // city
-  TextEditingController? provinceTextController; // state/province
+  TextEditingController? stateTextController; // state/province
 
   TextEditingController? passwordTextController;
   TextEditingController? passwordConfirmTextController;
@@ -54,7 +54,8 @@ class _CreateRestaurantUserWidgetState
     addressLine2TextController = TextEditingController();
     zipCodeTextController = TextEditingController();
     cityTextController = TextEditingController();
-    provinceTextController = TextEditingController();
+    stateTextController =
+        TextEditingController(text: 'BC'); // default value = BC
   }
 
   // method for cleaning-up resources
@@ -68,6 +69,7 @@ class _CreateRestaurantUserWidgetState
     addressLine2TextController?.dispose();
     zipCodeTextController?.dispose();
     cityTextController?.dispose();
+    stateTextController?.dispose();
 
     super.dispose();
   }
@@ -75,7 +77,7 @@ class _CreateRestaurantUserWidgetState
   // method to sign UP user with email and password
   Future signUpUser() async {
     // Sign-UP user only if the password is confirmed
-    if (confirmPassword()) {
+    if (checkFields() && confirmPassword()) {
       // Sign-UP user
       // NOTE: the '!' in front of email and password variables is to check if either of these are null
       await FirebaseAuth.instance
@@ -83,23 +85,36 @@ class _CreateRestaurantUserWidgetState
               email: emailTextController!.text.trim(),
               password: passwordTextController!.text.trim())
           .then((value) => {
-                // create user
+                // create Restaurant User
                 // AKA adding the user details to the "users" Collection in firebase
                 FirebaseFirestore.instance
                     .collection("users")
                     .doc(value.user?.uid) // uid = user id
                     .set({
-                  "name": nameTextController!.text.toString(), // add user name
+                  "restaurant_name":
+                      nameTextController!.text.toString(), // add user name
                   "email": emailTextController!.text.trim(), // add user email
+
+                  "address_line_1": addressLine1TextController!.text.toString(),
+                  "address_line_2": addressLine2TextController!.text.toString(),
+                  "city": cityTextController!.text.toString(),
+                  "province": stateTextController!.text.toString(),
+                  "zip_code": zipCodeTextController!.text.toString(),
+
+                  "created_at": DateTime.now(), // date of creation
+                  "is_approved":
+                      false, // boolean field to signify that account needs approval from admin
                   "user_type":
                       2 // user_type field (1 = Individual User, 2 = Restaurant User)
                 })
               });
+
+      // Sign out user to redirect them to the Login Page
+      _signOut();
+      // redirect user to Login page
+      Navigator.of(context).push(
+          MaterialPageRoute(builder: (BuildContext context) => LoginWidget()));
     }
-    _signOut(); // Sign out user
-    // redirect user to Login page
-    Navigator.of(context).push(
-        MaterialPageRoute(builder: (BuildContext context) => LoginWidget()));
   }
 
   // sign out user
@@ -110,8 +125,65 @@ class _CreateRestaurantUserWidgetState
 
   // boolean method to check if the "Password" and "Confirm Password" fields match
   bool confirmPassword() {
-    return passwordTextController!.text.trim() ==
-        passwordConfirmTextController!.text.trim();
+    if (passwordTextController!.text.trim() !=
+        passwordConfirmTextController!.text.trim()) {
+      // display Popup/Alert
+      showAlert(context, "Passwords should be matching.");
+
+      return false;
+    }
+
+    return true;
+  }
+
+  // function to check if the fields are empty
+  bool checkFields() {
+    // check if the following fields are empty
+    // NOTE: this could be improved in the longer run
+    if (nameTextController!.text.isEmpty ||
+        emailTextController!.text.isEmpty ||
+        passwordTextController!.text.isEmpty ||
+        passwordConfirmTextController!.text.isEmpty ||
+        addressLine1TextController!.text.isEmpty ||
+        cityTextController!.text.isEmpty ||
+        stateTextController!.text.isEmpty ||
+        zipCodeTextController!.text.isEmpty) {
+      // display Popup/Alert box
+      showAlert(context, "One or more fields are empty.");
+
+      return false;
+    }
+
+    return true;
+  }
+
+  // function to render Pop Up if the fields are empty
+  showAlert(BuildContext context, String text) {
+    // set up the Button
+    Widget okButton = TextButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
+
+    // Alert
+    AlertDialog alert = AlertDialog(
+      title: Text("Alert"),
+      content: Text(text),
+      actions: [
+        // Button
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 
   @override
@@ -120,28 +192,18 @@ class _CreateRestaurantUserWidgetState
       key: scaffoldKey,
       backgroundColor: Color(0xFFF1F4F8),
       body: SafeArea(
-        child: Padding(
+          child: Scrollbar(
+        thumbVisibility: true, // make scrollbar visible throughout
+        scrollbarOrientation:
+            ScrollbarOrientation.right, // show scrollbar on the right
+
+        child: SingleChildScrollView(
           padding: EdgeInsetsDirectional.fromSTEB(24, 24, 24, 24),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  InkWell(
-                    onTap: () async {
-                      context.pop();
-                    },
-                    child: Image.asset(
-                      'assets/images/logoTranslation3x.png',
-                      width: 10,
-                      height: 10,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ],
-              ),
               Padding(
+                // Sign In text/Button
                 padding: EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
@@ -213,6 +275,7 @@ class _CreateRestaurantUserWidgetState
                   ],
                 ),
               ),
+              // name, email and password fields below
               Padding(
                 // Text Field to enter name
                 padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
@@ -295,7 +358,7 @@ class _CreateRestaurantUserWidgetState
               ),
               Padding(
                 // Text Field to enter email
-                padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -559,6 +622,421 @@ class _CreateRestaurantUserWidgetState
                   ),
                 ),
               ),
+
+              // Text Fields for Address below
+              Padding(
+                // Text Field for Address Line #1
+                padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 6,
+                        color: Color(0x3416202A),
+                        offset: Offset(0, 2),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
+                    child: TextFormField(
+                      controller: addressLine1TextController,
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        labelText: 'Address Line #1',
+                        labelStyle:
+                            FlutterFlowTheme.of(context).bodyText2.override(
+                                  fontFamily: 'Outfit',
+                                  color: Color(0xFF57636C),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                        hintStyle:
+                            FlutterFlowTheme.of(context).bodyText2.override(
+                                  fontFamily: 'Outfit',
+                                  color: Color(0xFF57636C),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        contentPadding:
+                            EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                            fontFamily: 'Outfit',
+                            color: Color(0xFF0F1113),
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                          ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                // Text Field for Address Line #2
+                padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 6,
+                        color: Color(0x3416202A),
+                        offset: Offset(0, 2),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
+                    child: TextFormField(
+                      controller: addressLine2TextController,
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        labelText: 'Address Line #2 (Optional)',
+                        labelStyle:
+                            FlutterFlowTheme.of(context).bodyText2.override(
+                                  fontFamily: 'Outfit',
+                                  color: Color(0xFF57636C),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                        hintStyle:
+                            FlutterFlowTheme.of(context).bodyText2.override(
+                                  fontFamily: 'Outfit',
+                                  color: Color(0xFF57636C),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        contentPadding:
+                            EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                            fontFamily: 'Outfit',
+                            color: Color(0xFF0F1113),
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                          ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment
+                      .center, //Center Row contents horizontally,
+
+                  children: [
+                    Container(
+                      // Container for the City Text Field
+                      width: MediaQuery.of(context).size.width * 0.35,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 6,
+                            color: Color(0x3416202A),
+                            offset: Offset(0, 2),
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
+                        child: TextFormField(
+                          controller: cityTextController,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelText: 'City',
+                            labelStyle:
+                                FlutterFlowTheme.of(context).bodyText2.override(
+                                      fontFamily: 'Outfit',
+                                      color: Color(0xFF57636C),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                            hintStyle:
+                                FlutterFlowTheme.of(context).bodyText2.override(
+                                      fontFamily: 'Outfit',
+                                      color: Color(0xFF57636C),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            filled: true,
+                            fillColor: Colors.white,
+                            contentPadding:
+                                EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Outfit',
+                                    color: Color(0xFF0F1113),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      // for space between the two Text Fields
+                      width: 10,
+                    ),
+                    Container(
+                      // Container for Province Text Field
+                      width: MediaQuery.of(context).size.width * 0.15,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 6,
+                            color: Color(0x3416202A),
+                            offset: Offset(0, 2),
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
+                        child: TextFormField(
+                          enabled: false,
+                          controller: stateTextController,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelText: 'BC',
+                            labelStyle:
+                                FlutterFlowTheme.of(context).bodyText2.override(
+                                      fontFamily: 'Outfit',
+                                      color: Color(0xFF57636C),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                            hintStyle:
+                                FlutterFlowTheme.of(context).bodyText2.override(
+                                      fontFamily: 'Outfit',
+                                      color: Color(0xFF57636C),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            filled: true,
+                            fillColor: Colors.white,
+                            contentPadding:
+                                EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Outfit',
+                                    color: Color(0xFF0F1113),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ), // For space between the Text Fields
+                    Container(
+                      // Container for Zip Code Text Field
+                      width: MediaQuery.of(context).size.width * 0.35,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 6,
+                            color: Color(0x3416202A),
+                            offset: Offset(0, 2),
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
+                        child: TextFormField(
+                          controller: zipCodeTextController,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelText: 'Zip Code',
+                            labelStyle:
+                                FlutterFlowTheme.of(context).bodyText2.override(
+                                      fontFamily: 'Outfit',
+                                      color: Color(0xFF57636C),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                            hintStyle:
+                                FlutterFlowTheme.of(context).bodyText2.override(
+                                      fontFamily: 'Outfit',
+                                      color: Color(0xFF57636C),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            filled: true,
+                            fillColor: Colors.white,
+                            contentPadding:
+                                EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Outfit',
+                                    color: Color(0xFF0F1113),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
               Padding(
                 // Sign-up Button
                 padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
@@ -684,7 +1162,7 @@ class _CreateRestaurantUserWidgetState
             ],
           ),
         ),
-      ),
+      )),
     );
   }
 }

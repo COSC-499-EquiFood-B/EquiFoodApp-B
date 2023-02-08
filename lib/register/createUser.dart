@@ -47,10 +47,48 @@ class _SignupWidgetState extends State<SignupWidget> {
     super.dispose();
   }
 
+  bool errorcheck() {
+    if (nameTextController!.text.isEmpty ||
+        emailTextController!.text.isEmpty ||
+        passwordTextController!.text.isEmpty) {
+      showAlertDialog(context, "Please fill up text boxes.");
+      return false;
+    }
+    return true;
+  }
+
+  showAlertDialog(BuildContext context, String text) {
+    // set up the button
+    Widget okButton = TextButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.pop(context);
+        print("pop");
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Alert"),
+      content: Text(text),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
   // method to sign UP user with email and password
   Future signUpUser() async {
     // Sign-UP user only if the password is confirmed
-    if (confirmPassword()) {
+    if (errorcheck() && confirmPassword()) {
       // Sign-UP user
       // NOTE: the '!' in front of email and password variables is to check if either of these are null
       await FirebaseAuth.instance
@@ -70,11 +108,12 @@ class _SignupWidgetState extends State<SignupWidget> {
                       1 // user_type field (1 = Individual User, 2 = Restaurant User)
                 })
               });
+
+      _signOut(); // Sign out user
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (BuildContext context) =>
+              LoginWidget())); // redirect user to Login page
     }
-    _signOut(); // Sign out user
-    // redirect user to Login page
-    Navigator.of(context).push(
-        MaterialPageRoute(builder: (BuildContext context) => LoginWidget()));
   }
 
   Future<void> _signOut() async {
@@ -83,6 +122,10 @@ class _SignupWidgetState extends State<SignupWidget> {
 
   // boolean method to check if the "Password" and "Confirm Password" fields match
   bool confirmPassword() {
+    if (passwordTextController!.text.trim() !=
+        passwordConfirmTextController!.text.trim()) {
+      showAlertDialog(context, "The password did not match.");
+    }
     return passwordTextController!.text.trim() ==
         passwordConfirmTextController!.text.trim();
   }
