@@ -8,18 +8,17 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 
 class getRestaurants extends StatelessWidget {
-  final String restaurantsID;
+  final String restaurantIDs;
 
-  getRestaurants({required this.restaurantsID});
+  getRestaurants({required this.restaurantIDs});
 
   @override
   //create reference to the "donations" collection in firebase
-  CollectionReference donations =
-      FirebaseFirestore.instance.collection('donations');
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
 
   Widget build(BuildContext context) {
     return FutureBuilder<DocumentSnapshot>(
-        future: donations.doc(restaurantsID).get(),
+        future: users.doc(restaurantIDs).get(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             Map<String, dynamic> restaurantsData =
@@ -71,7 +70,7 @@ class getRestaurants extends StatelessWidget {
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(10),
                                   child: Image.network(
-                                    '${restaurantsData["item_img"]}',
+                                    '${restaurantsData["profile_img"]}',
                                     width: double.infinity,
                                     height: 115,
                                     fit: BoxFit.cover,
