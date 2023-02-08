@@ -51,14 +51,13 @@ class _SignupWidgetState extends State<SignupWidget> {
     if (nameTextController!.text.isEmpty ||
         emailTextController!.text.isEmpty ||
         passwordTextController!.text.isEmpty) {
-      print("emptry");
-      showAlertDialog(context);
+      showAlertDialog(context, "Please fill up text boxes.");
       return false;
     }
     return true;
   }
 
-  showAlertDialog(BuildContext context) {
+  showAlertDialog(BuildContext context, String text) {
     // set up the button
     Widget okButton = TextButton(
       child: Text("OK"),
@@ -71,7 +70,7 @@ class _SignupWidgetState extends State<SignupWidget> {
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
       title: Text("Alert"),
-      content: Text("Please fill up text boxes."),
+      content: Text(text),
       actions: [
         okButton,
       ],
@@ -123,6 +122,10 @@ class _SignupWidgetState extends State<SignupWidget> {
 
   // boolean method to check if the "Password" and "Confirm Password" fields match
   bool confirmPassword() {
+    if (passwordTextController!.text.trim() !=
+        passwordConfirmTextController!.text.trim()) {
+      showAlertDialog(context, "The password did not match.");
+    }
     return passwordTextController!.text.trim() ==
         passwordConfirmTextController!.text.trim();
   }
