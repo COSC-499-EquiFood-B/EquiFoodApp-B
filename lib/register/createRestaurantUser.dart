@@ -54,7 +54,8 @@ class _CreateRestaurantUserWidgetState
     addressLine2TextController = TextEditingController();
     zipCodeTextController = TextEditingController();
     cityTextController = TextEditingController();
-    stateTextController = TextEditingController();
+    stateTextController =
+        TextEditingController(text: 'BC'); // default value = BC
   }
 
   // method for cleaning-up resources
