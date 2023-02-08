@@ -1,3 +1,7 @@
+import 'package:equi_food_app/admin/approvalpage.dart';
+import 'package:equi_food_app/admin/approvedrestaurants.dart';
+import 'package:equi_food_app/admin/deniedpage.dart';
+
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -9,9 +13,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ApproveordenyWidget extends StatefulWidget {
-  final String donationsID;
+  final String restaurantIDs;
 
-  const ApproveordenyWidget({Key? key, required this.donationsID})
+  const ApproveordenyWidget({Key? key, required this.restaurantIDs})
       : super(key: key);
 
   @override
@@ -28,7 +32,7 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<DocumentSnapshot>(
-        future: restaurants.doc(widget.donationsID).get(),
+        future: restaurants.doc(widget.restaurantIDs).get(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             Map<String, dynamic> restaurantsData =
@@ -75,7 +79,7 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       14, 16, 0, 0),
                                   child: Text(
-                                    'Restaurant Name',
+                                    restaurantsData["restaurant_name"],
                                     style: FlutterFlowTheme.of(context).title2,
                                   ),
                                 ),
@@ -83,7 +87,7 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
                               Align(
                                 alignment: AlignmentDirectional(0, 0),
                                 child: Image.network(
-                                  'https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
+                                  restaurantsData["profile_img"],
                                   width: 360,
                                   height: 100,
                                   fit: BoxFit.cover,
@@ -108,7 +112,7 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     14, 12, 0, 4),
                                 child: Text(
-                                  'Location:',
+                                 'Locations: ${restaurantsData["address"]}',
                                   style: FlutterFlowTheme.of(context).bodyText1,
                                 ),
                               ),
@@ -123,8 +127,13 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(13, 0, 0, 0),
                                 child: FFButtonWidget(
-                                  onPressed: () async {
-                                    context.pushNamed('restaurantapproved');
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                        const RestaurantapprovedWidget()),
+                                    );
                                   },
                                   text: 'Approve',
                                   options: FFButtonOptions(
@@ -149,8 +158,13 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     13, 15, 0, 0),
                                 child: FFButtonWidget(
-                                  onPressed: () async {
-                                    context.pushNamed('restaurantdenied');
+                                  onPressed: () {
+                                    Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                        const RestaurantdeniedWidget()),
+                                    );
                                   },
                                   text: 'Deny',
                                   options: FFButtonOptions(

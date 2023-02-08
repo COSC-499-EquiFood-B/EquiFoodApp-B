@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:equi_food_app/admin/approvedrestaurants.dart';
+import 'package:equi_food_app/admin/approveordeny.dart';
 import 'package:equi_food_app/flutter_flow/flutter_flow_util.dart';
 import 'package:equi_food_app/index.dart';
 import 'package:flutter/cupertino.dart';
@@ -59,8 +61,13 @@ class getRestaurants extends StatelessWidget {
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(4, 4, 4, 4),
                           child: InkWell(
-                            onTap: () async {
-                              context.pushNamed('approveordeny');
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                  ApproveordenyWidget(restaurantIDs: restaurantIDs)),
+                              );
                             },
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
