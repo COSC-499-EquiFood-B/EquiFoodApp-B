@@ -1,3 +1,4 @@
+import 'package:equi_food_app/admin/adminpage.dart';
 import 'package:equi_food_app/backend/backend.dart';
 import 'package:equi_food_app/index.dart';
 import 'package:equi_food_app/indiv_dashboard/indivdash1cont.dart';

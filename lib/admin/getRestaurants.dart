@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:equi_food_app/admin/approvedrestaurants.dart';
+import 'package:equi_food_app/admin/approveordeny.dart';
 import 'package:equi_food_app/flutter_flow/flutter_flow_util.dart';
 import 'package:equi_food_app/index.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,18 +10,17 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 
 class getRestaurants extends StatelessWidget {
-  final String restaurantsID;
+  final String restaurantIDs;
 
-  getRestaurants({required this.restaurantsID});
+  getRestaurants({required this.restaurantIDs});
 
   @override
   //create reference to the "donations" collection in firebase
-  CollectionReference donations =
-      FirebaseFirestore.instance.collection('donations');
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
 
   Widget build(BuildContext context) {
     return FutureBuilder<DocumentSnapshot>(
-        future: donations.doc(restaurantsID).get(),
+        future: users.doc(restaurantIDs).get(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             Map<String, dynamic> restaurantsData =
@@ -60,8 +61,13 @@ class getRestaurants extends StatelessWidget {
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(4, 4, 4, 4),
                           child: InkWell(
-                            onTap: () async {
-                              context.pushNamed('approveordeny');
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                  ApproveordenyWidget(restaurantIDs: restaurantIDs)),
+                              );
                             },
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -71,7 +77,7 @@ class getRestaurants extends StatelessWidget {
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(10),
                                   child: Image.network(
-                                    '${restaurantsData["item_img"]}',
+                                    '${restaurantsData["profile_img"]}',
                                     width: double.infinity,
                                     height: 115,
                                     fit: BoxFit.cover,
