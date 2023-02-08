@@ -77,7 +77,7 @@ class _CreateRestaurantUserWidgetState
   // method to sign UP user with email and password
   Future signUpUser() async {
     // Sign-UP user only if the password is confirmed
-    if (confirmPassword()) {
+    if (checkFields() && confirmPassword()) {
       // Sign-UP user
       // NOTE: the '!' in front of email and password variables is to check if either of these are null
       await FirebaseAuth.instance
@@ -108,11 +108,13 @@ class _CreateRestaurantUserWidgetState
                       2 // user_type field (1 = Individual User, 2 = Restaurant User)
                 })
               });
+
+      // Sign out user to redirect them to the Login Page
+      _signOut();
+      // redirect user to Login page
+      Navigator.of(context).push(
+          MaterialPageRoute(builder: (BuildContext context) => LoginWidget()));
     }
-    _signOut(); // Sign out user
-    // redirect user to Login page
-    Navigator.of(context).push(
-        MaterialPageRoute(builder: (BuildContext context) => LoginWidget()));
   }
 
   // sign out user
@@ -123,8 +125,65 @@ class _CreateRestaurantUserWidgetState
 
   // boolean method to check if the "Password" and "Confirm Password" fields match
   bool confirmPassword() {
-    return passwordTextController!.text.trim() ==
-        passwordConfirmTextController!.text.trim();
+    if (passwordTextController!.text.trim() !=
+        passwordConfirmTextController!.text.trim()) {
+      // display Popup/Alert
+      showAlert(context, "Passwords should be matching.");
+
+      return false;
+    }
+
+    return true;
+  }
+
+  // function to check if the fields are empty
+  bool checkFields() {
+    // check if the following fields are empty
+    // NOTE: this could be improved in the longer run
+    if (nameTextController!.text.isEmpty ||
+        emailTextController!.text.isEmpty ||
+        passwordTextController!.text.isEmpty ||
+        passwordConfirmTextController!.text.isEmpty ||
+        addressLine1TextController!.text.isEmpty ||
+        cityTextController!.text.isEmpty ||
+        stateTextController!.text.isEmpty ||
+        zipCodeTextController!.text.isEmpty) {
+      // display Popup/Alert box
+      showAlert(context, "One or more fields are empty.");
+
+      return false;
+    }
+
+    return true;
+  }
+
+  // function to render Pop Up if the fields are empty
+  showAlert(BuildContext context, String text) {
+    // set up the Button
+    Widget okButton = TextButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
+
+    // Alert
+    AlertDialog alert = AlertDialog(
+      title: Text("Alert"),
+      content: Text(text),
+      actions: [
+        // Button
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 
   @override
