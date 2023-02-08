@@ -1,3 +1,4 @@
+import 'package:equi_food_app/admin/adminpage.dart';
 import 'package:equi_food_app/backend/backend.dart';
 import 'package:equi_food_app/index.dart';
 import 'package:equi_food_app/indiv_dashboard/indivdash1cont.dart';
@@ -79,8 +80,7 @@ class _LoginWidgetState extends State<LoginWidget> {
       // WILL HAVE TO RENDER THE RIGHT PAGE BASED ON USER TYPE
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
-              builder: (BuildContext context) =>
-                  userType == 1 ? HmepageWidget() : DonationsWidget()),
+              builder: (BuildContext context) => AdminpageWidget()),
           (route) => false);
     }
   }
