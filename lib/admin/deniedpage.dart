@@ -1,3 +1,5 @@
+import 'package:equi_food_app/admin/adminpage.dart';
+
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -57,17 +59,14 @@ class _RestaurantdeniedWidgetState extends State<RestaurantdeniedWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),
                 child: FFButtonWidget(
-                  onPressed: () async {
-                    context.pushNamed(
-                      'adminpage',
-                      extra: <String, dynamic>{
-                        kTransitionInfoKey: TransitionInfo(
-                          hasTransition: true,
-                          transitionType: PageTransitionType.leftToRight,
-                        ),
-                      },
-                    );
-                  },
+                   onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const AdminpageWidget()),
+                          );
+                        },
                   text: 'Return Home',
                   options: FFButtonOptions(
                     width: 150,
