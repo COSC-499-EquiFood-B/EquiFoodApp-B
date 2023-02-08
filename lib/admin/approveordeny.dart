@@ -22,16 +22,16 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   // Create reference to donations collection
-  CollectionReference donations =
-      FirebaseFirestore.instance.collection('donations');
+  CollectionReference restaurants =
+      FirebaseFirestore.instance.collection('users');
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<DocumentSnapshot>(
-        future: donations.doc(widget.donationsID).get(),
+        future: restaurants.doc(widget.donationsID).get(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            Map<String, dynamic> donationsData =
+            Map<String, dynamic> restaurantsData =
                 snapshot.data!.data() as Map<String, dynamic>;
             return Scaffold(
                 key: scaffoldKey,
@@ -180,6 +180,15 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
                   ),
                 ));
           }
+          // Loading Spinner at the centre of the page
+          return SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              child: Center(
+                child: CircularProgressIndicator(
+                  color: Color.fromARGB(255, 52, 185, 59),
+                ),
+              ));
         });
   }
 }
