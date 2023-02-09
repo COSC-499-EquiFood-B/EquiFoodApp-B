@@ -1,3 +1,4 @@
+import 'package:equi_food_app/admin/adminpage.dart';
 import 'package:equi_food_app/admin/approvalpage.dart';
 import 'package:equi_food_app/admin/approvedrestaurants.dart';
 import 'package:equi_food_app/admin/deniedpage.dart';
@@ -45,8 +46,12 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
                       FlutterFlowTheme.of(context).secondaryBackground,
                   automaticallyImplyLeading: false,
                   leading: InkWell(
-                    onTap: () async {
-                      context.pop();
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AdminpageWidget()),
+                      );
                     },
                     child: Icon(
                       Icons.chevron_left_rounded,
@@ -112,7 +117,7 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     14, 12, 0, 4),
                                 child: Text(
-                                 'Locations: ${restaurantsData["address"]}',
+                                  'Locations: ${restaurantsData["address"]}',
                                   style: FlutterFlowTheme.of(context).bodyText1,
                                 ),
                               ),
@@ -131,8 +136,8 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) =>
-                                        const RestaurantapprovedWidget()),
+                                          builder: (context) =>
+                                              const RestaurantapprovedWidget()),
                                     );
                                   },
                                   text: 'Approve',
@@ -160,10 +165,10 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
                                 child: FFButtonWidget(
                                   onPressed: () {
                                     Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                        const RestaurantdeniedWidget()),
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const RestaurantdeniedWidget()),
                                     );
                                   },
                                   text: 'Deny',
