@@ -78,36 +78,67 @@ class _CreateRestaurantUserWidgetState
   Future signUpUser() async {
     // Sign-UP user only if the password is confirmed
     if (checkFields() && confirmPassword()) {
-      // Sign-UP user
-      // NOTE: the '!' in front of email and password variables is to check if either of these are null
-      await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-              email: emailTextController!.text.trim(),
-              password: passwordTextController!.text.trim())
-          .then((value) => {
-                // create Restaurant User
-                // AKA adding the user details to the "users" Collection in firebase
-                FirebaseFirestore.instance
-                    .collection("users")
-                    .doc(value.user?.uid) // uid = user id
-                    .set({
-                  "restaurant_name":
-                      nameTextController!.text.toString(), // add user name
-                  "email": emailTextController!.text.trim(), // add user email
+      try {
+        // Sign-UP user
+        // NOTE: the '!' in front of email and password variables is to check if either of these are null
+        await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(
+                email: emailTextController!.text.trim(),
+                password: passwordTextController!.text.trim())
+            .then((value) => {
+                  // create Restaurant User
+                  // AKA adding the user details to the "users" Collection in firebase
+                  FirebaseFirestore.instance
+                      .collection("users")
+                      .doc(value.user?.uid) // uid = user id
+                      .set({
+                    "restaurant_name":
+                        nameTextController!.text.toString(), // add user name
+                    "email": emailTextController!.text.trim(), // add user email
 
-                  "address_line_1": addressLine1TextController!.text.toString(),
-                  "address_line_2": addressLine2TextController!.text.toString(),
-                  "city": cityTextController!.text.toString(),
-                  "province": stateTextController!.text.toString(),
-                  "zip_code": zipCodeTextController!.text.toString(),
+                    "address_line_1":
+                        addressLine1TextController!.text.toString(),
+                    "address_line_2":
+                        addressLine2TextController!.text.toString(),
+                    "city": cityTextController!.text.toString(),
+                    "province": stateTextController!.text.toString(),
+                    "zip_code": zipCodeTextController!.text.toString(),
 
-                  "created_at": DateTime.now(), // date of creation
-                  "is_approved":
-                      false, // boolean field to signify that account needs approval from admin
-                  "user_type":
-                      2 // user_type field (1 = Individual User, 2 = Restaurant User)
-                })
-              });
+                    "created_at": DateTime.now(), // date of creation
+                    "is_approved":
+                        false, // boolean field to signify that account needs approval from admin
+                    "user_type":
+                        2 // user_type field (1 = Individual User, 2 = Restaurant User)
+                  })
+                });
+      } on FirebaseAuthException catch (e) {
+        // "e" is basically the error object returned by FirebaseAuthException
+        // e.code can be used to find which type of error has occurred.
+
+        // default value of error message
+        String errorMsg = "An unknown error occurred. Could not sign up user.";
+
+        // if the user already exists
+        if (e.code == 'email-already-in-use') {
+          errorMsg = "Email already in use. Please Log in.";
+        }
+        // if email is invalid
+        else if (e.code == "invalid-email") {
+          errorMsg = "Invalid email. Please try again.";
+        }
+        // if password is not strong
+        else if (e.code == "weak-password") {
+          errorMsg = "Weak Password. Please choose a strong password.";
+        }
+
+        // display Snackbar with error message
+        displaySnackbar(context, errorMsg);
+
+        return;
+      }
+
+      // display Snackbar if Sign-Up is successful
+      displaySnackbar(context, "Account created successfully!");
 
       // Sign out user to redirect them to the Login Page
       _signOut();
@@ -128,7 +159,7 @@ class _CreateRestaurantUserWidgetState
     if (passwordTextController!.text.trim() !=
         passwordConfirmTextController!.text.trim()) {
       // display Popup/Alert
-      showAlert(context, "Passwords should be matching.");
+      displayAlert(context, "Passwords should be matching.");
 
       return false;
     }
@@ -149,7 +180,7 @@ class _CreateRestaurantUserWidgetState
         stateTextController!.text.isEmpty ||
         zipCodeTextController!.text.isEmpty) {
       // display Popup/Alert box
-      showAlert(context, "One or more fields are empty.");
+      displayAlert(context, "One or more fields are empty.");
 
       return false;
     }
@@ -158,7 +189,7 @@ class _CreateRestaurantUserWidgetState
   }
 
   // function to render Pop Up if the fields are empty
-  showAlert(BuildContext context, String text) {
+  displayAlert(BuildContext context, String text) {
     // set up the Button
     Widget okButton = TextButton(
       child: Text("OK"),
@@ -184,6 +215,20 @@ class _CreateRestaurantUserWidgetState
         return alert;
       },
     );
+  }
+
+  // function to show a Snackbar
+  displaySnackbar(context, text) {
+    SnackBar snackbar = SnackBar(
+      width: 200,
+      content: Text(text),
+      behavior: SnackBarBehavior.floating,
+      duration: const Duration(milliseconds: 2000),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+    );
+
+    // show snackbar
+    ScaffoldMessenger.of(context).showSnackBar(snackbar);
   }
 
   @override
