@@ -112,10 +112,23 @@ class _CreateRestaurantUserWidgetState
                   })
                 });
       } on FirebaseAuthException catch (e) {
-        String errorMsg = "";
+        // "e" is basically the error object returned by FirebaseAuthException
+        // e.code can be used to find which type of error has occurred.
+
+        // default value of error message
+        String errorMsg = "An unknown error occurred. Could not sign up user.";
+
         // if the user already exists
         if (e.code == 'email-already-in-use') {
           errorMsg = "Email already in use. Please Log in.";
+        }
+        // if email is invalid
+        else if (e.code == "invalid-email") {
+          errorMsg = "Invalid email. Please try again.";
+        }
+        // if password is not strong
+        else if (e.code == "weak-password") {
+          errorMsg = "Weak Password. Please choose a strong password.";
         }
 
         // display Snackbar with error message
