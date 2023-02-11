@@ -78,36 +78,51 @@ class _CreateRestaurantUserWidgetState
   Future signUpUser() async {
     // Sign-UP user only if the password is confirmed
     if (checkFields() && confirmPassword()) {
-      // Sign-UP user
-      // NOTE: the '!' in front of email and password variables is to check if either of these are null
-      await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-              email: emailTextController!.text.trim(),
-              password: passwordTextController!.text.trim())
-          .then((value) => {
-                // create Restaurant User
-                // AKA adding the user details to the "users" Collection in firebase
-                FirebaseFirestore.instance
-                    .collection("users")
-                    .doc(value.user?.uid) // uid = user id
-                    .set({
-                  "restaurant_name":
-                      nameTextController!.text.toString(), // add user name
-                  "email": emailTextController!.text.trim(), // add user email
+      try {
+        // Sign-UP user
+        // NOTE: the '!' in front of email and password variables is to check if either of these are null
+        await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(
+                email: emailTextController!.text.trim(),
+                password: passwordTextController!.text.trim())
+            .then((value) => {
+                  // create Restaurant User
+                  // AKA adding the user details to the "users" Collection in firebase
+                  FirebaseFirestore.instance
+                      .collection("users")
+                      .doc(value.user?.uid) // uid = user id
+                      .set({
+                    "restaurant_name":
+                        nameTextController!.text.toString(), // add user name
+                    "email": emailTextController!.text.trim(), // add user email
 
-                  "address_line_1": addressLine1TextController!.text.toString(),
-                  "address_line_2": addressLine2TextController!.text.toString(),
-                  "city": cityTextController!.text.toString(),
-                  "province": stateTextController!.text.toString(),
-                  "zip_code": zipCodeTextController!.text.toString(),
+                    "address_line_1":
+                        addressLine1TextController!.text.toString(),
+                    "address_line_2":
+                        addressLine2TextController!.text.toString(),
+                    "city": cityTextController!.text.toString(),
+                    "province": stateTextController!.text.toString(),
+                    "zip_code": zipCodeTextController!.text.toString(),
 
-                  "created_at": DateTime.now(), // date of creation
-                  "is_approved":
-                      false, // boolean field to signify that account needs approval from admin
-                  "user_type":
-                      2 // user_type field (1 = Individual User, 2 = Restaurant User)
-                })
-              });
+                    "created_at": DateTime.now(), // date of creation
+                    "is_approved":
+                        false, // boolean field to signify that account needs approval from admin
+                    "user_type":
+                        2 // user_type field (1 = Individual User, 2 = Restaurant User)
+                  })
+                });
+      } on FirebaseAuthException catch (e) {
+        String errorMsg = "";
+        // if the user already exists
+        if (e.code == 'email-already-in-use') {
+          errorMsg = "Email already in use. Please Log in.";
+        }
+
+        // display Snackbar with error message
+        displaySnackbar(context, errorMsg);
+
+        return;
+      }
 
       // display Snackbar if Sign-Up is successful
       displaySnackbar(context, "Account created successfully!");
