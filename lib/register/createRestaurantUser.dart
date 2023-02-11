@@ -109,6 +109,9 @@ class _CreateRestaurantUserWidgetState
                 })
               });
 
+      // display Snackbar if Sign-Up is successful
+      displaySnackbar(context, "Account created successfully!");
+
       // Sign out user to redirect them to the Login Page
       _signOut();
       // redirect user to Login page
@@ -128,7 +131,7 @@ class _CreateRestaurantUserWidgetState
     if (passwordTextController!.text.trim() !=
         passwordConfirmTextController!.text.trim()) {
       // display Popup/Alert
-      showAlert(context, "Passwords should be matching.");
+      displayAlert(context, "Passwords should be matching.");
 
       return false;
     }
@@ -149,7 +152,7 @@ class _CreateRestaurantUserWidgetState
         stateTextController!.text.isEmpty ||
         zipCodeTextController!.text.isEmpty) {
       // display Popup/Alert box
-      showAlert(context, "One or more fields are empty.");
+      displayAlert(context, "One or more fields are empty.");
 
       return false;
     }
@@ -158,7 +161,7 @@ class _CreateRestaurantUserWidgetState
   }
 
   // function to render Pop Up if the fields are empty
-  showAlert(BuildContext context, String text) {
+  displayAlert(BuildContext context, String text) {
     // set up the Button
     Widget okButton = TextButton(
       child: Text("OK"),
@@ -184,6 +187,20 @@ class _CreateRestaurantUserWidgetState
         return alert;
       },
     );
+  }
+
+  // function to show a Snackbar
+  displaySnackbar(context, text) {
+    SnackBar snackbar = SnackBar(
+      width: 200,
+      content: Text(text),
+      behavior: SnackBarBehavior.floating,
+      duration: const Duration(milliseconds: 2000),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+    );
+
+    // show snackbar
+    ScaffoldMessenger.of(context).showSnackBar(snackbar);
   }
 
   @override
