@@ -86,6 +86,12 @@ class _CreateRestaurantUserWidgetState
                 email: emailTextController!.text.trim(),
                 password: passwordTextController!.text.trim())
             .then((value) => {
+                  // add user (Restaurant's) name in their profile
+                  // So name would be directly accessible along with email without spearately querying the
+                  // "users" collection everytime
+                  value.user
+                      ?.updateDisplayName(nameTextController!.text.toString()),
+
                   // create Restaurant User
                   // AKA adding the user details to the "users" Collection in firebase
                   FirebaseFirestore.instance

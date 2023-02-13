@@ -45,6 +45,9 @@ class _DonationsWidgetState extends State<DonationsWidget> {
 
   late Future dataFuture;
 
+  final currentRestaurantUser = FirebaseAuth.instance.currentUser;
+  late String? userName = "";
+
   // method to get IDs for restaurant donations,
   // stored under "donations" Collection in firebase
   Future getRestaurantDonationIDs() async {
@@ -56,17 +59,8 @@ class _DonationsWidgetState extends State<DonationsWidget> {
         .collection("users")
         .doc(currRestaurantUser?.uid);
 
-    // get donation IDs from the "donations" Collection
+    // get donation IDs of the current Restaurant User from the "donations" Collection
     // and then store them in the "restaurantDonationIDs" List.
-    // await FirebaseFirestore.instance
-    //     .collection('donations')
-    //     .get()
-    //     .then((snapshot) => {
-    //           snapshot.docs.forEach((element) {
-    //             // add restaurant Donation IDs to the List
-    //             restaurantDonationIDs.add(element.reference.id);
-    //           })
-    //         });
     await FirebaseFirestore.instance
         .collection('donations')
         .where("restaurant_ref", isEqualTo: restaurantUserRef)
@@ -83,6 +77,7 @@ class _DonationsWidgetState extends State<DonationsWidget> {
   void initState() {
     super.initState();
 
+    userName = currentRestaurantUser?.displayName;
     dataFuture = getRestaurantDonationIDs();
   }
 
@@ -97,7 +92,7 @@ class _DonationsWidgetState extends State<DonationsWidget> {
                   backgroundColor: Color(0xFFACE4AF),
                   automaticallyImplyLeading: false,
                   title: Text(
-                    'Donations',
+                    'Hello, $userName',
                     style: FlutterFlowTheme.of(context).title2.override(
                           fontFamily: 'Poppins',
                           color: Colors.white,
