@@ -9,6 +9,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+// importing custom-defined functions
+import '../utils/displaySnackbar.dart'; // to render a SnackBar
+
 class CreateDonationWidget extends StatefulWidget {
   const CreateDonationWidget({Key? key}) : super(key: key);
 
@@ -52,17 +55,40 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
         .doc(currentRestaurantUser?.uid);
 
     // add details to the "donations" Collection
-    await FirebaseFirestore.instance.collection("donations").add({
-      "item_name": donationNameController!.text.toString(),
-      "item_img":
-          "https://cleangreensimple.com/wp-content/uploads/2020/04/7-sweet-peas-and-saffron-air-fryer-cauliflower-chickpea-tacos.jpg", // default img
-      "description": donationDescriptionController!.text.toString(),
-      "restaurant_name": currentRestaurantUser?.displayName,
-      "quantity": int.parse(donationQtyController!.text),
-      "price": double.parse(donationPriceController!.text),
-      "created_at": DateTime.now(),
-      "restaurant_ref": restaurantRef
-    });
+    await FirebaseFirestore.instance
+        .collection("donations")
+        .add({
+          "item_name": donationNameController!.text.toString(),
+          "item_img":
+              "https://cleangreensimple.com/wp-content/uploads/2020/04/7-sweet-peas-and-saffron-air-fryer-cauliflower-chickpea-tacos.jpg", // default img
+          "description": donationDescriptionController!.text.toString(),
+          "restaurant_name": currentRestaurantUser?.displayName,
+          "quantity": int.parse(donationQtyController!.text),
+          "price": double.parse(donationPriceController!.text),
+          "created_at": DateTime.now(),
+          "restaurant_ref": restaurantRef
+        })
+        .then((value) => {
+              // display SnackBar with success message
+              displaySnackbar(context, "Donation created."),
+            })
+        .catchError((onError) => {
+              print(onError.toString()),
+              // display SnackBar with error text
+              displaySnackbar(context, onError.toString())
+            });
+  }
+
+  // function to check if all the fields are filled
+  bool checkDonationFields() {
+    if (donationNameController!.text.isEmpty ||
+        donationDescriptionController!.text.isEmpty ||
+        donationQtyController!.text.isEmpty ||
+        donationPriceController!.text.isEmpty) {
+      return false;
+    }
+
+    return true;
   }
 
   @override
