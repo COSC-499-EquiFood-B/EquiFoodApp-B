@@ -2,13 +2,13 @@ import 'package:equi_food_app/index.dart';
 import 'package:equi_food_app/indiv_dashboard/default-stats.dart';
 import 'package:equi_food_app/indiv_dashboard/getDonations.dart';
 import 'package:equi_food_app/restaurant_dashboard/restaurantSettings.dart';
+import 'package:equi_food_app/statspages/statisticsforindiv.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import './getDonations.dart';
 
 //firebase imports
 import 'package:firebase_core/firebase_core.dart';
@@ -27,7 +27,7 @@ class _HmepageWidgetState extends State<HmepageWidget> {
   List<Widget> _screens = [
     HmepageWidget(),
     PickupMapWidget(),
-    DonationscreenWidget(),
+    StatisticsforindivWidget(),
     SettingsWidget(),
   ];
 

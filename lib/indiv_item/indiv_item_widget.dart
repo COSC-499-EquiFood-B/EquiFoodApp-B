@@ -1,5 +1,5 @@
 import 'package:equi_food_app/confirmation/confirmation.dart';
-import 'package:equi_food_app/indiv_dashboard/indivdash1cont.dart';
+import 'package:equi_food_app/indiv_dashboard/indivDashboard.dart';
 
 import '../flutter_flow/flutter_flow_google_map.dart';
 import '../flutter_flow/flutter_flow_theme.dart';

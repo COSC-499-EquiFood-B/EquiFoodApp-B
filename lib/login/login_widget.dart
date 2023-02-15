@@ -1,11 +1,9 @@
 import 'package:equi_food_app/backend/backend.dart';
-import 'package:equi_food_app/index.dart';
-import 'package:equi_food_app/indiv_dashboard/indivdash1cont.dart';
+import 'package:equi_food_app/indiv_dashboard/indivDashboard.dart';
 import 'package:equi_food_app/register/createUser.dart';
 import 'package:equi_food_app/restaurant_dashboard/restaurant_dashboard_widget_2.dart';
 
 import '../auth/auth_util.dart';
-import 'package:go_router/go_router.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
