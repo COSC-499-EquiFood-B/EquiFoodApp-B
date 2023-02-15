@@ -52,35 +52,98 @@ class _LoginWidgetState extends State<LoginWidget> {
   // method to sign IN user with email and password
   // will only be called if the user chooses to authenticate with email and not other available providers
   Future signInUser() async {
-    // NOTE: the '!' in front of email and password variables is to check if either of these are null
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailTextController!.text.trim(),
-        password: passwordTextController!.text.trim());
+    if (errorcheck()) {
+      try {
+        // NOTE: the '!' in front of email and password variables is to check if either of these are null
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
+            email: emailTextController!.text.trim(),
+            password: passwordTextController!.text.trim());
+      } on FirebaseAuthException catch (e) {
+        String errorMsg = "An unknown error occurred. Could not log in user.";
 
-    // get current user
-    final currentUser = FirebaseAuth.instance.currentUser;
+        if (e.code == 'user-not-found') {
+          errorMsg = "Could not found your account. Please try to sign up.";
+        } else if (e.code == 'wrong-password') {
+          errorMsg = "Incorrect password.";
+        }
 
-    // get current user snapshot
-    final currentUserSnapshot = await FirebaseFirestore.instance
-        .collection("users")
-        .doc(currentUser?.uid)
-        .get();
+        displaySnackbar(context, errorMsg);
+      }
+      // get current user
+      final currentUser = FirebaseAuth.instance.currentUser;
 
-    if (currentUserSnapshot.exists) {
-      Map<String, dynamic>? currentUserData = currentUserSnapshot.data();
+      // get current user snapshot
+      final currentUserSnapshot = await FirebaseFirestore.instance
+          .collection("users")
+          .doc(currentUser?.uid)
+          .get();
 
-      // get current user's user_type value to navigate them to the correct screen
-      // 1 = Individual User, 2 = Restaurant User
-      int userType = currentUserData!['user_type'];
+      if (currentUserSnapshot.exists) {
+        Map<String, dynamic>? currentUserData = currentUserSnapshot.data();
 
-      // THIS IS WHERE THE NAV-BAR ISSUE OCCURS!!
-      // WILL HAVE TO RENDER THE RIGHT PAGE BASED ON USER TYPE
-      Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(
-              builder: (BuildContext context) =>
-                  userType == 1 ? HmepageWidget() : DonationsWidget()),
-          (route) => false);
+        // get current user's user_type value to navigate them to the correct screen
+        // 1 = Individual User, 2 = Restaurant User
+        int userType = currentUserData!['user_type'];
+
+        // THIS IS WHERE THE NAV-BAR ISSUE OCCURS!!
+        // WILL HAVE TO RENDER THE RIGHT PAGE BASED ON USER TYPE
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+                builder: (BuildContext context) =>
+                    userType == 1 ? HmepageWidget() : DonationsWidget()),
+            (route) => false);
+      }
     }
+  }
+
+  bool errorcheck() {
+    if (emailTextController!.text.isEmpty ||
+        passwordTextController!.text.isEmpty) {
+      showAlertDialog(context, "Please fill up text boxes.");
+      return false;
+    }
+    return true;
+  }
+
+  showAlertDialog(BuildContext context, String text) {
+    // set up the button
+    Widget okButton = TextButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.pop(context);
+        print("pop");
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Alert"),
+      content: Text(text),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
+  displaySnackbar(context, text) {
+    SnackBar snackbar = SnackBar(
+      width: 200,
+      content: Text(text),
+      behavior: SnackBarBehavior.floating,
+      duration: const Duration(milliseconds: 2000),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+    );
+
+    // show snackbar
+    ScaffoldMessenger.of(context).showSnackBar(snackbar);
   }
 
   @override
