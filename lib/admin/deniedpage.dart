@@ -59,14 +59,9 @@ class _RestaurantdeniedWidgetState extends State<RestaurantdeniedWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),
                 child: FFButtonWidget(
-                   onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const AdminpageWidget()),
-                          );
-                        },
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   text: 'Return Home',
                   options: FFButtonOptions(
                     width: 150,

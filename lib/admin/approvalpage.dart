@@ -79,17 +79,11 @@ class _RestaurantapprovedWidgetState extends State<RestaurantapprovedWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),
                 child: FFButtonWidget(
-                   onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const AdminpageWidget()),
-                          );
-                        },
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   text: 'Return Home',
                   options: FFButtonOptions(
-  
                     width: 150,
                     height: 50,
                     color: FlutterFlowTheme.of(context).primaryBtnText,
