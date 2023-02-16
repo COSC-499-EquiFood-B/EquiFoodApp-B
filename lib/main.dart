@@ -4,7 +4,7 @@ import 'package:equi_food_app/confirmation/confirmation.dart';
 import 'package:equi_food_app/register/createUser.dart'; // file containing the Sign-up screen
 import 'package:equi_food_app/login/login_widget.dart'; // file containing the Login screen
 
-import 'package:equi_food_app/indiv_dashboard/indivdash1cont.dart';
+import 'package:equi_food_app/indiv_dashboard/indivDashboard.dart';
 import 'package:equi_food_app/restaurant_dashboard/restaurant_dashboard_widget_2.dart';
 
 import 'package:flutter/gestures.dart';
