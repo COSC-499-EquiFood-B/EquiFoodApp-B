@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
-import '../../indiv_dashboard/indivdash1cont.dart';
+import '../../indiv_dashboard/indivDashboard.dart';
 import '../flutter_flow_theme.dart';
 
 import '../../auth/firebase_user_provider.dart';

@@ -1,3 +1,5 @@
+import 'package:equi_food_app/statspages/statisticsforresto.dart';
+
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -40,6 +42,7 @@ class _DonationsWidgetState extends State<DonationsWidget> {
   List<Widget> screens = [
     DonationsWidget(),
     CreateDonationWidget(),
+    StatisticsforrestoWidget(),
     SettingsWidget(),
   ];
 
@@ -230,6 +233,10 @@ class _DonationsWidgetState extends State<DonationsWidget> {
             BottomNavigationBarItem(
               icon: Icon(Icons.add_box_rounded),
               label: 'Add',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.eco),
+              label: 'Statistics',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.settings),
