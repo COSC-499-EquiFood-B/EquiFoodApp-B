@@ -29,7 +29,7 @@ class _RestaurantapprovedWidgetState extends State<RestaurantapprovedWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFACE4AF),
+      backgroundColor: Color.fromARGB(255, 76, 191, 82),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
@@ -89,7 +89,7 @@ class _RestaurantapprovedWidgetState extends State<RestaurantapprovedWidget> {
                     color: FlutterFlowTheme.of(context).primaryBtnText,
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                           fontFamily: 'Poppins',
-                          color: Color(0xFFACE4AF),
+                          color: Color.fromARGB(255, 76, 191, 82),
                         ),
                     elevation: 3,
                     borderSide: BorderSide(

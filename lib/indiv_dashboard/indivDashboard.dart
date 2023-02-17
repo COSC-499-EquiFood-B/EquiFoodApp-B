@@ -87,11 +87,11 @@ class _HmepageWidgetState extends State<HmepageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFACE4AF),
+      backgroundColor:Color.fromARGB(255, 76, 191, 82),
       // APPBAR
       appBar: _selectedIndex == 0
           ? AppBar(
-              backgroundColor: Color(0xFFACE4AF),
+              backgroundColor: Color.fromARGB(255, 76, 191, 82),
               automaticallyImplyLeading: false,
               title: Text(
                 'Hello, $userName',
@@ -251,7 +251,7 @@ class _HmepageWidgetState extends State<HmepageWidget> {
                               height: MediaQuery.of(context).size.height,
                               child: Center(
                                 child: CircularProgressIndicator(
-                                  color: Color(0xFFACE4AF),
+                                  color:Color.fromARGB(255, 76, 191, 82),
                                 ),
                               ));
                         })

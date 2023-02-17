@@ -412,7 +412,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                         options: FFButtonOptions(
                           width: 130,
                           height: 40,
-                          color: Color(0xFF4BA219),
+                          color: Color.fromARGB(255, 76, 191, 82),
                           textStyle:
                               FlutterFlowTheme.of(context).subtitle2.override(
                                     fontFamily: 'Poppins',
@@ -437,7 +437,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
               height: MediaQuery.of(context).size.height,
               child: Center(
                 child: CircularProgressIndicator(
-                  color: Color.fromARGB(255, 52, 185, 59),
+                  color: Color.fromARGB(255, 76, 191, 82),
                 ),
               ));
         });

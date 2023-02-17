@@ -110,7 +110,7 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(40),
         child: AppBar(
-          backgroundColor: Color(0xFFACE4AF),
+          backgroundColor: Color.fromARGB(255, 76, 191, 82),
           automaticallyImplyLeading: true,
           title: SelectionArea(
               child: Text(
@@ -322,7 +322,7 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
                   options: FFButtonOptions(
                     width: 340,
                     height: 60,
-                    color: Color(0xFF4BA219),
+                    color: Color.fromARGB(255, 76, 191, 82),
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                           fontFamily: 'Lexend Deca',
                           color: Colors.white,

@@ -91,11 +91,11 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFACE4AF),
+      backgroundColor: Color.fromARGB(255, 76, 191, 82),
       // APPBAR
       appBar: _selectedIndex == 0
           ? AppBar(
-              backgroundColor: Color(0xFFACE4AF),
+              backgroundColor: Color.fromARGB(255, 76, 191, 82),
               automaticallyImplyLeading: false,
               title: Text(
                 'Hello, administrator',
