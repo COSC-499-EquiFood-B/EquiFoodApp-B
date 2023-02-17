@@ -45,7 +45,7 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
   }
 
   // method to write donation details to firebase under the "donations" Collection
-  Future addDonationDetails() async {
+  Future createDonation() async {
     // get user ID of Restaurant User (uid)
     final currentRestaurantUser = FirebaseAuth.instance.currentUser;
 
@@ -69,6 +69,9 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
           "restaurant_ref": restaurantRef
         })
         .then((value) => {
+              // clear all text fields
+              clearDonationFields(),
+
               // display SnackBar with success message
               displaySnackbar(context, "Donation created."),
             })
@@ -89,6 +92,14 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
     }
 
     return true;
+  }
+
+  // function to clear all text fields
+  void clearDonationFields() {
+    donationNameController!.clear();
+    donationDescriptionController!.clear();
+    donationQtyController!.clear();
+    donationPriceController!.clear();
   }
 
   @override
@@ -306,7 +317,7 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
                 child: FFButtonWidget(
-                  onPressed: addDonationDetails,
+                  onPressed: createDonation,
                   text: 'Create',
                   options: FFButtonOptions(
                     width: 340,
