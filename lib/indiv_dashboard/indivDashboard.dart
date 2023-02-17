@@ -35,6 +35,10 @@ class _HmepageWidgetState extends State<HmepageWidget> {
   TextEditingController? textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
+  // get reference of the current Restaurant User
+  final currIndivUser = FirebaseAuth.instance.currentUser;
+  late String? userName = "";
+
   // List to store restaurant donation IDs
   List<String> donationIDs = [];
 
@@ -51,10 +55,6 @@ class _HmepageWidgetState extends State<HmepageWidget> {
     // get donation IDs from the "donations" Collection
     // and then store them in the "restaurantDonationIDs" List.
 
-    // get reference of the current Restaurant User
-    final currIndivUser = FirebaseAuth.instance.currentUser;
-    String username = "";
-
     await FirebaseFirestore.instance
         .collection('donations')
         .get()
@@ -70,6 +70,8 @@ class _HmepageWidgetState extends State<HmepageWidget> {
   void initState() {
     super.initState();
     textController = TextEditingController();
+
+    userName = currIndivUser?.displayName;
 
     // bug-fix for FutureBuilder
     dataFuture = getDonationIDs();
@@ -92,7 +94,7 @@ class _HmepageWidgetState extends State<HmepageWidget> {
               backgroundColor: Color(0xFFACE4AF),
               automaticallyImplyLeading: false,
               title: Text(
-                'Hello, (insert account name)',
+                'Hello, $userName',
                 style: FlutterFlowTheme.of(context).title2.override(
                       fontFamily: 'Outfit',
                       color: Color(0xFF14181B),
@@ -182,7 +184,8 @@ class _HmepageWidgetState extends State<HmepageWidget> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 4),
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
                             child: Text(
                               'Restaurants',
                               style: FlutterFlowTheme.of(context)
