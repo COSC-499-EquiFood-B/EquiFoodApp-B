@@ -251,7 +251,7 @@ class _HmepageWidgetState extends State<HmepageWidget> {
                               height: MediaQuery.of(context).size.height,
                               child: Center(
                                 child: CircularProgressIndicator(
-                                  color: Color.fromARGB(255, 52, 185, 59),
+                                  color: Color(0xFFACE4AF),
                                 ),
                               ));
                         })
