@@ -87,7 +87,7 @@ class _CreateRestaurantUserWidgetState
                 password: passwordTextController!.text.trim())
             .then((value) => {
                   // add user (Restaurant's) name in their profile
-                  // So name would be directly accessible along with email without spearately querying the
+                  // So name would be directly accessible along with email without separately querying the
                   // "users" collection everytime
                   value.user
                       ?.updateDisplayName(nameTextController!.text.toString()),
