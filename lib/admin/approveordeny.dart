@@ -126,7 +126,7 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
                                 thickness: 2,
                                 indent: 14,
                                 endIndent: 20,
-                                color: Color(0xFF659F36),
+                                color: Color(0xFFACE4AF),
                               ),
                               Padding(
                                 padding:
@@ -144,7 +144,7 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
                                   options: FFButtonOptions(
                                     width: 360,
                                     height: 40,
-                                    color: Color(0xFF659F36),
+                                    color: Color(0xFFACE4AF),
                                     textStyle: FlutterFlowTheme.of(context)
                                         .subtitle2
                                         .override(
