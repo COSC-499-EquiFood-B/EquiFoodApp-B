@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 //Import code to link to database
-import 'getRestaurants.dart';
+import 'getAdminRestaurants.dart';
 
 //Firebase imports
 import 'package:firebase_core/firebase_core.dart';
@@ -85,12 +85,13 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Color(0xFFACE4AF),
+      // APPBAR
       appBar: _selectedIndex == 0
           ? AppBar(
               backgroundColor: Color(0xFFACE4AF),
               automaticallyImplyLeading: false,
               title: Text(
-                'Hello, administrator',
+                'Hello, Jason',
                 style: FlutterFlowTheme.of(context).title2.override(
                       fontFamily: 'Outfit',
                       color: Color(0xFF14181B),
@@ -105,7 +106,7 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
           : null,
       body: _selectedIndex == 0
           ? GestureDetector(
-              onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+              onTap: () => FocusScope.of(context).unfocus(),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -120,7 +121,7 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 4),
                             child: Text(
-                              'Pending Approvals',
+                              'Restaurants',
                               style: FlutterFlowTheme.of(context)
                                   .subtitle2
                                   .override(
@@ -130,6 +131,16 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
+                          ),
+                          Text(
+                            'See All',
+                            style:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Outfit',
+                                      color: Color(0xFF14181B),
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.normal,
+                                    ),
                           ),
                         ],
                       ),
@@ -153,7 +164,7 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
                             return GridView.builder(
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 1,
+                                crossAxisCount: 2,
                                 //crossAxisSpacing: 0.0,
                                 //mainAxisSpacing: 10.0,
                               ),
