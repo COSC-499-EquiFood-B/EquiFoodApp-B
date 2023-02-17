@@ -119,9 +119,10 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 4),
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
                             child: Text(
-                              'Restaurants',
+                              'Waiting Approval',
                               style: FlutterFlowTheme.of(context)
                                   .subtitle2
                                   .override(
@@ -131,16 +132,6 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
-                          ),
-                          Text(
-                            'See All',
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Outfit',
-                                      color: Color(0xFF14181B),
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.normal,
-                                    ),
                           ),
                         ],
                       ),
