@@ -3,6 +3,7 @@ import 'package:equi_food_app/indiv_dashboard/default-stats.dart';
 import 'package:equi_food_app/indiv_dashboard/getDonations.dart';
 import 'package:equi_food_app/restaurant_dashboard/restaurantSettings.dart';
 import 'package:equi_food_app/statspages/statisticsforindiv.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -49,6 +50,11 @@ class _HmepageWidgetState extends State<HmepageWidget> {
   Future getDonationIDs() async {
     // get donation IDs from the "donations" Collection
     // and then store them in the "restaurantDonationIDs" List.
+
+    // get reference of the current Restaurant User
+    final currIndivUser = FirebaseAuth.instance.currentUser;
+    String username = "";
+
     await FirebaseFirestore.instance
         .collection('donations')
         .get()

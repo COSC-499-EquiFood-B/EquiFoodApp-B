@@ -1,6 +1,7 @@
 import 'package:equi_food_app/admin/approvedrestaurants.dart';
 import 'package:equi_food_app/restaurant_dashboard/restaurantSettings.dart';
 import 'package:equi_food_app/statspages/statisticsforadmin.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -50,6 +51,13 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
     // get donation IDs from the "donations" Collection
     // and then store them in the "restaurantDonationIDs" List.
 
+    // get reference of the current Restaurant User
+    final currAdminUser = FirebaseAuth.instance.currentUser;
+
+    // create reference for the current Restaurant User located in the "users" collection on firebase
+    final adminUserRef =
+        FirebaseFirestore.instance.collection("users").doc(currAdminUser?.uid);
+
     await FirebaseFirestore.instance
         .collection('users')
         .where('user_type', isEqualTo: 2)
@@ -59,7 +67,6 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
               snapshot.docs.forEach((element) {
                 // add restaurant Donation IDs to the List
                 restaurantIDs.add(element.reference.id);
-                print("Hi");
                 print(element.reference.id);
               })
             });
@@ -91,7 +98,7 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
               backgroundColor: Color(0xFFACE4AF),
               automaticallyImplyLeading: false,
               title: Text(
-                'Hello, Jason',
+                'Hello, administrator',
                 style: FlutterFlowTheme.of(context).title2.override(
                       fontFamily: 'Outfit',
                       color: Color(0xFF14181B),
