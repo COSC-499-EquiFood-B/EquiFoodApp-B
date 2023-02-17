@@ -98,8 +98,9 @@ class _DonationsWidgetState extends State<DonationsWidget> {
                     'Hello, $userName',
                     style: FlutterFlowTheme.of(context).title2.override(
                           fontFamily: 'Poppins',
-                          color: Colors.white,
+                          color: Color.fromARGB(255, 44, 48, 51),
                           fontSize: 22,
+                          fontWeight: FontWeight.normal,
                         ),
                   ),
                   actions: [
