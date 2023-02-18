@@ -27,7 +27,7 @@ class _ApprovedrestaurantsWidgetState extends State<ApprovedrestaurantsWidget> {
       key: scaffoldKey,
       backgroundColor: Color(0xFFF1F4F8),
       appBar: AppBar(
-        backgroundColor: Color(0xFFACE4AF),
+        backgroundColor: Color.fromARGB(255, 76, 191, 82),
         automaticallyImplyLeading: false,
         title: Text(
           'List of Approved Restaurants ',

@@ -92,7 +92,7 @@ class _DonationsWidgetState extends State<DonationsWidget> {
             ? PreferredSize(
                 preferredSize: Size.fromHeight(40),
                 child: AppBar(
-                  backgroundColor: Color(0xFFACE4AF),
+                  backgroundColor: Color.fromARGB(255, 76, 191, 82),
                   automaticallyImplyLeading: false,
                   title: Text(
                     'Hello, $userName',

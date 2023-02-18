@@ -241,7 +241,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                       width: MediaQuery.of(context).size.width * 0.4,
                       height: 160,
                       decoration: BoxDecoration(
-                        color: Color(0xFFACE4AF),
+                        color: Color.fromARGB(255, 76, 191, 82),
                         borderRadius: BorderRadius.circular(24),
                       ),
                       child: Padding(
