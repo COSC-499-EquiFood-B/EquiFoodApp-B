@@ -1,3 +1,5 @@
+import 'package:firebase_core/firebase_core.dart';
+
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -54,10 +56,11 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
         .collection("users")
         .doc(currentRestaurantUser?.uid);
 
-    // add details to the "donations" Collection
-    await FirebaseFirestore.instance
-        .collection("donations")
-        .add({
+    // proceed only if all the donation fields are filled
+    if (checkDonationFields()) {
+      try {
+// add details to the "donations" Collection
+        await FirebaseFirestore.instance.collection("donations").add({
           "item_name": donationNameController!.text.toString(),
           "item_img":
               "https://cleangreensimple.com/wp-content/uploads/2020/04/7-sweet-peas-and-saffron-air-fryer-cauliflower-chickpea-tacos.jpg", // default img
@@ -67,19 +70,23 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
           "price": double.parse(donationPriceController!.text),
           "created_at": DateTime.now(),
           "restaurant_ref": restaurantRef
-        })
-        .then((value) => {
+        }).then((value) => {
               // clear all text fields
               clearDonationFields(),
 
               // display SnackBar with success message
               displaySnackbar(context, "Donation created."),
-            })
-        .catchError((onError) => {
-              print(onError.toString()),
-              // display SnackBar with error text
-              displaySnackbar(context, onError.toString())
             });
+      } on FirebaseException catch (e) {
+        //print(e.code);
+        displaySnackbar(context, e.code);
+      } on FormatException catch (e) {
+        // in case a wrong input is entered by the user
+        //print(e);
+        displaySnackbar(
+            context, "Invalid input for one of the fields. Please try again.");
+      }
+    }
   }
 
   // function to check if all the fields are filled
