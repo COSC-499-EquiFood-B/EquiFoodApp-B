@@ -1,5 +1,7 @@
 import 'package:equi_food_app/confirmation/confirmation.dart';
 import 'package:equi_food_app/indiv_dashboard/indivDashboard.dart';
+import 'package:equi_food_app/utils/displaySnackbar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../flutter_flow/flutter_flow_google_map.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -30,6 +32,35 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
   // Create reference to donations collection
   CollectionReference donations =
       FirebaseFirestore.instance.collection('donations');
+
+  // function to reserve a donation
+  Future<void> reserveDonation() async {
+    // get current user's uid
+    final currentIndivUser = FirebaseAuth.instance.currentUser;
+    final currentUserID = currentIndivUser?.uid;
+
+    // set the is_reserved = true for the current donation
+    // also create add a new field, customer_id
+    donations
+        .doc(widget.donationsID)
+        .update({'is_reserved': true, 'customer_id': currentUserID})
+        .then((value) => {
+              //print('updated is_reserved'),
+
+              // redirect to the Confirmation Page
+              // TIP: It'd be better to have a popup than a whole new page for the confirmation
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const ConfirmationscreenWidget()),
+              )
+            })
+        .catchError((onError) => {
+              // display SnackBar to inform the user if an error occurs
+              displaySnackbar(context,
+                  'An unknown error occurred. Couldn\'t complete your request.')
+            });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -400,14 +431,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 24),
                       child: FFButtonWidget(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const ConfirmationscreenWidget()),
-                          );
-                        },
+                        onPressed: reserveDonation,
                         text: 'Reserve',
                         options: FFButtonOptions(
                           width: 130,
