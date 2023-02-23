@@ -33,27 +33,44 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
   CollectionReference donations =
       FirebaseFirestore.instance.collection('donations');
 
+  // state variable to change the text/color of the "Reserve" Button
+  bool isDonationReserved = false;
+
   // function to reserve a donation
   Future<void> reserveDonation() async {
     // get current user's uid
     final currentIndivUser = FirebaseAuth.instance.currentUser;
     final currentUserID = currentIndivUser?.uid;
 
-    // set the is_reserved = true for the current donation
+    // change the state of the isDonationReserved variable
+    setState(() => isDonationReserved = !isDonationReserved);
+
+    // set the is_reserved = true/false for the current donation depending on value of isDonationReserved
     // also create add a new field, customer_id
     donations
         .doc(widget.donationsID)
-        .update({'is_reserved': true, 'customer_id': currentUserID})
+        .update({
+          'is_reserved': isDonationReserved,
+          'customer_id': isDonationReserved ? currentUserID : ''
+        })
         .then((value) => {
               //print('updated is_reserved'),
 
               // redirect to the Confirmation Page
               // TIP: It'd be better to have a popup than a whole new page for the confirmation
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const ConfirmationscreenWidget()),
-              )
+
+              // redirect to Confirmation page only if the user has requested to reserve the donation
+              // i.e., isDonationReserved = true
+              // if the user has requested to cancel the reservation, display the snackbar
+              isDonationReserved
+                  ? Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const ConfirmationscreenWidget()), // user wants to reserve the donation
+                    )
+                  : displaySnackbar(context,
+                      'Reservation cancelled.'), // user wants to cancel the reservation
             })
         .catchError((onError) => {
               // display SnackBar to inform the user if an error occurs
@@ -432,11 +449,14 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                       padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 24),
                       child: FFButtonWidget(
                         onPressed: reserveDonation,
-                        text: 'Reserve',
+                        text: !isDonationReserved
+                            ? 'Reserve'
+                            : 'Cancel Reservation',
                         options: FFButtonOptions(
-                          width: 130,
                           height: 40,
-                          color: Color.fromARGB(255, 76, 191, 82),
+                          color: !isDonationReserved
+                              ? Color.fromARGB(255, 76, 191, 82)
+                              : Color.fromARGB(255, 247, 192, 54),
                           textStyle:
                               FlutterFlowTheme.of(context).subtitle2.override(
                                     fontFamily: 'Poppins',
