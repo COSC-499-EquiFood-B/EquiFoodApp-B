@@ -1,5 +1,7 @@
 import 'package:equi_food_app/confirmation/confirmation.dart';
 import 'package:equi_food_app/indiv_dashboard/indivDashboard.dart';
+import 'package:equi_food_app/utils/displaySnackbar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../flutter_flow/flutter_flow_google_map.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -30,6 +32,53 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
   // Create reference to donations collection
   CollectionReference donations =
       FirebaseFirestore.instance.collection('donations');
+
+  // state variable to change the text/color of the "Reserve" Button
+  bool isDonationReserved = false;
+
+  // function to reserve a donation
+  Future<void> reserveDonation() async {
+    // get current user's uid
+    final currentIndivUser = FirebaseAuth.instance.currentUser;
+    final currentUserID = currentIndivUser?.uid;
+
+    // change the state of the isDonationReserved variable
+    setState(() => isDonationReserved = !isDonationReserved);
+
+    // set the is_reserved = true/false for the current donation depending on value of isDonationReserved
+    // also create add a new field, customer_id
+    donations
+        .doc(widget.donationsID)
+        .update({
+          'is_reserved': isDonationReserved,
+          'reserved_at': isDonationReserved ? DateTime.now() : '',
+          'customer_id': isDonationReserved ? currentUserID : '',
+        })
+        .then((value) => {
+              //print('updated is_reserved'),
+
+              // redirect to the Confirmation Page
+              // TIP: It'd be better to have a popup than a whole new page for the confirmation
+
+              // redirect to Confirmation page only if the user has requested to reserve the donation
+              // i.e., isDonationReserved = true
+              // if the user has requested to cancel the reservation, display the snackbar
+              isDonationReserved
+                  ? Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const ConfirmationscreenWidget()), // user wants to reserve the donation
+                    )
+                  : displaySnackbar(context,
+                      'Reservation cancelled.'), // user wants to cancel the reservation
+            })
+        .catchError((onError) => {
+              // display SnackBar to inform the user if an error occurs
+              displaySnackbar(context,
+                  'An unknown error occurred. Couldn\'t complete your request.')
+            });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -400,22 +449,18 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 24),
                       child: FFButtonWidget(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const ConfirmationscreenWidget()),
-                          );
-                        },
-                        text: 'Reserve',
+                        onPressed: reserveDonation,
+                        text: !isDonationReserved ? 'Reserve' : 'Cancel Order',
                         options: FFButtonOptions(
-                          width: 130,
                           height: 40,
-                          color: Color.fromARGB(255, 76, 191, 82),
+                          color: !isDonationReserved
+                              ? Color.fromARGB(255, 76, 191, 82)
+                              : Color.fromARGB(255, 247, 160, 54),
                           textStyle:
                               FlutterFlowTheme.of(context).subtitle2.override(
-                                    fontFamily: 'Poppins',
+                                    fontFamily: 'Outfit',
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.normal,
                                     color: Colors.white,
                                   ),
                           borderSide: BorderSide(

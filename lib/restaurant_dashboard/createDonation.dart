@@ -69,7 +69,9 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
           "quantity": int.parse(donationQtyController!.text),
           "price": double.parse(donationPriceController!.text),
           "created_at": DateTime.now(),
-          "restaurant_ref": restaurantRef
+          "restaurant_ref": restaurantRef,
+          "is_reserved":
+              false // since the donation is not reserved by a user yet
         }).then((value) => {
               // clear all text fields
               clearDonationFields(),
