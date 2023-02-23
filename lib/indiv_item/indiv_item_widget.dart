@@ -51,7 +51,8 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
         .doc(widget.donationsID)
         .update({
           'is_reserved': isDonationReserved,
-          'customer_id': isDonationReserved ? currentUserID : ''
+          'reserved_at': isDonationReserved ? DateTime.now() : '',
+          'customer_id': isDonationReserved ? currentUserID : '',
         })
         .then((value) => {
               //print('updated is_reserved'),
@@ -449,17 +450,17 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                       padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 24),
                       child: FFButtonWidget(
                         onPressed: reserveDonation,
-                        text: !isDonationReserved
-                            ? 'Reserve'
-                            : 'Cancel Reservation',
+                        text: !isDonationReserved ? 'Reserve' : 'Cancel Order',
                         options: FFButtonOptions(
                           height: 40,
                           color: !isDonationReserved
                               ? Color.fromARGB(255, 76, 191, 82)
-                              : Color.fromARGB(255, 247, 192, 54),
+                              : Color.fromARGB(255, 247, 160, 54),
                           textStyle:
                               FlutterFlowTheme.of(context).subtitle2.override(
-                                    fontFamily: 'Poppins',
+                                    fontFamily: 'Outfit',
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.normal,
                                     color: Colors.white,
                                   ),
                           borderSide: BorderSide(
