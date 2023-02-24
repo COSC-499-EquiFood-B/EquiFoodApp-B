@@ -60,7 +60,12 @@ class _RestaurantdeniedWidgetState extends State<RestaurantdeniedWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),
                 child: FFButtonWidget(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const AdminpageWidget()), // user wants to reserve the donation
+                    );
                   },
                   text: 'Return Home',
                   options: FFButtonOptions(
