@@ -2,6 +2,7 @@ import 'package:equi_food_app/admin/adminpage.dart';
 import 'package:equi_food_app/admin/approvalpage.dart';
 import 'package:equi_food_app/admin/approvedrestaurants.dart';
 import 'package:equi_food_app/admin/deniedpage.dart';
+import 'package:equi_food_app/utils/displaySnackbar.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -12,6 +13,7 @@ import 'package:google_fonts/google_fonts.dart';
 //Firebase imports
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ApproveordenyWidget extends StatefulWidget {
   final String restaurantIDs;
@@ -26,9 +28,49 @@ class ApproveordenyWidget extends StatefulWidget {
 class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  // Create reference to donations collection
+  // Create reference to users collection
   CollectionReference restaurants =
       FirebaseFirestore.instance.collection('users');
+
+  // function to approve a restaurant
+  Future<void> approveRestaurant() async {
+    restaurants
+        .doc(widget.restaurantIDs)
+        .update({
+          'is_approved': true,
+        })
+        .then((value) => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const RestaurantapprovedWidget()),
+              ),
+              displaySnackbar(context, 'Reservation approved.'),
+            })
+        .catchError((onError) => {
+              displaySnackbar(context,
+                  'An unknown error occurred. Couldn\'t complete your request.')
+            });
+  }
+
+  // function to approve a donation
+  Future<void> denyRestaurant() async {
+    restaurants
+        .doc(widget.restaurantIDs)
+        .delete()
+        .then((value) => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const RestaurantdeniedWidget()),
+              ),
+              displaySnackbar(context, 'Reservation denied.'),
+            })
+        .catchError((onError) => {
+              displaySnackbar(context,
+                  'An unknown error occurred. Couldn\'t complete your request.')
+            });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -132,14 +174,7 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(13, 0, 0, 0),
                                 child: FFButtonWidget(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const RestaurantapprovedWidget()),
-                                    );
-                                  },
+                                  onPressed: approveRestaurant,
                                   text: 'Approve',
                                   options: FFButtonOptions(
                                     width: 360,
@@ -163,14 +198,7 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     13, 15, 0, 0),
                                 child: FFButtonWidget(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const RestaurantdeniedWidget()),
-                                    );
-                                  },
+                                  onPressed: denyRestaurant,
                                   text: 'Deny',
                                   options: FFButtonOptions(
                                     width: 360,
