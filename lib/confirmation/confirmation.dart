@@ -71,7 +71,7 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
                 'Congrats!',
                 style: FlutterFlowTheme.of(context).title2.override(
                       fontFamily: 'Outfit',
-                      color: Color.fromARGB(255, 76, 191, 82),
+                      color: Colors.black,
                       fontSize: 32,
                       fontWeight: FontWeight.w500,
                     ),
@@ -84,7 +84,7 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
                     'Your Order Is Held For',
                     style: FlutterFlowTheme.of(context).subtitle2.override(
                           fontFamily: 'Outfit',
-                          color: Color.fromARGB(255, 76, 191, 82),
+                          color: Colors.black,
                           fontSize: 24,
                           fontWeight: FontWeight.w300,
                         ),

@@ -87,7 +87,7 @@ class _HmepageWidgetState extends State<HmepageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor:Color.fromRGBO(209, 255, 189, 1),
+      backgroundColor:Color.fromARGB(255, 243, 248, 249),
       // APPBAR
       appBar: _selectedIndex == 0
           ? AppBar(
@@ -252,7 +252,7 @@ class _HmepageWidgetState extends State<HmepageWidget> {
             )
           : _screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: FlutterFlowTheme.of(context).primaryColor,
+        selectedItemColor: Color.fromARGB(255, 76, 191, 82),
         unselectedItemColor: Color(0x8A000000),
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[

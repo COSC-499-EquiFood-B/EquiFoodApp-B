@@ -25,7 +25,7 @@ class _ApprovedrestaurantsWidgetState extends State<ApprovedrestaurantsWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF1F4F8),
+      backgroundColor: Color.fromARGB(255, 243, 248, 249),
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(209, 255, 189, 1),
         automaticallyImplyLeading: false,
