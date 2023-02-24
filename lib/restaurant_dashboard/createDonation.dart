@@ -110,7 +110,7 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(40),
         child: AppBar(
-          backgroundColor: Color.fromARGB(255, 76, 191, 82),
+          backgroundColor: Color.fromRGBO(209, 255, 189, 1),
           automaticallyImplyLeading: true,
           title: SelectionArea(
               child: Text(
@@ -118,7 +118,7 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
             style: FlutterFlowTheme.of(context).title1.override(
                   fontFamily: 'Poppins',
                   color: FlutterFlowTheme.of(context).primaryBtnText,
-                  fontSize: 28,
+                  fontSize: 24,
                   fontWeight: FontWeight.w600,
                 ),
           )),

@@ -319,7 +319,7 @@ class _CreateRestaurantUserWidgetState
                       style: FlutterFlowTheme.of(context).bodyText2.override(
                             fontFamily: 'Outfit',
                             color: Color(0xFF57636C),
-                            fontSize: 14,
+                            fontSize: 16,
                             fontWeight: FontWeight.normal,
                           ),
                     ),
@@ -354,14 +354,14 @@ class _CreateRestaurantUserWidgetState
                             FlutterFlowTheme.of(context).bodyText2.override(
                                   fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
-                                  fontSize: 14,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.normal,
                                 ),
                         hintStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
                                   fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
-                                  fontSize: 14,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.normal,
                                 ),
                         enabledBorder: OutlineInputBorder(
@@ -400,7 +400,7 @@ class _CreateRestaurantUserWidgetState
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Outfit',
                             color: Color(0xFF0F1113),
-                            fontSize: 14,
+                            fontSize: 16,
                             fontWeight: FontWeight.normal,
                           ),
                     ),
@@ -434,14 +434,14 @@ class _CreateRestaurantUserWidgetState
                             FlutterFlowTheme.of(context).bodyText2.override(
                                   fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
-                                  fontSize: 14,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.normal,
                                 ),
                         hintStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
                                   fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
-                                  fontSize: 14,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.normal,
                                 ),
                         enabledBorder: OutlineInputBorder(
@@ -480,7 +480,7 @@ class _CreateRestaurantUserWidgetState
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Outfit',
                             color: Color(0xFF0F1113),
-                            fontSize: 14,
+                            fontSize: 16,
                             fontWeight: FontWeight.normal,
                           ),
                     ),
@@ -514,14 +514,14 @@ class _CreateRestaurantUserWidgetState
                             FlutterFlowTheme.of(context).bodyText2.override(
                                   fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
-                                  fontSize: 14,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.normal,
                                 ),
                         hintStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
                                   fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
-                                  fontSize: 14,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.normal,
                                 ),
                         enabledBorder: OutlineInputBorder(
@@ -573,7 +573,7 @@ class _CreateRestaurantUserWidgetState
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Outfit',
                             color: Color(0xFF0F1113),
-                            fontSize: 14,
+                            fontSize: 16,
                             fontWeight: FontWeight.normal,
                           ),
                     ),
@@ -607,14 +607,14 @@ class _CreateRestaurantUserWidgetState
                             FlutterFlowTheme.of(context).bodyText2.override(
                                   fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
-                                  fontSize: 14,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.normal,
                                 ),
                         hintStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
                                   fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
-                                  fontSize: 14,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.normal,
                                 ),
                         enabledBorder: OutlineInputBorder(
@@ -666,7 +666,7 @@ class _CreateRestaurantUserWidgetState
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Outfit',
                             color: Color(0xFF0F1113),
-                            fontSize: 14,
+                            fontSize: 16,
                             fontWeight: FontWeight.normal,
                           ),
                     ),
@@ -702,14 +702,14 @@ class _CreateRestaurantUserWidgetState
                             FlutterFlowTheme.of(context).bodyText2.override(
                                   fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
-                                  fontSize: 14,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.normal,
                                 ),
                         hintStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
                                   fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
-                                  fontSize: 14,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.normal,
                                 ),
                         enabledBorder: OutlineInputBorder(
@@ -748,7 +748,7 @@ class _CreateRestaurantUserWidgetState
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Outfit',
                             color: Color(0xFF0F1113),
-                            fontSize: 14,
+                            fontSize: 16,
                             fontWeight: FontWeight.normal,
                           ),
                     ),
@@ -782,14 +782,14 @@ class _CreateRestaurantUserWidgetState
                             FlutterFlowTheme.of(context).bodyText2.override(
                                   fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
-                                  fontSize: 14,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.normal,
                                 ),
                         hintStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
                                   fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
-                                  fontSize: 14,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.normal,
                                 ),
                         enabledBorder: OutlineInputBorder(
@@ -828,7 +828,7 @@ class _CreateRestaurantUserWidgetState
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Outfit',
                             color: Color(0xFF0F1113),
-                            fontSize: 14,
+                            fontSize: 16,
                             fontWeight: FontWeight.normal,
                           ),
                     ),
@@ -867,14 +867,14 @@ class _CreateRestaurantUserWidgetState
                                 FlutterFlowTheme.of(context).bodyText2.override(
                                       fontFamily: 'Outfit',
                                       color: Color(0xFF57636C),
-                                      fontSize: 14,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.normal,
                                     ),
                             hintStyle:
                                 FlutterFlowTheme.of(context).bodyText2.override(
                                       fontFamily: 'Outfit',
                                       color: Color(0xFF57636C),
-                                      fontSize: 14,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.normal,
                                     ),
                             enabledBorder: OutlineInputBorder(
@@ -914,7 +914,7 @@ class _CreateRestaurantUserWidgetState
                               FlutterFlowTheme.of(context).bodyText1.override(
                                     fontFamily: 'Outfit',
                                     color: Color(0xFF0F1113),
-                                    fontSize: 14,
+                                    fontSize: 16,
                                     fontWeight: FontWeight.normal,
                                   ),
                         ),
@@ -950,14 +950,14 @@ class _CreateRestaurantUserWidgetState
                                 FlutterFlowTheme.of(context).bodyText2.override(
                                       fontFamily: 'Outfit',
                                       color: Color(0xFF57636C),
-                                      fontSize: 14,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.normal,
                                     ),
                             hintStyle:
                                 FlutterFlowTheme.of(context).bodyText2.override(
                                       fontFamily: 'Outfit',
                                       color: Color(0xFF57636C),
-                                      fontSize: 14,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.normal,
                                     ),
                             enabledBorder: OutlineInputBorder(
@@ -997,7 +997,7 @@ class _CreateRestaurantUserWidgetState
                               FlutterFlowTheme.of(context).bodyText1.override(
                                     fontFamily: 'Outfit',
                                     color: Color(0xFF0F1113),
-                                    fontSize: 14,
+                                    fontSize: 16,
                                     fontWeight: FontWeight.normal,
                                   ),
                         ),
@@ -1031,14 +1031,14 @@ class _CreateRestaurantUserWidgetState
                                 FlutterFlowTheme.of(context).bodyText2.override(
                                       fontFamily: 'Outfit',
                                       color: Color(0xFF57636C),
-                                      fontSize: 14,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.normal,
                                     ),
                             hintStyle:
                                 FlutterFlowTheme.of(context).bodyText2.override(
                                       fontFamily: 'Outfit',
                                       color: Color(0xFF57636C),
-                                      fontSize: 14,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.normal,
                                     ),
                             enabledBorder: OutlineInputBorder(
@@ -1078,7 +1078,7 @@ class _CreateRestaurantUserWidgetState
                               FlutterFlowTheme.of(context).bodyText1.override(
                                     fontFamily: 'Outfit',
                                     color: Color(0xFF0F1113),
-                                    fontSize: 14,
+                                    fontSize: 16,
                                     fontWeight: FontWeight.normal,
                                   ),
                         ),
@@ -1102,12 +1102,12 @@ class _CreateRestaurantUserWidgetState
                         options: FFButtonOptions(
                           width: 150,
                           height: 50,
-                          color: Color(0xFF66BB6A),
+                          color: Color.fromARGB(255, 76, 191, 82),
                           textStyle:
                               FlutterFlowTheme.of(context).subtitle2.override(
                                     fontFamily: 'Outfit',
                                     color: Colors.white,
-                                    fontSize: 18,
+                                    fontSize: 16,
                                     fontWeight: FontWeight.w500,
                                   ),
                           elevation: 3,

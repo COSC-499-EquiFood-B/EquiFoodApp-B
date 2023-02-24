@@ -87,18 +87,18 @@ class _HmepageWidgetState extends State<HmepageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor:Color.fromARGB(255, 76, 191, 82),
+      backgroundColor:Color.fromRGBO(209, 255, 189, 1),
       // APPBAR
       appBar: _selectedIndex == 0
           ? AppBar(
-              backgroundColor: Color.fromARGB(255, 76, 191, 82),
+              backgroundColor: Color.fromRGBO(209, 255, 189, 1),
               automaticallyImplyLeading: false,
               title: Text(
                 'Hello, $userName',
                 style: FlutterFlowTheme.of(context).title2.override(
                       fontFamily: 'Outfit',
                       color: Color(0xFF14181B),
-                      fontSize: 25,
+                      fontSize: 24,
                       fontWeight: FontWeight.normal,
                     ),
               ),
@@ -131,7 +131,7 @@ class _HmepageWidgetState extends State<HmepageWidget> {
                               FlutterFlowTheme.of(context).bodyText2.override(
                                     fontFamily: 'Outfit',
                                     color: Color(0xFF57636C),
-                                    fontSize: 12,
+                                    fontSize: 16,
                                     fontWeight: FontWeight.normal,
                                   ),
                           enabledBorder: OutlineInputBorder(
@@ -172,7 +172,7 @@ class _HmepageWidgetState extends State<HmepageWidget> {
                         style: FlutterFlowTheme.of(context).bodyText1.override(
                               fontFamily: 'Outfit',
                               color: Color(0xFF14181B),
-                              fontSize: 12,
+                              fontSize: 16,
                               fontWeight: FontWeight.normal,
                             ),
                       ),
@@ -204,7 +204,7 @@ class _HmepageWidgetState extends State<HmepageWidget> {
                                 FlutterFlowTheme.of(context).bodyText1.override(
                                       fontFamily: 'Outfit',
                                       color: Color(0xFF14181B),
-                                      fontSize: 12,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.normal,
                                     ),
                           ),
@@ -251,7 +251,7 @@ class _HmepageWidgetState extends State<HmepageWidget> {
                               height: MediaQuery.of(context).size.height,
                               child: Center(
                                 child: CircularProgressIndicator(
-                                  color:Color.fromARGB(255, 76, 191, 82),
+                                  color:Color.fromRGBO(209, 255, 189, 1),
                                 ),
                               ));
                         })

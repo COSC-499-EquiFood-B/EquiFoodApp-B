@@ -81,7 +81,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                                 FlutterFlowTheme.of(context).bodyText1.override(
                                       fontFamily: 'Outfit',
                                       color: Color(0xFF0F1113),
-                                      fontSize: 14,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.normal,
                                     ),
                           ),
@@ -92,7 +92,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                               width: 36,
                               height: 57,
                               decoration: BoxDecoration(
-                                color: Color(0xFFACE4AF),
+                                color: Color.fromRGBO(209, 255, 189, 1),
                                 borderRadius: BorderRadius.circular(12),
                               ),
                             ),
@@ -108,7 +108,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                                 FlutterFlowTheme.of(context).bodyText1.override(
                                       fontFamily: 'Outfit',
                                       color: Color(0xFF0F1113),
-                                      fontSize: 14,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.normal,
                                     ),
                           ),
@@ -119,7 +119,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                               width: 36,
                               height: 89,
                               decoration: BoxDecoration(
-                                color: Color(0xFFACE4AF),
+                                color:Color.fromRGBO(209, 255, 189, 1),
                                 borderRadius: BorderRadius.circular(12),
                               ),
                             ),
@@ -135,7 +135,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                                 FlutterFlowTheme.of(context).bodyText1.override(
                                       fontFamily: 'Outfit',
                                       color: Color(0xFF0F1113),
-                                      fontSize: 14,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.normal,
                                     ),
                           ),
@@ -146,7 +146,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                               width: 36,
                               height: 100,
                               decoration: BoxDecoration(
-                                color: Color(0xFFACE4AF),
+                                color:Color.fromRGBO(209, 255, 189, 1),
                                 borderRadius: BorderRadius.circular(12),
                               ),
                             ),
@@ -162,7 +162,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                                 FlutterFlowTheme.of(context).bodyText1.override(
                                       fontFamily: 'Outfit',
                                       color: Color(0xFF0F1113),
-                                      fontSize: 14,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.normal,
                                     ),
                           ),
@@ -173,7 +173,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                               width: 36,
                               height: 67,
                               decoration: BoxDecoration(
-                                color: Color(0xFFACE4AF),
+                                color: Color.fromRGBO(209, 255, 189, 1),
                                 borderRadius: BorderRadius.circular(12),
                               ),
                             ),
@@ -189,7 +189,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                                 FlutterFlowTheme.of(context).bodyText1.override(
                                       fontFamily: 'Outfit',
                                       color: Color(0xFF0F1113),
-                                      fontSize: 14,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.normal,
                                     ),
                           ),
@@ -200,7 +200,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                               width: 36,
                               height: 156,
                               decoration: BoxDecoration(
-                                color: Color(0xFFACE4AF),
+                                color: Color.fromRGBO(209, 255, 189, 1),
                                 borderRadius: BorderRadius.circular(12),
                               ),
                             ),
@@ -220,7 +220,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                         style: FlutterFlowTheme.of(context).subtitle1.override(
                               fontFamily: 'Outfit',
                               color: Color(0xFF0F1113),
-                              fontSize: 18,
+                              fontSize: 24,
                               fontWeight: FontWeight.w500,
                             ),
                       ),
@@ -241,7 +241,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                       width: MediaQuery.of(context).size.width * 0.4,
                       height: 160,
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 76, 191, 82),
+                        color: Color.fromRGBO(209, 255, 189, 1),
                         borderRadius: BorderRadius.circular(24),
                       ),
                       child: Padding(

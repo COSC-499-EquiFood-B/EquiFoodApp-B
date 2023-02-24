@@ -126,7 +126,7 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
                                 thickness: 2,
                                 indent: 14,
                                 endIndent: 20,
-                                color: Color.fromARGB(255, 76, 191, 82),
+                                color: Color.fromRGBO(209, 255, 189, 1),
                               ),
                               Padding(
                                 padding:
@@ -144,12 +144,12 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
                                   options: FFButtonOptions(
                                     width: 360,
                                     height: 40,
-                                    color: Color.fromARGB(255, 76, 191, 82),
+                                    color: Color.fromRGBO(209, 255, 189, 1),
                                     textStyle: FlutterFlowTheme.of(context)
                                         .subtitle2
                                         .override(
                                           fontFamily: 'Poppins',
-                                          color: Colors.white,
+                                          color: Colors.black,
                                         ),
                                     borderSide: BorderSide(
                                       color: Colors.transparent,
@@ -205,7 +205,7 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
               height: MediaQuery.of(context).size.height,
               child: Center(
                 child: CircularProgressIndicator(
-                  color: Color.fromARGB(255, 52, 185, 59),
+                  color: Color.fromRGBO(209, 255, 189, 1),
                 ),
               ));
         });

@@ -92,14 +92,14 @@ class _DonationsWidgetState extends State<DonationsWidget> {
             ? PreferredSize(
                 preferredSize: Size.fromHeight(40),
                 child: AppBar(
-                  backgroundColor: Color.fromARGB(255, 76, 191, 82),
+                  backgroundColor: Color.fromRGBO(209, 255, 189, 1),
                   automaticallyImplyLeading: false,
                   title: Text(
                     'Hello, $userName',
                     style: FlutterFlowTheme.of(context).title2.override(
                           fontFamily: 'Poppins',
                           color: Color.fromARGB(255, 44, 48, 51),
-                          fontSize: 22,
+                          fontSize: 24,
                           fontWeight: FontWeight.normal,
                         ),
                   ),
@@ -206,7 +206,7 @@ class _DonationsWidgetState extends State<DonationsWidget> {
                                     height: MediaQuery.of(context).size.height,
                                     child: Center(
                                       child: CircularProgressIndicator(
-                                        color: Color.fromARGB(255, 76, 191, 82),
+                                        color: Color.fromRGBO(209, 255, 189, 1),
                                       ),
                                     ));
                               })

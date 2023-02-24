@@ -27,14 +27,14 @@ class _ApprovedrestaurantsWidgetState extends State<ApprovedrestaurantsWidget> {
       key: scaffoldKey,
       backgroundColor: Color(0xFFF1F4F8),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 76, 191, 82),
+        backgroundColor: Color.fromRGBO(209, 255, 189, 1),
         automaticallyImplyLeading: false,
         title: Text(
           'List of Approved Restaurants ',
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Outfit',
                 color: Color(0xFF101213),
-                fontSize: 22,
+                fontSize: 24,
                 fontWeight: FontWeight.w500,
               ),
         ),
@@ -134,7 +134,7 @@ class _ApprovedrestaurantsWidgetState extends State<ApprovedrestaurantsWidget> {
                                                 .override(
                                                   fontFamily: 'Outfit',
                                                   color: Color(0xFF101213),
-                                                  fontSize: 20,
+                                                  fontSize: 24,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -146,7 +146,7 @@ class _ApprovedrestaurantsWidgetState extends State<ApprovedrestaurantsWidget> {
                                               .override(
                                                 fontFamily: 'Outfit',
                                                 color: Color(0xFF57636C),
-                                                fontSize: 14,
+                                                fontSize: 16,
                                                 fontWeight: FontWeight.normal,
                                               ),
                                         ),
