@@ -218,7 +218,7 @@ class _DonationsWidgetState extends State<DonationsWidget> {
               )
             : screens[selectedIndex], // show the page clicked on the Nav-Bar
         bottomNavigationBar: BottomNavigationBar(
-          selectedItemColor: FlutterFlowTheme.of(context).primaryColor,
+          selectedItemColor: Color.fromARGB(255, 76, 191, 82),
           unselectedItemColor: Color(0x8A000000),
           type: BottomNavigationBarType.fixed,
           items: const <BottomNavigationBarItem>[
