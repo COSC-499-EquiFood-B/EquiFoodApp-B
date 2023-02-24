@@ -198,16 +198,7 @@ class _HmepageWidgetState extends State<HmepageWidget> {
                                   ),
                             ),
                           ),
-                          Text(
-                            'See All',
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Outfit',
-                                      color: Color(0xFF14181B),
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                          ),
+                         
                         ],
                       ),
                     ),
