@@ -41,7 +41,7 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color.fromRGBO(209, 255, 189, 1),
+      backgroundColor: Color.fromARGB(255, 243, 248, 249),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -56,7 +56,7 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Lottie.network(
-                      'https://assets10.lottiefiles.com/packages/lf20_xlkxtmul.json',
+                      'https://assets10.lottiefiles.com/packages/lf20_jjmkyjsk.json',
                       width: 200,
                       height: 200,
                       fit: BoxFit.cover,
