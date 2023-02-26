@@ -26,7 +26,7 @@ class getDonations extends StatelessWidget {
                 snapshot.data!.data() as Map<String, dynamic>;
 
             return Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+              padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
               child: Wrap(
                 alignment: WrapAlignment.start,
                 crossAxisAlignment: WrapCrossAlignment.start,
@@ -48,16 +48,15 @@ class getDonations extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * 0.95,
                       height: 190,
                       decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 4,
-                            color: Color(0x230E151B),
-                            offset: Offset(0, 2),
-                          )
-                        ],
-                        borderRadius: BorderRadius.circular(12),
-                      ),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 4,
+                              color: Color(0x230E151B),
+                              offset: Offset(0, 2),
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(12)),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(8, 4, 4, 4),
                         child: Column(
@@ -82,10 +81,10 @@ class getDonations extends StatelessWidget {
                                 style: FlutterFlowTheme.of(context)
                                     .subtitle1
                                     .override(
-                                      fontFamily: 'Outfit',
+                                      fontFamily: 'Inter',
                                       color: Color(0xFF14181B),
                                       fontSize: 16,
-                                      fontWeight: FontWeight.normal,
+                                      fontWeight: FontWeight.w500,
                                     ),
                               ),
                             ),
@@ -97,10 +96,10 @@ class getDonations extends StatelessWidget {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText2
                                     .override(
-                                      fontFamily: 'Outfit',
+                                      fontFamily: 'Inter',
                                       color: Color(0xFF57636C),
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.normal,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
                                     ),
                               ),
                             ),

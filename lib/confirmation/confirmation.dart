@@ -70,7 +70,7 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
               Text(
                 'Congrats!',
                 style: FlutterFlowTheme.of(context).title2.override(
-                      fontFamily: 'Outfit',
+                      fontFamily: 'Inter',
                       color: Colors.black,
                       fontSize: 32,
                       fontWeight: FontWeight.w500,
@@ -83,7 +83,7 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
                   child: Text(
                     'Your Order Is Held For',
                     style: FlutterFlowTheme.of(context).subtitle2.override(
-                          fontFamily: 'Outfit',
+                          fontFamily: 'Inter',
                           color: Colors.black,
                           fontSize: 24,
                           fontWeight: FontWeight.w300,
@@ -119,7 +119,7 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
                   ),
                   textAlign: TextAlign.start,
                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                        fontFamily: 'Poppins',
+                        fontFamily: 'Inter',
                         color: Color.fromARGB(255, 76, 191, 82),
                         fontSize: 24,
                       ),
@@ -142,7 +142,7 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
                       textStyle: FlutterFlowTheme.of(context)
                           .subtitle2
                           .override(
-                            fontFamily: 'Outfit',
+                            fontFamily: 'Inter',
                             color: FlutterFlowTheme.of(context).primaryBtnText,
                             fontSize: 16,
                             fontWeight: FontWeight.normal,
@@ -172,7 +172,7 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
                     height: 50,
                     color: Colors.white,
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                          fontFamily: 'Outfit',
+                          fontFamily: 'Inter',
                           color: Color(0xFF36AC64),
                           fontSize: 16,
                           fontWeight: FontWeight.normal,

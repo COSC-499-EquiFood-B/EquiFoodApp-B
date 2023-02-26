@@ -83,7 +83,7 @@ class getRestaurants extends StatelessWidget {
                                 style: FlutterFlowTheme.of(context)
                                     .subtitle1
                                     .override(
-                                      fontFamily: 'Outfit',
+                                      fontFamily: 'Inter',
                                       color: Color(0xFF14181B),
                                       fontSize: 16,
                                       fontWeight: FontWeight.normal,
@@ -98,7 +98,7 @@ class getRestaurants extends StatelessWidget {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText2
                                     .override(
-                                      fontFamily: 'Outfit',
+                                      fontFamily: 'Inter',
                                       color: Color(0xFF57636C),
                                       fontSize: 16,
                                       fontWeight: FontWeight.normal,

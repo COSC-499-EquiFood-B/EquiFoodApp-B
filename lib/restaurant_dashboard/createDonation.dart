@@ -125,7 +125,7 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
               child: Text(
             'Create Donation',
             style: FlutterFlowTheme.of(context).title1.override(
-                  fontFamily: 'Poppins',
+                  fontFamily: 'Inter',
                   color: FlutterFlowTheme.of(context).primaryBtnText,
                   fontSize: 24,
                   fontWeight: FontWeight.w600,

@@ -32,7 +32,7 @@ class _ApprovedrestaurantsWidgetState extends State<ApprovedrestaurantsWidget> {
         title: Text(
           'List of Approved Restaurants ',
           style: FlutterFlowTheme.of(context).title2.override(
-                fontFamily: 'Outfit',
+                fontFamily: 'Inter',
                 color: Color(0xFF101213),
                 fontSize: 24,
                 fontWeight: FontWeight.w500,
@@ -132,7 +132,7 @@ class _ApprovedrestaurantsWidgetState extends State<ApprovedrestaurantsWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .title3
                                                 .override(
-                                                  fontFamily: 'Outfit',
+                                                  fontFamily: 'Inter',
                                                   color: Color(0xFF101213),
                                                   fontSize: 24,
                                                   fontWeight: FontWeight.w500,
@@ -144,7 +144,7 @@ class _ApprovedrestaurantsWidgetState extends State<ApprovedrestaurantsWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText2
                                               .override(
-                                                fontFamily: 'Outfit',
+                                                fontFamily: 'Inter',
                                                 color: Color(0xFF57636C),
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.normal,

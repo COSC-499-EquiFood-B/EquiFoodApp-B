@@ -100,7 +100,7 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
               title: Text(
                 'Hello, administrator',
                 style: FlutterFlowTheme.of(context).title2.override(
-                      fontFamily: 'Outfit',
+                      fontFamily: 'Inter',
                       color: Color(0xFF14181B),
                       fontSize: 24,
                       fontWeight: FontWeight.normal,
@@ -133,7 +133,7 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .subtitle2
                                   .override(
-                                    fontFamily: 'Outfit',
+                                    fontFamily: 'Inter',
                                     color: Color(0xFF57636C),
                                     fontSize: 16,
                                     fontWeight: FontWeight.w500,

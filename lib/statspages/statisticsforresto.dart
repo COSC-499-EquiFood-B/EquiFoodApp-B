@@ -44,7 +44,7 @@ class _StatisticsforrestoWidgetState extends State<StatisticsforrestoWidget>
                     'Your Restaurant\'s\nEquifood Statistics',
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                          fontFamily: 'Poppins',
+                          fontFamily: 'Inter',
                           color: Color(0xFF353C41),
                           fontSize: 32,
                         ),
@@ -92,7 +92,7 @@ class _StatisticsforrestoWidgetState extends State<StatisticsforrestoWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .title1
                                         .override(
-                                          fontFamily: 'Outfit',
+                                          fontFamily: 'Inter',
                                           color: Color(0xFF0F1113),
                                           fontSize: 32,
                                           fontWeight: FontWeight.w500,
@@ -108,7 +108,7 @@ class _StatisticsforrestoWidgetState extends State<StatisticsforrestoWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText2
                                         .override(
-                                          fontFamily: 'Outfit',
+                                          fontFamily: 'Inter',
                                           color: Color(0xFF57636C),
                                           fontSize: 16,
                                           fontWeight: FontWeight.normal,

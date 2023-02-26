@@ -43,7 +43,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                   child: Text(
                     'Equifood Statistics',
                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                          fontFamily: 'Poppins',
+                          fontFamily: 'Inter',
                           fontSize: 32,
                         ),
                   ),
@@ -56,7 +56,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                       Text(
                         'Sales & Revenue',
                         style: FlutterFlowTheme.of(context).subtitle1.override(
-                              fontFamily: 'Outfit',
+                              fontFamily: 'Inter',
                               color: Color(0xFF0F1113),
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
@@ -105,7 +105,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .title1
                                       .override(
-                                        fontFamily: 'Outfit',
+                                        fontFamily: 'Inter',
                                         color: Color(0xFF0F1113),
                                         fontSize: 32,
                                         fontWeight: FontWeight.w500,
@@ -121,7 +121,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText2
                                       .override(
-                                        fontFamily: 'Outfit',
+                                        fontFamily: 'Inter',
                                         color: Color(0xFF57636C),
                                         fontSize: 16,
                                         fontWeight: FontWeight.normal,
@@ -160,7 +160,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .title1
                                       .override(
-                                        fontFamily: 'Outfit',
+                                        fontFamily: 'Inter',
                                         color: Color(0xFF0F1113),
                                         fontSize: 32,
                                         fontWeight: FontWeight.w500,
@@ -173,7 +173,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText2
                                     .override(
-                                      fontFamily: 'Outfit',
+                                      fontFamily: 'Inter',
                                       color: Color(0xFF57636C),
                                       fontSize: 16,
                                       fontWeight: FontWeight.normal,
@@ -211,7 +211,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .title1
                                       .override(
-                                        fontFamily: 'Outfit',
+                                        fontFamily: 'Inter',
                                         color: Color(0xFF0F1113),
                                         fontSize: 32,
                                         fontWeight: FontWeight.w500,
@@ -224,7 +224,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText2
                                     .override(
-                                      fontFamily: 'Outfit',
+                                      fontFamily: 'Inter',
                                       color: Color(0xFF57636C),
                                       fontSize: 16,
                                       fontWeight: FontWeight.normal,
@@ -262,7 +262,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .title1
                                       .override(
-                                        fontFamily: 'Outfit',
+                                        fontFamily: 'Inter',
                                         color: Color(0xFF0F1113),
                                         fontSize: 32,
                                         fontWeight: FontWeight.w500,
@@ -275,7 +275,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText2
                                     .override(
-                                      fontFamily: 'Outfit',
+                                      fontFamily: 'Inter',
                                       color: Color(0xFF57636C),
                                       fontSize: 16,
                                       fontWeight: FontWeight.normal,
