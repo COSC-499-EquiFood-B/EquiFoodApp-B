@@ -482,7 +482,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
               height: MediaQuery.of(context).size.height,
               child: Center(
                 child: CircularProgressIndicator(
-                  color: Color.fromARGB(255, 76, 191, 82),
+                  color: Color.fromRGBO(209, 255, 189, 1),
                 ),
               ));
         });

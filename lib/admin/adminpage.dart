@@ -91,18 +91,18 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color.fromARGB(255, 76, 191, 82),
+      backgroundColor: Color.fromARGB(255, 243, 248, 249),
       // APPBAR
       appBar: _selectedIndex == 0
           ? AppBar(
-              backgroundColor: Color.fromARGB(255, 76, 191, 82),
+              backgroundColor: Color.fromRGBO(209, 255, 189, 1),
               automaticallyImplyLeading: false,
               title: Text(
                 'Hello, administrator',
                 style: FlutterFlowTheme.of(context).title2.override(
                       fontFamily: 'Outfit',
                       color: Color(0xFF14181B),
-                      fontSize: 25,
+                      fontSize: 24,
                       fontWeight: FontWeight.normal,
                     ),
               ),
@@ -183,7 +183,7 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
                               height: MediaQuery.of(context).size.height,
                               child: Center(
                                 child: CircularProgressIndicator(
-                                  color: Color.fromARGB(255, 52, 185, 59),
+                                  color: Color.fromRGBO(209, 255, 189, 1),
                                 ),
                               ));
                         })
@@ -193,7 +193,7 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
             )
           : _screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: FlutterFlowTheme.of(context).primaryColor,
+        selectedItemColor: Color.fromARGB(255, 76, 191, 82),
         unselectedItemColor: Color(0x8A000000),
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[

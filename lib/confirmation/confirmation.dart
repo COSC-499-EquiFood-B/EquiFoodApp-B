@@ -41,7 +41,7 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFACE4AF),
+      backgroundColor: Color.fromARGB(255, 243, 248, 249),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -56,7 +56,7 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Lottie.network(
-                      'https://assets10.lottiefiles.com/packages/lf20_xlkxtmul.json',
+                      'https://assets10.lottiefiles.com/packages/lf20_jjmkyjsk.json',
                       width: 200,
                       height: 200,
                       fit: BoxFit.cover,
@@ -71,7 +71,7 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
                 'Congrats!',
                 style: FlutterFlowTheme.of(context).title2.override(
                       fontFamily: 'Outfit',
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 32,
                       fontWeight: FontWeight.w500,
                     ),
@@ -84,8 +84,8 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
                     'Your Order Is Held For',
                     style: FlutterFlowTheme.of(context).subtitle2.override(
                           fontFamily: 'Outfit',
-                          color: Colors.white,
-                          fontSize: 20,
+                          color: Colors.black,
+                          fontSize: 24,
                           fontWeight: FontWeight.w300,
                         ),
                   ),
@@ -120,8 +120,8 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
                   textAlign: TextAlign.start,
                   style: FlutterFlowTheme.of(context).bodyText1.override(
                         fontFamily: 'Poppins',
-                        color: Color(0xFF36AC64),
-                        fontSize: 20,
+                        color: Color.fromARGB(255, 76, 191, 82),
+                        fontSize: 24,
                       ),
                   onEnded: () {},
                 ),
@@ -138,7 +138,7 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
                     options: FFButtonOptions(
                       width: 180,
                       height: 50,
-                      color: Color(0xFF36AC64),
+                      color: Color.fromARGB(255, 76, 191, 82),
                       textStyle: FlutterFlowTheme.of(context)
                           .subtitle2
                           .override(

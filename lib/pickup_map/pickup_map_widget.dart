@@ -30,7 +30,7 @@ class _PickupMapWidgetState extends State<PickupMapWidget> {
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: FlutterFlowTheme.of(context).primaryText,
-                fontSize: 22,
+                fontSize: 24,
               ),
         ),
         actions: [],

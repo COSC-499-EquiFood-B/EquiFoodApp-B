@@ -29,7 +29,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFACE4AF),
+      backgroundColor: Color.fromRGBO(209, 255, 189, 1),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
@@ -44,7 +44,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                     'Equifood Statistics',
                     style: FlutterFlowTheme.of(context).bodyText1.override(
                           fontFamily: 'Poppins',
-                          fontSize: 35,
+                          fontSize: 32,
                         ),
                   ),
                 ),
@@ -58,7 +58,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                         style: FlutterFlowTheme.of(context).subtitle1.override(
                               fontFamily: 'Outfit',
                               color: Color(0xFF0F1113),
-                              fontSize: 18,
+                              fontSize: 16,
                               fontWeight: FontWeight.w500,
                             ),
                       ),
@@ -94,7 +94,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                               Icon(
                                 Icons.payments,
                                 color: Color(0xFF0F1113),
-                                size: 44,
+                                size: 40,
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
@@ -123,7 +123,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                                       .override(
                                         fontFamily: 'Outfit',
                                         color: Color(0xFF57636C),
-                                        fontSize: 14,
+                                        fontSize: 16,
                                         fontWeight: FontWeight.normal,
                                       ),
                                 ),
@@ -175,7 +175,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                                     .override(
                                       fontFamily: 'Outfit',
                                       color: Color(0xFF57636C),
-                                      fontSize: 14,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.normal,
                                     ),
                               ),
@@ -226,7 +226,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                                     .override(
                                       fontFamily: 'Outfit',
                                       color: Color(0xFF57636C),
-                                      fontSize: 14,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.normal,
                                     ),
                               ),
@@ -277,7 +277,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                                     .override(
                                       fontFamily: 'Outfit',
                                       color: Color(0xFF57636C),
-                                      fontSize: 14,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.normal,
                                     ),
                               ),

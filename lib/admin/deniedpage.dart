@@ -51,7 +51,7 @@ class _RestaurantdeniedWidgetState extends State<RestaurantdeniedWidget> {
                   style: FlutterFlowTheme.of(context).subtitle2.override(
                         fontFamily: 'Poppins',
                         color: FlutterFlowTheme.of(context).primaryBtnText,
-                        fontSize: 20,
+                        fontSize: 16,
                         fontWeight: FontWeight.w300,
                       ),
                 ),

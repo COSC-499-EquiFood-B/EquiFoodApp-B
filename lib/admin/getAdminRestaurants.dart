@@ -85,7 +85,7 @@ class getRestaurants extends StatelessWidget {
                                     .override(
                                       fontFamily: 'Outfit',
                                       color: Color(0xFF14181B),
-                                      fontSize: 18,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.normal,
                                     ),
                               ),
@@ -100,7 +100,7 @@ class getRestaurants extends StatelessWidget {
                                     .override(
                                       fontFamily: 'Outfit',
                                       color: Color(0xFF57636C),
-                                      fontSize: 15,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.normal,
                                     ),
                               ),
