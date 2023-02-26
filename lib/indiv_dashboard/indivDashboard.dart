@@ -87,19 +87,19 @@ class _HmepageWidgetState extends State<HmepageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor:Color.fromARGB(255, 243, 248, 249),
+      backgroundColor: Color.fromARGB(255, 243, 248, 249),
       // APPBAR
       appBar: _selectedIndex == 0
           ? AppBar(
-              backgroundColor: Color.fromRGBO(209, 255, 189, 1),
+              backgroundColor: Color.fromRGBO(38, 189, 104, 1),
               automaticallyImplyLeading: false,
               title: Text(
-                'Hello, $userName',
+                'Hello, $userName  👋',
                 style: FlutterFlowTheme.of(context).title2.override(
-                      fontFamily: 'Outfit',
-                      color: Color(0xFF14181B),
+                      fontFamily: 'Inter',
+                      color: Color.fromRGBO(247, 255, 250, 1),
                       fontSize: 24,
-                      fontWeight: FontWeight.normal,
+                      fontWeight: FontWeight.w700,
                     ),
               ),
               actions: [],
@@ -116,7 +116,7 @@ class _HmepageWidgetState extends State<HmepageWidget> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
+                      padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
                       child: TextFormField(
                         controller: textController,
                         onChanged: (_) => EasyDebounce.debounce(
@@ -129,10 +129,10 @@ class _HmepageWidgetState extends State<HmepageWidget> {
                           labelText: 'Search restaurants...',
                           labelStyle:
                               FlutterFlowTheme.of(context).bodyText2.override(
-                                    fontFamily: 'Outfit',
+                                    fontFamily: 'Inter',
                                     color: Color(0xFF57636C),
                                     fontSize: 16,
-                                    fontWeight: FontWeight.normal,
+                                    fontWeight: FontWeight.w300,
                                   ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -170,7 +170,7 @@ class _HmepageWidgetState extends State<HmepageWidget> {
                           ),
                         ),
                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Outfit',
+                              fontFamily: 'Inter',
                               color: Color(0xFF14181B),
                               fontSize: 16,
                               fontWeight: FontWeight.normal,
@@ -185,20 +185,19 @@ class _HmepageWidgetState extends State<HmepageWidget> {
                         children: [
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
+                                EdgeInsetsDirectional.fromSTEB(0, 8, 0, 16),
                             child: Text(
                               'Restaurants',
                               style: FlutterFlowTheme.of(context)
                                   .subtitle2
                                   .override(
-                                    fontFamily: 'Outfit',
+                                    fontFamily: 'Inter',
                                     color: Color(0xFF57636C),
                                     fontSize: 16,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
                           ),
-                         
                         ],
                       ),
                     ),
@@ -242,7 +241,7 @@ class _HmepageWidgetState extends State<HmepageWidget> {
                               height: MediaQuery.of(context).size.height,
                               child: Center(
                                 child: CircularProgressIndicator(
-                                  color:Color.fromRGBO(209, 255, 189, 1),
+                                  color: Color.fromRGBO(209, 255, 189, 1),
                                 ),
                               ));
                         })
@@ -252,8 +251,8 @@ class _HmepageWidgetState extends State<HmepageWidget> {
             )
           : _screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Color.fromARGB(255, 76, 191, 82),
-        unselectedItemColor: Color(0x8A000000),
+        selectedItemColor: Color.fromRGBO(38, 189, 104, 1),
+        unselectedItemColor: Color.fromRGBO(194, 194, 194, 1),
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -273,6 +272,8 @@ class _HmepageWidgetState extends State<HmepageWidget> {
             label: 'Settings',
           ),
         ],
+        selectedLabelStyle: TextStyle(fontFamily: 'Inter'),
+        unselectedLabelStyle: TextStyle(fontFamily: 'Inter'),
         currentIndex: _selectedIndex,
         onTap: (i) {
           setState(() {

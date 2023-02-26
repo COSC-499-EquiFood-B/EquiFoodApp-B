@@ -29,7 +29,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
         title: Text(
           'Settings',
           style: FlutterFlowTheme.of(context).title2.override(
-                fontFamily: 'Poppins',
+                fontFamily: 'Inter',
                 color: FlutterFlowTheme.of(context).primaryText,
                 fontSize: 24,
               ),
@@ -70,7 +70,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                 'Receive Push notifications from our application on a semi regular basis.',
                 style: FlutterFlowTheme.of(context).bodyText2,
               ),
-              activeColor:Color.fromRGBO(209, 255, 189, 1),
+              activeColor: Color.fromRGBO(209, 255, 189, 1),
               activeTrackColor: Color(0x8A4B39EF),
               dense: false,
               controlAffinity: ListTileControlAffinity.trailing,
@@ -125,7 +125,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
               options: FFButtonOptions(
                 width: 190,
                 height: 50,
-                color:Color.fromARGB(255, 76, 191, 82),
+                color: Color.fromARGB(255, 76, 191, 82),
                 textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                       fontFamily: 'Lexend Deca',
                       color: Colors.white,

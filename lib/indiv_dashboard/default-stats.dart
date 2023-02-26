@@ -1,4 +1,3 @@
-
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -42,7 +41,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                     child: Text(
                       'Donation Summary',
                       style: FlutterFlowTheme.of(context).title1.override(
-                            fontFamily: 'Outfit',
+                            fontFamily: 'Inter',
                             color: Color(0xFF0F1113),
                             fontSize: 32,
                             fontWeight: FontWeight.w500,
@@ -79,7 +78,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                             'Jan',
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Outfit',
+                                      fontFamily: 'Inter',
                                       color: Color(0xFF0F1113),
                                       fontSize: 16,
                                       fontWeight: FontWeight.normal,
@@ -106,7 +105,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                             'Feb',
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Outfit',
+                                      fontFamily: 'Inter',
                                       color: Color(0xFF0F1113),
                                       fontSize: 16,
                                       fontWeight: FontWeight.normal,
@@ -119,7 +118,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                               width: 36,
                               height: 89,
                               decoration: BoxDecoration(
-                                color:Color.fromRGBO(209, 255, 189, 1),
+                                color: Color.fromRGBO(209, 255, 189, 1),
                                 borderRadius: BorderRadius.circular(12),
                               ),
                             ),
@@ -133,7 +132,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                             'Mar',
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Outfit',
+                                      fontFamily: 'Inter',
                                       color: Color(0xFF0F1113),
                                       fontSize: 16,
                                       fontWeight: FontWeight.normal,
@@ -146,7 +145,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                               width: 36,
                               height: 100,
                               decoration: BoxDecoration(
-                                color:Color.fromRGBO(209, 255, 189, 1),
+                                color: Color.fromRGBO(209, 255, 189, 1),
                                 borderRadius: BorderRadius.circular(12),
                               ),
                             ),
@@ -160,7 +159,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                             'Apr',
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Outfit',
+                                      fontFamily: 'Inter',
                                       color: Color(0xFF0F1113),
                                       fontSize: 16,
                                       fontWeight: FontWeight.normal,
@@ -187,7 +186,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                             'May',
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Outfit',
+                                      fontFamily: 'Inter',
                                       color: Color(0xFF0F1113),
                                       fontSize: 16,
                                       fontWeight: FontWeight.normal,
@@ -218,7 +217,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                       Text(
                         'Sales & Revenue',
                         style: FlutterFlowTheme.of(context).subtitle1.override(
-                              fontFamily: 'Outfit',
+                              fontFamily: 'Inter',
                               color: Color(0xFF0F1113),
                               fontSize: 24,
                               fontWeight: FontWeight.w500,
@@ -264,7 +263,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .title1
                                     .override(
-                                      fontFamily: 'Outfit',
+                                      fontFamily: 'Inter',
                                       color: Color(0xFF0F1113),
                                       fontSize: 32,
                                       fontWeight: FontWeight.w500,
@@ -277,7 +276,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                               style: FlutterFlowTheme.of(context)
                                   .bodyText2
                                   .override(
-                                    fontFamily: 'Outfit',
+                                    fontFamily: 'Inter',
                                     color: Color(0xFF57636C),
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
@@ -314,7 +313,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .title1
                                     .override(
-                                      fontFamily: 'Outfit',
+                                      fontFamily: 'Inter',
                                       color: Color(0xFF0F1113),
                                       fontSize: 32,
                                       fontWeight: FontWeight.w500,
@@ -327,7 +326,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                               style: FlutterFlowTheme.of(context)
                                   .bodyText2
                                   .override(
-                                    fontFamily: 'Outfit',
+                                    fontFamily: 'Inter',
                                     color: Color(0xFF57636C),
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
@@ -364,7 +363,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .title1
                                     .override(
-                                      fontFamily: 'Outfit',
+                                      fontFamily: 'Inter',
                                       color: Color(0xFF0F1113),
                                       fontSize: 32,
                                       fontWeight: FontWeight.w500,
@@ -377,7 +376,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                               style: FlutterFlowTheme.of(context)
                                   .bodyText2
                                   .override(
-                                    fontFamily: 'Outfit',
+                                    fontFamily: 'Inter',
                                     color: Color(0xFF57636C),
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
@@ -414,7 +413,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .title1
                                     .override(
-                                      fontFamily: 'Outfit',
+                                      fontFamily: 'Inter',
                                       color: Color(0xFF0F1113),
                                       fontSize: 32,
                                       fontWeight: FontWeight.w500,
@@ -427,7 +426,7 @@ class _DonationscreenWidgetState extends State<DonationscreenWidget>
                               style: FlutterFlowTheme.of(context)
                                   .bodyText2
                                   .override(
-                                    fontFamily: 'Outfit',
+                                    fontFamily: 'Inter',
                                     color: Color(0xFF57636C),
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,

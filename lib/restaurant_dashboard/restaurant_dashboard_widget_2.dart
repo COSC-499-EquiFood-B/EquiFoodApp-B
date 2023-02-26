@@ -97,7 +97,7 @@ class _DonationsWidgetState extends State<DonationsWidget> {
                   title: Text(
                     'Hello, $userName',
                     style: FlutterFlowTheme.of(context).title2.override(
-                          fontFamily: 'Poppins',
+                          fontFamily: 'Inter',
                           color: Color.fromARGB(255, 44, 48, 51),
                           fontSize: 24,
                           fontWeight: FontWeight.normal,
@@ -174,7 +174,7 @@ class _DonationsWidgetState extends State<DonationsWidget> {
                                                         context)
                                                     .bodyText2
                                                     .override(
-                                                        fontFamily: 'Outfit',
+                                                        fontFamily: 'Inter',
                                                         color: Color.fromARGB(
                                                             255, 113, 113, 116),
                                                         fontSize: 16,

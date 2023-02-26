@@ -183,7 +183,7 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
                                     textStyle: FlutterFlowTheme.of(context)
                                         .subtitle2
                                         .override(
-                                          fontFamily: 'Poppins',
+                                          fontFamily: 'Inter',
                                           color: Colors.black,
                                         ),
                                     borderSide: BorderSide(
@@ -207,7 +207,7 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
                                     textStyle: FlutterFlowTheme.of(context)
                                         .subtitle2
                                         .override(
-                                          fontFamily: 'Poppins',
+                                          fontFamily: 'Inter',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryBtnText,
                                         ),

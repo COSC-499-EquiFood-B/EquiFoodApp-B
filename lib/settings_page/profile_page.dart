@@ -103,7 +103,7 @@
 //                       child: Text(
 //                         'Edit Profile',
 //                         style: FlutterFlowTheme.of(context).title2.override(
-//                               fontFamily: 'Poppins',
+//                               fontFamily: 'Inter',
 //                               color: FlutterFlowTheme.of(context).primaryText,
 //                               fontSize: 22,
 //                             ),

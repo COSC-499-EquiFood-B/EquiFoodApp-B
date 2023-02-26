@@ -458,9 +458,9 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                               : Color.fromARGB(255, 247, 160, 54),
                           textStyle:
                               FlutterFlowTheme.of(context).subtitle2.override(
-                                    fontFamily: 'Outfit',
+                                    fontFamily: 'Inter',
                                     fontSize: 16,
-                                    fontWeight: FontWeight.normal,
+                                    fontWeight: FontWeight.w600,
                                     color: Colors.white,
                                   ),
                           borderSide: BorderSide(

@@ -58,7 +58,7 @@ class _RestaurantapprovedWidgetState extends State<RestaurantapprovedWidget> {
               Text(
                 'Restaurant Approved',
                 style: FlutterFlowTheme.of(context).title2.override(
-                      fontFamily: 'Poppins',
+                      fontFamily: 'Inter',
                       color: FlutterFlowTheme.of(context).primaryBtnText,
                       fontSize: 32,
                     ),
@@ -69,7 +69,7 @@ class _RestaurantapprovedWidgetState extends State<RestaurantapprovedWidget> {
                   'Restaurant is Successfully Added to List of Approved Restaurants',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).subtitle2.override(
-                        fontFamily: 'Poppins',
+                        fontFamily: 'Inter',
                         color: FlutterFlowTheme.of(context).primaryBtnText,
                         fontSize: 16,
                         fontWeight: FontWeight.w300,
@@ -93,7 +93,7 @@ class _RestaurantapprovedWidgetState extends State<RestaurantapprovedWidget> {
                     height: 50,
                     color: FlutterFlowTheme.of(context).primaryBtnText,
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                          fontFamily: 'Poppins',
+                          fontFamily: 'Inter',
                           color: Color.fromRGBO(209, 255, 189, 1),
                         ),
                     elevation: 3,

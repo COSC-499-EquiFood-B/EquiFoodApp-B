@@ -38,7 +38,7 @@ class _RestaurantdeniedWidgetState extends State<RestaurantdeniedWidget> {
               Text(
                 'Restaurant Denied',
                 style: FlutterFlowTheme.of(context).title2.override(
-                      fontFamily: 'Poppins',
+                      fontFamily: 'Inter',
                       color: FlutterFlowTheme.of(context).primaryBtnText,
                       fontSize: 32,
                     ),
@@ -49,7 +49,7 @@ class _RestaurantdeniedWidgetState extends State<RestaurantdeniedWidget> {
                   'Restaurant has been Denied and will not be added to the Equifood Directory',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).subtitle2.override(
-                        fontFamily: 'Poppins',
+                        fontFamily: 'Inter',
                         color: FlutterFlowTheme.of(context).primaryBtnText,
                         fontSize: 16,
                         fontWeight: FontWeight.w300,
@@ -73,7 +73,7 @@ class _RestaurantdeniedWidgetState extends State<RestaurantdeniedWidget> {
                     height: 50,
                     color: FlutterFlowTheme.of(context).primaryBtnText,
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                          fontFamily: 'Poppins',
+                          fontFamily: 'Inter',
                           color: Color(0xFF353C41),
                         ),
                     elevation: 3,
