@@ -92,33 +92,17 @@ class _DonationsWidgetState extends State<DonationsWidget> {
             ? PreferredSize(
                 preferredSize: Size.fromHeight(40),
                 child: AppBar(
-                  backgroundColor: Color.fromRGBO(209, 255, 189, 1),
+                  backgroundColor: Color.fromRGBO(38, 189, 104, 1),
                   automaticallyImplyLeading: false,
                   title: Text(
                     'Hello, $userName',
                     style: FlutterFlowTheme.of(context).title2.override(
                           fontFamily: 'Inter',
-                          color: Color.fromARGB(255, 44, 48, 51),
+                          color: Color.fromRGBO(247, 255, 250, 1),
                           fontSize: 24,
-                          fontWeight: FontWeight.normal,
+                          fontWeight: FontWeight.w700,
                         ),
                   ),
-                  actions: [
-                    FlutterFlowIconButton(
-                      borderColor: Colors.transparent,
-                      borderRadius: 30,
-                      borderWidth: 1,
-                      buttonSize: 70,
-                      icon: Icon(
-                        Icons.add,
-                        color: Color(0xFFFEFEFE),
-                        size: 30,
-                      ),
-                      onPressed: () {
-                        print('IconButton pressed ...');
-                      },
-                    ),
-                  ],
                   centerTitle: false,
                   toolbarHeight: double.infinity,
                   elevation: 2,

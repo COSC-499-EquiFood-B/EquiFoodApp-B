@@ -1,3 +1,4 @@
+import 'package:equi_food_app/admin/adminpage.dart';
 import 'package:equi_food_app/backend/backend.dart';
 import 'package:equi_food_app/indiv_dashboard/indivDashboard.dart';
 import 'package:equi_food_app/register/createUser.dart';
@@ -82,15 +83,18 @@ class _LoginWidgetState extends State<LoginWidget> {
         Map<String, dynamic>? currentUserData = currentUserSnapshot.data();
 
         // get current user's user_type value to navigate them to the correct screen
-        // 1 = Individual User, 2 = Restaurant User
+        // 0 = Admin User,  1 = Individual User, 2 = Restaurant User
         int userType = currentUserData!['user_type'];
 
         // THIS IS WHERE THE NAV-BAR ISSUE OCCURS!!
         // WILL HAVE TO RENDER THE RIGHT PAGE BASED ON USER TYPE
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(
-                builder: (BuildContext context) =>
-                    userType == 1 ? HmepageWidget() : DonationsWidget()),
+                builder: (BuildContext context) => userType == 0
+                    ? AdminpageWidget()
+                    : userType == 1
+                        ? HmepageWidget()
+                        : DonationsWidget()),
             (route) => false);
       }
     }
