@@ -653,8 +653,7 @@ class _SignupAdminWidgetState extends State<SignupAdminWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                 child: InkWell(
-                    child: Text(
-                        "Individual user? Register as a individual user",
+                    child: Text("Individual user? Register as a individual user",
                         style: FlutterFlowTheme.of(context).bodyText2.override(
                             fontFamily: 'Outfit',
                             color: Color.fromARGB(255, 26, 26, 27),
@@ -663,7 +662,7 @@ class _SignupAdminWidgetState extends State<SignupAdminWidget> {
                     onTap: () => {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  SignupWidget()))
+                                SignupWidget()))
                         }),
               ),
               // ADD CODE BELOW TO NAVIGATE THE USER TO THE LOGIN PAGE (login_widget)
