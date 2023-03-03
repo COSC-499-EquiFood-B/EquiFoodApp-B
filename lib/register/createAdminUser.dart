@@ -1,7 +1,7 @@
 import 'package:equi_food_app/backend/backend.dart';
 import 'package:equi_food_app/index.dart';
-import 'package:equi_food_app/register/createAdminUser.dart';
 import 'package:equi_food_app/register/createRestaurantUser.dart';
+import 'package:equi_food_app/register/createUser.dart';
 
 import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
@@ -14,14 +14,14 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:firebase_auth/firebase_auth.dart'; // import Firebase package to sign UP users
 
-class SignupWidget extends StatefulWidget {
-  const SignupWidget({Key? key}) : super(key: key);
+class SignupAdminWidget extends StatefulWidget {
+  const SignupAdminWidget({Key? key}) : super(key: key);
 
   @override
-  _SignupWidgetState createState() => _SignupWidgetState();
+  _SignupAdminWidgetState createState() => _SignupAdminWidgetState();
 }
 
-class _SignupWidgetState extends State<SignupWidget> {
+class _SignupAdminWidgetState extends State<SignupAdminWidget> {
   TextEditingController? nameTextController;
   TextEditingController? emailTextController;
   TextEditingController? passwordTextController;
@@ -87,7 +87,7 @@ class _SignupWidgetState extends State<SignupWidget> {
   }
 
   // method to sign UP user with email and password
-  Future signUpUser() async {
+  Future signupAdminUser() async {
     // Sign-UP user only if the password is confirmed
     if (errorcheck() && confirmPassword()) {
       try {
@@ -98,12 +98,6 @@ class _SignupWidgetState extends State<SignupWidget> {
                 email: emailTextController!.text.trim(),
                 password: passwordTextController!.text.trim())
             .then((value) => {
-                  // add user (Restaurant's) name in their profile
-                  // So name would be directly accessible along with email without separately querying the
-                  // "users" collection everytime
-                  value.user
-                      ?.updateDisplayName(nameTextController!.text.toString()),
-
                   // create user
                   // AKA adding the user details to the "users" Collection in firebase
                   FirebaseFirestore.instance
@@ -114,7 +108,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                         nameTextController!.text.toString(), // add user name
                     "email": emailTextController!.text.trim(), // add user email
                     "user_type":
-                        1 // user_type field (1 = Individual User, 2 = Restaurant User)
+                        0 // user_type field (1 = Individual User, 2 = Restaurant User)
                   })
                 });
       } on FirebaseAuthException catch (e) {
@@ -229,7 +223,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                           child: Text(
                             'Sign In',
                             style: FlutterFlowTheme.of(context).title1.override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
                                   fontSize: 32,
                                   fontWeight: FontWeight.normal,
@@ -249,7 +243,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                         child: Text(
                           'Sign Up',
                           style: FlutterFlowTheme.of(context).title1.override(
-                                fontFamily: 'Inter',
+                                fontFamily: 'Outfit',
                                 color: Color(0xFF0F1113),
                                 fontSize: 32,
                                 fontWeight: FontWeight.w500,
@@ -268,9 +262,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                     Text(
                       'Get started by creating an account below.',
                       style: FlutterFlowTheme.of(context).bodyText2.override(
-                            fontFamily: 'Inter',
+                            fontFamily: 'Outfit',
                             color: Color(0xFF57636C),
-                            fontSize: 16,
+                            fontSize: 14,
                             fontWeight: FontWeight.normal,
                           ),
                     ),
@@ -302,16 +296,16 @@ class _SignupWidgetState extends State<SignupWidget> {
                         labelText: 'Name',
                         labelStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
-                                  fontSize: 16,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.normal,
                                 ),
                         hintStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
-                                  fontSize: 16,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.normal,
                                 ),
                         enabledBorder: OutlineInputBorder(
@@ -348,9 +342,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                             EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
                       ),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Inter',
+                            fontFamily: 'Outfit',
                             color: Color(0xFF0F1113),
-                            fontSize: 16,
+                            fontSize: 14,
                             fontWeight: FontWeight.normal,
                           ),
                     ),
@@ -382,16 +376,16 @@ class _SignupWidgetState extends State<SignupWidget> {
                         labelText: 'Your email address',
                         labelStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
-                                  fontSize: 16,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.normal,
                                 ),
                         hintStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
-                                  fontSize: 16,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.normal,
                                 ),
                         enabledBorder: OutlineInputBorder(
@@ -428,9 +422,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                             EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
                       ),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Inter',
+                            fontFamily: 'Outfit',
                             color: Color(0xFF0F1113),
-                            fontSize: 16,
+                            fontSize: 14,
                             fontWeight: FontWeight.normal,
                           ),
                     ),
@@ -462,16 +456,16 @@ class _SignupWidgetState extends State<SignupWidget> {
                         labelText: 'Password',
                         labelStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
-                                  fontSize: 16,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.normal,
                                 ),
                         hintStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
-                                  fontSize: 16,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.normal,
                                 ),
                         enabledBorder: OutlineInputBorder(
@@ -521,9 +515,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                         ),
                       ),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Inter',
+                            fontFamily: 'Outfit',
                             color: Color(0xFF0F1113),
-                            fontSize: 16,
+                            fontSize: 14,
                             fontWeight: FontWeight.normal,
                           ),
                     ),
@@ -555,16 +549,16 @@ class _SignupWidgetState extends State<SignupWidget> {
                         labelText: ' Confirm Password',
                         labelStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
-                                  fontSize: 16,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.normal,
                                 ),
                         hintStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Outfit',
                                   color: Color(0xFF57636C),
-                                  fontSize: 16,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.normal,
                                 ),
                         enabledBorder: OutlineInputBorder(
@@ -614,9 +608,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                         ),
                       ),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Inter',
+                            fontFamily: 'Outfit',
                             color: Color(0xFF0F1113),
-                            fontSize: 16,
+                            fontSize: 14,
                             fontWeight: FontWeight.normal,
                           ),
                     ),
@@ -632,17 +626,17 @@ class _SignupWidgetState extends State<SignupWidget> {
                   children: [
                     Expanded(
                       child: FFButtonWidget(
-                        onPressed: signUpUser,
+                        onPressed: signupAdminUser,
                         text: 'Sign up',
                         options: FFButtonOptions(
                           width: 150,
                           height: 50,
-                          color: Color.fromARGB(255, 76, 191, 82),
+                          color: Color(0xFF66BB6A),
                           textStyle:
                               FlutterFlowTheme.of(context).subtitle2.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Outfit',
                                     color: Colors.white,
-                                    fontSize: 16,
+                                    fontSize: 18,
                                     fontWeight: FontWeight.w500,
                                   ),
                           elevation: 3,
@@ -659,33 +653,20 @@ class _SignupWidgetState extends State<SignupWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                 child: InkWell(
-                    child: Text("Food Provider? Register as a Restaurant",
+                    child: Text("Individual user? Register as a individual user",
                         style: FlutterFlowTheme.of(context).bodyText2.override(
-                            fontFamily: 'Inter',
+                            fontFamily: 'Outfit',
                             color: Color.fromARGB(255, 26, 26, 27),
                             fontSize: 16,
                             fontWeight: FontWeight.w500)),
                     onTap: () => {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  CreateRestaurantUserWidget()))
+                                SignupWidget()))
                         }),
               ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                child: InkWell(
-                    child: Text("Admin? Register as an admin",
-                        style: FlutterFlowTheme.of(context).bodyText2.override(
-                            fontFamily: 'Inter',
-                            color: Color.fromARGB(255, 26, 26, 27),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500)),
-                    onTap: () => {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  SignupAdminWidget()))
-                        }),
-              ),
+              // ADD CODE BELOW TO NAVIGATE THE USER TO THE LOGIN PAGE (login_widget)
+              // WHEN THEY CLICK THE TEXT BELOW
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 4),
                 child: InkWell(
@@ -700,7 +681,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                           ],
                         ),
                         style: FlutterFlowTheme.of(context).bodyText2.override(
-                            fontFamily: 'Inter',
+                            fontFamily: 'Outfit',
                             color: Color.fromARGB(255, 19, 19, 19),
                             fontSize: 16,
                             fontWeight: FontWeight.w300)),
