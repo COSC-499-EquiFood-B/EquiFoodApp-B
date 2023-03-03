@@ -642,7 +642,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                               FlutterFlowTheme.of(context).subtitle2.override(
                                     fontFamily: 'Inter',
                                     color: Colors.white,
-                                    fontSize: 18,
+                                    fontSize: 16,
                                     fontWeight: FontWeight.w500,
                                   ),
                           elevation: 3,
@@ -656,6 +656,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                   ],
                 ),
               ),
+
+              // ADD CODE BELOW TO NAVIGATE THE USER TO THE LOGIN PAGE (login_widget)
+              // WHEN THEY CLICK THE TEXT BELOW
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                 child: InkWell(
