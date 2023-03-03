@@ -119,16 +119,16 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(40),
         child: AppBar(
-          backgroundColor: Color.fromRGBO(209, 255, 189, 1),
+          backgroundColor: Color.fromRGBO(38, 189, 104, 1),
           automaticallyImplyLeading: true,
           title: SelectionArea(
               child: Text(
             'Create Donation',
             style: FlutterFlowTheme.of(context).title1.override(
                   fontFamily: 'Inter',
-                  color: FlutterFlowTheme.of(context).primaryBtnText,
+                  color: Color.fromRGBO(247, 255, 250, 1),
                   fontSize: 24,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w700,
                 ),
           )),
           actions: [],
@@ -331,10 +331,10 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
                   options: FFButtonOptions(
                     width: 340,
                     height: 60,
-                    color: Color.fromARGB(255, 76, 191, 82),
+                    color: Color.fromRGBO(38, 189, 104, 1),
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                          fontFamily: 'Lexend Deca',
-                          color: Colors.white,
+                          fontFamily: 'Inter',
+                          color: Color.fromRGBO(247, 255, 250, 1),
                           fontSize: 16,
                           fontWeight: FontWeight.normal,
                         ),
