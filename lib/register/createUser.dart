@@ -656,9 +656,6 @@ class _SignupWidgetState extends State<SignupWidget> {
                   ],
                 ),
               ),
-
-              // ADD CODE BELOW TO NAVIGATE THE USER TO THE LOGIN PAGE (login_widget)
-              // WHEN THEY CLICK THE TEXT BELOW
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                 child: InkWell(
