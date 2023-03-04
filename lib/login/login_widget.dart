@@ -70,31 +70,18 @@ class _LoginWidgetState extends State<LoginWidget> {
           errorMsg = "Incorrect password.";
         }
 
+        // display error message to the user
         displaySnackbar(context, errorMsg);
+
+        return;
       }
-      // get current user
-      final currentUser = FirebaseAuth.instance.currentUser;
 
-      // get current user snapshot
-      final currentUserSnapshot = await FirebaseFirestore.instance
-          .collection("users")
-          .doc(currentUser?.uid)
-          .get();
-
-      if (currentUserSnapshot.exists) {
-        Map<String, dynamic>? currentUserData = currentUserSnapshot.data();
-
-        // get current user's user_type value to navigate them to the correct screen
-        // 0 = Admin User,  1 = Individual User, 2 = Restaurant User
-        int userType = currentUserData!['user_type'];
-
-        // THIS IS WHERE THE NAV-BAR ISSUE OCCURS!!
-        // WILL HAVE TO RENDER THE RIGHT PAGE BASED ON USER TYPE
-        Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(
-                builder: (BuildContext context) => RenderDashboardWidget()),
-            (route) => false);
-      }
+      // Navigator user to the RenderDashboard Page, which will redirect them to the
+      // appropriate dashboard according to the user type
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(
+              builder: (BuildContext context) => RenderDashboardWidget()),
+          (route) => false);
     }
   }
 
