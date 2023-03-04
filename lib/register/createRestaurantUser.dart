@@ -1,6 +1,8 @@
 import 'package:equi_food_app/backend/backend.dart';
 import 'package:equi_food_app/index.dart';
 import 'package:equi_food_app/register/createUser.dart';
+import 'package:equi_food_app/utils/displayAlert.dart';
+import 'package:equi_food_app/utils/displaySnackbar.dart';
 
 import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
@@ -192,49 +194,6 @@ class _CreateRestaurantUserWidgetState
     }
 
     return true;
-  }
-
-  // function to render Pop Up if the fields are empty
-  displayAlert(BuildContext context, String text) {
-    // set up the Button
-    Widget okButton = TextButton(
-      child: Text("OK"),
-      onPressed: () {
-        Navigator.pop(context);
-      },
-    );
-
-    // Alert
-    AlertDialog alert = AlertDialog(
-      title: Text("Alert"),
-      content: Text(text),
-      actions: [
-        // Button
-        okButton,
-      ],
-    );
-
-    // show the dialog
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      },
-    );
-  }
-
-  // function to show a Snackbar
-  displaySnackbar(context, text) {
-    SnackBar snackbar = SnackBar(
-      width: 200,
-      content: Text(text),
-      behavior: SnackBarBehavior.floating,
-      duration: const Duration(milliseconds: 2000),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
-    );
-
-    // show snackbar
-    ScaffoldMessenger.of(context).showSnackBar(snackbar);
   }
 
   @override
