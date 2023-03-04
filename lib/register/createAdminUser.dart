@@ -2,6 +2,8 @@ import 'package:equi_food_app/backend/backend.dart';
 import 'package:equi_food_app/index.dart';
 import 'package:equi_food_app/register/createRestaurantUser.dart';
 import 'package:equi_food_app/register/createUser.dart';
+import 'package:equi_food_app/utils/displayAlert.dart';
+import 'package:equi_food_app/utils/displaySnackbar.dart';
 
 import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
@@ -52,38 +54,10 @@ class _SignupAdminWidgetState extends State<SignupAdminWidget> {
     if (nameTextController!.text.isEmpty ||
         emailTextController!.text.isEmpty ||
         passwordTextController!.text.isEmpty) {
-      showAlertDialog(context, "Please fill up text boxes.");
+      displayAlert(context, "Please fill up text boxes.");
       return false;
     }
     return true;
-  }
-
-  showAlertDialog(BuildContext context, String text) {
-    // set up the button
-    Widget okButton = TextButton(
-      child: Text("OK"),
-      onPressed: () {
-        Navigator.pop(context);
-        print("pop");
-      },
-    );
-
-    // set up the AlertDialog
-    AlertDialog alert = AlertDialog(
-      title: Text("Alert"),
-      content: Text(text),
-      actions: [
-        okButton,
-      ],
-    );
-
-    // show the dialog
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      },
-    );
   }
 
   // method to sign UP user with email and password
@@ -145,19 +119,6 @@ class _SignupAdminWidgetState extends State<SignupAdminWidget> {
     }
   }
 
-  displaySnackbar(context, text) {
-    SnackBar snackbar = SnackBar(
-      width: 200,
-      content: Text(text),
-      behavior: SnackBarBehavior.floating,
-      duration: const Duration(milliseconds: 2000),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
-    );
-
-    // show snackbar
-    ScaffoldMessenger.of(context).showSnackBar(snackbar);
-  }
-
   Future<void> _signOut() async {
     await FirebaseAuth.instance.signOut();
   }
@@ -166,7 +127,7 @@ class _SignupAdminWidgetState extends State<SignupAdminWidget> {
   bool confirmPassword() {
     if (passwordTextController!.text.trim() !=
         passwordConfirmTextController!.text.trim()) {
-      showAlertDialog(context, "The password did not match.");
+      displayAlert(context, "The password did not match.");
     }
     return passwordTextController!.text.trim() ==
         passwordConfirmTextController!.text.trim();
@@ -653,7 +614,8 @@ class _SignupAdminWidgetState extends State<SignupAdminWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                 child: InkWell(
-                    child: Text("Individual user? Register as a individual user",
+                    child: Text(
+                        "Individual user? Register as a individual user",
                         style: FlutterFlowTheme.of(context).bodyText2.override(
                             fontFamily: 'Outfit',
                             color: Color.fromARGB(255, 26, 26, 27),
@@ -662,7 +624,7 @@ class _SignupAdminWidgetState extends State<SignupAdminWidget> {
                     onTap: () => {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                SignupWidget()))
+                                  SignupWidget()))
                         }),
               ),
               // ADD CODE BELOW TO NAVIGATE THE USER TO THE LOGIN PAGE (login_widget)
