@@ -59,8 +59,6 @@ class _MyAppState extends State<MyApp> {
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
 
-  late Future userType;
-
   @override
   void initState() {
     super.initState();
