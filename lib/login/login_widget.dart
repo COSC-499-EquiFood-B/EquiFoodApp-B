@@ -5,6 +5,8 @@ import 'package:equi_food_app/main.dart';
 import 'package:equi_food_app/register/createUser.dart';
 import 'package:equi_food_app/renderDashboard.dart';
 import 'package:equi_food_app/restaurant_dashboard/restaurant_dashboard_widget_2.dart';
+import 'package:equi_food_app/utils/displayAlert.dart';
+import 'package:equi_food_app/utils/displaySnackbar.dart';
 
 import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
@@ -88,51 +90,10 @@ class _LoginWidgetState extends State<LoginWidget> {
   bool errorcheck() {
     if (emailTextController!.text.isEmpty ||
         passwordTextController!.text.isEmpty) {
-      showAlertDialog(context, "Please fill up text boxes.");
+      displayAlert(context, "Please fill up text boxes.");
       return false;
     }
     return true;
-  }
-
-  showAlertDialog(BuildContext context, String text) {
-    // set up the button
-    Widget okButton = TextButton(
-      child: Text("OK"),
-      onPressed: () {
-        Navigator.pop(context);
-        print("pop");
-      },
-    );
-
-    // set up the AlertDialog
-    AlertDialog alert = AlertDialog(
-      title: Text("Alert"),
-      content: Text(text),
-      actions: [
-        okButton,
-      ],
-    );
-
-    // show the dialog
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      },
-    );
-  }
-
-  displaySnackbar(context, text) {
-    SnackBar snackbar = SnackBar(
-      width: 200,
-      content: Text(text),
-      behavior: SnackBarBehavior.floating,
-      duration: const Duration(milliseconds: 2000),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
-    );
-
-    // show snackbar
-    ScaffoldMessenger.of(context).showSnackBar(snackbar);
   }
 
   @override
