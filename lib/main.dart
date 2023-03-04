@@ -1,9 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:equi_food_app/admin/adminpage.dart';
 import 'package:equi_food_app/confirmation/confirmation.dart';
 // import 'package:equi_food_app/indiv_dashboard/indiv_dashboard_widget.dart';
 import 'package:equi_food_app/register/createUser.dart'; // file containing the Sign-up screen
 import 'package:equi_food_app/login/login_widget.dart'; // file containing the Login screen
 
 import 'package:equi_food_app/indiv_dashboard/indivDashboard.dart';
+import 'package:equi_food_app/renderDashboard.dart';
 import 'package:equi_food_app/restaurant_dashboard/restaurant_dashboard_widget_2.dart';
 
 import 'package:flutter/gestures.dart';
@@ -86,7 +89,7 @@ class _MyAppState extends State<MyApp> {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return HmepageWidget();
+              return RenderDashboardWidget();
             } else {
               return SignupWidget();
             }
