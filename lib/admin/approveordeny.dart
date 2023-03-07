@@ -45,7 +45,7 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
                 MaterialPageRoute(
                     builder: (context) => const RestaurantapprovedWidget()),
               ),
-              displaySnackbar(context, 'Reservation approved.'),
+              displaySnackbar(context, 'Restaurant approved.'),
             })
         .catchError((onError) => {
               displaySnackbar(context,
@@ -64,7 +64,7 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
                 MaterialPageRoute(
                     builder: (context) => const RestaurantdeniedWidget()),
               ),
-              displaySnackbar(context, 'Reservation denied.'),
+              displaySnackbar(context, 'Restaurants denied.'),
             })
         .catchError((onError) => {
               displaySnackbar(context,
@@ -81,151 +81,242 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
             Map<String, dynamic> restaurantsData =
                 snapshot.data!.data() as Map<String, dynamic>;
             return Scaffold(
-                key: scaffoldKey,
-                backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-                appBar: AppBar(
-                  backgroundColor:
-                      FlutterFlowTheme.of(context).secondaryBackground,
-                  automaticallyImplyLeading: false,
-                  leading: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const AdminpageWidget()),
-                      );
-                    },
-                    child: Icon(
-                      Icons.chevron_left_rounded,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      size: 32,
+              key: scaffoldKey,
+              resizeToAvoidBottomInset: false,
+              backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+              body: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: 240,
+                            child: Stack(
+                              alignment: AlignmentDirectional(-0.95, -0.7),
+                              children: [
+                                Align(
+                                  alignment: AlignmentDirectional(0, 0),
+                                  child: Image.network(
+                                    restaurantsData["profile_img"],
+                                    width: MediaQuery.of(context).size.width,
+                                    height: 240,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional(-0.95, -0.55),
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const AdminpageWidget()),
+                                      );
+                                    },
+                                    child: Card(
+                                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                                      color: Color(0xFFF5F5F5),
+                                      elevation: 3,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(100),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10, 10, 10, 10),
+                                        child: Icon(
+                                          Icons.arrow_back_rounded,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          size: 24,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  title: Text(
-                    'Restaurant Details',
-                    style: FlutterFlowTheme.of(context).subtitle1,
-                  ),
-                  actions: [],
-                  centerTitle: false,
-                  elevation: 0,
-                ),
-                body: SafeArea(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: SingleChildScrollView(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 16, 20, 0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Align(
-                                alignment: AlignmentDirectional(-1, 0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      14, 16, 0, 0),
-                                  child: Text(
-                                    restaurantsData["restaurant_name"],
-                                    style: FlutterFlowTheme.of(context).title2,
-                                  ),
-                                ),
-                              ),
-                              Align(
-                                alignment: AlignmentDirectional(0, 0),
-                                child: Image.network(
-                                  restaurantsData["profile_img"],
-                                  width: 360,
-                                  height: 100,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(14, 8, 0, 0),
+                                    EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                                 child: Text(
-                                  'Restaurant Pending Approval',
-                                  style: FlutterFlowTheme.of(context)
-                                      .subtitle2
-                                      .override(
-                                        fontFamily: 'Lexend Deca',
-                                        color: Color(0xFF353C41),
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    14, 12, 0, 4),
-                                child: Text(
-                                  'Locations: ${restaurantsData["address"]}',
-                                  style: FlutterFlowTheme.of(context).bodyText1,
-                                ),
-                              ),
-                              Divider(
-                                height: 24,
-                                thickness: 2,
-                                indent: 14,
-                                endIndent: 20,
-                                color: Color.fromRGBO(209, 255, 189, 1),
-                              ),
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(13, 0, 0, 0),
-                                child: FFButtonWidget(
-                                  onPressed: approveRestaurant,
-                                  text: 'Approve',
-                                  options: FFButtonOptions(
-                                    width: 360,
-                                    height: 40,
-                                    color: Color.fromRGBO(209, 255, 189, 1),
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .subtitle2
-                                        .override(
-                                          fontFamily: 'Inter',
-                                          color: Colors.black,
-                                        ),
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    13, 15, 0, 0),
-                                child: FFButtonWidget(
-                                  onPressed: denyRestaurant,
-                                  text: 'Deny',
-                                  options: FFButtonOptions(
-                                    width: 360,
-                                    height: 40,
-                                    color: Color(0xFF353C41),
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .subtitle2
-                                        .override(
-                                          fontFamily: 'Inter',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBtnText,
-                                        ),
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
+                                  restaurantsData["restaurant_name"],
+                                  textAlign: TextAlign.start,
+                                  style: FlutterFlowTheme.of(context).title2,
                                 ),
                               ),
                             ],
                           ),
-                        ),
+                        ],
                       ),
-                    ],
-                  ),
-                ));
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 16, 20, 0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Address',
+                                  style: FlutterFlowTheme.of(context)
+                                      .subtitle2
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        color: Color(0xFF57636C),
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 4, 0, 16),
+                                  child: Text(
+                                    restaurantsData["address_line_1"],
+                                    textAlign: TextAlign.start,
+                                    style: FlutterFlowTheme.of(context)
+                                        .subtitle2
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          color: Color(0xFF14181B),
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 8, 20, 0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Email',
+                                  style: FlutterFlowTheme.of(context)
+                                      .subtitle2
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        color: Color(0xFF57636C),
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 4, 0, 16),
+                                  child: Text(
+                                    restaurantsData["email"],
+                                    textAlign: TextAlign.start,
+                                    style: FlutterFlowTheme.of(context)
+                                        .subtitle2
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          color: Color(0xFF14181B),
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 32, 0, 24),
+                      child: Column(
+                        children: [
+                          FFButtonWidget(
+                            onPressed: approveRestaurant,
+                            text: 'Approve',
+                            options: FFButtonOptions(
+                              width: 360,
+                              height: 40,
+                              color: Color.fromRGBO(38, 189, 104, 1),
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .subtitle2
+                                  .override(
+                                    fontFamily: 'Inter',
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                  ),
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          SizedBox(height: 8),
+                          FFButtonWidget(
+                            onPressed: denyRestaurant,
+                            text: 'Deny',
+                            options: FFButtonOptions(
+                              width: 360,
+                              height: 40,
+                              color: Color(0xFF353C41),
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .subtitle2
+                                  .override(
+                                    fontFamily: 'Inter',
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                  ),
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            );
           }
           // Loading Spinner at the centre of the page
           return SizedBox(

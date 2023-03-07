@@ -36,6 +36,10 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
   TextEditingController? textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
+  // get reference of the current Restaurant User
+  final currAdminUser = FirebaseAuth.instance.currentUser;
+  late String? userName = "";
+
   // List to store restaurant donation IDs
   List<String> restaurantIDs = [];
 
@@ -77,6 +81,8 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
     super.initState();
     textController = TextEditingController();
 
+    userName = currAdminUser?.displayName;
+
     // bug-fix for FutureBuilder
     dataFuture = getRestaurantIDs();
   }
@@ -98,7 +104,7 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
               backgroundColor: Color.fromRGBO(209, 255, 189, 1),
               automaticallyImplyLeading: false,
               title: Text(
-                'Hello, administrator',
+                'Hello, $userName  👋',
                 style: FlutterFlowTheme.of(context).title2.override(
                       fontFamily: 'Inter',
                       color: Color(0xFF14181B),
