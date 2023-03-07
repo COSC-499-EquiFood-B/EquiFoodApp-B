@@ -115,7 +115,7 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+      backgroundColor: Color.fromARGB(255, 243, 248, 249),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(40),
         child: AppBar(

@@ -23,6 +23,7 @@ class _UnapprovedUserWidget extends State<UnapprovedUserWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
         key: scaffoldKey,
+        backgroundColor: Color.fromARGB(255, 243, 248, 249),
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(40),
           child: AppBar(
@@ -43,7 +44,7 @@ class _UnapprovedUserWidget extends State<UnapprovedUserWidget> {
           ),
         ),
         body: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+            padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
             child: SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
