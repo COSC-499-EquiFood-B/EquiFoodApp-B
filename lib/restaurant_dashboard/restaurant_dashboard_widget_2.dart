@@ -88,6 +88,7 @@ class _DonationsWidgetState extends State<DonationsWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
         key: scaffoldKey,
+        backgroundColor: Color.fromARGB(255, 243, 248, 249),
         appBar: selectedIndex == 0
             ? PreferredSize(
                 preferredSize: Size.fromHeight(40),
@@ -117,10 +118,6 @@ class _DonationsWidgetState extends State<DonationsWidget> {
                   child: Container(
                     width: double.infinity,
                     height: double.infinity,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                      shape: BoxShape.circle,
-                    ),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
