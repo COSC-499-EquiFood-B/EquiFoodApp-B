@@ -116,15 +116,15 @@ class _LoginWidgetState extends State<LoginWidget> {
                     },
                     child: Image.asset(
                       'assets/images/tempLogo.png',
-                      width: 80,
-                      height: 80,
+                      width: 32,
+                      height: 32,
                       fit: BoxFit.cover,
                     ),
                   ),
                 ],
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -216,7 +216,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                       controller: emailTextController,
                       obscureText: false,
                       decoration: InputDecoration(
-                        labelText: 'Your email address',
+                        labelText: 'Email address',
                         labelStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
                                   fontFamily: 'Inter',
