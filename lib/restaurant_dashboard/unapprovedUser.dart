@@ -1,8 +1,10 @@
 // this page is rendered when an unapproved Restaurant User logs in
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
+import '../login/login_widget.dart';
 
 class UnapprovedUserWidget extends StatefulWidget {
   const UnapprovedUserWidget({Key? key}) : super(key: key);
@@ -13,6 +15,16 @@ class UnapprovedUserWidget extends StatefulWidget {
 
 class _UnapprovedUserWidget extends State<UnapprovedUserWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  // function to sign out the user WITH EMAIL AND PASSWORD
+  Future signOutUser() async {
+    // log out user
+    await FirebaseAuth.instance.signOut();
+
+    // redirect user to the Login page
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => LoginWidget()));
+  }
 
   @override
   void initState() {
@@ -41,6 +53,14 @@ class _UnapprovedUserWidget extends State<UnapprovedUserWidget> {
             centerTitle: false,
             toolbarHeight: double.infinity,
             elevation: 2,
+            actions: [
+              // Sign-Out Icon
+              IconButton(
+                onPressed: signOutUser,
+                icon: const Icon(Icons.logout_outlined),
+                iconSize: 25,
+              ),
+            ],
           ),
         ),
         body: Padding(

@@ -1,3 +1,4 @@
+import 'package:equi_food_app/index.dart';
 import 'package:equi_food_app/statspages/statisticsforresto.dart';
 
 import '../flutter_flow/flutter_flow_icon_button.dart';
@@ -76,6 +77,16 @@ class _DonationsWidgetState extends State<DonationsWidget> {
             });
   }
 
+  // function to sign out the user WITH EMAIL AND PASSWORD
+  Future signOutUser() async {
+    // log out user
+    await FirebaseAuth.instance.signOut();
+
+    // redirect user to the Login page
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => LoginWidget()));
+  }
+
   @override
   void initState() {
     super.initState();
@@ -107,6 +118,14 @@ class _DonationsWidgetState extends State<DonationsWidget> {
                   centerTitle: false,
                   toolbarHeight: double.infinity,
                   elevation: 2,
+                  actions: [
+                    // Sign-Out Icon
+                    IconButton(
+                      onPressed: signOutUser,
+                      icon: const Icon(Icons.logout_outlined),
+                      iconSize: 25,
+                    ),
+                  ],
                 ),
               )
             : null, // don't render AppBar for this page if user navigates to different page
