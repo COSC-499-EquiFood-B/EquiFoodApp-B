@@ -115,9 +115,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                       context.pop();
                     },
                     child: Image.asset(
-                      'assets/images/logoTranslation3x.png',
-                      width: 40,
-                      height: 40,
+                      'assets/images/tempLogo.png',
+                      width: 80,
+                      height: 80,
                       fit: BoxFit.cover,
                     ),
                   ),

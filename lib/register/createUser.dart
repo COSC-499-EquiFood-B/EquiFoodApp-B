@@ -158,7 +158,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                       context.pop();
                     },
                     child: Image.asset(
-                      'assets/images/logoTranslation3x.png',
+                      'assets/images/tempLogo.png',
                       width: 10,
                       height: 10,
                       fit: BoxFit.cover,
@@ -630,21 +630,6 @@ class _SignupWidgetState extends State<SignupWidget> {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (BuildContext context) =>
                                   CreateRestaurantUserWidget()))
-                        }),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                child: InkWell(
-                    child: Text("Admin? Register as an admin",
-                        style: FlutterFlowTheme.of(context).bodyText2.override(
-                            fontFamily: 'Inter',
-                            color: Color.fromARGB(255, 26, 26, 27),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500)),
-                    onTap: () => {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  SignupAdminWidget()))
                         }),
               ),
               Padding(
