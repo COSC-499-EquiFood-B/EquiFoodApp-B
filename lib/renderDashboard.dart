@@ -79,8 +79,6 @@ class _RenderDashboardWidgetState extends State<RenderDashboardWidget> {
             int userType = userInfo?[0];
             bool isApproved = userInfo?[1];
 
-            print(userInfo);
-
             // render the appropriate Dashboard accoriding to the user-type
             // 0: Admin User, 1: Individual User, 2: Restaurant User
             if (userType == 0) {

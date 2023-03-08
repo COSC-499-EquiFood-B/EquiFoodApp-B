@@ -29,7 +29,7 @@ class _StatisticsforrestoWidgetState extends State<StatisticsforrestoWidget>
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color.fromRGBO(209, 255, 189, 1),
+      backgroundColor: Color.fromRGBO(38, 189, 104, 1),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
@@ -45,7 +45,7 @@ class _StatisticsforrestoWidgetState extends State<StatisticsforrestoWidget>
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).bodyText1.override(
                           fontFamily: 'Inter',
-                          color: Color(0xFF353C41),
+                          color: Color.fromRGBO(247, 255, 250, 1),
                           fontSize: 32,
                         ),
                   ),
