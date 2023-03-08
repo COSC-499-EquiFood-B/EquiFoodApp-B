@@ -1,17 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:equi_food_app/admin/adminpage.dart';
-import 'package:equi_food_app/confirmation/confirmation.dart';
-// import 'package:equi_food_app/indiv_dashboard/indiv_dashboard_widget.dart';
 import 'package:equi_food_app/register/createUser.dart'; // file containing the Sign-up screen
-import 'package:equi_food_app/login/login_widget.dart'; // file containing the Login screen
 
-import 'package:equi_food_app/indiv_dashboard/indivDashboard.dart';
 import 'package:equi_food_app/renderDashboard.dart';
-import 'package:equi_food_app/restaurant_dashboard/restaurant_dashboard_widget_2.dart';
 
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:firebase_auth/firebase_auth.dart'; // for auth-related stuff
 import 'package:firebase_core/firebase_core.dart';
@@ -23,7 +14,6 @@ import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'flutter_flow/nav/nav.dart';
-import 'index.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
