@@ -128,7 +128,7 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
                 IconButton(
                   onPressed: signOutUser,
                   icon: const Icon(Icons.logout_outlined),
-                  iconSize: 24,
+                  iconSize: 25,
                 ),
               ],
               centerTitle: false,

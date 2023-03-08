@@ -123,7 +123,7 @@ class _DonationsWidgetState extends State<DonationsWidget> {
                     IconButton(
                       onPressed: signOutUser,
                       icon: const Icon(Icons.logout_outlined),
-                      iconSize: 24,
+                      iconSize: 25,
                     ),
                   ],
                 ),

@@ -58,7 +58,7 @@ class _UnapprovedUserWidget extends State<UnapprovedUserWidget> {
               IconButton(
                 onPressed: signOutUser,
                 icon: const Icon(Icons.logout_outlined),
-                iconSize: 24,
+                iconSize: 25,
               ),
             ],
           ),

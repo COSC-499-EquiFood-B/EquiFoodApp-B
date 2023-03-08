@@ -117,7 +117,7 @@ class _HmepageWidgetState extends State<HmepageWidget> {
                 IconButton(
                   onPressed: signOutUser,
                   icon: const Icon(Icons.logout_outlined),
-                  iconSize: 24,
+                  iconSize: 25,
                 ),
               ],
               centerTitle: false,
