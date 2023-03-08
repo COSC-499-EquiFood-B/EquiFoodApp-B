@@ -29,7 +29,7 @@ class _RestaurantapprovedWidgetState extends State<RestaurantapprovedWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color.fromRGBO(209, 255, 189, 1),
+      backgroundColor: Color.fromARGB(255, 243, 248, 249),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
@@ -44,7 +44,7 @@ class _RestaurantapprovedWidgetState extends State<RestaurantapprovedWidget> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Lottie.network(
-                      'https://assets10.lottiefiles.com/packages/lf20_xlkxtmul.json',
+                     'https://assets10.lottiefiles.com/packages/lf20_jjmkyjsk.json',
                       width: 200,
                       height: 200,
                       fit: BoxFit.cover,
@@ -59,7 +59,7 @@ class _RestaurantapprovedWidgetState extends State<RestaurantapprovedWidget> {
                 'Restaurant Approved',
                 style: FlutterFlowTheme.of(context).title2.override(
                       fontFamily: 'Inter',
-                      color: FlutterFlowTheme.of(context).primaryBtnText,
+                      color: Colors.black,
                       fontSize: 32,
                     ),
               ),
@@ -70,7 +70,7 @@ class _RestaurantapprovedWidgetState extends State<RestaurantapprovedWidget> {
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).subtitle2.override(
                         fontFamily: 'Inter',
-                        color: FlutterFlowTheme.of(context).primaryBtnText,
+                        color: Colors.black,
                         fontSize: 16,
                         fontWeight: FontWeight.w300,
                       ),
@@ -94,7 +94,7 @@ class _RestaurantapprovedWidgetState extends State<RestaurantapprovedWidget> {
                     color: FlutterFlowTheme.of(context).primaryBtnText,
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                           fontFamily: 'Inter',
-                          color: Color.fromRGBO(209, 255, 189, 1),
+                          color: Color.fromARGB(255, 76, 191, 82),
                         ),
                     elevation: 3,
                     borderSide: BorderSide(
