@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 //Import code to link to database
+import '../login/login_widget.dart';
 import 'getAdminRestaurants.dart';
 
 //Firebase imports
@@ -76,6 +77,16 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
             });
   }
 
+  // function to sign out the user WITH EMAIL AND PASSWORD
+  Future signOutUser() async {
+    // log out user
+    await FirebaseAuth.instance.signOut();
+
+    // redirect user to the Login page
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => LoginWidget()));
+  }
+
   @override
   void initState() {
     super.initState();
@@ -112,7 +123,14 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
                       fontWeight: FontWeight.normal,
                     ),
               ),
-              actions: [],
+              actions: [
+                // Sign-Out Icon
+                IconButton(
+                  onPressed: signOutUser,
+                  icon: const Icon(Icons.logout_outlined),
+                  iconSize: 24,
+                ),
+              ],
               centerTitle: false,
               elevation: 0,
             )

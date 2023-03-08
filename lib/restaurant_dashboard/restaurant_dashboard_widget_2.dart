@@ -119,6 +119,7 @@ class _DonationsWidgetState extends State<DonationsWidget> {
                   toolbarHeight: double.infinity,
                   elevation: 2,
                   actions: [
+                    // Sign-Out Icon
                     IconButton(
                       onPressed: signOutUser,
                       icon: const Icon(Icons.logout_outlined),
