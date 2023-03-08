@@ -214,7 +214,7 @@ class _CreateRestaurantUserWidgetState
             children: [
               Padding(
                 // Sign In text/Button
-                padding: EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -388,7 +388,7 @@ class _CreateRestaurantUserWidgetState
                       controller: emailTextController,
                       obscureText: false,
                       decoration: InputDecoration(
-                        labelText: 'Your email address',
+                        labelText: 'Email address',
                         labelStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
                                   fontFamily: 'Inter',
@@ -561,7 +561,7 @@ class _CreateRestaurantUserWidgetState
                       controller: passwordConfirmTextController,
                       obscureText: !passwordVisibility,
                       decoration: InputDecoration(
-                        labelText: ' Confirm Password',
+                        labelText: 'Confirm password',
                         labelStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
                                   fontFamily: 'Inter',
