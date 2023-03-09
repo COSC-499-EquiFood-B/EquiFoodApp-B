@@ -3,6 +3,14 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+//Firebase imports
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+import '../login/login_widget.dart';
+import 'getApprovedRestaurants.dart';
+
 class ApprovedrestaurantsWidget extends StatefulWidget {
   const ApprovedrestaurantsWidget({Key? key}) : super(key: key);
 
@@ -14,6 +22,67 @@ class ApprovedrestaurantsWidget extends StatefulWidget {
 class _ApprovedrestaurantsWidgetState extends State<ApprovedrestaurantsWidget> {
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  TextEditingController? textController;
+
+  // get reference of the current Restaurant User
+  final currAdminUser = FirebaseAuth.instance.currentUser;
+  late String? userName = "";
+
+  // List to store restaurant donation IDs
+  List<String> restaurantIDs = [];
+
+  // creating reference to "donations" Collection in firebase
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+  // bug fix for FutureBuilder re-rendering Cards multiple times
+  late Future dataFuture;
+
+  Future getRestaurantIDs() async {
+    // get donation IDs from the "donations" Collection
+    // and then store them in the "restaurantDonationIDs" List.
+
+    // get reference of the current Restaurant User
+    final currAdminUser = FirebaseAuth.instance.currentUser;
+
+    // create reference for the current Restaurant User located in the "users" collection on firebase
+    final adminUserRef =
+        FirebaseFirestore.instance.collection("users").doc(currAdminUser?.uid);
+
+    await FirebaseFirestore.instance
+        .collection('users')
+        .where('user_type', isEqualTo: 2)
+        .where('is_approved', isEqualTo: true)
+        .get()
+        .then((snapshot) => {
+              snapshot.docs.forEach((element) {
+                // add restaurant Donation IDs to the List
+                restaurantIDs.add(element.reference.id);
+                print(element.reference.id);
+              })
+            });
+  }
+
+  // function to sign out the user WITH EMAIL AND PASSWORD
+  Future signOutUser() async {
+    // log out user
+    await FirebaseAuth.instance.signOut();
+
+    // redirect user to the Login page
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => LoginWidget()));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    textController = TextEditingController();
+
+    userName = currAdminUser?.displayName;
+
+    // bug-fix for FutureBuilder
+    dataFuture = getRestaurantIDs();
+  }
 
   @override
   void dispose() {
@@ -62,111 +131,47 @@ class _ApprovedrestaurantsWidgetState extends State<ApprovedrestaurantsWidget> {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
-                  child: ListView(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
-                        child: Container(
-                          width: 100,
-                          height: 80,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                blurRadius: 0,
-                                color: Color(0xFFE0E3E7),
-                                offset: Offset(0, 1),
-                              )
-                            ],
+                FutureBuilder(
+                    future: dataFuture, // bug-fix for FutureBuilder
+                    builder: (BuildContext context, AsyncSnapshot snapshot) {
+                      //Error Handling conditions
+                      if (snapshot.hasError) {
+                        return Text("Something went wrong");
+                      }
+
+                      if (snapshot.hasData && snapshot.data != null) {
+                        return Text("Document does not exist");
+                      }
+
+                      //Data is output to the user
+                      if (snapshot.connectionState == ConnectionState.done) {
+                        return GridView.builder(
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 1,
+                            //crossAxisSpacing: 0.0,
+                            //mainAxisSpacing: 10.0,
                           ),
-                          child: Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Container(
-                                  width: 44,
-                                  height: 44,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFF4B39EF),
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        2, 2, 2, 2),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(44),
-                                      child: Image.network(
-                                        'https://picsum.photos/seed/183/600',
-                                        width: 44,
-                                        height: 44,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        12, 0, 0, 0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 0, 4),
-                                          child: Text(
-                                            'Restaurant Name',
-                                            style: FlutterFlowTheme.of(context)
-                                                .title3
-                                                .override(
-                                                  fontFamily: 'Inter',
-                                                  color: Color(0xFF101213),
-                                                  fontSize: 24,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                          ),
-                                        ),
-                                        Text(
-                                          'user@randomname.com',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText2
-                                              .override(
-                                                fontFamily: 'Inter',
-                                                color: Color(0xFF57636C),
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.normal,
-                                              ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Icon(
-                                  Icons.chevron_right_rounded,
-                                  color: Color(0xFF57636C),
-                                  size: 24,
-                                ),
-                              ],
+                          scrollDirection:
+                              Axis.vertical, // required for infinite scrolling
+                          shrinkWrap: true, // required for infinite scrolling
+                          itemCount: restaurantIDs.length,
+                          itemBuilder: (context, int index) {
+                            return getRestaurants(
+                                restaurantIDs: restaurantIDs[index]);
+                          },
+                        );
+                      }
+                      // Loading Spinner at the centre of the page
+                      return SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height,
+                          child: Center(
+                            child: CircularProgressIndicator(
+                              color: Color.fromRGBO(209, 255, 189, 1),
                             ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                          ));
+                    })
               ],
             ),
           ),
