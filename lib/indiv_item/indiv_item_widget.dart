@@ -200,7 +200,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText2
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'Inter',
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
                                         fontWeight: FontWeight.bold,
@@ -229,7 +229,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText2
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'Inter',
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
                                         fontWeight: FontWeight.bold,

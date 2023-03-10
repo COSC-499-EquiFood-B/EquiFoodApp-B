@@ -120,7 +120,7 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
                       fontFamily: 'Inter',
                       color: Color(0xFF14181B),
                       fontSize: 24,
-                      fontWeight: FontWeight.normal,
+                      fontWeight: FontWeight.bold,
                     ),
               ),
               actions: [

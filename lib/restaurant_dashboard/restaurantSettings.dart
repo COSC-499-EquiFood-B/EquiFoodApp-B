@@ -127,7 +127,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                 height: 50,
                 color: Color.fromARGB(255, 76, 191, 82),
                 textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                      fontFamily: 'Lexend Deca',
+                      fontFamily: 'Inter',
                       color: Colors.white,
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
