@@ -184,7 +184,7 @@ class _SignupAdminWidgetState extends State<SignupAdminWidget> {
                           child: Text(
                             'Sign In',
                             style: FlutterFlowTheme.of(context).title1.override(
-                                  fontFamily: 'Outfit',
+                                  fontFamily: 'Inter',
                                   color: Color(0xFF57636C),
                                   fontSize: 32,
                                   fontWeight: FontWeight.normal,
@@ -204,7 +204,7 @@ class _SignupAdminWidgetState extends State<SignupAdminWidget> {
                         child: Text(
                           'Sign Up',
                           style: FlutterFlowTheme.of(context).title1.override(
-                                fontFamily: 'Outfit',
+                                fontFamily: 'Inter',
                                 color: Color(0xFF0F1113),
                                 fontSize: 32,
                                 fontWeight: FontWeight.w500,
@@ -223,7 +223,7 @@ class _SignupAdminWidgetState extends State<SignupAdminWidget> {
                     Text(
                       'Get started by creating an account below.',
                       style: FlutterFlowTheme.of(context).bodyText2.override(
-                            fontFamily: 'Outfit',
+                            fontFamily: 'Inter',
                             color: Color(0xFF57636C),
                             fontSize: 14,
                             fontWeight: FontWeight.normal,
@@ -257,14 +257,14 @@ class _SignupAdminWidgetState extends State<SignupAdminWidget> {
                         labelText: 'Name',
                         labelStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
-                                  fontFamily: 'Outfit',
+                                  fontFamily: 'Inter',
                                   color: Color(0xFF57636C),
                                   fontSize: 14,
                                   fontWeight: FontWeight.normal,
                                 ),
                         hintStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
-                                  fontFamily: 'Outfit',
+                                  fontFamily: 'Inter',
                                   color: Color(0xFF57636C),
                                   fontSize: 14,
                                   fontWeight: FontWeight.normal,
@@ -303,7 +303,7 @@ class _SignupAdminWidgetState extends State<SignupAdminWidget> {
                             EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
                       ),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Outfit',
+                            fontFamily: 'Inter',
                             color: Color(0xFF0F1113),
                             fontSize: 14,
                             fontWeight: FontWeight.normal,
@@ -337,14 +337,14 @@ class _SignupAdminWidgetState extends State<SignupAdminWidget> {
                         labelText: 'Email address',
                         labelStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
-                                  fontFamily: 'Outfit',
+                                  fontFamily: 'Inter',
                                   color: Color(0xFF57636C),
                                   fontSize: 14,
                                   fontWeight: FontWeight.normal,
                                 ),
                         hintStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
-                                  fontFamily: 'Outfit',
+                                  fontFamily: 'Inter',
                                   color: Color(0xFF57636C),
                                   fontSize: 14,
                                   fontWeight: FontWeight.normal,
@@ -383,7 +383,7 @@ class _SignupAdminWidgetState extends State<SignupAdminWidget> {
                             EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
                       ),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Outfit',
+                            fontFamily: 'Inter',
                             color: Color(0xFF0F1113),
                             fontSize: 14,
                             fontWeight: FontWeight.normal,
@@ -417,14 +417,14 @@ class _SignupAdminWidgetState extends State<SignupAdminWidget> {
                         labelText: 'Password',
                         labelStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
-                                  fontFamily: 'Outfit',
+                                  fontFamily: 'Inter',
                                   color: Color(0xFF57636C),
                                   fontSize: 14,
                                   fontWeight: FontWeight.normal,
                                 ),
                         hintStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
-                                  fontFamily: 'Outfit',
+                                  fontFamily: 'Inter',
                                   color: Color(0xFF57636C),
                                   fontSize: 14,
                                   fontWeight: FontWeight.normal,
@@ -476,7 +476,7 @@ class _SignupAdminWidgetState extends State<SignupAdminWidget> {
                         ),
                       ),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Outfit',
+                            fontFamily: 'Inter',
                             color: Color(0xFF0F1113),
                             fontSize: 14,
                             fontWeight: FontWeight.normal,
@@ -510,14 +510,14 @@ class _SignupAdminWidgetState extends State<SignupAdminWidget> {
                         labelText: 'Confirm password',
                         labelStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
-                                  fontFamily: 'Outfit',
+                                  fontFamily: 'Inter',
                                   color: Color(0xFF57636C),
                                   fontSize: 14,
                                   fontWeight: FontWeight.normal,
                                 ),
                         hintStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
-                                  fontFamily: 'Outfit',
+                                  fontFamily: 'Inter',
                                   color: Color(0xFF57636C),
                                   fontSize: 14,
                                   fontWeight: FontWeight.normal,
@@ -569,7 +569,7 @@ class _SignupAdminWidgetState extends State<SignupAdminWidget> {
                         ),
                       ),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Outfit',
+                            fontFamily: 'Inter',
                             color: Color(0xFF0F1113),
                             fontSize: 14,
                             fontWeight: FontWeight.normal,
@@ -595,7 +595,7 @@ class _SignupAdminWidgetState extends State<SignupAdminWidget> {
                           color: Color(0xFF66BB6A),
                           textStyle:
                               FlutterFlowTheme.of(context).subtitle2.override(
-                                    fontFamily: 'Outfit',
+                                    fontFamily: 'Inter',
                                     color: Colors.white,
                                     fontSize: 18,
                                     fontWeight: FontWeight.w500,
@@ -617,7 +617,7 @@ class _SignupAdminWidgetState extends State<SignupAdminWidget> {
                     child: Text(
                         "Individual user? Register as a individual user",
                         style: FlutterFlowTheme.of(context).bodyText2.override(
-                            fontFamily: 'Outfit',
+                            fontFamily: 'Inter',
                             color: Color.fromARGB(255, 26, 26, 27),
                             fontSize: 16,
                             fontWeight: FontWeight.w500)),
@@ -643,7 +643,7 @@ class _SignupAdminWidgetState extends State<SignupAdminWidget> {
                           ],
                         ),
                         style: FlutterFlowTheme.of(context).bodyText2.override(
-                            fontFamily: 'Outfit',
+                            fontFamily: 'Inter',
                             color: Color.fromARGB(255, 19, 19, 19),
                             fontSize: 16,
                             fontWeight: FontWeight.w300)),
