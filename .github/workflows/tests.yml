@@ -22,9 +22,16 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
-      - uses: subosito/flutter-action@v1
-      - name: Install Flutter dependencies
-        run: flutter pub get
-      - name: Run integration tests
-        run: flutter test integration_test
+      - uses: ./
+        with:
+          channel: stable
+          version: ${{ matrix.version }}
+          
+      - name: Dart version
+        run: dart --version
+      - name: Flutter version
+        run: flutter --version
+      - name: Flutter doctor
+        run: flutter doctor
+
         
