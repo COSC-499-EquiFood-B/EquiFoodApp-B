@@ -8,8 +8,16 @@ on:
     branches: [develop]
 
 jobs:
-  tests:
-    runs-on: ubuntu-latest
+ test-stable:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        version: 
+          - 3.3.0
+          - 3.0.0
+          - 2.10.5
 
     steps:
       - name: Checkout the code
