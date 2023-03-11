@@ -10,7 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 //Import code to link to database
 import '../login/login_widget.dart';
-import 'getAdminRestaurants.dart';
+import 'getUnapprovedRestaurants.dart';
 
 //Firebase imports
 import 'package:firebase_core/firebase_core.dart';
