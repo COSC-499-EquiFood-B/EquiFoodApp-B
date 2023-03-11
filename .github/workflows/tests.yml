@@ -23,7 +23,9 @@ jobs:
           flutter-version: '2.0.1'
       - name: Restore packages
         run: flutter pub get
-      - run: flutter analyze
-      - run: flutter test
+      - name: Analyze
+        run: flutter analyze
+      - name: Run tests
+        run: flutter test --coverage
 
         
