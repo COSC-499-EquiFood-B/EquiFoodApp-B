@@ -1,5 +1,5 @@
 # Name of your workflow.
-name: flutter drive
+name: tests-setup
 
 on:
   push:
@@ -14,3 +14,5 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v1
+      - run : flutter test
