@@ -10,7 +10,7 @@ on:
 jobs:
  flutter-test:
   name: Run Flutter app tests
-  runs-on: windows-latest
+  runs-on: ubuntu-latest
   steps:
       - name: Checkout the code
         uses: actions/checkout@v2
