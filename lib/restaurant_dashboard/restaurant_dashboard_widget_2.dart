@@ -13,9 +13,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-// import Widget to display Donations Data for the Restaurant User
-import './getDonationsData.dart';
-
 // import pages for the NavBar
 import './restaurantSettings.dart';
 import './createDonation.dart';
@@ -29,9 +26,6 @@ class DonationsWidget extends StatefulWidget {
 
 class _DonationsWidgetState extends State<DonationsWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  // List to store restaurant donation IDs
-  List<String> restaurantDonationIDs = [];
 
   // creating reference to "donations" Collection in firebase
   CollectionReference donations =
@@ -48,8 +42,7 @@ class _DonationsWidgetState extends State<DonationsWidget> {
     SettingsWidget(),
   ];
 
-  late Future dataFuture;
-
+  // get the current Restaurant User
   final currentRestaurantUser = FirebaseAuth.instance.currentUser;
 
   // get current restaurant user's ref
@@ -58,32 +51,21 @@ class _DonationsWidgetState extends State<DonationsWidget> {
       .collection("users")
       .doc(currentRestaurantUser?.uid);
 
+  // variable to get the current Restaurant User's username
+  // initialized during the initState()
   late String? userName = "";
 
-  // method to get IDs for restaurant donations,
-  // stored under "donations" Collection in firebase
-  Future getRestaurantDonationIDs() async {
-    // get reference of the current Restaurant User
-    final currRestaurantUser = FirebaseAuth.instance.currentUser;
-
-    // create reference for the current Restaurant User located in the "users" collection on firebase
-    final restaurantUserRef = FirebaseFirestore.instance
-        .collection("users")
-        .doc(currRestaurantUser?.uid);
-
-    // get donation IDs of the current Restaurant User from the "donations" Collection
-    // and then store them in the "restaurantDonationIDs" List.
-    await FirebaseFirestore.instance
-        .collection('donations')
-        .where("restaurant_ref", isEqualTo: restaurantUserRef)
-        .get()
-        .then((snapshot) => {
-              snapshot.docs.forEach((element) {
-                // add restaurant Donation IDs to the List
-                restaurantDonationIDs.add(element.reference.id);
-              })
-            });
-  }
+// create Stream to get the Donations created by the current Restaurant User
+// from the 'donations' Collection on firebase
+// a Stream is like a web-socket that keeps listening to changes and refreshes the page
+// whenever a change occurs
+  late final Stream<QuerySnapshot> stream = FirebaseFirestore.instance
+      .collection('donations')
+      .where("restaurant_ref",
+          isEqualTo: FirebaseFirestore.instance
+              .collection("users")
+              .doc(currentRestaurantUser?.uid))
+      .snapshots();
 
   // function to sign out the user WITH EMAIL AND PASSWORD
   Future signOutUser() async {
@@ -99,17 +81,9 @@ class _DonationsWidgetState extends State<DonationsWidget> {
   void initState() {
     super.initState();
 
+    // initialize the user name everytime the Widget rebuilds
     userName = currentRestaurantUser?.displayName;
-    dataFuture = getRestaurantDonationIDs();
   }
-
-  late final Stream<QuerySnapshot> stream = FirebaseFirestore.instance
-      .collection('donations')
-      .where("restaurant_ref",
-          isEqualTo: FirebaseFirestore.instance
-              .collection("users")
-              .doc(currentRestaurantUser?.uid))
-      .snapshots();
 
   @override
   Widget build(BuildContext context) {
@@ -166,21 +140,50 @@ class _DonationsWidgetState extends State<DonationsWidget> {
                                 if (snapshot.hasError) {
                                   return Text("Something went wrong");
                                 }
-
+                                // if data is still loading
                                 if (snapshot.connectionState ==
                                     ConnectionState.waiting) {
-                                  return Text("Document does not exist");
+                                  // Loading Spinner at the centre of the page
+                                  return SizedBox(
+                                      width: MediaQuery.of(context).size.width,
+                                      height:
+                                          MediaQuery.of(context).size.height,
+                                      child: Center(
+                                        child: CircularProgressIndicator(
+                                          color:
+                                              Color.fromRGBO(209, 255, 189, 1),
+                                        ),
+                                      ));
                                 }
 
-                                if (snapshot.connectionState ==
-                                    ConnectionState.done) {}
+                                // if the data has loaded properly, do the following
 
                                 // display text if the current
                                 // restaurant user has no donations posted.
+                                if (snapshot.data!.docs.length == 0) {
+                                  return SizedBox(
+                                      width: MediaQuery.of(context).size.width,
+                                      height:
+                                          MediaQuery.of(context).size.height,
+                                      child: Center(
+                                          child: Text(
+                                              "You have not posted any donations yet.\n" +
+                                                  "Navigate to the '+' page to create one.",
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyText2
+                                                  .override(
+                                                      fontFamily: 'Inter',
+                                                      color: Color.fromARGB(
+                                                          255, 113, 113, 116),
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.w300,
+                                                      fontStyle:
+                                                          FontStyle.italic))));
+                                }
 
-                                //print();
-
-                                // return Center();
+                                // if there are donations, show them
                                 return ListView(
                                   scrollDirection: Axis.vertical,
                                   shrinkWrap: true,
@@ -188,6 +191,7 @@ class _DonationsWidgetState extends State<DonationsWidget> {
                                     Map<String, dynamic> donationsData =
                                         doc.data()! as Map<String, dynamic>;
 
+                                    // custom Widget to render a Donation Card
                                     return DonationCard(
                                         donationsData: donationsData);
                                   }).toList(),

@@ -1,3 +1,7 @@
+// Custom Widget to render a Donation Card on the Restaurant Dashboard
+// takes a Map<String, dynamic> as a required input. This contains a Donation Document retrieved from the Collection on firebase
+// This Widget renders Cards showing the Donation info sent to it
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,10 +16,6 @@ class DonationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // create reference to the "donations" Collection in firebase
-    CollectionReference donations =
-        FirebaseFirestore.instance.collection('donations');
-
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
       child: Card(
