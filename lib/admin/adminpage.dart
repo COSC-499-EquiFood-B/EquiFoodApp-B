@@ -112,13 +112,13 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
       // APPBAR
       appBar: _selectedIndex == 0
           ? AppBar(
-              backgroundColor:Color.fromRGBO(38, 189, 104, 1),
+              backgroundColor: Color.fromRGBO(38, 189, 104, 1),
               automaticallyImplyLeading: false,
               title: Text(
                 'Hello, $userName  👋',
                 style: FlutterFlowTheme.of(context).title2.override(
                       fontFamily: 'Inter',
-                      color: Color(0xFF14181B),
+                      color: Color.fromRGBO(247, 255, 250, 1),
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                     ),
