@@ -79,7 +79,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                     children: [
                       Container(
                         width: MediaQuery.of(context).size.width * 0.9,
-                        height: 145,
+                        height: 147,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primaryBtnText,
                           borderRadius: BorderRadius.circular(24),
@@ -134,7 +134,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                       ),
                       Container(
                         width: MediaQuery.of(context).size.width * 0.9,
-                        height: 135,
+                        height: 138,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primaryBtnText,
                           borderRadius: BorderRadius.circular(24),
@@ -185,7 +185,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                       ),
                       Container(
                         width: MediaQuery.of(context).size.width * 0.9,
-                        height: 135,
+                        height: 138,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primaryBtnText,
                           borderRadius: BorderRadius.circular(24),
@@ -236,7 +236,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                       ),
                       Container(
                         width: MediaQuery.of(context).size.width * 0.9,
-                        height: 135,
+                        height: 138,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primaryBtnText,
                           borderRadius: BorderRadius.circular(24),
