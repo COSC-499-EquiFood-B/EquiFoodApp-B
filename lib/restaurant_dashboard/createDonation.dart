@@ -146,7 +146,7 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
                 controller: donationNameController,
                 obscureText: false,
                 decoration: InputDecoration(
-                  labelText: 'Name',
+                  labelText: 'Item name',
                   labelStyle: FlutterFlowTheme.of(context).bodyText2,
                   hintStyle: FlutterFlowTheme.of(context).bodyText2,
                   enabledBorder: OutlineInputBorder(
@@ -234,6 +234,7 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
               child: TextFormField(
                 controller: donationDescriptionController,
                 obscureText: false,
+                maxLength: 200,
                 decoration: InputDecoration(
                   labelStyle: FlutterFlowTheme.of(context).bodyText2,
                   hintText: 'Description',

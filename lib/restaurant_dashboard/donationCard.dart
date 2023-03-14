@@ -8,6 +8,7 @@
 import 'dart:js';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:equi_food_app/restaurant_dashboard/editDonation.dart';
 import 'package:equi_food_app/utils/displaySnackbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -99,7 +100,13 @@ class DonationCard extends StatelessWidget {
                               size: 25,
                             ),
                             onPressed: () {
-                              print('IconButton pressed ...');
+                              // Take the Restaurant User to
+                              // the Edit Donation Page
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => EditDonationWidget(
+                                          donationID: donationID)));
                             },
                           ),
                           FlutterFlowIconButton(
