@@ -1,4 +1,5 @@
 import 'package:equi_food_app/index.dart';
+import 'package:equi_food_app/restaurant_dashboard/donationCard.dart';
 import 'package:equi_food_app/statspages/statisticsforresto.dart';
 
 import '../flutter_flow/flutter_flow_icon_button.dart';
@@ -11,9 +12,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
-// import Widget to display Donations Data for the Restaurant User
-import './getDonationsData.dart';
 
 // import pages for the NavBar
 import './restaurantSettings.dart';
@@ -28,9 +26,6 @@ class DonationsWidget extends StatefulWidget {
 
 class _DonationsWidgetState extends State<DonationsWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  // List to store restaurant donation IDs
-  List<String> restaurantDonationIDs = [];
 
   // creating reference to "donations" Collection in firebase
   CollectionReference donations =
@@ -47,35 +42,30 @@ class _DonationsWidgetState extends State<DonationsWidget> {
     SettingsWidget(),
   ];
 
-  late Future dataFuture;
-
+  // get the current Restaurant User
   final currentRestaurantUser = FirebaseAuth.instance.currentUser;
+
+  // get current restaurant user's ref
+  // create reference for the current Restaurant User located in the "users" collection on firebase
+  late final restaurantUserRef = FirebaseFirestore.instance
+      .collection("users")
+      .doc(currentRestaurantUser?.uid);
+
+  // variable to get the current Restaurant User's username
+  // initialized during the initState()
   late String? userName = "";
 
-  // method to get IDs for restaurant donations,
-  // stored under "donations" Collection in firebase
-  Future getRestaurantDonationIDs() async {
-    // get reference of the current Restaurant User
-    final currRestaurantUser = FirebaseAuth.instance.currentUser;
-
-    // create reference for the current Restaurant User located in the "users" collection on firebase
-    final restaurantUserRef = FirebaseFirestore.instance
-        .collection("users")
-        .doc(currRestaurantUser?.uid);
-
-    // get donation IDs of the current Restaurant User from the "donations" Collection
-    // and then store them in the "restaurantDonationIDs" List.
-    await FirebaseFirestore.instance
-        .collection('donations')
-        .where("restaurant_ref", isEqualTo: restaurantUserRef)
-        .get()
-        .then((snapshot) => {
-              snapshot.docs.forEach((element) {
-                // add restaurant Donation IDs to the List
-                restaurantDonationIDs.add(element.reference.id);
-              })
-            });
-  }
+// create Stream to get the Donations created by the current Restaurant User
+// from the 'donations' Collection on firebase
+// a Stream is like a web-socket that keeps listening to changes and refreshes the page
+// whenever a change occurs
+  late final Stream<QuerySnapshot> stream = FirebaseFirestore.instance
+      .collection('donations')
+      .where("restaurant_ref",
+          isEqualTo: FirebaseFirestore.instance
+              .collection("users")
+              .doc(currentRestaurantUser?.uid))
+      .snapshots();
 
   // function to sign out the user WITH EMAIL AND PASSWORD
   Future signOutUser() async {
@@ -91,8 +81,8 @@ class _DonationsWidgetState extends State<DonationsWidget> {
   void initState() {
     super.initState();
 
+    // initialize the user name everytime the Widget rebuilds
     userName = currentRestaurantUser?.displayName;
-    dataFuture = getRestaurantDonationIDs();
   }
 
   @override
@@ -142,73 +132,70 @@ class _DonationsWidgetState extends State<DonationsWidget> {
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          FutureBuilder(
-                              future: dataFuture,
+                          StreamBuilder(
+                              stream: stream,
                               builder: (BuildContext context,
-                                  AsyncSnapshot snapshot) {
+                                  AsyncSnapshot<QuerySnapshot> snapshot) {
                                 //Error Handling conditions
                                 if (snapshot.hasError) {
                                   return Text("Something went wrong");
                                 }
-
-                                if (snapshot.hasData && snapshot.data != null) {
-                                  return Text("Document does not exist");
-                                }
-
-                                //Data is output to the user
+                                // if data is still loading
                                 if (snapshot.connectionState ==
-                                    ConnectionState.done) {
-                                  // display text if the current
-                                  // restaurant user has no donations posted.
-                                  if (restaurantDonationIDs.length == 0) {
-                                    return SizedBox(
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        height:
-                                            MediaQuery.of(context).size.height,
-                                        child: Center(
-                                            child: Text(
-                                                "You have not posted any donations yet.\n" +
-                                                    "Navigate to the '+' page to create one.",
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyText2
-                                                    .override(
-                                                        fontFamily: 'Inter',
-                                                        color: Color.fromARGB(
-                                                            255, 113, 113, 116),
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                            FontWeight.w300,
-                                                        fontStyle: FontStyle
-                                                            .italic))));
-                                  }
-
-                                  // else return the ListView Builder
-                                  // to render the donations of the restaurant
-                                  return ListView.builder(
-                                    scrollDirection: Axis
-                                        .vertical, // required for infinite scrolling
-                                    shrinkWrap:
-                                        true, // required for infinite scrolling
-                                    itemCount: restaurantDonationIDs.length,
-                                    itemBuilder: (context, int index) {
-                                      // return Widget generating Card for a Donation with a donationID sent to it
-                                      return GetDonationsData(
-                                          donationsID:
-                                              restaurantDonationIDs[index]);
-                                    },
-                                  );
+                                    ConnectionState.waiting) {
+                                  // Loading Spinner at the centre of the page
+                                  return SizedBox(
+                                      width: MediaQuery.of(context).size.width,
+                                      height:
+                                          MediaQuery.of(context).size.height,
+                                      child: Center(
+                                        child: CircularProgressIndicator(
+                                          color:
+                                              Color.fromRGBO(209, 255, 189, 1),
+                                        ),
+                                      ));
                                 }
-                                // Loading Spinner at the centre of the page
-                                return SizedBox(
-                                    width: MediaQuery.of(context).size.width,
-                                    height: MediaQuery.of(context).size.height,
-                                    child: Center(
-                                      child: CircularProgressIndicator(
-                                        color: Color.fromRGBO(209, 255, 189, 1),
-                                      ),
-                                    ));
+
+                                // if the data has loaded properly, do the following
+
+                                // display text if the current
+                                // restaurant user has no donations posted.
+                                if (snapshot.data!.docs.length == 0) {
+                                  return SizedBox(
+                                      width: MediaQuery.of(context).size.width,
+                                      height:
+                                          MediaQuery.of(context).size.height,
+                                      child: Center(
+                                          child: Text(
+                                              "You have not posted any donations yet.\n" +
+                                                  "Navigate to the '+' page to create one.",
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyText2
+                                                  .override(
+                                                      fontFamily: 'Inter',
+                                                      color: Color.fromARGB(
+                                                          255, 113, 113, 116),
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.w300,
+                                                      fontStyle:
+                                                          FontStyle.italic))));
+                                }
+
+                                // if there are donations, show them
+                                return ListView(
+                                  scrollDirection: Axis.vertical,
+                                  shrinkWrap: true,
+                                  children: snapshot.data!.docs.map((doc) {
+                                    Map<String, dynamic> donationsData =
+                                        doc.data()! as Map<String, dynamic>;
+
+                                    // custom Widget to render a Donation Card
+                                    return DonationCard(
+                                        donationsData: donationsData);
+                                  }).toList(),
+                                );
                               })
                         ],
                       ),
