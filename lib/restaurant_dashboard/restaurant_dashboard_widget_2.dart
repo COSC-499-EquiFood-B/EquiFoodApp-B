@@ -188,12 +188,13 @@ class _DonationsWidgetState extends State<DonationsWidget> {
                                   scrollDirection: Axis.vertical,
                                   shrinkWrap: true,
                                   children: snapshot.data!.docs.map((doc) {
-                                    Map<String, dynamic> donationsData =
+                                    Map<String, dynamic> donationData =
                                         doc.data()! as Map<String, dynamic>;
 
                                     // custom Widget to render a Donation Card
                                     return DonationCard(
-                                        donationsData: donationsData);
+                                        donationID: doc.id, // send Donation ID
+                                        donationData: donationData);
                                   }).toList(),
                                 );
                               })
