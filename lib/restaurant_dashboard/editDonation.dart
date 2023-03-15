@@ -1,5 +1,7 @@
 // custom Widget similar to IndivItem, that allows the Restaurant User to edit their current Donation
 
+import 'package:equi_food_app/utils/displaySnackbar.dart';
+
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
@@ -30,21 +32,80 @@ class _EditDonationWidget extends State<EditDonationWidget> {
   bool isFieldChanged = false;
 
   // fields related to Donation that could be edited/updated
-  TextEditingController? donationNameController;
-  TextEditingController? donationDescriptionController;
-  TextEditingController? donationQtyController;
-  TextEditingController? donationPriceController;
+  TextEditingController? donationNameController = TextEditingController();
+  TextEditingController? donationDescriptionController =
+      TextEditingController();
+  TextEditingController? donationQtyController = TextEditingController();
+  TextEditingController? donationPriceController = TextEditingController();
 
   // function to update Donation
-  Future<void> updateDonation() async {}
+  Future<void> updateDonation() async {
+    // create Map<String, dynamic>
+    final Map<String, dynamic> updatedDonationData = {
+      "item_name": donationNameController?.text.toString(),
+      "description": donationDescriptionController?.text.toString(),
+      "price": int.parse(donationPriceController!.text),
+      "quantity": double.parse(donationQtyController!.text)
+    };
+
+    // update fields on firebase
+    donations
+        .doc(widget.donationID)
+        .set(updatedDonationData)
+        .then((value) => {
+              // empty fields
+              donationNameController!.clear(),
+              donationDescriptionController!.clear(),
+              donationQtyController!.clear(),
+              donationPriceController!.clear(),
+              // display SnackBar with success message
+              displaySnackbar(context, "Data updated successfully."),
+            })
+        .catchError((onError) => {
+              // display error message
+              displaySnackbar(context,
+                  "An unknown error occurred. Couldn\'t complete your request.")
+            });
+  }
+
+  late Future donationFields;
 
   @override
   void initState() {
     super.initState();
-    donationDescriptionController = TextEditingController();
-    donationNameController = TextEditingController();
-    donationQtyController = TextEditingController();
-    donationPriceController = TextEditingController();
+    donationFields = getDonationFields();
+
+    donationNameController?.addListener(() {
+      if (!isFieldChanged) {
+        setState(() {
+          isFieldChanged = true;
+        });
+      }
+    });
+
+    donationDescriptionController?.addListener(() {
+      if (!isFieldChanged) {
+        setState(() {
+          isFieldChanged = true;
+        });
+      }
+    });
+
+    donationPriceController?.addListener(() {
+      if (!isFieldChanged) {
+        setState(() {
+          isFieldChanged = true;
+        });
+      }
+    });
+
+    donationQtyController?.addListener(() {
+      if (!isFieldChanged) {
+        setState(() {
+          isFieldChanged = true;
+        });
+      }
+    });
   }
 
   // function to release all resources after use
@@ -57,7 +118,7 @@ class _EditDonationWidget extends State<EditDonationWidget> {
     super.dispose();
   }
 
-  void initializeInputFields(Map<String, dynamic> donationsData) {
+  void initializeTextControllers(Map<String, dynamic> donationsData) {
     donationNameController =
         TextEditingController(text: donationsData["item_name"]);
     donationDescriptionController =
@@ -69,17 +130,25 @@ class _EditDonationWidget extends State<EditDonationWidget> {
             .toString()); // convert double field to String
   }
 
+  Map<String, dynamic> donationData = {};
+
+  Future<void> getDonationFields() async {
+    donations.doc(widget.donationID).get().then((snapshot) => {
+          donationData = snapshot.data() as Map<String, dynamic>,
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<DocumentSnapshot>(
         // get the Donation Item with the given donationID
         future: donations.doc(widget.donationID).get(),
-        builder: (context, snapshot) {
+        builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             Map<String, dynamic> donationsData =
                 snapshot.data!.data() as Map<String, dynamic>;
 
-            initializeInputFields(donationsData);
+            //initializeTextControllers(donationsData);
 
             return Scaffold(
               key: scaffoldKey,
@@ -146,9 +215,13 @@ class _EditDonationWidget extends State<EditDonationWidget> {
                     // TextField for the Donation Name field
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(24, 24, 24, 16),
-                      child: TextField(
-                        controller: donationNameController,
+                      child: TextFormField(
+                        initialValue: donationsData["item_name"],
                         obscureText: false,
+                        onChanged: (value) {
+                          donationNameController?.text =
+                              value == '' ? donationsData["item_name"] : value;
+                        },
                         decoration: InputDecoration(
                           labelText: 'Item name',
                           labelStyle: FlutterFlowTheme.of(context).bodyText2,
@@ -197,7 +270,11 @@ class _EditDonationWidget extends State<EditDonationWidget> {
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 16),
                       child: TextFormField(
-                        controller: donationDescriptionController,
+                        initialValue: donationsData["description"],
+                        onChanged: (value) {
+                          donationDescriptionController?.text =
+                              value == '' ? donationData["description"] : value;
+                        },
                         maxLength: 200,
                         obscureText: false,
                         decoration: InputDecoration(
@@ -247,8 +324,13 @@ class _EditDonationWidget extends State<EditDonationWidget> {
                     // TextField for the Donation Price Field
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 16),
-                      child: TextField(
-                        controller: donationPriceController,
+                      child: TextFormField(
+                        initialValue: donationsData["price"].toString(),
+                        onChanged: (value) {
+                          donationPriceController?.text = value == ''
+                              ? donationsData["price"].toString()
+                              : value;
+                        },
                         keyboardType: const TextInputType.numberWithOptions(
                             signed: true, decimal: true),
                         obscureText: false,
@@ -299,8 +381,13 @@ class _EditDonationWidget extends State<EditDonationWidget> {
                     // TextField for the Donation Quantity Field
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 16),
-                      child: TextField(
-                        controller: donationQtyController,
+                      child: TextFormField(
+                        initialValue: donationsData["quantity"].toString(),
+                        onChanged: (value) {
+                          donationQtyController?.text = value == ''
+                              ? donationData["quantity"].toString()
+                              : value;
+                        },
                         keyboardType: TextInputType.number,
                         obscureText: false,
                         decoration: InputDecoration(
@@ -350,30 +437,18 @@ class _EditDonationWidget extends State<EditDonationWidget> {
                     // Update Button
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 24),
-                      child: FFButtonWidget(
-                        onPressed: isFieldChanged
-                            ? () {
-                                // update Donation Details
-                                updateDonation();
-                              }
-                            : () {},
-                        text: 'Update',
-                        options: FFButtonOptions(
-                          height: 40,
-                          color: Color.fromARGB(255, 76, 191, 82),
-                          textStyle:
-                              FlutterFlowTheme.of(context).subtitle2.override(
-                                    fontFamily: 'Inter',
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white,
-                                  ),
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1,
-                          ),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
+                      child: ElevatedButton(
+                        onPressed:
+                            isFieldChanged ? () => updateDonation() : null,
+                        child: Text('Update'),
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Color.fromARGB(255, 76, 191, 82),
+                            textStyle: const TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            )),
                       ),
                     ),
                   ],
