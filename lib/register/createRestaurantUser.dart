@@ -1097,23 +1097,28 @@ class _CreateRestaurantUserWidgetState
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 4),
                 child: InkWell(
-                  child: Text.rich(
-                      TextSpan(
-                        text: "Already a member?",
-                        children: <InlineSpan>[
-                          TextSpan(
-                              text: " Log in",
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 17, 154, 233)))
-                        ],
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyText2.override(
-                          fontFamily: 'Inter',
-                          color: Color.fromARGB(255, 19, 19, 19),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w300)),
-                  onTap: () => print('object'),
-                ),
+                    child: Text.rich(
+                        TextSpan(
+                          text: "Already a member?",
+                          children: <InlineSpan>[
+                            TextSpan(
+                                text: " Log in",
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 17, 154, 233)))
+                          ],
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyText2.override(
+                            fontFamily: 'Inter',
+                            color: Color.fromARGB(255, 19, 19, 19),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300)),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginWidget()),
+                      );
+                    }),
               ),
               Row(
                 mainAxisSize: MainAxisSize.max,
