@@ -106,7 +106,9 @@ class DonationCard extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => EditDonationWidget(
-                                          donationID: donationID)));
+                                            donationID: donationID,
+                                            donationData: donationData,
+                                          )));
                             },
                           ),
                           FlutterFlowIconButton(
