@@ -97,7 +97,7 @@ class _DonationsWidgetState extends State<DonationsWidget> {
                   backgroundColor: Color.fromRGBO(38, 189, 104, 1),
                   automaticallyImplyLeading: false,
                   title: Text(
-                    'Hello, $userName',
+                    'Hello, $userName  👋',
                     style: FlutterFlowTheme.of(context).title2.override(
                           fontFamily: 'Inter',
                           color: Color.fromRGBO(247, 255, 250, 1),

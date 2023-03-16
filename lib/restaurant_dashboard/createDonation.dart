@@ -63,7 +63,7 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
         await FirebaseFirestore.instance.collection("donations").add({
           "item_name": donationNameController!.text.toString(),
           "item_img":
-              "https://cleangreensimple.com/wp-content/uploads/2020/04/7-sweet-peas-and-saffron-air-fryer-cauliflower-chickpea-tacos.jpg", // default img
+              "https://images.unsplash.com/photo-1616437540260-783133d33733?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1362&q=80", // default img
           "description": donationDescriptionController!.text.toString(),
           "restaurant_name": currentRestaurantUser?.displayName,
           "quantity": int.parse(donationQtyController!.text),
