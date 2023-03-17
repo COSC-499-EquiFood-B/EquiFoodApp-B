@@ -22,8 +22,10 @@ class _UnapprovedUserWidget extends State<UnapprovedUserWidget> {
     await FirebaseAuth.instance.signOut();
 
     // redirect user to the Login page
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => LoginWidget()));
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => LoginWidget()),
+        (route) => false);
   }
 
   @override
@@ -42,7 +44,7 @@ class _UnapprovedUserWidget extends State<UnapprovedUserWidget> {
             backgroundColor: Color.fromRGBO(38, 189, 104, 1),
             automaticallyImplyLeading: false,
             title: Text(
-              'Hello, user',
+              'Hello, user  👋',
               style: FlutterFlowTheme.of(context).title2.override(
                     fontFamily: 'Inter',
                     color: Color.fromRGBO(247, 255, 250, 1),
@@ -77,7 +79,7 @@ class _UnapprovedUserWidget extends State<UnapprovedUserWidget> {
                           style: TextStyle(fontWeight: FontWeight.w300),
                           children: <InlineSpan>[
                             TextSpan(
-                                text: " adminteam@equifoodb.com",
+                                text: "adminteam@equifoodb.com",
                                 style: TextStyle(fontWeight: FontWeight.w700))
                           ],
                         ),

@@ -72,8 +72,10 @@ class _HmepageWidgetState extends State<HmepageWidget> {
     await FirebaseAuth.instance.signOut();
 
     // redirect user to the Login page
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => LoginWidget()));
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => LoginWidget()),
+        (route) => false);
   }
 
   @override

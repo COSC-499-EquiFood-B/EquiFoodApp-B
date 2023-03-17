@@ -83,8 +83,10 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
     await FirebaseAuth.instance.signOut();
 
     // redirect user to the Login page
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => LoginWidget()));
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => LoginWidget()),
+        (route) => false);
   }
 
   @override

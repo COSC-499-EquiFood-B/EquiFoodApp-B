@@ -73,8 +73,10 @@ class _DonationsWidgetState extends State<DonationsWidget> {
     await FirebaseAuth.instance.signOut();
 
     // redirect user to the Login page
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => LoginWidget()));
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => LoginWidget()),
+        (route) => false);
   }
 
   @override
@@ -151,7 +153,7 @@ class _DonationsWidgetState extends State<DonationsWidget> {
                                       child: Center(
                                         child: CircularProgressIndicator(
                                           color:
-                                              Color.fromRGBO(209, 255, 189, 1),
+                                              Color.fromRGBO(38, 189, 104, 1),
                                         ),
                                       ));
                                 }
