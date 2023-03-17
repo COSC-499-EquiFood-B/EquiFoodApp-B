@@ -55,14 +55,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
           'customer_id': isDonationReserved ? currentUserID : '',
         })
         .then((value) => {
-              //print('updated is_reserved'),
-
-              // redirect to the Confirmation Page
-              // TIP: It'd be better to have a popup than a whole new page for the confirmation
-
-              // redirect to Confirmation page only if the user has requested to reserve the donation
-              // i.e., isDonationReserved = true
-              // if the user has requested to cancel the reservation, display the snackbar
+              
               isDonationReserved
                   ? Navigator.push(
                       context,
