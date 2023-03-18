@@ -116,7 +116,9 @@ class _CreateRestaurantUserWidgetState
                     "is_approved":
                         false, // boolean field to signify that account needs approval from admin
                     "user_type":
-                        2 // user_type field (1 = Individual User, 2 = Restaurant User)
+                        2, // user_type field (1 = Individual User, 2 = Restaurant User)
+                    "profile_img":
+                        "https://images.unsplash.com/photo-1622115837997-90c89ae689f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
                   })
                 });
       } on FirebaseAuthException catch (e) {
@@ -214,7 +216,7 @@ class _CreateRestaurantUserWidgetState
             children: [
               Padding(
                 // Sign In text/Button
-                padding: EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -388,7 +390,7 @@ class _CreateRestaurantUserWidgetState
                       controller: emailTextController,
                       obscureText: false,
                       decoration: InputDecoration(
-                        labelText: 'Your email address',
+                        labelText: 'Email address',
                         labelStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
                                   fontFamily: 'Inter',
@@ -561,7 +563,7 @@ class _CreateRestaurantUserWidgetState
                       controller: passwordConfirmTextController,
                       obscureText: !passwordVisibility,
                       decoration: InputDecoration(
-                        labelText: ' Confirm Password',
+                        labelText: 'Confirm password',
                         labelStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
                                   fontFamily: 'Inter',
@@ -1097,23 +1099,28 @@ class _CreateRestaurantUserWidgetState
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 4),
                 child: InkWell(
-                  child: Text.rich(
-                      TextSpan(
-                        text: "Already a member?",
-                        children: <InlineSpan>[
-                          TextSpan(
-                              text: " Log in",
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 17, 154, 233)))
-                        ],
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyText2.override(
-                          fontFamily: 'Inter',
-                          color: Color.fromARGB(255, 19, 19, 19),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w300)),
-                  onTap: () => print('object'),
-                ),
+                    child: Text.rich(
+                        TextSpan(
+                          text: "Already a member?",
+                          children: <InlineSpan>[
+                            TextSpan(
+                                text: " Log in",
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 17, 154, 233)))
+                          ],
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyText2.override(
+                            fontFamily: 'Inter',
+                            color: Color.fromARGB(255, 19, 19, 19),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300)),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginWidget()),
+                      );
+                    }),
               ),
               Row(
                 mainAxisSize: MainAxisSize.max,

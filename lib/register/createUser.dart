@@ -159,15 +159,15 @@ class _SignupWidgetState extends State<SignupWidget> {
                     },
                     child: Image.asset(
                       'assets/images/tempLogo.png',
-                      width: 10,
-                      height: 10,
+                      width: 32,
+                      height: 32,
                       fit: BoxFit.cover,
                     ),
                   ),
                 ],
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -340,7 +340,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                       controller: emailTextController,
                       obscureText: false,
                       decoration: InputDecoration(
-                        labelText: 'Your email address',
+                        labelText: 'Email address',
                         labelStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
                                   fontFamily: 'Inter',
@@ -513,7 +513,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                       controller: passwordConfirmTextController,
                       obscureText: !passwordVisibility,
                       decoration: InputDecoration(
-                        labelText: ' Confirm Password',
+                        labelText: 'Confirm password',
                         labelStyle:
                             FlutterFlowTheme.of(context).bodyText2.override(
                                   fontFamily: 'Inter',

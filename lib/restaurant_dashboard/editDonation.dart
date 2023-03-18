@@ -1,106 +1,77 @@
-import 'package:firebase_core/firebase_core.dart';
+// custom Widget similar to IndivItem, that allows the Restaurant User to edit their current Donation
+
+import 'package:equi_food_app/utils/displaySnackbar.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-// imports for database-related stuff
+//Firebase imports
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
-// importing custom-defined functions
-import '../utils/displaySnackbar.dart'; // to render a SnackBar
+class EditDonationWidget extends StatefulWidget {
+  final String donationID;
+  final Map<String, dynamic> donationData;
 
-class CreateDonationWidget extends StatefulWidget {
-  const CreateDonationWidget({Key? key}) : super(key: key);
+  const EditDonationWidget(
+      {Key? key, required this.donationID, required this.donationData})
+      : super(key: key);
 
   @override
-  _CreateDonationWidgetState createState() => _CreateDonationWidgetState();
+  _EditDonationWidget createState() => _EditDonationWidget();
 }
 
-class _CreateDonationWidgetState extends State<CreateDonationWidget> {
-  TextEditingController? donationDescriptionController;
-  TextEditingController? donationNameController;
-  TextEditingController? donationQtyController;
-  TextEditingController? donationPriceController;
+class _EditDonationWidget extends State<EditDonationWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  @override
-  void initState() {
-    super.initState();
-    donationDescriptionController = TextEditingController();
-    donationNameController = TextEditingController();
-    donationQtyController = TextEditingController();
-    donationPriceController = TextEditingController();
-  }
+  // Create reference to donations collection
+  CollectionReference donations =
+      FirebaseFirestore.instance.collection('donations');
 
-  @override
-  void dispose() {
-    donationDescriptionController?.dispose();
-    donationNameController?.dispose();
-    donationQtyController?.dispose();
-    donationPriceController?.dispose();
-    super.dispose();
-  }
+  // state variable to change the text/color of the "Reserve" Button
+  bool isDonationReserved = false;
+  bool isFieldChanged = false;
 
-  // method to write donation details to firebase under the "donations" Collection
-  Future createDonation() async {
-    // get user ID of Restaurant User (uid)
-    final currentRestaurantUser = FirebaseAuth.instance.currentUser;
+  // fields related to Donation that could be edited/updated
+  TextEditingController? donationNameController;
+  TextEditingController? donationDescriptionController;
+  TextEditingController? donationQtyController;
+  TextEditingController? donationPriceController;
 
-    // create ref to specific restaurant User ID (uid) in "users" Collection
-    final restaurantRef = FirebaseFirestore.instance
-        .collection("users")
-        .doc(currentRestaurantUser?.uid);
-
-    // proceed only if all the donation fields are filled
-    if (checkDonationFields()) {
-      try {
-// add details to the "donations" Collection
-        await FirebaseFirestore.instance.collection("donations").add({
-          "item_name": donationNameController!.text.toString(),
-          "item_img":
-              "https://images.unsplash.com/photo-1616437540260-783133d33733?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1362&q=80", // default img
-          "description": donationDescriptionController!.text.toString(),
-          "restaurant_name": currentRestaurantUser?.displayName,
-          "quantity": int.parse(donationQtyController!.text),
-          "price": double.parse(donationPriceController!.text),
-          "created_at": DateTime.now(),
-          "restaurant_ref": restaurantRef,
-          "is_reserved":
-              false // since the donation is not reserved by a user yet
-        }).then((value) => {
-              // clear all text fields
+  // function to update Donation
+  Future<void> updateDonation() async {
+    // update fields on firebase
+    donations
+        .doc(widget.donationID)
+        .update(
+            // sending data to update (Map<String, dynamic>)
+            // if either of the fields are empty, then write their respective values to them
+            {
+              "item_name": donationNameController!.text.isNotEmpty
+                  ? donationNameController?.text.toString()
+                  : widget.donationData["item_name"],
+              "description": donationDescriptionController!.text.isNotEmpty
+                  ? donationDescriptionController?.text.toString()
+                  : widget.donationData["description"],
+              "price": donationPriceController!.text.isNotEmpty
+                  ? double.parse(donationPriceController!.text)
+                  : widget.donationData["price"],
+              "quantity": donationQtyController!.text.isNotEmpty
+                  ? int.parse(donationQtyController!.text)
+                  : widget.donationData["quantity"],
+            })
+        .then((value) => {
+              // empty fields
               clearDonationFields(),
-
               // display SnackBar with success message
-              displaySnackbar(context, "Donation created."),
+              displaySnackbar(context, "Data updated successfully."),
+            })
+        .catchError((onError) => {
+              // display error message
+              displaySnackbar(context,
+                  "An unknown error occurred. Couldn\'t complete your request.")
             });
-      } on FirebaseException catch (e) {
-        //print(e.code);
-        displaySnackbar(context, e.code);
-      } on FormatException catch (e) {
-        // in case a wrong input is entered by the user
-        //print(e);
-        displaySnackbar(
-            context, "Invalid input for one of the fields. Please try again.");
-      }
-    }
-  }
-
-  // function to check if all the fields are filled
-  bool checkDonationFields() {
-    if (donationNameController!.text.isEmpty ||
-        donationDescriptionController!.text.isEmpty ||
-        donationQtyController!.text.isEmpty ||
-        donationPriceController!.text.isEmpty) {
-      return false;
-    }
-
-    return true;
   }
 
   // function to clear all text fields
@@ -111,35 +82,145 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
     donationPriceController!.clear();
   }
 
+// function to initialize the TextControllers with their initial value
+// The fields are read from donationData into these TextControllers
+  void initializeTextControllers() {
+    donationNameController =
+        TextEditingController(text: widget.donationData["item_name"]);
+    donationDescriptionController =
+        TextEditingController(text: widget.donationData["description"]);
+    donationPriceController = TextEditingController(
+        text: widget.donationData["price"]
+            .toString()); // convert int field to String
+    donationQtyController = TextEditingController(
+        text: widget.donationData["quantity"]
+            .toString()); // convert double field to String
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    // initialize the TextControllers with the current value of fields in the database
+    initializeTextControllers();
+
+    donationNameController?.addListener(() {
+      print(donationNameController?.text);
+
+      if (!isFieldChanged) {
+        setState(() {
+          isFieldChanged = true;
+        });
+      }
+    });
+
+    donationDescriptionController?.addListener(() {
+      if (!isFieldChanged) {
+        setState(() {
+          isFieldChanged = true;
+        });
+      }
+    });
+
+    donationPriceController?.addListener(() {
+      if (!isFieldChanged) {
+        setState(() {
+          isFieldChanged = true;
+        });
+      }
+    });
+
+    donationQtyController?.addListener(() {
+      if (!isFieldChanged) {
+        setState(() {
+          isFieldChanged = true;
+        });
+      }
+    });
+  }
+
+  // function to release all resources after use
+  @override
+  void dispose() {
+    donationDescriptionController?.dispose();
+    donationNameController?.dispose();
+    donationQtyController?.dispose();
+    donationPriceController?.dispose();
+    super.dispose();
+  }
+
+  // Map<String, dynamic> donationData = {}
+
+  // Future<void> getDonationFields() async {
+  //   donations.doc(widget.donationID).get().then((snapshot) => {
+  //         donationData = snapshot.data() as Map<String, dynamic>,
+  //       });
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color.fromARGB(255, 243, 248, 249),
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(40),
-        child: AppBar(
-          backgroundColor: Color.fromRGBO(38, 189, 104, 1),
-          automaticallyImplyLeading: true,
-          title: SelectionArea(
-              child: Text(
-            'Create Donation',
-            style: FlutterFlowTheme.of(context).title1.override(
-                  fontFamily: 'Inter',
-                  color: Color.fromRGBO(247, 255, 250, 1),
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700,
-                ),
-          )),
-          actions: [],
-          centerTitle: true,
-          elevation: 4,
-        ),
-      ),
-      body: SafeArea(
+      resizeToAvoidBottomInset: false,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      body: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Container(
+                    height: 240,
+                    child: Stack(
+                      alignment: AlignmentDirectional(-0.95, -0.7),
+                      children: [
+                        Align(
+                          alignment: AlignmentDirectional(0, 0),
+                          child: Image.network(
+                            widget.donationData["item_img"],
+                            width: MediaQuery.of(context).size.width,
+                            height: 240,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Align(
+                          alignment: AlignmentDirectional(-0.95, -0.55),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Card(
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                              color: Color(0xFFF5F5F5),
+                              elevation: 3,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(100),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10, 10, 10, 10),
+                                child: Icon(
+                                  Icons.arrow_back_rounded,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 24,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+            // TextField for the Donation Name field
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(24, 24, 24, 16),
               child: TextFormField(
@@ -184,60 +265,17 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
                 style: FlutterFlowTheme.of(context).bodyText1,
               ),
             ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 16),
-              child: TextFormField(
-                controller: donationQtyController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  labelText: 'Qty.',
-                  labelStyle: FlutterFlowTheme.of(context).bodyText2,
-                  hintStyle: FlutterFlowTheme.of(context).bodyText2,
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: FlutterFlowTheme.of(context).primaryBackground,
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: FlutterFlowTheme.of(context).primaryBackground,
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  errorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  focusedErrorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  filled: true,
-                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                  contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
-                ),
-                style: FlutterFlowTheme.of(context).bodyText1,
-                keyboardType: TextInputType.number,
-              ),
-            ),
+
+            // TextField for the Donation Description field
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 16),
               child: TextFormField(
                 controller: donationDescriptionController,
-                obscureText: false,
                 maxLength: 200,
+                obscureText: false,
                 decoration: InputDecoration(
+                  labelText: 'Description',
                   labelStyle: FlutterFlowTheme.of(context).bodyText2,
-                  hintText: 'Description',
                   hintStyle: FlutterFlowTheme.of(context).bodyText2,
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
@@ -272,14 +310,16 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
                   contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                 ),
                 style: FlutterFlowTheme.of(context).bodyText1,
-                textAlign: TextAlign.start,
-                maxLines: 3,
               ),
             ),
+
+            // TextField for the Donation Price Field
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 16),
               child: TextFormField(
                 controller: donationPriceController,
+                keyboardType: const TextInputType.numberWithOptions(
+                    signed: true, decimal: true),
                 obscureText: false,
                 decoration: InputDecoration(
                   labelText: 'Price',
@@ -318,34 +358,70 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
                   contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                 ),
                 style: FlutterFlowTheme.of(context).bodyText1,
-                keyboardType: const TextInputType.numberWithOptions(
-                    signed: true, decimal: true),
               ),
             ),
-            Align(
-              alignment: AlignmentDirectional(0, 0.05),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
-                child: FFButtonWidget(
-                  onPressed: createDonation,
-                  text: 'Create',
-                  options: FFButtonOptions(
-                    width: 340,
-                    height: 60,
-                    color: Color.fromRGBO(38, 189, 104, 1),
-                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                          fontFamily: 'Inter',
-                          color: Color.fromRGBO(247, 255, 250, 1),
-                          fontSize: 16,
-                          fontWeight: FontWeight.normal,
-                        ),
-                    elevation: 2,
+
+            // TextField for the Donation Quantity Field
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 16),
+              child: TextFormField(
+                controller: donationQtyController,
+                keyboardType: TextInputType.number,
+                obscureText: false,
+                decoration: InputDecoration(
+                  labelText: 'Quantity',
+                  labelStyle: FlutterFlowTheme.of(context).bodyText2,
+                  hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                  enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1,
+                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      width: 2,
                     ),
+                    borderRadius: BorderRadius.circular(8),
                   ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  filled: true,
+                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                  contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                 ),
+                style: FlutterFlowTheme.of(context).bodyText1,
+              ),
+            ),
+
+            // Update Button
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 24),
+              child: ElevatedButton(
+                onPressed: isFieldChanged ? () => updateDonation() : null,
+                child: Text('Update'),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Color.fromARGB(255, 76, 191, 82),
+                    elevation: 2,
+                    textStyle: const TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 16,
+                      color: Colors.white,
+                    )),
               ),
             ),
           ],

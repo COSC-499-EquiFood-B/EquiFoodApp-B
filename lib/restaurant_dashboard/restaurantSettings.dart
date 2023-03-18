@@ -121,7 +121,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
               onPressed: () async {
                 context.pop();
               },
-              text: 'Change Changes',
+              text: 'Apply Changes',
               options: FFButtonOptions(
                 width: 190,
                 height: 50,

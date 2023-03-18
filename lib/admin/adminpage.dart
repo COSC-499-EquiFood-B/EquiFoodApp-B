@@ -10,7 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 //Import code to link to database
 import '../login/login_widget.dart';
-import 'getAdminRestaurants.dart';
+import 'getUnapprovedRestaurants.dart';
 
 //Firebase imports
 import 'package:firebase_core/firebase_core.dart';
@@ -83,8 +83,10 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
     await FirebaseAuth.instance.signOut();
 
     // redirect user to the Login page
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => LoginWidget()));
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => LoginWidget()),
+        (route) => false);
   }
 
   @override
@@ -112,13 +114,13 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
       // APPBAR
       appBar: _selectedIndex == 0
           ? AppBar(
-              backgroundColor:Color.fromRGBO(38, 189, 104, 1),
+              backgroundColor: Color.fromRGBO(38, 189, 104, 1),
               automaticallyImplyLeading: false,
               title: Text(
                 'Hello, $userName  👋',
                 style: FlutterFlowTheme.of(context).title2.override(
                       fontFamily: 'Inter',
-                      color: Color(0xFF14181B),
+                      color: Color.fromRGBO(247, 255, 250, 1),
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                     ),
