@@ -1,9 +1,12 @@
-import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+//firebase imports
+import 'package:firebase_auth/firebase_auth.dart';
+
+import '../login/login_widget.dart';
 
 class SettingsWidget extends StatefulWidget {
   const SettingsWidget({Key? key}) : super(key: key);
@@ -18,23 +21,41 @@ class _SettingsWidgetState extends State<SettingsWidget> {
   bool? switchListTileValue3;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
+  Future signOutUser() async {
+    // log out user
+    await FirebaseAuth.instance.signOut();
+
+    // redirect user to the Login page
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => LoginWidget()),
+        (route) => false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        backgroundColor: Color.fromRGBO(38, 189, 104, 1),
         automaticallyImplyLeading: false,
         title: Text(
           'Settings',
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Inter',
-                color: FlutterFlowTheme.of(context).primaryText,
+                color: Color.fromRGBO(247, 255, 250, 1),
                 fontSize: 24,
               ),
         ),
-        actions: [],
+        actions: [
+          // Sign-Out Icon
+          IconButton(
+            onPressed: signOutUser,
+            icon: const Icon(Icons.logout_outlined),
+            iconSize: 25,
+          ),
+        ],
         centerTitle: false,
         elevation: 0,
       ),
@@ -42,15 +63,17 @@ class _SettingsWidgetState extends State<SettingsWidget> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+            padding: EdgeInsetsDirectional.fromSTEB(24, 16, 24, 8),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Expanded(
                   child: Text(
-                    'Choose what notifcations you want to recieve below and we will update the settings.',
-                    style: FlutterFlowTheme.of(context).bodyText2,
-                  ),
+                      'Choose what notifcations you want to receive below and we will update the settings.',
+                      style: FlutterFlowTheme.of(context).bodyText2.override(
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w600,
+                          )),
                 ),
               ],
             ),
@@ -67,11 +90,13 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                 style: FlutterFlowTheme.of(context).title3,
               ),
               subtitle: Text(
-                'Receive Push notifications from our application on a semi regular basis.',
-                style: FlutterFlowTheme.of(context).bodyText2,
-              ),
-              activeColor: Color.fromRGBO(209, 255, 189, 1),
-              activeTrackColor: Color(0x8A4B39EF),
+                  'Receive Push notifications from our application on a semi regular basis.',
+                  style: FlutterFlowTheme.of(context).bodyText2.override(
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w500,
+                      )),
+              activeColor: Color.fromRGBO(250, 250, 250, 1),
+              activeTrackColor: Color.fromRGBO(38, 189, 104, 1),
               dense: false,
               controlAffinity: ListTileControlAffinity.trailing,
               contentPadding: EdgeInsetsDirectional.fromSTEB(24, 12, 24, 12),
@@ -87,11 +112,13 @@ class _SettingsWidgetState extends State<SettingsWidget> {
               style: FlutterFlowTheme.of(context).title3,
             ),
             subtitle: Text(
-              'Receive email notifications from our marketing team about new features.',
-              style: FlutterFlowTheme.of(context).bodyText2,
-            ),
-            activeColor: Color.fromRGBO(209, 255, 189, 1),
-            activeTrackColor: Color(0xFF3B2DB6),
+                'Receive email notifications from our marketing team about new features.',
+                style: FlutterFlowTheme.of(context).bodyText2.override(
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                    )),
+            activeColor: Color.fromRGBO(250, 250, 250, 1),
+            activeTrackColor: Color.fromRGBO(38, 189, 104, 1),
             dense: false,
             controlAffinity: ListTileControlAffinity.trailing,
             contentPadding: EdgeInsetsDirectional.fromSTEB(24, 12, 24, 12),
@@ -106,11 +133,13 @@ class _SettingsWidgetState extends State<SettingsWidget> {
               style: FlutterFlowTheme.of(context).title3,
             ),
             subtitle: Text(
-              'Allow us to track your location, this helps keep track of spending and keeps you safe.',
-              style: FlutterFlowTheme.of(context).bodyText2,
-            ),
-            activeColor: Color.fromRGBO(209, 255, 189, 1),
-            activeTrackColor: Color(0xFF3B2DB6),
+                'Allow us to track your location, this helps keep track of spending and keeps you safe.',
+                style: FlutterFlowTheme.of(context).bodyText2.override(
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                    )),
+            activeColor: Color.fromRGBO(250, 250, 250, 1),
+            activeTrackColor: Color.fromRGBO(38, 189, 104, 1),
             dense: false,
             controlAffinity: ListTileControlAffinity.trailing,
             contentPadding: EdgeInsetsDirectional.fromSTEB(24, 12, 24, 12),
@@ -125,7 +154,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
               options: FFButtonOptions(
                 width: 190,
                 height: 50,
-                color: Color.fromARGB(255, 76, 191, 82),
+                color: Color.fromRGBO(159, 159, 159, 1),
                 textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                       fontFamily: 'Inter',
                       color: Colors.white,
