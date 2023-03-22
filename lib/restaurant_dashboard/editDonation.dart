@@ -97,6 +97,7 @@ class _EditDonationWidget extends State<EditDonationWidget> {
     donationDescriptionController!.clear();
     donationQtyController!.clear();
     donationPriceController!.clear();
+    donationImgController!.clear();
   }
 
 // function to initialize the TextControllers with their initial value
@@ -350,6 +351,12 @@ class _EditDonationWidget extends State<EditDonationWidget> {
                 decoration: InputDecoration(
                   labelText: 'Price',
                   labelStyle: textFieldLabelStyle,
+                  hintText: 'CAD',
+                  hintStyle: TextStyle(
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.normal,
+                    color: Color.fromARGB(255, 167, 167, 170),
+                  ),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                       color: FlutterFlowTheme.of(context).primaryBackground,
@@ -396,7 +403,12 @@ class _EditDonationWidget extends State<EditDonationWidget> {
                 decoration: InputDecoration(
                   labelText: 'Quantity',
                   labelStyle: textFieldLabelStyle,
-                  hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                  hintText: 'Number of servings',
+                  hintStyle: TextStyle(
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.normal,
+                    color: Color.fromARGB(255, 167, 167, 170),
+                  ),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                       color: FlutterFlowTheme.of(context).primaryBackground,
