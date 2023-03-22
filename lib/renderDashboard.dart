@@ -24,30 +24,47 @@ class _RenderDashboardWidgetState extends State<RenderDashboardWidget> {
 
     // query the "Users" Collection in Firebase to get the current user's userType
     // get current user snapshot
+    Map<String, dynamic>? currentUserData;
+    int userType = -1;
+    bool isApproved = false;
+
     final currentUserSnapshot = await FirebaseFirestore.instance
         .collection("users")
         .doc(currentUser?.uid)
-        .get();
+        .get()
+        .then((value) => {
+              currentUserData = value.data(),
 
-    if (currentUserSnapshot.exists) {
-      Map<String, dynamic>? currentUserData = currentUserSnapshot.data();
+              // extract 'user_type' from the document
+              userType = currentUserData!['user_type'],
 
-      // get current user's user_type value to navigate them to the correct screen
-      // 0 = Admin User,  1 = Individual User, 2 = Restaurant User
-      int userType = currentUserData!['user_type'];
+              // if the user is a REstaurant user, get the 'is_approved' field
+              if (userType == 2)
+                {
+                  isApproved = currentUserData!['is_approved'],
+                }
+            });
 
-      bool isApproved = false;
+    // if (currentUserSnapshot.exists) {
+    //   Map<String, dynamic>? currentUserData = currentUserSnapshot.data();
 
-      // if it's a Restaurant User, also extract the "is_approved" attribute from their document
-      if (userType == 2) {
-        isApproved = currentUserData['is_approved'];
-      }
+    //   // get current user's user_type value to navigate them to the correct screen
+    //   // 0 = Admin User,  1 = Individual User, 2 = Restaurant User
+    //   int userType = currentUserData!['user_type'];
 
-      // return array containing [userType, isApproved]
-      return [userType, isApproved];
-    }
+    //   bool isApproved = false;
 
-    return []; // error occurs
+    //   // if it's a Restaurant User, also extract the "is_approved" attribute from their document
+    //   if (userType == 2) {
+    //     isApproved = currentUserData['is_approved'];
+    //   }
+
+    //   // return array containing [userType, isApproved]
+    //   return [userType, isApproved];
+    // }
+
+    // return userType and isApproved in a list
+    return [userType, isApproved];
   }
 
   // for FutureBuilder
