@@ -3,6 +3,7 @@ import 'package:equi_food_app/indiv_dashboard/default-stats.dart';
 import 'package:equi_food_app/indiv_dashboard/getDonations.dart';
 import 'package:equi_food_app/restaurant_dashboard/restaurantSettings.dart';
 import 'package:equi_food_app/statspages/statisticsforindiv.dart';
+import 'package:equi_food_app/utils/displayAlert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -117,10 +118,33 @@ class _HmepageWidgetState extends State<HmepageWidget> {
               actions: [
                 // Sign-Out Icon
                 IconButton(
-                  onPressed: signOutUser,
-                  icon: const Icon(Icons.logout_outlined),
-                  iconSize: 25,
-                ),
+                    icon: const Icon(Icons.logout_outlined),
+                    iconSize: 25,
+                    onPressed: () async {
+                      await showDialog<bool>(
+                          context: context,
+                          builder: (alertDialogContext) {
+                            return AlertDialog(
+                              content:
+                                  Text('Are you sure you want to sign out? '),
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(alertDialogContext, false),
+                                  child: Text('Cancel'),
+                                ),
+                                TextButton(
+                                  onPressed: () => {
+                                    Navigator.pop(alertDialogContext, false),
+                                    // call function to delete donation
+                                    signOutUser()
+                                  },
+                                  child: Text('Confirm'),
+                                ),
+                              ],
+                            );
+                          });
+                    }),
               ],
               centerTitle: false,
               elevation: 0,
