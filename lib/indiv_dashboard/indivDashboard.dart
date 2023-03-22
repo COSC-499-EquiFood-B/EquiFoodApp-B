@@ -270,6 +270,7 @@ class _HmepageWidgetState extends State<HmepageWidget> {
             )
           : _screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
         selectedItemColor: Color.fromRGBO(38, 189, 104, 1),
         unselectedItemColor: Color.fromRGBO(194, 194, 194, 1),
         type: BottomNavigationBarType.fixed,
@@ -279,12 +280,12 @@ class _HmepageWidgetState extends State<HmepageWidget> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.map),
-            label: 'Map',
+            icon: Icon(Icons.receipt),
+            label: 'Orders',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.eco),
-            label: 'Stats',
+            label: 'Savings',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

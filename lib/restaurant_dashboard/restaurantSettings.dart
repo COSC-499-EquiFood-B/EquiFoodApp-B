@@ -36,7 +36,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+      backgroundColor: Color.fromARGB(255, 243, 248, 249),
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(38, 189, 104, 1),
         automaticallyImplyLeading: false,
