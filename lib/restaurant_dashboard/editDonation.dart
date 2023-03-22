@@ -38,6 +38,20 @@ class _EditDonationWidget extends State<EditDonationWidget> {
   TextEditingController? donationDescriptionController;
   TextEditingController? donationQtyController;
   TextEditingController? donationPriceController;
+  TextEditingController? donationImgController;
+
+  // styles for all TextFields
+  TextStyle textFieldStyle = TextStyle(
+    fontFamily: 'Inter',
+    fontWeight: FontWeight.w100,
+    fontSize: 16,
+    color: Color.fromARGB(255, 44, 44, 45),
+  );
+
+  // styles for all TextFields LABELS
+  TextStyle textFieldLabelStyle = TextStyle(
+    color: Color.fromARGB(255, 113, 113, 116),
+  );
 
   // function to update Donation
   Future<void> updateDonation() async {
@@ -51,6 +65,9 @@ class _EditDonationWidget extends State<EditDonationWidget> {
               "item_name": donationNameController!.text.isNotEmpty
                   ? donationNameController?.text.toString()
                   : widget.donationData["item_name"],
+              "item_img": donationImgController!.text.isNotEmpty
+                  ? donationImgController?.text.toString()
+                  : widget.donationData["item_img"],
               "description": donationDescriptionController!.text.isNotEmpty
                   ? donationDescriptionController?.text.toString()
                   : widget.donationData["description"],
@@ -87,6 +104,8 @@ class _EditDonationWidget extends State<EditDonationWidget> {
   void initializeTextControllers() {
     donationNameController =
         TextEditingController(text: widget.donationData["item_name"]);
+    donationImgController =
+        TextEditingController(text: widget.donationData["item_img"]);
     donationDescriptionController =
         TextEditingController(text: widget.donationData["description"]);
     donationPriceController = TextEditingController(
@@ -137,6 +156,14 @@ class _EditDonationWidget extends State<EditDonationWidget> {
         });
       }
     });
+
+    donationImgController?.addListener(() {
+      if (!isFieldChanged) {
+        setState(() {
+          isFieldChanged = true;
+        });
+      }
+    });
   }
 
   // function to release all resources after use
@@ -146,6 +173,7 @@ class _EditDonationWidget extends State<EditDonationWidget> {
     donationNameController?.dispose();
     donationQtyController?.dispose();
     donationPriceController?.dispose();
+    donationImgController?.dispose();
     super.dispose();
   }
 
@@ -228,8 +256,7 @@ class _EditDonationWidget extends State<EditDonationWidget> {
                 obscureText: false,
                 decoration: InputDecoration(
                   labelText: 'Item name',
-                  labelStyle: FlutterFlowTheme.of(context).bodyText2,
-                  hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                  labelStyle: textFieldLabelStyle,
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                       color: FlutterFlowTheme.of(context).primaryBackground,
@@ -262,7 +289,7 @@ class _EditDonationWidget extends State<EditDonationWidget> {
                   fillColor: FlutterFlowTheme.of(context).secondaryBackground,
                   contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                 ),
-                style: FlutterFlowTheme.of(context).bodyText1,
+                style: textFieldStyle,
               ),
             ),
 
@@ -275,8 +302,7 @@ class _EditDonationWidget extends State<EditDonationWidget> {
                 obscureText: false,
                 decoration: InputDecoration(
                   labelText: 'Description',
-                  labelStyle: FlutterFlowTheme.of(context).bodyText2,
-                  hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                  labelStyle: textFieldLabelStyle,
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                       color: FlutterFlowTheme.of(context).primaryBackground,
@@ -309,7 +335,7 @@ class _EditDonationWidget extends State<EditDonationWidget> {
                   fillColor: FlutterFlowTheme.of(context).secondaryBackground,
                   contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                 ),
-                style: FlutterFlowTheme.of(context).bodyText1,
+                style: textFieldStyle,
               ),
             ),
 
@@ -323,8 +349,7 @@ class _EditDonationWidget extends State<EditDonationWidget> {
                 obscureText: false,
                 decoration: InputDecoration(
                   labelText: 'Price',
-                  labelStyle: FlutterFlowTheme.of(context).bodyText2,
-                  hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                  labelStyle: textFieldLabelStyle,
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                       color: FlutterFlowTheme.of(context).primaryBackground,
@@ -357,7 +382,7 @@ class _EditDonationWidget extends State<EditDonationWidget> {
                   fillColor: FlutterFlowTheme.of(context).secondaryBackground,
                   contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                 ),
-                style: FlutterFlowTheme.of(context).bodyText1,
+                style: textFieldStyle,
               ),
             ),
 
@@ -370,7 +395,7 @@ class _EditDonationWidget extends State<EditDonationWidget> {
                 obscureText: false,
                 decoration: InputDecoration(
                   labelText: 'Quantity',
-                  labelStyle: FlutterFlowTheme.of(context).bodyText2,
+                  labelStyle: textFieldLabelStyle,
                   hintStyle: FlutterFlowTheme.of(context).bodyText2,
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
@@ -404,7 +429,52 @@ class _EditDonationWidget extends State<EditDonationWidget> {
                   fillColor: FlutterFlowTheme.of(context).secondaryBackground,
                   contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                 ),
-                style: FlutterFlowTheme.of(context).bodyText1,
+                style: textFieldStyle,
+              ),
+            ),
+
+            // TextField for the Donation Image field
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 16),
+              child: TextFormField(
+                controller: donationImgController,
+                obscureText: false,
+                decoration: InputDecoration(
+                  labelText: 'Item image',
+                  labelStyle: textFieldLabelStyle,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  filled: true,
+                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                  contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
+                ),
+                style: textFieldStyle,
               ),
             ),
 
