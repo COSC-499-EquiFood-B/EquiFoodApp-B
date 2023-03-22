@@ -1,8 +1,10 @@
 import '../flutter_flow/flutter_flow_google_map.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../login/login_widget.dart';
+
+// Firebase
+import 'package:firebase_auth/firebase_auth.dart';
 
 class PickupMapWidget extends StatefulWidget {
   const PickupMapWidget({Key? key}) : super(key: key);
@@ -16,6 +18,17 @@ class _PickupMapWidgetState extends State<PickupMapWidget> {
   final googleMapsController = Completer<GoogleMapController>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
+  Future signOutUser() async {
+    // log out user
+    await FirebaseAuth.instance.signOut();
+
+    // redirect user to the Login page
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => LoginWidget()),
+        (route) => false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,17 +36,24 @@ class _PickupMapWidgetState extends State<PickupMapWidget> {
       resizeToAvoidBottomInset: false,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
-        backgroundColor: Color(0xFFDBECD7),
+        backgroundColor: Color.fromRGBO(38, 189, 104, 1),
         automaticallyImplyLeading: false,
         title: Text(
-          'Pickup Location',
+          'Orders',
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Inter',
-                color: FlutterFlowTheme.of(context).primaryText,
+                color: Color.fromRGBO(247, 255, 250, 1),
                 fontSize: 24,
               ),
         ),
-        actions: [],
+        actions: [
+          // Sign-Out Icon
+          IconButton(
+            onPressed: signOutUser,
+            icon: const Icon(Icons.logout_outlined),
+            iconSize: 25,
+          ),
+        ],
         centerTitle: false,
         elevation: 2,
       ),
