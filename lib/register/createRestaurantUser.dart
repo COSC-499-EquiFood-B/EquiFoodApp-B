@@ -906,7 +906,7 @@ class _CreateRestaurantUserWidgetState
                           controller: stateTextController,
                           obscureText: false,
                           decoration: InputDecoration(
-                            labelText: 'BC',
+                            labelText: 'State',
                             labelStyle:
                                 FlutterFlowTheme.of(context).bodyText2.override(
                                       fontFamily: 'Inter',
@@ -1085,12 +1085,21 @@ class _CreateRestaurantUserWidgetState
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                 child: InkWell(
-                  child: Text("Register as a user",
+                  child: Text.rich(
+                      TextSpan(
+                        text: "Standard user?",
+                        children: <InlineSpan>[
+                          TextSpan(
+                              text: " Register here",
+                              style: TextStyle(
+                                  color: Color.fromARGB(255, 17, 154, 233)))
+                        ],
+                      ),
                       style: FlutterFlowTheme.of(context).bodyText2.override(
                           fontFamily: 'Inter',
                           color: Color.fromARGB(255, 26, 26, 27),
                           fontSize: 16,
-                          fontWeight: FontWeight.w500)),
+                          fontWeight: FontWeight.w600)),
                   onTap: () => Navigator.of(context).pop(),
                 ),
               ),
