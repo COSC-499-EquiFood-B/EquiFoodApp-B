@@ -1,13 +1,9 @@
-import 'package:firebase_core/firebase_core.dart';
-
 import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../login/login_widget.dart';
 
 // imports for database-related stuff
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -130,30 +126,65 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
     donationImgController!.clear();
   }
 
+  Future signOutUser() async {
+    // log out user
+    await FirebaseAuth.instance.signOut();
+
+    // redirect user to the Login page
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => LoginWidget()),
+        (route) => false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Color.fromARGB(255, 243, 248, 249),
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(40),
-        child: AppBar(
-          backgroundColor: Color.fromRGBO(38, 189, 104, 1),
-          automaticallyImplyLeading: true,
-          title: SelectionArea(
-              child: Text(
-            'Create Donation',
-            style: FlutterFlowTheme.of(context).title1.override(
-                  fontFamily: 'Inter',
-                  color: Color.fromRGBO(247, 255, 250, 1),
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700,
-                ),
-          )),
-          actions: [],
-          centerTitle: true,
-          elevation: 4,
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(38, 189, 104, 1),
+        automaticallyImplyLeading: false,
+        title: Text(
+          'Create Donations',
+          style: FlutterFlowTheme.of(context).title2.override(
+                fontFamily: 'Inter',
+                color: Color.fromRGBO(247, 255, 250, 1),
+                fontSize: 24,
+              ),
         ),
+        actions: [
+          // Sign-Out Icon
+          IconButton(
+              icon: const Icon(Icons.logout_outlined),
+              iconSize: 25,
+              onPressed: () async {
+                await showDialog<bool>(
+                    context: context,
+                    builder: (alertDialogContext) {
+                      return AlertDialog(
+                        content: Text('Are you sure you want to sign out? '),
+                        actions: [
+                          TextButton(
+                            onPressed: () =>
+                                Navigator.pop(alertDialogContext, false),
+                            child: Text('Cancel'),
+                          ),
+                          TextButton(
+                            onPressed: () => {
+                              Navigator.pop(alertDialogContext, false),
+                              // call function to delete donation
+                              signOutUser()
+                            },
+                            child: Text('Confirm'),
+                          ),
+                        ],
+                      );
+                    });
+              }),
+        ],
+        centerTitle: false,
+        elevation: 2,
       ),
       body: SafeArea(
         child: Column(
@@ -413,7 +444,7 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
                           fontFamily: 'Inter',
                           color: Color.fromRGBO(247, 255, 250, 1),
                           fontSize: 16,
-                          fontWeight: FontWeight.normal,
+                          fontWeight: FontWeight.w600,
                         ),
                     elevation: 2,
                     borderSide: BorderSide(

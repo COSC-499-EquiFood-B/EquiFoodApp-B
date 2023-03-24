@@ -93,56 +93,51 @@ class _DonationsWidgetState extends State<DonationsWidget> {
         key: scaffoldKey,
         backgroundColor: Color.fromARGB(255, 243, 248, 249),
         appBar: selectedIndex == 0
-            ? PreferredSize(
-                preferredSize: Size.fromHeight(40),
-                child: AppBar(
-                  backgroundColor: Color.fromRGBO(38, 189, 104, 1),
-                  automaticallyImplyLeading: false,
-                  title: Text(
-                    'Hello, $userName  👋',
-                    style: FlutterFlowTheme.of(context).title2.override(
-                          fontFamily: 'Inter',
-                          color: Color.fromRGBO(247, 255, 250, 1),
-                          fontSize: 24,
-                          fontWeight: FontWeight.w700,
-                        ),
-                  ),
-                  centerTitle: false,
-                  toolbarHeight: double.infinity,
-                  elevation: 2,
-                  actions: [
-                    // Sign-Out Icon
-                    IconButton(
-                        icon: const Icon(Icons.logout_outlined),
-                        iconSize: 25,
-                        onPressed: () async {
-                          await showDialog<bool>(
-                              context: context,
-                              builder: (alertDialogContext) {
-                                return AlertDialog(
-                                  content: Text(
-                                      'Are you sure you want to sign out? '),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () => Navigator.pop(
-                                          alertDialogContext, false),
-                                      child: Text('Cancel'),
-                                    ),
-                                    TextButton(
-                                      onPressed: () => {
-                                        Navigator.pop(
-                                            alertDialogContext, false),
-                                        // call function to delete donation
-                                        signOutUser()
-                                      },
-                                      child: Text('Confirm'),
-                                    ),
-                                  ],
-                                );
-                              });
-                        }),
-                  ],
+            ? AppBar(
+                backgroundColor: Color.fromRGBO(38, 189, 104, 1),
+                automaticallyImplyLeading: false,
+                title: Text(
+                  'Hello, $userName  👋',
+                  style: FlutterFlowTheme.of(context).title2.override(
+                        fontFamily: 'Inter',
+                        color: Color.fromRGBO(247, 255, 250, 1),
+                        fontSize: 24,
+                        fontWeight: FontWeight.w700,
+                      ),
                 ),
+                actions: [
+                  // Sign-Out Icon
+                  IconButton(
+                      icon: const Icon(Icons.logout_outlined),
+                      iconSize: 25,
+                      onPressed: () async {
+                        await showDialog<bool>(
+                            context: context,
+                            builder: (alertDialogContext) {
+                              return AlertDialog(
+                                content:
+                                    Text('Are you sure you want to sign out? '),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () => Navigator.pop(
+                                        alertDialogContext, false),
+                                    child: Text('Cancel'),
+                                  ),
+                                  TextButton(
+                                    onPressed: () => {
+                                      Navigator.pop(alertDialogContext, false),
+                                      // call function to delete donation
+                                      signOutUser()
+                                    },
+                                    child: Text('Confirm'),
+                                  ),
+                                ],
+                              );
+                            });
+                      }),
+                ],
+                centerTitle: false,
+                elevation: 0,
               )
             : null, // don't render AppBar for this page if user navigates to different page
         body: selectedIndex == 0
