@@ -1,0 +1,19 @@
+name: test
+on: [push, workflow_dispatch]
+jobs:
+  drive:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: subosito/flutter-action@v1
+      with:
+        channel: 'beta'
+    - run: |
+           flutter config --enable-windows-desktop
+           flutter test -d windows integration_test/smoke_test.dart
+    - name: Install and set Flutter version
+      uses: subosito/flutter-action@v1.4.0
+      with:
+        flutter-version: '2.0.1'
+    - name: Restore packages
+      run: flutter pub get
