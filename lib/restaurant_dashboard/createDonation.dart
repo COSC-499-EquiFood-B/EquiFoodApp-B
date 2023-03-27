@@ -1,3 +1,5 @@
+import 'package:equi_food_app/restaurant_dashboard/restaurant_dashboard_widget_2.dart';
+
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
@@ -91,6 +93,12 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
 
               // display SnackBar with success message
               displaySnackbar(context, "Donation created."),
+
+              // Redirect Restaurant User to Dashboard
+              Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => DonationsWidget()),
+                  (route) => false),
             });
       } on FirebaseException catch (e) {
         //print(e.code);

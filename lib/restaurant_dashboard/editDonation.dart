@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'restaurant_dashboard_widget_2.dart';
+
 class EditDonationWidget extends StatefulWidget {
   final String donationID;
   final Map<String, dynamic> donationData;
@@ -83,6 +85,12 @@ class _EditDonationWidget extends State<EditDonationWidget> {
               clearDonationFields(),
               // display SnackBar with success message
               displaySnackbar(context, "Data updated successfully."),
+
+              // Redirect Restaurant User to Dashboard
+              Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => DonationsWidget()),
+                  (route) => false),
             })
         .catchError((onError) => {
               // display error message
