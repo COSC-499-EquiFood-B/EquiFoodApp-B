@@ -340,6 +340,51 @@ class _EditDonationWidget extends State<EditDonationWidget> {
               ),
             ),
 
+            // TextField for the Donation Image field
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 16),
+              child: TextFormField(
+                controller: donationImgController,
+                obscureText: false,
+                decoration: InputDecoration(
+                  labelText: 'Item image',
+                  labelStyle: textFieldLabelStyle,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  filled: true,
+                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                  contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
+                ),
+                style: textFieldStyle,
+              ),
+            ),
+
             // TextField for the Donation Price Field
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 16),
@@ -409,51 +454,6 @@ class _EditDonationWidget extends State<EditDonationWidget> {
                     fontWeight: FontWeight.normal,
                     color: Color.fromARGB(255, 167, 167, 170),
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: FlutterFlowTheme.of(context).primaryBackground,
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: FlutterFlowTheme.of(context).primaryBackground,
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  errorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  focusedErrorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  filled: true,
-                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                  contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
-                ),
-                style: textFieldStyle,
-              ),
-            ),
-
-            // TextField for the Donation Image field
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 16),
-              child: TextFormField(
-                controller: donationImgController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  labelText: 'Item image',
-                  labelStyle: textFieldLabelStyle,
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                       color: FlutterFlowTheme.of(context).primaryBackground,
