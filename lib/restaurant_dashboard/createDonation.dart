@@ -298,6 +298,7 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
                 obscureText: false,
                 decoration: InputDecoration(
                   labelText: 'Item image link',
+                  hintText: 'https://',
                   labelStyle: textFieldLabelStyle,
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
@@ -397,7 +398,7 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
                   labelStyle: textFieldLabelStyle,
                   hintText: 'Number of servings',
                   hintStyle: TextStyle(
-                    fontStyle: FontStyle.italic,
+                    fontStyle: FontStyle.normal,
                     fontWeight: FontWeight.normal,
                     color: Color.fromARGB(255, 167, 167, 170),
                   ),
