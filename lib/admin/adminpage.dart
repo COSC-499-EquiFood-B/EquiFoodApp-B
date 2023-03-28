@@ -117,12 +117,12 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
               backgroundColor: Color.fromRGBO(38, 189, 104, 1),
               automaticallyImplyLeading: false,
               title: Text(
-                'Hello, $userName  👋',
+                'Admin Dashboard  👋',
                 style: FlutterFlowTheme.of(context).title2.override(
                       fontFamily: 'Inter',
                       color: Color.fromRGBO(247, 255, 250, 1),
                       fontSize: 24,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w700,
                     ),
               ),
               actions: [
@@ -176,7 +176,7 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
                         children: [
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
+                                EdgeInsetsDirectional.fromSTEB(0, 8, 0, 16),
                             child: Text(
                               'Waiting Approval',
                               style: FlutterFlowTheme.of(context)
@@ -212,8 +212,7 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
-                                //crossAxisSpacing: 0.0,
-                                //mainAxisSpacing: 10.0,
+                                childAspectRatio: 1.15,
                               ),
                               scrollDirection: Axis
                                   .vertical, // required for infinite scrolling
