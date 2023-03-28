@@ -1,3 +1,5 @@
+import 'package:equi_food_app/restaurant_dashboard/restaurant_dashboard_widget_2.dart';
+
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
@@ -91,6 +93,12 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
 
               // display SnackBar with success message
               displaySnackbar(context, "Donation created."),
+
+              // Redirect Restaurant User to Dashboard
+              Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => DonationsWidget()),
+                  (route) => false),
             });
       } on FirebaseException catch (e) {
         //print(e.code);
@@ -234,57 +242,6 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
                 style: textFieldStyle,
               ),
             ),
-            // TextField for Quantity
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 16),
-              child: TextFormField(
-                controller: donationQtyController,
-                obscureText: false,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  labelText: 'Qty.',
-                  labelStyle: textFieldLabelStyle,
-                  hintText: 'Number of servings',
-                  hintStyle: TextStyle(
-                    fontStyle: FontStyle.italic,
-                    fontWeight: FontWeight.normal,
-                    color: Color.fromARGB(255, 167, 167, 170),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: FlutterFlowTheme.of(context).primaryBackground,
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: FlutterFlowTheme.of(context).primaryBackground,
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  errorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  focusedErrorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  filled: true,
-                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                  contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
-                ),
-                style: textFieldStyle,
-              ),
-            ),
             // TextField for Description
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 16),
@@ -331,6 +288,50 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
                 style: textFieldStyle,
                 textAlign: TextAlign.start,
                 maxLines: 3,
+              ),
+            ),
+            // TextField for image link (temporary)
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 16),
+              child: TextFormField(
+                controller: donationImgController,
+                obscureText: false,
+                decoration: InputDecoration(
+                  labelText: 'Item image link',
+                  labelStyle: textFieldLabelStyle,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  filled: true,
+                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                  contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
+                ),
+                style: textFieldStyle,
               ),
             ),
             // TextField for Price
@@ -384,15 +385,22 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
                 style: textFieldStyle,
               ),
             ),
-            // TextField for image link (temporary)
+            // TextField for Quantity
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 16),
               child: TextFormField(
-                controller: donationImgController,
+                controller: donationQtyController,
                 obscureText: false,
+                keyboardType: TextInputType.number,
                 decoration: InputDecoration(
-                  labelText: 'Image link',
+                  labelText: 'Qty.',
                   labelStyle: textFieldLabelStyle,
+                  hintText: 'Number of servings',
+                  hintStyle: TextStyle(
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.normal,
+                    color: Color.fromARGB(255, 167, 167, 170),
+                  ),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                       color: FlutterFlowTheme.of(context).primaryBackground,
@@ -437,8 +445,8 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
                   onPressed: createDonation,
                   text: 'Create',
                   options: FFButtonOptions(
-                    width: 340,
-                    height: 60,
+                    width: 100,
+                    height: 50,
                     color: Color.fromRGBO(38, 189, 104, 1),
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                           fontFamily: 'Inter',

@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'restaurant_dashboard_widget_2.dart';
+
 class EditDonationWidget extends StatefulWidget {
   final String donationID;
   final Map<String, dynamic> donationData;
@@ -83,6 +85,12 @@ class _EditDonationWidget extends State<EditDonationWidget> {
               clearDonationFields(),
               // display SnackBar with success message
               displaySnackbar(context, "Data updated successfully."),
+
+              // Redirect Restaurant User to Dashboard
+              Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => DonationsWidget()),
+                  (route) => false),
             })
         .catchError((onError) => {
               // display error message
@@ -340,6 +348,51 @@ class _EditDonationWidget extends State<EditDonationWidget> {
               ),
             ),
 
+            // TextField for the Donation Image field
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 16),
+              child: TextFormField(
+                controller: donationImgController,
+                obscureText: false,
+                decoration: InputDecoration(
+                  labelText: 'Item image',
+                  labelStyle: textFieldLabelStyle,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  filled: true,
+                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                  contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
+                ),
+                style: textFieldStyle,
+              ),
+            ),
+
             // TextField for the Donation Price Field
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 16),
@@ -445,67 +498,29 @@ class _EditDonationWidget extends State<EditDonationWidget> {
               ),
             ),
 
-            // TextField for the Donation Image field
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 16),
-              child: TextFormField(
-                controller: donationImgController,
-                obscureText: false,
-                decoration: InputDecoration(
-                  labelText: 'Item image',
-                  labelStyle: textFieldLabelStyle,
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: FlutterFlowTheme.of(context).primaryBackground,
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: FlutterFlowTheme.of(context).primaryBackground,
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  errorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  focusedErrorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color(0x00000000),
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  filled: true,
-                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                  contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
-                ),
-                style: textFieldStyle,
-              ),
-            ),
-
             // Update Button
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 24),
-              child: ElevatedButton(
-                onPressed: isFieldChanged ? () => updateDonation() : null,
-                child: Text('Update'),
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromARGB(255, 76, 191, 82),
-                    elevation: 2,
-                    textStyle: const TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 16,
-                      color: Colors.white,
-                    )),
-              ),
-            ),
+            Align(
+                alignment: AlignmentDirectional(0, 0.05),
+                child: SizedBox(
+                  height: 95,
+                  width: 100,
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 24),
+                    child: ElevatedButton(
+                      onPressed: isFieldChanged ? () => updateDonation() : null,
+                      child: Text('Update'),
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(38, 189, 104, 1),
+                          elevation: 2,
+                          textStyle: const TextStyle(
+                            fontFamily: 'Inter',
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                          )),
+                    ),
+                  ),
+                ))
           ],
         ),
       ),
