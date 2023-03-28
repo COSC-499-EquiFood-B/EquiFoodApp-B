@@ -1,12 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:equi_food_app/indiv_item/indiv_item_widget.dart';
+import 'package:equi_food_app/restaurant_dashboard/donationCard.dart';
 import 'package:flutter/material.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 
 class getReservedOrders extends StatelessWidget {
-  final String donationIDs;
+  final String donationID;
   final Map<String, dynamic> donationData;
 
-  getReservedOrders({required this.donationIDs, required this.donationData});
+  getReservedOrders({required this.donationID, required this.donationData});
 
   @override
   Widget build(BuildContext context) {
@@ -97,11 +99,20 @@ class getReservedOrders extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Icon(
-                      Icons.chevron_right_rounded,
-                      color: Color(0xFF57636C),
-                      size: 24,
-                    ),
+                    IconButton(
+                        icon: new Icon(Icons.chevron_right_rounded),
+                        color: Color(0xFF57636C),
+                        iconSize: 24,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => IndivItemWidget(
+                                      donationID: donationID,
+                                      donationData: donationData,
+                                    )),
+                          );
+                        }),
                   ],
                 ),
               ),
