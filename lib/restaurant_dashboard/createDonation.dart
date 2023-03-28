@@ -445,8 +445,8 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
                   onPressed: createDonation,
                   text: 'Create',
                   options: FFButtonOptions(
-                    width: 340,
-                    height: 60,
+                    width: 100,
+                    height: 50,
                     color: Color.fromRGBO(38, 189, 104, 1),
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                           fontFamily: 'Inter',

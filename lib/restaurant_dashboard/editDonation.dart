@@ -499,21 +499,28 @@ class _EditDonationWidget extends State<EditDonationWidget> {
             ),
 
             // Update Button
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 24),
-              child: ElevatedButton(
-                onPressed: isFieldChanged ? () => updateDonation() : null,
-                child: Text('Update'),
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromARGB(255, 76, 191, 82),
-                    elevation: 2,
-                    textStyle: const TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 16,
-                      color: Colors.white,
-                    )),
-              ),
-            ),
+            Align(
+                alignment: AlignmentDirectional(0, 0.05),
+                child: SizedBox(
+                  height: 95,
+                  width: 100,
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 24),
+                    child: ElevatedButton(
+                      onPressed: isFieldChanged ? () => updateDonation() : null,
+                      child: Text('Update'),
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(38, 189, 104, 1),
+                          elevation: 2,
+                          textStyle: const TextStyle(
+                            fontFamily: 'Inter',
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                          )),
+                    ),
+                  ),
+                ))
           ],
         ),
       ),

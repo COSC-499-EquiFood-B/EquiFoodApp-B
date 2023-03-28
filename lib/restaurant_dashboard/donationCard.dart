@@ -47,7 +47,7 @@ class DonationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+      padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
       child: Card(
         clipBehavior: Clip.antiAliasWithSaveLayer,
         elevation: 10,
@@ -77,7 +77,12 @@ class DonationCard extends StatelessWidget {
                   children: [
                     Text(
                       '${donationData["item_name"]} (${donationData["quantity"]} servings)',
-                      style: FlutterFlowTheme.of(context).subtitle1,
+                      style: FlutterFlowTheme.of(context).subtitle1.override(
+                            fontFamily: 'Inter',
+                            color: Color(0xFF14181B),
+                            fontSize: 17,
+                            fontWeight: FontWeight.w500,
+                          ),
                     ),
                     Container(
                       width: 100,
