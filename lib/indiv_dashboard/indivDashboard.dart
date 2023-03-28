@@ -1,19 +1,14 @@
 import 'package:equi_food_app/index.dart';
-import 'package:equi_food_app/indiv_dashboard/default-stats.dart';
 import 'package:equi_food_app/indiv_dashboard/getDonations.dart';
 import 'package:equi_food_app/restaurant_dashboard/restaurantSettings.dart';
 import 'package:equi_food_app/statspages/statisticsforindiv.dart';
-import 'package:equi_food_app/utils/displayAlert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 //firebase imports
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HmepageWidget extends StatefulWidget {
@@ -66,6 +61,16 @@ class _HmepageWidgetState extends State<HmepageWidget> {
               })
             });
   }
+
+  // creating Stream for the Streambuilder
+  // this stream makes accessible the documents in the "donations" Collection
+  // and it keeps listening for changes (create, update, delete)
+  late final Stream<QuerySnapshot> donationsStream = FirebaseFirestore.instance
+      .collection("donations")
+      .where("is_reserved",
+          isEqualTo:
+              false) // only get Donations which are not reserved (is_reserved = false)
+      .snapshots();
 
   // function to sign out the user WITH EMAIL AND PASSWORD
   Future signOutUser() async {
@@ -244,49 +249,67 @@ class _HmepageWidgetState extends State<HmepageWidget> {
                         ],
                       ),
                     ),
-                    FutureBuilder(
-                        future: dataFuture, // bug-fix for FutureBuilder
-                        builder:
-                            (BuildContext context, AsyncSnapshot snapshot) {
+                    StreamBuilder(
+                        stream: donationsStream, // bug-fix for FutureBuilder
+                        builder: (BuildContext context,
+                            AsyncSnapshot<QuerySnapshot> snapshot) {
                           //Error Handling conditions
                           if (snapshot.hasError) {
                             return Text("Something went wrong");
                           }
-
-                          if (snapshot.hasData && snapshot.data != null) {
-                            return Text("Document does not exist");
+                          // if data is still loading
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            // Loading Spinner at the centre of the page
+                            return SizedBox(
+                                width: MediaQuery.of(context).size.width,
+                                height: MediaQuery.of(context).size.height,
+                                child: Center(
+                                  child: CircularProgressIndicator(
+                                    color: Color.fromRGBO(38, 189, 104, 1),
+                                  ),
+                                ));
                           }
 
-                          //Data is output to the user
-                          if (snapshot.connectionState ==
-                              ConnectionState.done) {
-                            return GridView.builder(
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                //crossAxisSpacing: 0.0,
-                                //mainAxisSpacing: 10.0,
-                              ),
+                          // if the data has loaded properly, do the following
+
+                          // if there are current no donations available, display text
+                          if (snapshot.data!.docs.length == 0) {
+                            return SizedBox(
+                                width: MediaQuery.of(context).size.width,
+                                height: MediaQuery.of(context).size.height,
+                                child: Center(
+                                    child: Text(
+                                        "There are no donations available at the moment. Check back later!",
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText2
+                                            .override(
+                                                fontFamily: 'Inter',
+                                                color: Color.fromARGB(
+                                                    255, 113, 113, 116),
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300,
+                                                fontStyle: FontStyle.italic))));
+                          }
+
+                          // or else, show the available Donations
+                          return GridView.count(
                               scrollDirection: Axis
                                   .vertical, // required for infinite scrolling
                               shrinkWrap:
                                   true, // required for infinite scrolling
-                              itemCount: donationIDs.length,
-                              itemBuilder: (context, int index) {
+                              crossAxisCount: 2,
+                              childAspectRatio: 1.15,
+                              children: snapshot.data!.docs.map((doc) {
+                                // get document (info of a Donation item)
+                                Map<String, dynamic> donationData =
+                                    doc.data()! as Map<String, dynamic>;
+
+                                // render Donation Cards by sending info to them
                                 return getDonations(
-                                    donationsID: donationIDs[index]);
-                              },
-                            );
-                          }
-                          // Loading Spinner at the centre of the page
-                          return SizedBox(
-                              width: MediaQuery.of(context).size.width,
-                              height: MediaQuery.of(context).size.height,
-                              child: Center(
-                                child: CircularProgressIndicator(
-                                  color: Color.fromRGBO(209, 255, 189, 1),
-                                ),
-                              ));
+                                    donationsID: doc.id,
+                                    donationData: donationData);
+                              }).toList());
                         })
                   ],
                 ),

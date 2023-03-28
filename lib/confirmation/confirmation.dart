@@ -138,7 +138,7 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
                     options: FFButtonOptions(
                       width: 180,
                       height: 50,
-                      color: Color.fromARGB(255, 76, 191, 82),
+                      color: Color.fromRGBO(38, 189, 104, 1),
                       textStyle: FlutterFlowTheme.of(context)
                           .subtitle2
                           .override(
@@ -173,7 +173,7 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
                     color: Colors.white,
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                           fontFamily: 'Inter',
-                          color: Color(0xFF36AC64),
+                          color: Color.fromRGBO(38, 189, 104, 1),
                           fontSize: 16,
                           fontWeight: FontWeight.normal,
                         ),
