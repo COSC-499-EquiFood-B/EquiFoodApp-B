@@ -75,14 +75,17 @@ class DonationCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      '${donationData["item_name"]} (${donationData["quantity"]} servings)',
-                      style: FlutterFlowTheme.of(context).subtitle1.override(
-                            fontFamily: 'Inter',
-                            color: Color(0xFF14181B),
-                            fontSize: 17,
-                            fontWeight: FontWeight.w500,
-                          ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(8, 4, 0, 0),
+                      child: Text(
+                        '${donationData["item_name"]}  ·  ${donationData["quantity"]} servings',
+                        style: FlutterFlowTheme.of(context).subtitle1.override(
+                              fontFamily: 'Inter',
+                              color: Color(0xFF14181B),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                      ),
                     ),
                     Container(
                       width: 100,
@@ -96,7 +99,7 @@ class DonationCard extends StatelessWidget {
                         children: [
                           FlutterFlowIconButton(
                             borderColor: Colors.transparent,
-                            borderRadius: 10,
+                            borderRadius: 20,
                             borderWidth: 1,
                             buttonSize: 40,
                             icon: Icon(

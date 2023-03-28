@@ -162,7 +162,7 @@ class _DonationsWidgetState extends State<DonationsWidget> {
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      4, 4, 0, 0),
+                                      0, 8, 0, 8),
                                   child: Text(
                                     'My Donations',
                                     style: FlutterFlowTheme.of(context)
