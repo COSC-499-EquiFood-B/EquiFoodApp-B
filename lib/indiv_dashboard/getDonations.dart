@@ -1,10 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:equi_food_app/flutter_flow/flutter_flow_util.dart';
 import 'package:equi_food_app/index.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 
 class getDonations extends StatelessWidget {
@@ -14,14 +10,13 @@ class getDonations extends StatelessWidget {
   /* 2 things are required and sent to this Widget:
       1. donation ID
       2. Map<String, dynamic> containing its info (for eg. {item_name, item_img, description, etc.})
+      Since it receives this info from the Indiv Dashboard  we're able to avoid 
+      reading the details from the database again.
+      This makes things efficient.
   */
   getDonations({required this.donationsID, required this.donationData});
 
   @override
-  //create reference to the "donations" collection in firebase
-  CollectionReference donations =
-      FirebaseFirestore.instance.collection('donations');
-
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
@@ -38,8 +33,10 @@ class getDonations extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) =>
-                        IndivItemWidget(donationsID: donationsID)),
+                    builder: (context) => IndivItemWidget(
+                          donationID: donationsID,
+                          donationData: donationData,
+                        )),
               );
             },
             child: Container(

@@ -12,7 +12,6 @@ import 'auth/auth_util.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'flutter_flow/nav/nav.dart';
 
 void main() async {
