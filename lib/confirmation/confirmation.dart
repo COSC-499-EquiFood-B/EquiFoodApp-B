@@ -1,13 +1,9 @@
-import 'package:equi_food_app/index.dart';
 import 'package:equi_food_app/indiv_dashboard/indivDashboard.dart';
-
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_timer.dart';
-import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
 class ConfirmationscreenWidget extends StatefulWidget {
@@ -134,7 +130,7 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    text: 'View Order Details',
+                    text: 'Review Order',
                     options: FFButtonOptions(
                       width: 180,
                       height: 50,
@@ -166,7 +162,7 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
                           builder: (context) => const HmepageWidget()),
                     );
                   },
-                  text: 'Cancel Order',
+                  text: 'Return Home',
                   options: FFButtonOptions(
                     width: 180,
                     height: 50,

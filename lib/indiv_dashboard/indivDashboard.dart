@@ -1,5 +1,6 @@
 import 'package:equi_food_app/index.dart';
 import 'package:equi_food_app/indiv_dashboard/getDonations.dart';
+import 'package:equi_food_app/indiv_dashboard/reservedOrders.dart';
 import 'package:equi_food_app/restaurant_dashboard/restaurantSettings.dart';
 import 'package:equi_food_app/statspages/statisticsforindiv.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -23,7 +24,7 @@ class _HmepageWidgetState extends State<HmepageWidget> {
   int _selectedIndex = 0;
   List<Widget> _screens = [
     HmepageWidget(),
-    PickupMapWidget(),
+    ReservedOrdersWidget(),
     StatisticsforindivWidget(),
     SettingsWidget(),
   ];

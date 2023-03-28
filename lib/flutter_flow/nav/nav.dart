@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:equi_food_app/indiv_dashboard/reservedOrders.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
@@ -69,14 +70,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, _) => appStateNotifier.loggedIn
-          ? PickupMapWidget()
+          ? ReservedOrdersWidget()
           : ConfirmationscreenWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? PickupMapWidget()
+              ? ReservedOrdersWidget()
               : ConfirmationscreenWidget(),
           routes: [
             FFRoute(
@@ -85,9 +86,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => HmepageWidget(),
             ),
             FFRoute(
-              name: 'PickupMap',
-              path: 'pickupMap',
-              builder: (context, params) => PickupMapWidget(),
+              name: 'RerserverdOrders',
+              path: 'ReservedOrders',
+              builder: (context, params) => ReservedOrdersWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
