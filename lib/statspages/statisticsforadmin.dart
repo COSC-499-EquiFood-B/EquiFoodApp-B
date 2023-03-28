@@ -5,6 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../login/login_widget.dart';
+
+//Firebase imports
+import 'package:firebase_auth/firebase_auth.dart';
 
 class StatisticsforadminWidget extends StatefulWidget {
   const StatisticsforadminWidget({Key? key}) : super(key: key);
@@ -19,6 +23,17 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
+  Future signOutUser() async {
+    // log out user
+    await FirebaseAuth.instance.signOut();
+
+    // redirect user to the Login page
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => LoginWidget()),
+        (route) => false);
+  }
+
   @override
   void dispose() {
     _unfocusNode.dispose();
@@ -29,7 +44,51 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color.fromRGBO(209, 255, 189, 1),
+      backgroundColor: Color.fromARGB(255, 243, 248, 249),
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(38, 189, 104, 1),
+        automaticallyImplyLeading: false,
+        title: Text(
+          'Savings',
+          style: FlutterFlowTheme.of(context).title2.override(
+                fontFamily: 'Inter',
+                color: Color.fromRGBO(247, 255, 250, 1),
+                fontSize: 24,
+              ),
+        ),
+        actions: [
+          // Sign-Out Icon
+          IconButton(
+              icon: const Icon(Icons.logout_outlined),
+              iconSize: 25,
+              onPressed: () async {
+                await showDialog<bool>(
+                    context: context,
+                    builder: (alertDialogContext) {
+                      return AlertDialog(
+                        content: Text('Are you sure you want to sign out? '),
+                        actions: [
+                          TextButton(
+                            onPressed: () =>
+                                Navigator.pop(alertDialogContext, false),
+                            child: Text('Cancel'),
+                          ),
+                          TextButton(
+                            onPressed: () => {
+                              Navigator.pop(alertDialogContext, false),
+                              // call function to delete donation
+                              signOutUser()
+                            },
+                            child: Text('Confirm'),
+                          ),
+                        ],
+                      );
+                    });
+              }),
+        ],
+        centerTitle: false,
+        elevation: 0,
+      ),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
@@ -39,17 +98,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
-                  child: Text(
-                    'Equifood Statistics',
-                    style: FlutterFlowTheme.of(context).bodyText1.override(
-                          fontFamily: 'Inter',
-                          fontSize: 32,
-                        ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20, 12, 20, 12),
+                  padding: EdgeInsetsDirectional.fromSTEB(20, 16, 20, 16),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -83,6 +132,13 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primaryBtnText,
                           borderRadius: BorderRadius.circular(24),
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 4,
+                              color: Color(0x230E151B),
+                              offset: Offset(0, 2),
+                            )
+                          ],
                         ),
                         child: Padding(
                           padding:
@@ -124,7 +180,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                                         fontFamily: 'Inter',
                                         color: Color(0xFF57636C),
                                         fontSize: 16,
-                                        fontWeight: FontWeight.normal,
+                                        fontWeight: FontWeight.w400,
                                       ),
                                 ),
                               ),
@@ -138,6 +194,13 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primaryBtnText,
                           borderRadius: BorderRadius.circular(24),
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 4,
+                              color: Color(0x230E151B),
+                              offset: Offset(0, 2),
+                            )
+                          ],
                         ),
                         child: Padding(
                           padding:
@@ -176,7 +239,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                                       fontFamily: 'Inter',
                                       color: Color(0xFF57636C),
                                       fontSize: 16,
-                                      fontWeight: FontWeight.normal,
+                                      fontWeight: FontWeight.w400,
                                     ),
                               ),
                             ],
@@ -189,6 +252,13 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primaryBtnText,
                           borderRadius: BorderRadius.circular(24),
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 4,
+                              color: Color(0x230E151B),
+                              offset: Offset(0, 2),
+                            )
+                          ],
                         ),
                         child: Padding(
                           padding:
@@ -227,7 +297,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                                       fontFamily: 'Inter',
                                       color: Color(0xFF57636C),
                                       fontSize: 16,
-                                      fontWeight: FontWeight.normal,
+                                      fontWeight: FontWeight.w400,
                                     ),
                               ),
                             ],
@@ -240,6 +310,13 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primaryBtnText,
                           borderRadius: BorderRadius.circular(24),
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 4,
+                              color: Color(0x230E151B),
+                              offset: Offset(0, 2),
+                            )
+                          ],
                         ),
                         child: Padding(
                           padding:
@@ -270,7 +347,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                                 ),
                               ),
                               Text(
-                                'Meals Saved from Landfill',
+                                'Meals Saved',
                                 textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText2
@@ -278,7 +355,7 @@ class _StatisticsforadminWidgetState extends State<StatisticsforadminWidget>
                                       fontFamily: 'Inter',
                                       color: Color(0xFF57636C),
                                       fontSize: 16,
-                                      fontWeight: FontWeight.normal,
+                                      fontWeight: FontWeight.w400,
                                     ),
                               ),
                             ],
