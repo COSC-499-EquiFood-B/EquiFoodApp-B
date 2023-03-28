@@ -88,6 +88,14 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
   }
 
   @override
+  void initState() {
+    // get the value of "is_reserved" from donationData
+    setState(() {
+      isDonationReserved = widget.donationData["is_reserved"];
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
@@ -121,11 +129,8 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                           alignment: AlignmentDirectional(-0.95, -0.55),
                           child: InkWell(
                             onTap: () {
-                              Navigator.push(
+                              Navigator.pop(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const HmepageWidget()),
                               );
                             },
                             child: Card(
