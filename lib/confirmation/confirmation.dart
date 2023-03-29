@@ -37,6 +37,14 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
     super.dispose();
   }
 
+  final result = DateTime.now().add(Duration(minutes: 10));
+  late final formatter = DateFormat.Hm();
+  late String formatted = formatter.format(result);
+  // var formatter = new DateFormat.Hm();
+  // String formattedDate = formatter.format(result);
+
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,7 +89,7 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                   child: Text(
-                    'Your Order Is Held For',
+                    'Your Order Is Held Until',
                     style: FlutterFlowTheme.of(context).subtitle2.override(
                           fontFamily: 'Inter',
                           color: Colors.black,
@@ -91,39 +99,54 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
                   ),
                 ),
               ),
+              // Align(
+              //   alignment: AlignmentDirectional(0, 0),
+              //   child: FlutterFlowTimer(
+              //     timerValue: timerValue ??= StopWatchTimer.getDisplayTime(
+              //       timerMilliseconds ??= 600000,
+              //       hours: true,
+              //       minute: true,
+              //       second: true,
+              //       milliSecond: false,
+              //     ),
+              //     timer: timerController ??= StopWatchTimer(
+              //       mode: StopWatchMode.countDown,
+              //       presetMillisecond: timerMilliseconds ??= 600000,
+              //       onChange: (value) {
+              //         setState(() {
+              //           timerMilliseconds = value;
+              //           timerValue = StopWatchTimer.getDisplayTime(
+              //             value,
+              //             hours: true,
+              //             minute: true,
+              //             second: true,
+              //             milliSecond: false,
+              //           );
+              //         });
+              //       },
+              //     ),
+              //     textAlign: TextAlign.start,
+              //     style: FlutterFlowTheme.of(context).bodyText1.override(
+              //           fontFamily: 'Inter',
+              //           color: Color.fromARGB(255, 76, 191, 82),
+              //           fontSize: 24,
+              //         ),
+              //     onEnded: () {},
+              //   ),
+              // ),
               Align(
                 alignment: AlignmentDirectional(0, 0),
-                child: FlutterFlowTimer(
-                  timerValue: timerValue ??= StopWatchTimer.getDisplayTime(
-                    timerMilliseconds ??= 600000,
-                    hours: true,
-                    minute: true,
-                    second: true,
-                    milliSecond: false,
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                  child: Text(
+                    '$formatted',
+                    style: FlutterFlowTheme.of(context).subtitle2.override(
+                          fontFamily: 'Inter',
+                          color: Color.fromARGB(255, 76, 191, 82),
+                          fontSize: 24,
+                          fontWeight: FontWeight.w500,
+                        ),
                   ),
-                  timer: timerController ??= StopWatchTimer(
-                    mode: StopWatchMode.countDown,
-                    presetMillisecond: timerMilliseconds ??= 600000,
-                    onChange: (value) {
-                      setState(() {
-                        timerMilliseconds = value;
-                        timerValue = StopWatchTimer.getDisplayTime(
-                          value,
-                          hours: true,
-                          minute: true,
-                          second: true,
-                          milliSecond: false,
-                        );
-                      });
-                    },
-                  ),
-                  textAlign: TextAlign.start,
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
-                        fontFamily: 'Inter',
-                        color: Color.fromARGB(255, 76, 191, 82),
-                        fontSize: 24,
-                      ),
-                  onEnded: () {},
                 ),
               ),
               Align(

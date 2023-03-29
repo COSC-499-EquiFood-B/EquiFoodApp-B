@@ -46,6 +46,7 @@ dependencies:
   easy_debounce: 2.0.1
   lottie: 1.2.1
   stop_watch_timer: 1.5.0
+  flutter_countdown_timer: ^4.1.0
   
   ## Minh's Dependencies
   google_maps: 6.2.0
