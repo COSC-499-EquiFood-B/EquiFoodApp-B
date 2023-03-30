@@ -33,8 +33,9 @@ class UnapprovedRestaurantCard extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) =>
-                        ApproveordenyWidget(restaurantIDs: restaurantID)),
+                    builder: (context) => ApproveordenyWidget(
+                        restaurantID: restaurantID,
+                        restaurantData: restaurantData)),
               );
             },
             child: Container(
