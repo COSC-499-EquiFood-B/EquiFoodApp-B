@@ -195,7 +195,7 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
 
                           // if the data has loaded properly, do the following
 
-                          // if there are current no donations available, display text
+                          // if there are current no Unapproved restaurants, display text
                           if (snapshot.data!.docs.length == 0) {
                             return SizedBox(
                                 width: MediaQuery.of(context).size.width,

@@ -26,42 +26,8 @@ class _ApprovedRestaurantsPageState extends State<ApprovedRestaurantsPage> {
 
   TextEditingController? textController;
 
-  // get reference of the current Restaurant User
-  final currAdminUser = FirebaseAuth.instance.currentUser;
-  late String? userName = "";
-
-  // List to store restaurant donation IDs
-  List<String> restaurantIDs = [];
-
   // creating reference to "donations" Collection in firebase
   CollectionReference users = FirebaseFirestore.instance.collection('users');
-
-  // bug fix for FutureBuilder re-rendering Cards multiple times
-  late Future dataFuture;
-
-  Future getRestaurantIDs() async {
-    // get donation IDs from the "donations" Collection
-    // and then store them in the "restaurantDonationIDs" List.
-
-    // get reference of the current Restaurant User
-    final currAdminUser = FirebaseAuth.instance.currentUser;
-
-    // create reference for the current Restaurant User located in the "users" collection on firebase
-    final adminUserRef =
-        FirebaseFirestore.instance.collection("users").doc(currAdminUser?.uid);
-
-    await FirebaseFirestore.instance
-        .collection('users')
-        .where('user_type', isEqualTo: 2)
-        .where('is_approved', isEqualTo: true)
-        .get()
-        .then((snapshot) => {
-              snapshot.docs.forEach((element) {
-                // add restaurant Donation IDs to the List
-                restaurantIDs.add(element.reference.id);
-              })
-            });
-  }
 
   // Stream for StreamBuilder
   // create Stream to get Approved Restaurants from the "users" Collection
@@ -88,11 +54,6 @@ class _ApprovedRestaurantsPageState extends State<ApprovedRestaurantsPage> {
   void initState() {
     super.initState();
     textController = TextEditingController();
-
-    userName = currAdminUser?.displayName;
-
-    // bug-fix for FutureBuilder
-    dataFuture = getRestaurantIDs();
   }
 
   @override
@@ -194,7 +155,7 @@ class _ApprovedRestaurantsPageState extends State<ApprovedRestaurantsPage> {
 
                       // if the data has loaded properly, do the following
 
-                      // if there are current no donations available, display text
+                      // if there are current no approved restaurants available, display text
                       if (snapshot.data!.docs.length == 0) {
                         return SizedBox(
                             width: MediaQuery.of(context).size.width,
