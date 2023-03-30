@@ -27,7 +27,7 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
   int _selectedIndex = 0;
   List<Widget> _screens = [
     AdminpageWidget(),
-    ApprovedrestaurantsWidget(),
+    ApprovedRestaurantsPage(),
     StatisticsforadminWidget(),
     SettingsWidget(),
   ];
