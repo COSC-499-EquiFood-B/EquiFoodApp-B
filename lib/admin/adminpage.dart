@@ -47,35 +47,16 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
   // creating reference to "donations" Collection in firebase
   CollectionReference users = FirebaseFirestore.instance.collection('users');
 
-  // bug fix for FutureBuilder re-rendering Cards multiple times
-  late Future dataFuture;
-
-  // method to get IDs for restaurant donations,
-  // stored under "donations" Collection in firebase
-  Future getRestaurantIDs() async {
-    // get donation IDs from the "donations" Collection
-    // and then store them in the "restaurantDonationIDs" List.
-
-    // get reference of the current Restaurant User
-    final currAdminUser = FirebaseAuth.instance.currentUser;
-
-    // create reference for the current Restaurant User located in the "users" collection on firebase
-    final adminUserRef =
-        FirebaseFirestore.instance.collection("users").doc(currAdminUser?.uid);
-
-    await FirebaseFirestore.instance
-        .collection('users')
-        .where('user_type', isEqualTo: 2)
-        .where('is_approved', isEqualTo: false)
-        .get()
-        .then((snapshot) => {
-              snapshot.docs.forEach((element) {
-                // add restaurant Donation IDs to the List
-                restaurantIDs.add(element.reference.id);
-                print(element.reference.id);
-              })
-            });
-  }
+  // Stream for Streambuilder
+  // get list of unapproved restaurants from the "users" Collection
+  late final Stream<QuerySnapshot> unapprovedRestaurantsStream = FirebaseFirestore
+      .instance
+      .collection("users")
+      .where('user_type', isEqualTo: 2)
+      .where("is_approved",
+          isEqualTo:
+              false) // only get Donations which are not reserved (is_reserved = false)
+      .snapshots();
 
   // function to sign out the user WITH EMAIL AND PASSWORD
   Future signOutUser() async {
@@ -95,9 +76,6 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
     textController = TextEditingController();
 
     userName = currAdminUser?.displayName;
-
-    // bug-fix for FutureBuilder
-    dataFuture = getRestaurantIDs();
   }
 
   @override
@@ -192,48 +170,69 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
                         ],
                       ),
                     ),
-                    FutureBuilder(
-                        future: dataFuture, // bug-fix for FutureBuilder
-                        builder:
-                            (BuildContext context, AsyncSnapshot snapshot) {
+                    StreamBuilder(
+                        stream:
+                            unapprovedRestaurantsStream, // bug-fix for FutureBuilder
+                        builder: (BuildContext context,
+                            AsyncSnapshot<QuerySnapshot> snapshot) {
                           //Error Handling conditions
                           if (snapshot.hasError) {
                             return Text("Something went wrong");
                           }
-
-                          if (snapshot.hasData && snapshot.data != null) {
-                            return Text("Document does not exist");
+                          // if data is stil loading, show loading spinner
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            // Loading Spinner at the centre of the page
+                            return SizedBox(
+                                width: MediaQuery.of(context).size.width,
+                                height: MediaQuery.of(context).size.height,
+                                child: Center(
+                                  child: CircularProgressIndicator(
+                                    color: Color.fromRGBO(38, 189, 104, 1),
+                                  ),
+                                ));
                           }
 
-                          //Data is output to the user
-                          if (snapshot.connectionState ==
-                              ConnectionState.done) {
-                            return GridView.builder(
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                childAspectRatio: 1.15,
-                              ),
+                          // if the data has loaded properly, do the following
+
+                          // if there are current no donations available, display text
+                          if (snapshot.data!.docs.length == 0) {
+                            return SizedBox(
+                                width: MediaQuery.of(context).size.width,
+                                height: MediaQuery.of(context).size.height,
+                                child: Center(
+                                    child: Text(
+                                        "There are no unapproved restaurants. You can review the approved restaurants in the Approved tab.",
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText2
+                                            .override(
+                                                fontFamily: 'Inter',
+                                                color: Color.fromARGB(
+                                                    255, 113, 113, 116),
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w300,
+                                                fontStyle: FontStyle.italic))));
+                          }
+
+                          // if there are unapproved restaurants, display them
+                          return GridView.count(
+                              crossAxisCount: 2,
+                              childAspectRatio: 1.15,
                               scrollDirection: Axis
                                   .vertical, // required for infinite scrolling
                               shrinkWrap:
                                   true, // required for infinite scrolling
-                              itemCount: restaurantIDs.length,
-                              itemBuilder: (context, int index) {
-                                return getRestaurants(
-                                    restaurantIDs: restaurantIDs[index]);
-                              },
-                            );
-                          }
-                          // Loading Spinner at the centre of the page
-                          return SizedBox(
-                              width: MediaQuery.of(context).size.width,
-                              height: MediaQuery.of(context).size.height,
-                              child: Center(
-                                child: CircularProgressIndicator(
-                                  color: Color.fromRGBO(209, 255, 189, 1),
-                                ),
-                              ));
+                              children: snapshot.data!.docs.map((document) {
+                                // get document (info of an Unapproved Restaurant)
+                                // one document at a time
+                                Map<String, dynamic> restaurantData =
+                                    document.data()! as Map<String, dynamic>;
+
+                                // render Cards for Unapproved Restaurants by sending info to them
+                                return UnapprovedRestaurantCard(
+                                    restaurantID: document.id,
+                                    restaurantData: restaurantData);
+                              }).toList());
                         })
                   ],
                 ),

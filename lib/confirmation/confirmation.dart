@@ -1,6 +1,7 @@
 import 'package:equi_food_app/indiv_dashboard/indivDashboard.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_timer.dart';
+import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:flutter/material.dart';
@@ -38,8 +39,6 @@ class _ConfirmationscreenWidgetState extends State<ConfirmationscreenWidget> {
   late String formatted = formatter.format(result);
   // var formatter = new DateFormat.Hm();
   // String formattedDate = formatter.format(result);
-
-  
 
   @override
   Widget build(BuildContext context) {
