@@ -13,6 +13,7 @@ class UnapprovedRestaurantCard extends StatelessWidget {
   final String restaurantID;
   final Map<String, dynamic> restaurantData;
 
+  // receives the ID for an Unapproved Restaurant and the document containing its info
   UnapprovedRestaurantCard(
       {required this.restaurantID, required this.restaurantData});
 
