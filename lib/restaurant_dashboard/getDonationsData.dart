@@ -136,7 +136,6 @@ class GetDonationsData extends StatelessWidget {
             );
           }
           return Center();
-          ;
         });
   }
 }
