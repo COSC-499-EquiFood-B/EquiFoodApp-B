@@ -1,7 +1,6 @@
 // this page is rendered when an unapproved Restaurant User logs in
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../login/login_widget.dart';

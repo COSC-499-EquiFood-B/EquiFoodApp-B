@@ -5,12 +5,9 @@
 */
 // This Widget renders Cards showing the Donation info sent to it
 
-import 'dart:js';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equi_food_app/restaurant_dashboard/editDonation.dart';
 import 'package:equi_food_app/utils/displaySnackbar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../flutter_flow/flutter_flow_icon_button.dart';
