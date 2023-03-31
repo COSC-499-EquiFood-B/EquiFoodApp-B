@@ -1,19 +1,14 @@
 import 'package:equi_food_app/admin/adminpage.dart';
 import 'package:equi_food_app/admin/approvalpage.dart';
-import 'package:equi_food_app/admin/approvedrestaurants.dart';
 import 'package:equi_food_app/admin/deniedpage.dart';
 import 'package:equi_food_app/utils/displaySnackbar.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 //Firebase imports
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class ApproveordenyWidget extends StatefulWidget {
   final String restaurantID;
