@@ -1,27 +1,4 @@
-a
-  a
-  a
-  a
-  a
-  a
-  a
-  a
-  a
-  a
-  a
-  a
-  a
-  a
-  a
-  a
-  a
-  a
-  a
-  a
-  a
-  a
-  a
-  a
+
 import 'package:equi_food_app/indiv_dashboard/indivDashboard.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
