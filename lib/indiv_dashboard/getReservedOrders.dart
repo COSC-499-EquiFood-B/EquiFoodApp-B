@@ -1,6 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equi_food_app/indiv_item/indiv_item_widget.dart';
-import 'package:equi_food_app/restaurant_dashboard/donationCard.dart';
 import 'package:flutter/material.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 

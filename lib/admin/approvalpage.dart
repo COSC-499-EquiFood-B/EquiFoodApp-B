@@ -1,10 +1,8 @@
 import 'package:equi_food_app/admin/adminpage.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
 class RestaurantapprovedWidget extends StatefulWidget {
@@ -44,7 +42,7 @@ class _RestaurantapprovedWidgetState extends State<RestaurantapprovedWidget> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Lottie.network(
-                     'https://assets10.lottiefiles.com/packages/lf20_jjmkyjsk.json',
+                      'https://assets10.lottiefiles.com/packages/lf20_jjmkyjsk.json',
                       width: 200,
                       height: 200,
                       fit: BoxFit.cover,
