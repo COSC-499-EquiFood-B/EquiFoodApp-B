@@ -206,7 +206,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                               .override(
                                 fontFamily: 'Inter',
                                 color: FlutterFlowTheme.of(context).primaryText,
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.w600,
                               ),
                         ),
                         Padding(
@@ -214,7 +214,14 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                           child: Text(
                             '${widget.donationData["quantity"]} meals',
                             textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.of(context).subtitle2,
+                            style: FlutterFlowTheme.of(context)
+                                .subtitle2
+                                .override(
+                                  fontFamily: 'Inter',
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  fontWeight: FontWeight.w400,
+                                ),
                           ),
                         ),
                       ],
@@ -232,7 +239,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                               .override(
                                 fontFamily: 'Inter',
                                 color: FlutterFlowTheme.of(context).primaryText,
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.w600,
                               ),
                         ),
                         Row(
@@ -244,7 +251,14 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                               child: Text(
                                 '\$${widget.donationData["price"]}',
                                 textAlign: TextAlign.start,
-                                style: FlutterFlowTheme.of(context).subtitle2,
+                                style: FlutterFlowTheme.of(context)
+                                    .subtitle2
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      fontWeight: FontWeight.w400,
+                                    ),
                               ),
                             ),
                           ],
@@ -269,14 +283,27 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                       children: [
                         Text(
                           'Reservation',
-                          style: FlutterFlowTheme.of(context).bodyText2,
+                          style: FlutterFlowTheme.of(context)
+                              .bodyText2
+                              .override(
+                                fontFamily: 'Inter',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontWeight: FontWeight.w600,
+                              ),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                           child: Text(
                             '10 mins',
                             textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.of(context).subtitle2,
+                            style: FlutterFlowTheme.of(context)
+                                .subtitle2
+                                .override(
+                                  fontFamily: 'Inter',
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  fontWeight: FontWeight.w400,
+                                ),
                           ),
                         ),
                       ],
@@ -289,7 +316,13 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                       children: [
                         Text(
                           'Discount',
-                          style: FlutterFlowTheme.of(context).bodyText2,
+                          style: FlutterFlowTheme.of(context)
+                              .bodyText2
+                              .override(
+                                fontFamily: 'Inter',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontWeight: FontWeight.w600,
+                              ),
                         ),
                         Row(
                           mainAxisSize: MainAxisSize.max,
@@ -300,7 +333,14 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                               child: Text(
                                 '40%',
                                 textAlign: TextAlign.start,
-                                style: FlutterFlowTheme.of(context).subtitle2,
+                                style: FlutterFlowTheme.of(context)
+                                    .subtitle2
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      fontWeight: FontWeight.w400,
+                                    ),
                               ),
                             ),
                           ],
@@ -325,14 +365,27 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                       children: [
                         Text(
                           'Closing Hour',
-                          style: FlutterFlowTheme.of(context).bodyText2,
+                          style: FlutterFlowTheme.of(context)
+                              .bodyText2
+                              .override(
+                                fontFamily: 'Inter',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontWeight: FontWeight.w600,
+                              ),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                           child: Text(
                             '11:59 PM',
                             textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.of(context).subtitle2,
+                            style: FlutterFlowTheme.of(context)
+                                .subtitle2
+                                .override(
+                                  fontFamily: 'Inter',
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  fontWeight: FontWeight.w400,
+                                ),
                           ),
                         ),
                       ],
@@ -345,14 +398,27 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                       children: [
                         Text(
                           'Saved',
-                          style: FlutterFlowTheme.of(context).bodyText2,
+                          style: FlutterFlowTheme.of(context)
+                              .bodyText2
+                              .override(
+                                fontFamily: 'Inter',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontWeight: FontWeight.w600,
+                              ),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                           child: Text(
                             '\$14.30',
                             textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.of(context).subtitle2,
+                            style: FlutterFlowTheme.of(context)
+                                .subtitle2
+                                .override(
+                                  fontFamily: 'Inter',
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  fontWeight: FontWeight.w400,
+                                ),
                           ),
                         ),
                       ],
@@ -375,14 +441,27 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                       children: [
                         Text(
                           'Description',
-                          style: FlutterFlowTheme.of(context).bodyText2,
+                          style: FlutterFlowTheme.of(context)
+                              .bodyText2
+                              .override(
+                                fontFamily: 'Inter',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontWeight: FontWeight.w600,
+                              ),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 16),
                           child: Text(
                             widget.donationData["description"],
                             textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.of(context).subtitle2,
+                            style: FlutterFlowTheme.of(context)
+                                .subtitle2
+                                .override(
+                                  fontFamily: 'Inter',
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  fontWeight: FontWeight.w400,
+                                ),
                           ),
                         ),
                       ],
@@ -403,30 +482,14 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.15,
-                          decoration: BoxDecoration(
+                        Padding(
+                          padding: const EdgeInsets.all(0),
+                          child: ClipRRect(
                             borderRadius: BorderRadius.circular(8),
+                            child: Image.network('assets/images/sampleMap.png',
+                                fit: BoxFit.cover, width: 2000, height: 112),
                           ),
-                          child: FlutterFlowGoogleMap(
-                            controller: googleMapsController,
-                            onCameraIdle: (latLng) => googleMapsCenter = latLng,
-                            initialLocation: googleMapsCenter ??=
-                                LatLng(49.88594330630278, -119.49924657187097),
-                            markerColor: GoogleMarkerColor.violet,
-                            mapType: MapType.normal,
-                            style: GoogleMapStyle.standard,
-                            initialZoom: 17,
-                            allowInteraction: true,
-                            allowZoom: true,
-                            showZoomControls: true,
-                            showLocation: true,
-                            showCompass: false,
-                            showMapToolbar: false,
-                            showTraffic: false,
-                            centerMapOnMarkerTap: true,
-                          ),
-                        ),
+                        )
                       ],
                     ),
                   ),
@@ -440,6 +503,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                 text: !isDonationReserved ? 'Reserve' : 'Cancel Order',
                 options: FFButtonOptions(
                   height: 40,
+                  width: 120,
                   color: !isDonationReserved
                       ? Color.fromRGBO(38, 189, 104, 1)
                       : Color.fromARGB(255, 247, 160, 54),
