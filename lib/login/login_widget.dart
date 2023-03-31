@@ -379,7 +379,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                         options: FFButtonOptions(
                           width: 150,
                           height: 50,
-                          color: Color.fromARGB(255, 76, 191, 82),
+                          color: Color.fromRGBO(38, 189, 104, 1),
                           textStyle:
                               FlutterFlowTheme.of(context).subtitle2.override(
                                     fontFamily: 'Inter',

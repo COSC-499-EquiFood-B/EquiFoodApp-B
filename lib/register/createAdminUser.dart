@@ -592,7 +592,7 @@ class _SignupAdminWidgetState extends State<SignupAdminWidget> {
                         options: FFButtonOptions(
                           width: 150,
                           height: 50,
-                          color: Color(0xFF66BB6A),
+                          color: Color.fromRGBO(38, 189, 104, 1),
                           textStyle:
                               FlutterFlowTheme.of(context).subtitle2.override(
                                     fontFamily: 'Inter',
