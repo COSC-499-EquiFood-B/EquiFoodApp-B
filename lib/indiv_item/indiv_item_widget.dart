@@ -1,5 +1,4 @@
 import 'package:equi_food_app/confirmation/confirmation.dart';
-import 'package:equi_food_app/indiv_dashboard/indivDashboard.dart';
 import 'package:equi_food_app/utils/displaySnackbar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 

@@ -1,7 +1,3 @@
-import 'package:equi_food_app/admin/adminpage.dart';
-import 'package:equi_food_app/backend/backend.dart';
-import 'package:equi_food_app/indiv_dashboard/indivDashboard.dart';
-import 'package:equi_food_app/main.dart';
 import 'package:equi_food_app/register/createUser.dart';
 import 'package:equi_food_app/renderDashboard.dart';
 import 'package:equi_food_app/restaurant_dashboard/restaurant_dashboard_widget_2.dart';
@@ -15,10 +11,8 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:firebase_auth/firebase_auth.dart'; // for user authentication
-import 'package:google_sign_in/google_sign_in.dart';
 
 import 'firebase_services.dart';
 
