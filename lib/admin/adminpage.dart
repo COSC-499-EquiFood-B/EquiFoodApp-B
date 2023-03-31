@@ -4,16 +4,13 @@ import 'package:equi_food_app/statspages/statisticsforadmin.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 //Import code to link to database
 import '../login/login_widget.dart';
 import 'getUnapprovedRestaurants.dart';
 
 //Firebase imports
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AdminpageWidget extends StatefulWidget {
