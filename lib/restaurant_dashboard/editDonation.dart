@@ -3,11 +3,9 @@
 import 'package:equi_food_app/utils/displaySnackbar.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 
 //Firebase imports
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'restaurant_dashboard_widget_2.dart';

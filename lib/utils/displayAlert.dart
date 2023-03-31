@@ -1,5 +1,4 @@
 // custom function to display an Alert with a given context and text
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // function to render Pop Up if the fields are empty
