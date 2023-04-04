@@ -33,9 +33,7 @@ class _ApproveordenyWidgetState extends State<ApproveordenyWidget> {
   Future<void> approveRestaurant() async {
     restaurants
         .doc(widget.restaurantID)
-        .update({
-          'is_approved': true,
-        })
+        .update({'is_approved': true, 'approved_at': Timestamp.now()})
         .then((value) => {
               Navigator.push(
                 context,
