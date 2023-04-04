@@ -1,3 +1,4 @@
+import 'package:equi_food_app/admin/admin_item_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -99,10 +100,20 @@ class ApprovedRestaurantCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Icon(
-                      Icons.chevron_right_rounded,
+                    IconButton(
+                      icon: const Icon(Icons.chevron_right_rounded),
                       color: Color(0xFF57636C),
-                      size: 24,
+                      iconSize: 24,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ApprovedRestaurantInfo(
+                                    approvedRestaurantID: restaurantID,
+                                    approvedRestaurantData: restaurantData,
+                                  )),
+                        );
+                      },
                     ),
                   ],
                 ),
