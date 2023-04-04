@@ -2,6 +2,7 @@ import 'package:equi_food_app/backend/backend.dart';
 import 'package:equi_food_app/index.dart';
 import 'package:equi_food_app/utils/displayAlert.dart';
 import 'package:equi_food_app/utils/displaySnackbar.dart';
+import 'package:flutter/services.dart';
 
 import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
@@ -25,6 +26,7 @@ class _CreateRestaurantUserWidgetState
     extends State<CreateRestaurantUserWidget> {
   TextEditingController? nameTextController; // restaurant name
   TextEditingController? emailTextController; // restaurant email
+  TextEditingController? contactTextController;
 
   // address fields
   TextEditingController? addressLine1TextController; // address Line 1
@@ -46,6 +48,7 @@ class _CreateRestaurantUserWidgetState
     emailTextController = TextEditingController();
     passwordTextController = TextEditingController();
     passwordConfirmTextController = TextEditingController();
+    contactTextController = TextEditingController();
 
     passwordVisibility = false;
 
@@ -64,6 +67,7 @@ class _CreateRestaurantUserWidgetState
     nameTextController?.dispose();
     emailTextController?.dispose();
     passwordTextController?.dispose();
+    contactTextController?.dispose();
 
     addressLine1TextController?.dispose();
     addressLine2TextController?.dispose();
@@ -101,6 +105,9 @@ class _CreateRestaurantUserWidgetState
                     "restaurant_name":
                         nameTextController!.text.toString(), // add user name
                     "email": emailTextController!.text.trim(), // add user email
+                    "contact": "+1 " +
+                        contactTextController!.text
+                            .toString(), // since contact number is Canadian
 
                     "address_line_1":
                         addressLine1TextController!.text.toString(),
@@ -621,6 +628,84 @@ class _CreateRestaurantUserWidgetState
                             size: 22,
                           ),
                         ),
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                            fontFamily: 'Inter',
+                            color: Color(0xFF0F1113),
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal,
+                          ),
+                    ),
+                  ),
+                ),
+              ),
+
+              Padding(
+                // TextField for contact number
+                padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 6,
+                        color: Color(0x3416202A),
+                        offset: Offset(0, 2),
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
+                    child: TextFormField(
+                      controller: contactTextController,
+                      keyboardType: TextInputType.phone,
+                      inputFormatters: [
+                        LengthLimitingTextInputFormatter(10),
+                      ],
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        labelText: 'Contact Number',
+                        labelStyle:
+                            FlutterFlowTheme.of(context).bodyText2.override(
+                                  fontFamily: 'Inter',
+                                  color: Color(0xFF57636C),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        contentPadding:
+                            EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
                       ),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Inter',
