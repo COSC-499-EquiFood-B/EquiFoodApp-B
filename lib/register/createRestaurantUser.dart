@@ -105,7 +105,9 @@ class _CreateRestaurantUserWidgetState
                     "restaurant_name":
                         nameTextController!.text.toString(), // add user name
                     "email": emailTextController!.text.trim(), // add user email
-                    "contact": contactTextController!.text.toString(),
+                    "contact": "+1 " +
+                        contactTextController!.text
+                            .toString(), // since contact number is Canadian
 
                     "address_line_1":
                         addressLine1TextController!.text.toString(),

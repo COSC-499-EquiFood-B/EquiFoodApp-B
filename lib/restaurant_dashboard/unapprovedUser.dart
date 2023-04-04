@@ -43,7 +43,7 @@ class _UnapprovedUserWidget extends State<UnapprovedUserWidget> {
             backgroundColor: Color.fromRGBO(38, 189, 104, 1),
             automaticallyImplyLeading: false,
             title: Text(
-              'Hello, user  👋',
+              'Hello, Restaurant user  👋',
               style: FlutterFlowTheme.of(context).title2.override(
                     fontFamily: 'Inter',
                     color: Color.fromRGBO(247, 255, 250, 1),
