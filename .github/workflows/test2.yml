@@ -10,7 +10,7 @@ jobs:
         channel: 'beta'
     - run: 
            flutter config --enable-windows-desktop
-           flutter test -d windows "test/widget_test.dart"
+           flutter test -d windows "test/trial_wigettest.dart"
     - name: Install and set Flutter version
       uses: subosito/flutter-action@v1.4.0
       with:
