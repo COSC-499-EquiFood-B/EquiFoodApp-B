@@ -9,8 +9,7 @@ jobs:
       with:
         channel: 'beta'
     - run: 
-           flutter config --enable-windows-desktop
-           flutter test "test/trial_wigettest.dart"
+           flutter test
     - name: Install and set Flutter version
 
     - name: Restore packages
