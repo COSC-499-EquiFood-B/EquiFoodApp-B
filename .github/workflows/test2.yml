@@ -12,7 +12,6 @@ jobs:
            flutter config --enable-windows-desktop
            flutter test -d windows integration_test/smoke_test.dart
     - name: Install and set Flutter version
-      uses: subosito/flutter-action@v1.4.0
 
     - name: Restore packages
       run: flutter pub get
