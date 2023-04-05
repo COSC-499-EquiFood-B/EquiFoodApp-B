@@ -9,8 +9,6 @@ jobs:
       with:
         channel: 'beta'
     - run: 
-           flutter test --help
-           flutter config --enable-windows-desktop
            flutter test
     - name: Install and set Flutter version
       uses: subosito/flutter-action@v1.4.0
