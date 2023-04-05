@@ -15,4 +15,3 @@ jobs:
       uses: subosito/flutter-action@v1.4.0
       with:
         flutter-version: '2.0.1'
-a
