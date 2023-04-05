@@ -8,9 +8,9 @@ jobs:
     - uses: subosito/flutter-action@v1
       with:
         channel: 'beta'
-    - run: |
+    - run: 
            flutter config --enable-windows-desktop
-           flutter test -d windows integration_test/smoke_test.dart
+           flutter test "test/trial_wigettest.dart"
     - name: Install and set Flutter version
 
     - name: Restore packages
