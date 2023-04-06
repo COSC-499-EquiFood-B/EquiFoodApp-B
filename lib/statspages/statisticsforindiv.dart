@@ -135,7 +135,7 @@ class _StatisticsforindivWidgetState extends State<StatisticsforindivWidget>
                                         20, 0, 0, 0),
                                     child: Image.asset(
                                       'assets/images/ecoShoppingBag.png',
-                                      height: 160,
+                                      height: 200,
                                       fit: BoxFit.cover,
                                     )),
                                 Padding(
@@ -149,7 +149,7 @@ class _StatisticsforindivWidgetState extends State<StatisticsforindivWidget>
                                         .override(
                                           fontFamily: 'Inter',
                                           color: Color(0xFF0F1113),
-                                          fontSize: 32,
+                                          fontSize: 40,
                                           fontWeight: FontWeight.w500,
                                         ),
                                   ),
@@ -166,7 +166,7 @@ class _StatisticsforindivWidgetState extends State<StatisticsforindivWidget>
                                           fontFamily: 'Inter',
                                           color: Color(0xFF57636C),
                                           fontSize: 16,
-                                          lineHeight: 1.5,
+                                          lineHeight: 1.8,
                                           fontWeight: FontWeight.w400,
                                         ),
                                   ),

@@ -141,6 +141,7 @@ class _SignupWidgetState extends State<SignupWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xFFF1F4F8),
       body: SafeArea(
         child: Padding(
@@ -318,7 +319,7 @@ class _SignupWidgetState extends State<SignupWidget> {
               ),
               Padding(
                 // Text Field to enter email
-                padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(

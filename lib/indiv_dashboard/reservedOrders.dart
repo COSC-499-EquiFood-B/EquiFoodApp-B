@@ -176,7 +176,7 @@ class _ReservedOrdersWidgetState extends State<ReservedOrdersWidget> {
                       if (snapshot.data!.docs.length == 0) {
                         return SizedBox(
                             width: MediaQuery.of(context).size.width,
-                            height: MediaQuery.of(context).size.height,
+                            height: MediaQuery.of(context).size.height * 0.7,
                             child: Center(
                                 child: Text(
                                     "You have no reserved donations at the moment.",
@@ -193,7 +193,7 @@ class _ReservedOrdersWidgetState extends State<ReservedOrdersWidget> {
                       // display reserved donations
                       return GridView.count(
                           crossAxisCount: 1,
-                          childAspectRatio: 6.2,
+                          childAspectRatio: 5,
                           scrollDirection:
                               Axis.vertical, // required for infinite scrolling
                           shrinkWrap: true, // required for infinite scrolling

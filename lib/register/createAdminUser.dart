@@ -135,6 +135,7 @@ class _SignupAdminWidgetState extends State<SignupAdminWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xFFF1F4F8),
       body: SafeArea(
         child: Padding(
