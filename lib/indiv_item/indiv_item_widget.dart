@@ -171,7 +171,12 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                     children: [
                       Text(
                         'Restaurant',
-                        style: FlutterFlowTheme.of(context).bodyText2,
+                        style: FlutterFlowTheme.of(context).bodyText2
+                        .override(
+                                fontFamily: 'Inter',
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16
+                              ),
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
@@ -206,6 +211,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                                 fontFamily: 'Inter',
                                 color: FlutterFlowTheme.of(context).primaryText,
                                 fontWeight: FontWeight.w600,
+                                fontSize: 16
                               ),
                         ),
                         Padding(
@@ -220,6 +226,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
                                   fontWeight: FontWeight.w400,
+                                  
                                 ),
                           ),
                         ),
@@ -239,6 +246,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                                 fontFamily: 'Inter',
                                 color: FlutterFlowTheme.of(context).primaryText,
                                 fontWeight: FontWeight.w600,
+                                fontSize: 16
                               ),
                         ),
                         Row(
@@ -288,6 +296,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                                 fontFamily: 'Inter',
                                 color: FlutterFlowTheme.of(context).primaryText,
                                 fontWeight: FontWeight.w600,
+                                fontSize: 16
                               ),
                         ),
                         Padding(
@@ -321,6 +330,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                                 fontFamily: 'Inter',
                                 color: FlutterFlowTheme.of(context).primaryText,
                                 fontWeight: FontWeight.w600,
+                                fontSize: 16
                               ),
                         ),
                         Row(
@@ -370,6 +380,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                                 fontFamily: 'Inter',
                                 color: FlutterFlowTheme.of(context).primaryText,
                                 fontWeight: FontWeight.w600,
+                                fontSize: 16
                               ),
                         ),
                         Padding(
@@ -403,6 +414,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                                 fontFamily: 'Inter',
                                 color: FlutterFlowTheme.of(context).primaryText,
                                 fontWeight: FontWeight.w600,
+                                fontSize: 16
                               ),
                         ),
                         Padding(
@@ -446,6 +458,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                                 fontFamily: 'Inter',
                                 color: FlutterFlowTheme.of(context).primaryText,
                                 fontWeight: FontWeight.w600,
+                                fontSize: 16
                               ),
                         ),
                         Padding(
@@ -470,7 +483,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+              padding: EdgeInsetsDirectional.fromSTEB(20, 8, 20, 0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -486,7 +499,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8),
                             child: Image.asset('assets/images/sampleMap.png',
-                                fit: BoxFit.cover, width: 2000, height: 112),
+                                fit: BoxFit.cover, width: 2000, height: 200),
                           ),
                         )
                       ],

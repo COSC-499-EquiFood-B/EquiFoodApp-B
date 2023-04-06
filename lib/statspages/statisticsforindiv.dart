@@ -93,7 +93,7 @@ class _StatisticsforindivWidgetState extends State<StatisticsforindivWidget>
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 80, 0, 0),
                 ),
                 Align(
                   alignment: AlignmentDirectional(0, -0.05),

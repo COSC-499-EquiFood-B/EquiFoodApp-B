@@ -394,7 +394,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 4),
                 child: InkWell(
                     child: Text.rich(
                         TextSpan(
