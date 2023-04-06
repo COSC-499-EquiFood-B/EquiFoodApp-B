@@ -593,7 +593,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                     Expanded(
                       child: FFButtonWidget(
                         onPressed: signUpUser,
-                        text: 'Sign up',
+                        text: 'Sign Up',
                         options: FFButtonOptions(
                           width: 150,
                           height: 50,
@@ -626,14 +626,17 @@ class _SignupWidgetState extends State<SignupWidget> {
                             TextSpan(
                                 text: " Register here",
                                 style: TextStyle(
-                                    color: Color.fromARGB(255, 17, 154, 233)))
+                                    color: Color.fromARGB(255, 17, 154, 233),
+                                    fontWeight: FontWeight.w600
+                                    ))
+                                    
                           ],
                         ),
                         style: FlutterFlowTheme.of(context).bodyText2.override(
                             fontFamily: 'Inter',
                             color: Color.fromARGB(255, 26, 26, 27),
                             fontSize: 16,
-                            fontWeight: FontWeight.w600)),
+                            fontWeight: FontWeight.w400)),
                     onTap: () => {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (BuildContext context) =>
@@ -650,14 +653,16 @@ class _SignupWidgetState extends State<SignupWidget> {
                             TextSpan(
                                 text: " Log in",
                                 style: TextStyle(
-                                    color: Color.fromARGB(255, 17, 154, 233)))
+                                    color: Color.fromARGB(255, 17, 154, 233),
+                                    fontWeight: FontWeight.w600
+                                    ))
                           ],
                         ),
                         style: FlutterFlowTheme.of(context).bodyText2.override(
                             fontFamily: 'Inter',
                             color: Color.fromARGB(255, 19, 19, 19),
                             fontSize: 16,
-                            fontWeight: FontWeight.w300)),
+                            fontWeight: FontWeight.w400)),
                     onTap: () => {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (BuildContext context) => LoginWidget()))

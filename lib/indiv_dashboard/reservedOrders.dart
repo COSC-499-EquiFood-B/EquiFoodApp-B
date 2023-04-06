@@ -176,7 +176,7 @@ class _ReservedOrdersWidgetState extends State<ReservedOrdersWidget> {
                       if (snapshot.data!.docs.length == 0) {
                         return SizedBox(
                             width: MediaQuery.of(context).size.width,
-                            height: MediaQuery.of(context).size.height * 0.7,
+                            height: MediaQuery.of(context).size.height * 0.74,
                             child: Center(
                                 child: Text(
                                     "You have no reserved donations at the moment.",
@@ -188,7 +188,7 @@ class _ReservedOrdersWidgetState extends State<ReservedOrdersWidget> {
                                                 255, 113, 113, 116),
                                             fontSize: 16,
                                             fontWeight: FontWeight.w300,
-                                            fontStyle: FontStyle.italic))));
+                                            fontStyle: FontStyle.normal))));
                       }
                       // display reserved donations
                       return GridView.count(
