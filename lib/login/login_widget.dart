@@ -94,6 +94,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xFFF1F4F8),
       body: SafeArea(
         child: Padding(
@@ -393,23 +394,26 @@ class _LoginWidgetState extends State<LoginWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 4),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                 child: InkWell(
                     child: Text.rich(
                         TextSpan(
-                          text: "Don't have account?",
+                          text: "Don't have an account?",
                           children: <InlineSpan>[
                             TextSpan(
                                 text: " Sign up",
                                 style: TextStyle(
-                                    color: Color.fromARGB(255, 17, 154, 233)))
+                                    color: Color.fromARGB(255, 17, 154, 233),
+                                    fontWeight: FontWeight.w600
+                                    ))
+                                    
                           ],
                         ),
                         style: FlutterFlowTheme.of(context).bodyText2.override(
                             fontFamily: 'Inter',
-                            color: Color.fromARGB(255, 19, 19, 19),
+                            color: Color.fromARGB(255, 26, 26, 27),
                             fontSize: 16,
-                            fontWeight: FontWeight.w300)),
+                            fontWeight: FontWeight.w400)),
                     onTap: () => {Navigator.of(context).pop()}),
               ),
               Row(

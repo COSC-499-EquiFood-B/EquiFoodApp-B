@@ -485,7 +485,7 @@ class _IndivItemWidgetState extends State<IndivItemWidget> {
                           padding: const EdgeInsets.all(0),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8),
-                            child: Image.network('assets/images/sampleMap.png',
+                            child: Image.asset('assets/images/sampleMap.png',
                                 fit: BoxFit.cover, width: 2000, height: 112),
                           ),
                         )
