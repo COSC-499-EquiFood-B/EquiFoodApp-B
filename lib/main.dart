@@ -17,10 +17,18 @@ import 'flutter_flow/nav/nav.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp();
+  // await Firebase.initializeApp(
+  //   options: const FirebaseOptions(
+  //     apiKey: "AIzaSyBM8lbMjhIu0Y6fCGhxSbM__dQ09H4UGGU",
+  //     appId: "1:490906039491:android:7fb1eb11a7a93d8e329e76",
+  //     messagingSenderId: "490906039491",
+  //     projectId: "equifood-teamb",
+  //   ),
+  // );
   await Firebase.initializeApp(
     options: const FirebaseOptions(
       apiKey: "AIzaSyBM8lbMjhIu0Y6fCGhxSbM__dQ09H4UGGU",
-      appId: "1:490906039491:android:7fb1eb11a7a93d8e329e76",
+      appId: "1:490906039491:ios:11317e2af46ed56f329e76",
       messagingSenderId: "490906039491",
       projectId: "equifood-teamb",
     ),

@@ -300,7 +300,8 @@ class _HmepageWidgetState extends State<HmepageWidget> {
                               shrinkWrap:
                                   true, // required for infinite scrolling
                               crossAxisCount: 2,
-                              childAspectRatio: 1.15,
+                              childAspectRatio: MediaQuery.of(context).size.width /
+                      (MediaQuery.of(context).size.height / 2.0),
                               children: snapshot.data!.docs.map((doc) {
                                 // get document (info of a Donation item)
                                 Map<String, dynamic> donationData =
