@@ -206,7 +206,7 @@ class _DonationsWidgetState extends State<DonationsWidget> {
                                   return SizedBox(
                                       width: MediaQuery.of(context).size.width,
                                       height:
-                                          MediaQuery.of(context).size.height,
+                                          MediaQuery.of(context).size.height * 0.74,
                                       child: Center(
                                           child: Text(
                                               "You have not posted any donations yet.\n" +
@@ -222,7 +222,7 @@ class _DonationsWidgetState extends State<DonationsWidget> {
                                                       fontWeight:
                                                           FontWeight.w300,
                                                       fontStyle:
-                                                          FontStyle.italic))));
+                                                          FontStyle.normal))));
                                 }
 
                                 // if there are donations, show them

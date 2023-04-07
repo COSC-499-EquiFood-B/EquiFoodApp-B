@@ -93,7 +93,7 @@ class _StatisticsforrestoWidgetState extends State<StatisticsforrestoWidget>
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 80, 0, 0),
                 ),
                 Align(
                   alignment: AlignmentDirectional(0, -0.05),
@@ -135,7 +135,7 @@ class _StatisticsforrestoWidgetState extends State<StatisticsforrestoWidget>
                                         0, 0, 0, 0),
                                     child: Image.asset(
                                       'assets/images/saveTheEarth.png',
-                                      height: 160,
+                                      height: 200,
                                       fit: BoxFit.cover,
                                     )),
                                 Padding(
@@ -149,7 +149,7 @@ class _StatisticsforrestoWidgetState extends State<StatisticsforrestoWidget>
                                         .override(
                                           fontFamily: 'Inter',
                                           color: Color(0xFF0F1113),
-                                          fontSize: 32,
+                                          fontSize: 40,
                                           fontWeight: FontWeight.w500,
                                         ),
                                   ),

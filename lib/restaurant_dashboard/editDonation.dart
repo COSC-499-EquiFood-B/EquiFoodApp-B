@@ -43,7 +43,7 @@ class _EditDonationWidget extends State<EditDonationWidget> {
   // styles for all TextFields
   TextStyle textFieldStyle = TextStyle(
     fontFamily: 'Inter',
-    fontWeight: FontWeight.w100,
+    fontWeight: FontWeight.w400,
     fontSize: 16,
     color: Color.fromARGB(255, 44, 44, 45),
   );
@@ -254,10 +254,30 @@ class _EditDonationWidget extends State<EditDonationWidget> {
                 ),
               ],
             ),
-
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(24, 24, 24, 0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 16),
+                    child: Text(
+                      'Edit Donations',
+                      style: FlutterFlowTheme.of(context).subtitle2.override(
+                            fontFamily: 'Inter',
+                            color: Color(0xFF57636C),
+                            fontSize: 24,
+                            fontWeight: FontWeight.w600,
+                          ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
             // TextField for the Donation Name field
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(24, 24, 24, 16),
+              padding: EdgeInsetsDirectional.fromSTEB(24, 16, 24, 16),
               child: TextFormField(
                 controller: donationNameController,
                 obscureText: false,
@@ -508,14 +528,18 @@ class _EditDonationWidget extends State<EditDonationWidget> {
                       onPressed: isFieldChanged ? () => updateDonation() : null,
                       child: Text('Update'),
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromRGBO(38, 189, 104, 1),
-                          elevation: 2,
-                          textStyle: const TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                          )),
+                        backgroundColor: Color.fromRGBO(38, 189, 104, 1),
+                        elevation: 2,
+                        textStyle: const TextStyle(
+                          fontFamily: 'Inter',
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0)
+        ),),
+                      
                     ),
                   ),
                 ))

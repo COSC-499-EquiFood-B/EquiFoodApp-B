@@ -61,7 +61,7 @@ class _LoginWidgetState extends State<LoginWidget> {
         String errorMsg = "An unknown error occurred. Could not log in user.";
 
         if (e.code == 'user-not-found') {
-          errorMsg = "Could not found your account. Please try to sign up.";
+          errorMsg = "Account cannot be found. Please try to sign up.";
         } else if (e.code == 'wrong-password') {
           errorMsg = "Incorrect password.";
         }
