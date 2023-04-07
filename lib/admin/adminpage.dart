@@ -196,7 +196,7 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
                           if (snapshot.data!.docs.length == 0) {
                             return SizedBox(
                                 width: MediaQuery.of(context).size.width,
-                                height: MediaQuery.of(context).size.height,
+                                height: MediaQuery.of(context).size.height * 0.74,
                                 child: Center(
                                     child: Text(
                                         "There are no unapproved restaurants. You can review the approved restaurants in the Approved tab.",

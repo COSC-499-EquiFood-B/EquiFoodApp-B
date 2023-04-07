@@ -50,7 +50,7 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
   // styles for all TextFields
   TextStyle textFieldStyle = TextStyle(
     fontFamily: 'Inter',
-    fontWeight: FontWeight.w100,
+    fontWeight: FontWeight.w400,
     fontSize: 16,
     color: Color.fromARGB(255, 44, 44, 45),
   );
@@ -448,6 +448,7 @@ class _CreateDonationWidgetState extends State<CreateDonationWidget> {
                   options: FFButtonOptions(
                     width: 100,
                     height: 50,
+                    borderRadius: BorderRadius.circular(8),
                     color: Color.fromRGBO(38, 189, 104, 1),
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                           fontFamily: 'Inter',
