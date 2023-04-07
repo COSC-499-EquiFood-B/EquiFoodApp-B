@@ -175,7 +175,7 @@ class _ApprovedRestaurantsPageState extends State<ApprovedRestaurantsPage> {
                       // displaying list of Approved Restaurants
                       return GridView.count(
                         crossAxisCount: 1,
-                        childAspectRatio: 6.2,
+                        childAspectRatio: 5,
                         scrollDirection:
                             Axis.vertical, // required for infinite scrolling
                         shrinkWrap: true, // required for infinite scrolling
