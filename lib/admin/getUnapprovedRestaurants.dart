@@ -14,7 +14,7 @@ class UnapprovedRestaurantCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+      padding: EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
       child: Wrap(
         alignment: WrapAlignment.start,
         crossAxisAlignment: WrapCrossAlignment.start,
@@ -34,7 +34,7 @@ class UnapprovedRestaurantCard extends StatelessWidget {
               );
             },
             child: Container(
-              width: MediaQuery.of(context).size.width * 0.95,
+              width: MediaQuery.of(context).size.width,
               height: 190,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -48,7 +48,7 @@ class UnapprovedRestaurantCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(8, 4, 4, 4),
+                padding: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 4),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,

@@ -214,7 +214,8 @@ class _AdminpageWidgetState extends State<AdminpageWidget> {
                           // if there are unapproved restaurants, display them
                           return GridView.count(
                               crossAxisCount: 2,
-                              childAspectRatio: 1.15,
+                              childAspectRatio: MediaQuery.of(context).size.width /
+                      (MediaQuery.of(context).size.height / 2.1),
                               scrollDirection: Axis
                                   .vertical, // required for infinite scrolling
                               shrinkWrap:
