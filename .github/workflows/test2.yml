@@ -7,13 +7,12 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Setup Dart SDK
-      uses: dartsidedevs/setup-dart-sdk@v1
+    - uses: subosito/flutter-action@v1
       with:
-        dart-version: stable
-    - run: dart pub get
-    - run: dart analyze
-    - run: dart test
+        flutter-version: '2.8.1'
+    - run: flutter pub get
+    - run: flutter build apk
+    - run: flutter test
