@@ -1,21 +1,18 @@
-name: test
-on: [push, workflow_dispatch]
+name: CI
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+  workflow_dispatch:
 jobs:
-  drive:
-    runs-on: windows-latest
+  build:
+    runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - uses: subosito/flutter-action@v1
       with:
-        channel: 'beta'
-    - run: 
-           flutter test
-    - name: Install and set Flutter version
-
-    - name: Restore packages
-      run: flutter pub get
-    - name: Analyze
-      run: flutter analyze
-
-    - name: Run tests
-      run: flutter test --coverage
+        flutter-version: '2.8.1'
+    - run: flutter pub get
+    - run: flutter build apk
+    - run: flutter test
