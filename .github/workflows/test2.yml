@@ -1,18 +1,9 @@
-name: CI
-on:
-  push:
-    branches: [ develop ]
-  pull_request:
-    branches: [ develop ]
-  workflow_dispatch:
+name: test-my-app
+on: [push, workflow_dispatch]
 jobs:
-  build:
-    runs-on: macos-latest
+  drive:
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v1
     - uses: subosito/flutter-action@v1
-      with:
-        flutter-version: '2.8.1'
-    - run: flutter pub get
-    - run: flutter build apk
     - run: flutter test
