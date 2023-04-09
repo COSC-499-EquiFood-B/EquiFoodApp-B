@@ -104,6 +104,10 @@ dev_dependencies:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
+# testing bug-fix
+dependency_overrides:
+  intl: ^0.17.0-nullsafety.2
+
 # The following section is specific to Flutter.
 flutter:
 
