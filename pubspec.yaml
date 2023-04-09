@@ -64,7 +64,7 @@ dependencies:
   built_value: 8.4.0
   cloud_firestore: 3.2.1
  # cloud_firestore_platform_interface: 5.5.10
- cloud_firestore_platform_interface: 5.9.2
+  cloud_firestore_platform_interface: 5.9.2
   cloud_firestore_web: 2.6.19
   file_picker: 4.5.1
   firebase_auth: 3.4.1
