@@ -1,21 +1,21 @@
-# Name of your workflow.
-name: tests-setup
+# # Name of your workflow.
+# name: tests-setup
 
-on:
-  push:
-    branches: [develop]
-  pull_request:
-    branches: [develop]
+# on:
+#   push:
+#     branches: [develop]
+#   pull_request:
+#     branches: [develop]
 
-jobs:
- flutter-test:
-  name: Run Flutter app tests
-  runs-on: ubuntu-latest
-  steps:
-      - name: Checkout the code
-        uses: actions/checkout@v2
-      - uses: subosito/flutter-action@v1
-        with:
-          channel: "stable"
+# jobs:
+#  flutter-test:
+#   name: Run Flutter app tests
+#   runs-on: ubuntu-latest
+#   steps:
+#       - name: Checkout the code
+#         uses: actions/checkout@v2
+#       - uses: subosito/flutter-action@v1
+#         with:
+#           channel: "stable"
 
         
