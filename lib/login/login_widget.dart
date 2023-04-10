@@ -435,13 +435,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                         color: Color(0xFF0F1113),
                         size: 24,
                       ),
-                      onPressed: () async {
-                        await FirebaseServices().signInWithGoogle();
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: ((context) => DonationsWidget())));
-                      },
+                      onPressed: () {},
                     ),
                   ),
                   Padding(
@@ -457,15 +451,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                         color: Color(0xFF0F1113),
                         size: 24,
                       ),
-                      onPressed: () async {
-                        GoRouter.of(context).prepareAuthEvent();
-                        final user = await signInWithApple(context);
-                        if (user == null) {
-                          return;
-                        }
-
-                        context.goNamedAuth('setting', mounted);
-                      },
+                      onPressed: () {},
                     ),
                   ),
                 ],
