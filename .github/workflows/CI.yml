@@ -18,4 +18,6 @@ jobs:
         with:
           channel: "stable"
       - run: flutter pub get
-      - run: flutter run test/widget_test.dart
+      - run: flutter config --enable-windows-desktop
+      - run: flutter build windows
+      - run: flutter run test
