@@ -12,12 +12,11 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   testWidgets('Finds a text in the login widget', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(
-        MaterialApp(
-          home: LoginWidget(),
-        ),
-        Duration(hours: 0, minutes: 0, seconds: 2));
+    await tester.pumpWidget(MaterialApp(
+      home: LoginWidget(),
+    ));
 
+    await tester.pump();
     // verify that our counter starts at 0
     expect(find.text('Sign In'), findsWidgets);
     expect(find.text('Hello'), findsNothing);
