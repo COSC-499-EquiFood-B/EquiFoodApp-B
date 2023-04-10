@@ -16,7 +16,7 @@ void main() {
       home: LoginWidget(),
     ));
 
-     await tester.pumpAndSettle(const Duration(seconds: 5));
+    await tester.pumpAndSettle(const Duration(seconds: 5));
     // verify that our counter starts at 0
     expect(find.text('Sign In'), findsWidgets);
     expect(find.text('Hello'), findsNothing);
