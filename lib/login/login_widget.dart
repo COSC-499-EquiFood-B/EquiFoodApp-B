@@ -69,7 +69,7 @@ class _LoginWidgetState extends State<LoginWidget> {
         // display error message to the user
         displaySnackbar(context, errorMsg);
 
-        return;
+        return false;
       }
 
       // Navigator user to the RenderDashboard Page, which will redirect them to the
@@ -78,6 +78,7 @@ class _LoginWidgetState extends State<LoginWidget> {
           MaterialPageRoute(
               builder: (BuildContext context) => RenderDashboardWidget()),
           (route) => false);
+      return true;
     }
   }
 
@@ -208,6 +209,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                     child: TextFormField(
+                      key: new Key("login-email"),
                       controller: emailTextController,
                       obscureText: false,
                       decoration: InputDecoration(
@@ -287,6 +289,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                     child: TextFormField(
+                      key: new Key("login-password"),
                       controller: passwordTextController,
                       obscureText: !passwordVisibility,
                       decoration: InputDecoration(
@@ -369,6 +372,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   children: [
                     Expanded(
                       child: FFButtonWidget(
+                        key: new Key("login-button"),
                         onPressed: signInUser,
                         text: 'Login',
                         options: FFButtonOptions(
@@ -404,9 +408,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 text: " Sign up",
                                 style: TextStyle(
                                     color: Color.fromARGB(255, 17, 154, 233),
-                                    fontWeight: FontWeight.w600
-                                    ))
-                                    
+                                    fontWeight: FontWeight.w600))
                           ],
                         ),
                         style: FlutterFlowTheme.of(context).bodyText2.override(
