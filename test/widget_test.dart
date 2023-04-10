@@ -9,16 +9,12 @@ import 'package:equi_food_app/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:equi_food_app/main.dart';
-
 void main() {
   testWidgets('Finds a text in the login widget', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(MaterialApp(
       home: LoginWidget(),
     ));
-
-    final childWidget = Text('Sign In');
 
     // verify that our counter starts at 0
     expect(find.text('Sign In'), findsWidgets);
