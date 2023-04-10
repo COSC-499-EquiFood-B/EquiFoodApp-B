@@ -18,4 +18,4 @@ jobs:
         with:
           channel: "stable"
       - run: flutter pub get
-      - run: flutter test test/widget_test.dart
+      - run: flutter test test/login_test.dart
