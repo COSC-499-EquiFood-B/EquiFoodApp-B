@@ -57,7 +57,7 @@ class _CreateRestaurantUserWidgetState
     addressLine2TextController = TextEditingController();
     zipCodeTextController = TextEditingController();
     cityTextController = TextEditingController();
-    stateTextController = TextEditingController(); 
+    stateTextController = TextEditingController();
   }
 
   // method for cleaning-up resources
@@ -312,6 +312,7 @@ class _CreateRestaurantUserWidgetState
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                     child: TextFormField(
+                      key: new Key("signup-name-res"),
                       controller: nameTextController,
                       obscureText: false,
                       decoration: InputDecoration(
@@ -392,6 +393,7 @@ class _CreateRestaurantUserWidgetState
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                     child: TextFormField(
+                      key: new Key("signup-email-res"),
                       controller: emailTextController,
                       obscureText: false,
                       decoration: InputDecoration(
@@ -472,6 +474,7 @@ class _CreateRestaurantUserWidgetState
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                     child: TextFormField(
+                      key: new Key("signup-password-res"),
                       controller: passwordTextController,
                       obscureText: !passwordVisibility,
                       decoration: InputDecoration(
@@ -563,6 +566,7 @@ class _CreateRestaurantUserWidgetState
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Padding(
+                    key: new Key("signup-password-confirm-res"),
                     padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                     child: TextFormField(
                       controller: passwordConfirmTextController,
@@ -659,6 +663,7 @@ class _CreateRestaurantUserWidgetState
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                     child: TextFormField(
+                      key: new Key("signup-contact-res"),
                       controller: contactTextController,
                       keyboardType: TextInputType.phone,
                       inputFormatters: [
@@ -738,6 +743,7 @@ class _CreateRestaurantUserWidgetState
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                     child: TextFormField(
+                      key: new Key("signup-address-res"),
                       controller: addressLine1TextController,
                       obscureText: false,
                       decoration: InputDecoration(
@@ -898,6 +904,7 @@ class _CreateRestaurantUserWidgetState
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                     child: TextFormField(
+                      key: new Key("signup-city-res"),
                       controller: cityTextController,
                       obscureText: false,
                       decoration: InputDecoration(
@@ -982,6 +989,7 @@ class _CreateRestaurantUserWidgetState
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                         child: TextFormField(
+                          key: new Key("signup-state-res"),
                           controller: stateTextController,
                           obscureText: false,
                           decoration: InputDecoration(
@@ -1062,6 +1070,7 @@ class _CreateRestaurantUserWidgetState
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Padding(
+                        key: new Key("signup-zipcode-res"),
                         padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                         child: TextFormField(
                           controller: zipCodeTextController,
@@ -1138,6 +1147,7 @@ class _CreateRestaurantUserWidgetState
                   children: [
                     Expanded(
                       child: FFButtonWidget(
+                        key: new Key("signup-button-res"),
                         onPressed: signUpUser,
                         text: 'Sign Up',
                         options: FFButtonOptions(
@@ -1173,8 +1183,7 @@ class _CreateRestaurantUserWidgetState
                               text: " Register here",
                               style: TextStyle(
                                   color: Color.fromARGB(255, 17, 154, 233),
-                                  fontWeight: FontWeight.w600
-                                  ))
+                                  fontWeight: FontWeight.w600))
                         ],
                       ),
                       style: FlutterFlowTheme.of(context).bodyText2.override(
@@ -1198,8 +1207,7 @@ class _CreateRestaurantUserWidgetState
                                 text: " Log in",
                                 style: TextStyle(
                                     color: Color.fromARGB(255, 17, 154, 233),
-                                    fontWeight: FontWeight.w600
-                                    ))
+                                    fontWeight: FontWeight.w600))
                           ],
                         ),
                         style: FlutterFlowTheme.of(context).bodyText2.override(
