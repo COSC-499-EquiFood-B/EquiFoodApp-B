@@ -336,6 +336,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                     child: TextFormField(
+                      key: new Key("signup-email"),
                       controller: emailTextController,
                       obscureText: false,
                       decoration: InputDecoration(
@@ -416,6 +417,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                     child: TextFormField(
+                      key: new Key("signup-password"),
                       controller: passwordTextController,
                       obscureText: !passwordVisibility,
                       decoration: InputDecoration(
@@ -509,6 +511,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                     child: TextFormField(
+                      key: new Key("signup-password-confirm"),
                       controller: passwordConfirmTextController,
                       obscureText: !passwordVisibility,
                       decoration: InputDecoration(
@@ -592,6 +595,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                   children: [
                     Expanded(
                       child: FFButtonWidget(
+                        key: new Key("signup-button"),
                         onPressed: signUpUser,
                         text: 'Sign Up',
                         options: FFButtonOptions(
@@ -627,9 +631,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                 text: " Register here",
                                 style: TextStyle(
                                     color: Color.fromARGB(255, 17, 154, 233),
-                                    fontWeight: FontWeight.w600
-                                    ))
-                                    
+                                    fontWeight: FontWeight.w600))
                           ],
                         ),
                         style: FlutterFlowTheme.of(context).bodyText2.override(
@@ -654,8 +656,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                 text: " Log in",
                                 style: TextStyle(
                                     color: Color.fromARGB(255, 17, 154, 233),
-                                    fontWeight: FontWeight.w600
-                                    ))
+                                    fontWeight: FontWeight.w600))
                           ],
                         ),
                         style: FlutterFlowTheme.of(context).bodyText2.override(
@@ -685,15 +686,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                         color: Color(0xFF0F1113),
                         size: 24,
                       ),
-                      onPressed: () async {
-                        GoRouter.of(context).prepareAuthEvent();
-                        final user = await signInWithGoogle(context);
-                        if (user == null) {
-                          return;
-                        }
-
-                        context.goNamedAuth('setting', mounted);
-                      },
+                      onPressed: () {},
                     ),
                   ),
                   Padding(
@@ -709,15 +702,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                         color: Color(0xFF0F1113),
                         size: 24,
                       ),
-                      onPressed: () async {
-                        GoRouter.of(context).prepareAuthEvent();
-                        final user = await signInWithApple(context);
-                        if (user == null) {
-                          return;
-                        }
-
-                        context.goNamedAuth('setting', mounted);
-                      },
+                      onPressed: () {},
                     ),
                   ),
                 ],
