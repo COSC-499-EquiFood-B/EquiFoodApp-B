@@ -131,7 +131,7 @@ class _SignupWidgetState extends State<SignupWidget> {
   bool confirmPassword() {
     if (passwordTextController!.text.trim() !=
         passwordConfirmTextController!.text.trim()) {
-      displayAlert(context, "The password do not match.");
+      displayAlert(context, "The passwords do not match.");
     }
     return passwordTextController!.text.trim() ==
         passwordConfirmTextController!.text.trim();
