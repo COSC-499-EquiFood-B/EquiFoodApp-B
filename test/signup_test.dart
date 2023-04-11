@@ -5,16 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  testWidgets('Finds the login Button in the login widget',
+  testWidgets('Finds the Sign Up Button in the signup widget',
       (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(MaterialApp(
-      home: LoginWidget(),
+      home: SignupWidget(),
     ));
 
     await tester.pumpAndSettle(const Duration(seconds: 5));
     // verify that our counter starts at 0
-    expect(find.widgetWithText(FFButtonWidget, 'Login'), findsWidgets);
-    expect(find.text('Hello'), findsNothing);
+    expect(find.widgetWithText(FFButtonWidget, 'Sign Up'), findsWidgets);
+    expect(find.widgetWithText(FFButtonWidget, 'Login'), findsNothing);
   });
 }

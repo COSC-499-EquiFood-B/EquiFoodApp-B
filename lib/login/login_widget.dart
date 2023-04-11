@@ -69,7 +69,7 @@ class _LoginWidgetState extends State<LoginWidget> {
         // display error message to the user
         displaySnackbar(context, errorMsg);
 
-        return;
+        return false;
       }
 
       // Navigator user to the RenderDashboard Page, which will redirect them to the
@@ -78,6 +78,7 @@ class _LoginWidgetState extends State<LoginWidget> {
           MaterialPageRoute(
               builder: (BuildContext context) => RenderDashboardWidget()),
           (route) => false);
+      return true;
     }
   }
 
