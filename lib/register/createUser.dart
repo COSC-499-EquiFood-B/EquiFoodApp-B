@@ -259,6 +259,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                     child: Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                       child: TextFormField(
+                        key: new Key("signup-name"),
                         controller: nameTextController,
                         obscureText: false,
                         decoration: InputDecoration(
