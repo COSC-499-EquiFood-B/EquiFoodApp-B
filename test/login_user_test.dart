@@ -7,8 +7,6 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('Test logging in user', (WidgetTester tester) async {
-    WidgetsFlutterBinding.ensureInitialized();
-
     // Build our app and trigger a frame.
     await tester.pumpWidget(MaterialApp(
       home: LoginWidget(),

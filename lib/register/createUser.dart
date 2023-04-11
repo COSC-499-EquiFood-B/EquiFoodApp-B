@@ -4,7 +4,6 @@ import 'package:equi_food_app/register/createRestaurantUser.dart';
 import 'package:equi_food_app/utils/displayAlert.dart';
 import 'package:equi_food_app/utils/displaySnackbar.dart';
 
-import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -131,7 +130,7 @@ class _SignupWidgetState extends State<SignupWidget> {
   bool confirmPassword() {
     if (passwordTextController!.text.trim() !=
         passwordConfirmTextController!.text.trim()) {
-      displayAlert(context, "The password did not match.");
+      displayAlert(context, "The passwords do not match.");
     }
     return passwordTextController!.text.trim() ==
         passwordConfirmTextController!.text.trim();
@@ -256,6 +255,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                     child: TextFormField(
+                      key: new Key("signup-name"),
                       controller: nameTextController,
                       obscureText: false,
                       decoration: InputDecoration(
