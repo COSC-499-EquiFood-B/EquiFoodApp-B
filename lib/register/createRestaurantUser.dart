@@ -202,6 +202,9 @@ class _CreateRestaurantUserWidgetState
     return true;
   }
 
+  // scrollbar bug-fix
+  ScrollController scrollController = new ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -211,10 +214,12 @@ class _CreateRestaurantUserWidgetState
       body: SafeArea(
           child: Scrollbar(
         thumbVisibility: true, // make scrollbar visible throughout
+        controller: scrollController,
         scrollbarOrientation:
             ScrollbarOrientation.right, // show scrollbar on the right
 
         child: SingleChildScrollView(
+          controller: scrollController,
           padding: EdgeInsetsDirectional.fromSTEB(24, 24, 24, 24),
           child: Column(
             mainAxisSize: MainAxisSize.max,
