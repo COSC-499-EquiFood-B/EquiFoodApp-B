@@ -1,3 +1,10 @@
+// Google Auth set up
+plugins {
+  id 'com.android.application'
+  // Add the Google services Gradle plugin
+  id 'com.google.gms.google-services'
+}
+
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
@@ -33,6 +40,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
+
     compileSdkVersion 33
 
     sourceSets {
@@ -46,7 +54,8 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.mycompany.demoapp"
+        // previously applicationId was called "com.mycompany.demoapp"
+        applicationId "com.equifoodteamb.equifoodapp"
         minSdkVersion 21
         targetSdkVersion 31
         versionCode flutterVersionCode.toInteger()
@@ -75,6 +84,11 @@ flutter {
     source '../..'
 }
 
+
+
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
+
+
+

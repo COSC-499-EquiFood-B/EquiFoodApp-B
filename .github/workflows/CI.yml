@@ -1,0 +1,22 @@
+name: CI
+on:
+  pull_request:
+    branches:
+      # run test when merging to these branches
+      - develop
+
+jobs:
+  flutter_test:
+    name: Run flutter tests and analyze code
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v1
+        with:
+          java-version: "16.x"
+      - uses: subosito/flutter-action@v1 # allows to run flutter commands
+        with:
+          channel: "stable"
+      - run: flutter pub get
+      - run: flutter test
+

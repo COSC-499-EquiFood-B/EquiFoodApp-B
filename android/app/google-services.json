@@ -1,0 +1,91 @@
+{
+  "project_info": {
+    "project_number": "490906039491",
+    "firebase_url": "https://equifood-teamb-default-rtdb.firebaseio.com",
+    "project_id": "equifood-teamb",
+    "storage_bucket": "equifood-teamb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490906039491:android:49a12e5e5b86122e329e76",
+        "android_client_info": {
+          "package_name": "com.equifoodb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "490906039491-1i57e96oueb3eadc1m3ui4c4ruueajba.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.equifoodb",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "490906039491-97jqg760foj55qvp7uh57ehc6qo7v40o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBM8lbMjhIu0Y6fCGhxSbM__dQ09H4UGGU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "490906039491-97jqg760foj55qvp7uh57ehc6qo7v40o.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "490906039491-tok507q9bc17vbi71m4pqgncrue8gjcs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.equifoodb"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490906039491:android:7fb1eb11a7a93d8e329e76",
+        "android_client_info": {
+          "package_name": "com.equifoodteamb.equifoodapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "490906039491-97jqg760foj55qvp7uh57ehc6qo7v40o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBM8lbMjhIu0Y6fCGhxSbM__dQ09H4UGGU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "490906039491-97jqg760foj55qvp7uh57ehc6qo7v40o.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "490906039491-tok507q9bc17vbi71m4pqgncrue8gjcs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.equifoodb"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

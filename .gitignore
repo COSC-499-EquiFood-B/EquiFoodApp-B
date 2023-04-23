@@ -48,3 +48,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# for android and iOS firebase config files
+ios/Runner/GoogleService-Info.plist
