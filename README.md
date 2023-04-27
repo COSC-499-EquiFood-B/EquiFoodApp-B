@@ -1,6 +1,6 @@
 # EquiFood App
 
-Find our final report [here]().
+Find our final report [here](https://github.com/COSC-499-EquiFood-B/EquiFoodApp-B/blob/main/Documents/Final%20Report%20-%20EquiFood%20Team%20B.pdf).
 
 ## Context
 Project Equifood tries to reduce food wastage and promotes sustainable food systems in Kelowna. The designed app will help to reduce food wastage by donating leftovers from restaurants.
